@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
  * Created by serhii on 14.01.18.
  */
 public class FlashCardTest {
+
     @Test
     public void getFront() throws Exception {
         FlashCard flashCard = new FlashCard("a","b");
