@@ -2,6 +2,7 @@ allprojects {
 
     apply plugin: 'java'
     apply plugin: 'jacoco'
+    apply plugin: 'groovy'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -51,7 +52,7 @@ task copyTask(type: Copy) {
         if (project.hasProperty("week") && project.hasProperty("myModule")) {
             from "functional-tests/src/test/java/$week"
             into "$myModule/src/test/java/$week"
-            println "The Common Tests of $week1 have been copied"
+            println "The Common Tests of $week have been copied"
         } else {
             println "The Common Tests were not copied"
         }
