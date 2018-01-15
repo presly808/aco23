@@ -1,4 +1,4 @@
-package flashCard.model;
+package flashсard.model;
 
 
 import java.util.Arrays;

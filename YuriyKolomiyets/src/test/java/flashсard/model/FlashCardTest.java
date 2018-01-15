@@ -1,4 +1,4 @@
-package flashCard.model;
+package flashсard.model;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,8 +47,8 @@ public class FlashCardTest {
 
     /*@Test
     public String toString() {
-        FlashCard flashCard = new FlashCard(1, "A", "b");
-        Assert.assertEquals("FlashCard id 1, front: A, back: b", flashCard.toString());
-        return  flashCard.toString();
+        FlashCard flashсard = new FlashCard(1, "A", "b");
+        Assert.assertEquals("FlashCard id 1, front: A, back: b", flashсard.toString());
+        return  flashсard.toString();
     }*/
 }
