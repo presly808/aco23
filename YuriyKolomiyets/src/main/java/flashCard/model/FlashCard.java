@@ -46,5 +46,4 @@ public class FlashCard {
     public void setBack(String back) {
         this.back = back;
     }
-
 }
