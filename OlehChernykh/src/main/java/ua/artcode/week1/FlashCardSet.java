@@ -58,7 +58,7 @@ public class FlashCardSet {
         for (FlashCard card : cards) {
             if (card != null)
                 System.out.println(card.asString());
-            return true;
+        return true;
         }
         return false;
     }
