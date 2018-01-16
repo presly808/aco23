@@ -58,10 +58,4 @@ public class TestFlashCardSet {
         Assert.assertEquals(false,flashCardSet.remove(flashCardSet.cards,3));
     }
 
-    @Test
-    public void showAll(){
-        flashCardSet.add(card);
-        Assert.assertEquals(true,flashCardSet.showAll());
-    }
-
 }

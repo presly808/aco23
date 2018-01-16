@@ -54,13 +54,11 @@ public class FlashCardSet {
         return true;
     }
 
-    public boolean showAll(){
+    public void showAll(){
         for (FlashCard card : cards) {
             if (card != null)
                 System.out.println(card.asString());
-        return true;
         }
-        return false;
     }
 
 }
