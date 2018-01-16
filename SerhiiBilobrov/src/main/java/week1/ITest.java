@@ -1,3 +1,5 @@
+package week1;
+
 /**
  * Created by serhii on 13.01.18.
  */
