@@ -10,13 +10,11 @@ public class CardlistTest {
 
     private Cardlist cardlist;
     private Flashcard flashcard;
-    private Flashcard nullcard;
 
     @Before
     public void setUp() throws Exception {
         cardlist = new Cardlist();
-        nullcard = new Flashcard(0,"front", "back");;
-        flashcard = new Flashcard(3,"f", "b");
+        flashcard = new Flashcard(0,"front", "back");;
     }
 
 
@@ -32,7 +30,7 @@ public class CardlistTest {
     @Test
     public void remove(){
         cardlist.addCard(flashcard);
-        Assert.assertEquals(true, cardlist.remove(flashcard,0));
+        Assert.assertEquals(true, cardlist.remove(flashcard));
     }
 
     @Test

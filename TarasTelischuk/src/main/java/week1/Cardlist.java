@@ -1,11 +1,9 @@
 package week1;
 
-import java.util.Arrays;
 
 public class Cardlist {
 
     private int size;
-    private int index;
     private Flashcard[] flashcards;
 
     public Cardlist(){
@@ -26,11 +24,11 @@ public class Cardlist {
 
 
 
-    public boolean remove (Flashcard flashcard, int index){
+    public boolean remove (Flashcard flashcard){
         if (flashcard == null){
             return false;
         }
-        index = -1;
+        int index = -1;
         for (int i = 0; i <flashcards.length - 1 ; i++) {
             if (flashcards[i].equals(flashcard)) {
                 index++;
