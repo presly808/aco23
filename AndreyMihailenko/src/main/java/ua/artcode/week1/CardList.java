@@ -6,12 +6,8 @@ public class CardList {
     private int freeIndex;
     private FlashCard[] flashCards;
 
-    public CardList(int size) {
-        this.size = size;
-        flashCards = new FlashCard[size];
-    }
 
-    public CardList() {
+    CardList() {
         flashCards = new FlashCard[10];
     }
 
@@ -27,7 +23,8 @@ public class CardList {
         return true;
     }
 
-    public void increaseArr() {
+
+    private void increaseArr() {
         if (freeIndex >= size) {
             FlashCard[] arr = new FlashCard[size * 2 + 1];
             System.arraycopy(flashCards, 0, arr, 0, size);

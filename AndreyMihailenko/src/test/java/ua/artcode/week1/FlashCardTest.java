@@ -32,8 +32,8 @@ public class FlashCardTest {
 
     @Test
     public void setFront() {
-        flashCard.setFront("a");
-        assertEquals("a", flashCard.getFront());
+        flashCard.setFront("newFront");
+        assertEquals("newFront", flashCard.getFront());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class FlashCardTest {
 
     @Test
     public void setBack() {
-        flashCard.setBack("a");
-        assertEquals("a", flashCard.getBack());
+        flashCard.setBack("newBack");
+        assertEquals("newBack", flashCard.getBack());
     }
 }
