@@ -1,7 +1,10 @@
+import groovy.json.JsonSlurper
+
 allprojects {
 
     apply plugin: 'java'
     apply plugin: 'jacoco'
+    apply plugin: 'groovy'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -45,16 +48,42 @@ allprojects {
 
 }
 
-// ./gradlew -PmyModule=SerhiiBilobrov -Pweek=week1 copyTask
-task copyTask(type: Copy) {
+// ./gradlew -PmyModule=SerhiiBilobrov -Ptask=week1 copyTask
+task copyTask {
+    doLast {
+        def module_with_tests = "functional-tests"
 
-        if (project.hasProperty("week") && project.hasProperty("myModule")) {
-            from "functional-tests/src/test/java/$week"
-            into "$myModule/src/test/java/$week"
-            println "The Common Tests of $week1 have been copied"
-        } else {
-            println "The Common Tests were not copied"
+        if (project.hasProperty("task") && project.hasProperty("myModule")) {
+
+            copy {
+                from "$module_with_tests/src/test/java/$task"
+                into "$myModule/src/test/java/$task"
+            }
+
+            copy {
+                from "$module_with_tests/src/main/java/$task"
+                into "$myModule/src/main/java/$task"
+            }
+            println "The Common Tests of $task have been copied into $myModule"
         }
+    }
+
+}
+
+task showAllTasks() {
+    doLast {
+        def parsed = parseJson('functional-tests/course-tasks.json')
+        def tasks = parsed.tasks;
+        for(task in tasks){
+            println task
+        }
+    }
+}
+
+def parseJson(path) {
+    def jsonFile = file(path)
+    def parsedJson = new JsonSlurper().parseText(jsonFile.text)
+    return parsedJson
 }
 
 task testGitC {

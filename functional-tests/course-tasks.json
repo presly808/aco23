@@ -1,0 +1,14 @@
+{
+  "course" : "OOP",
+  "tasks" : {
+    "week1" : {
+      "title": "Basics and TestTask"
+    },
+    "week2" : {
+      "title": "SOLID and OOP"
+    },
+    "week3" : {
+      "title": "DesignPatterns"
+    }
+  }
+}
