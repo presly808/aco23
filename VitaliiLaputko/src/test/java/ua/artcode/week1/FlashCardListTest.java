@@ -1,9 +1,9 @@
 package ua.artcode.week1;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.security.InvalidParameterException;
 
 public class FlashCardListTest {
 
@@ -66,17 +66,20 @@ public class FlashCardListTest {
         Assert.assertFalse(flashCardList.deleteCardFromListById(2));
     }
 
-    @Test   //Droch)))
+    @Test
     public void checkPrintCardList() {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        boolean thrown = false;
 
-        FlashCardList flashCardList = new FlashCardList();
-        flashCardList.printCardList();
+        try {
+            FlashCardList flashCardList = new FlashCardList();
+            flashCardList.printCardList();
 
-        String expected = "Card list is empty!\r\n";
-        String actual = outContent.toString();
+            flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+            flashCardList.printCardList();
+        } catch (InvalidParameterException e) {
+            thrown = true;
+        }
 
-        Assert.assertEquals("PIZZA", expected, actual);
+        Assert.assertFalse("PrintCardList method works incorrectly", thrown);
     }
 }
