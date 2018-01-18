@@ -10,16 +10,16 @@ public class FlashCardListTest {
     @Test
     public void checkAddCardToList() {
         FlashCardList flashCardList = new FlashCardList();
-        boolean expected = flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+        boolean expected = flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
 
         Assert.assertTrue("addCardToList method works incorrectly", expected);
     }
 
     @Test
-    public void checkAddCardToList_diffId() {
+    public void checkAddCardToListDiffId() {
         FlashCardList flashCardList = new FlashCardList();
-        boolean expected1 = flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
-        boolean expected2 = flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(2, "girl", "девочка")));
+        boolean expected1 = flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
+        boolean expected2 = flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(2, "girl", "девочка")));
 
         Assert.assertEquals("addCardToList method works incorrectly", expected1, expected2);
     }
@@ -27,8 +27,8 @@ public class FlashCardListTest {
     @Test
     public void checkAddTheSameCardToList() {
         FlashCardList flashCardList = new FlashCardList();
-        boolean actual = flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
-        boolean expected = flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+        boolean actual = flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
+        boolean expected = flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
 
         Assert.assertTrue(actual);
         Assert.assertFalse(expected);
@@ -37,7 +37,7 @@ public class FlashCardListTest {
     @Test
     public void checkDeleteCardFromListByFrontValue() {
         FlashCardList flashCardList = new FlashCardList();
-        flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+        flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
 
         Assert.assertTrue(flashCardList.deleteCardFromListById(1));
     }
@@ -45,7 +45,7 @@ public class FlashCardListTest {
     @Test
     public void checkDeleteCardFromListByFrontValueNegative() {
         FlashCardList flashCardList = new FlashCardList();
-        flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+        flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
 
         Assert.assertFalse(flashCardList.deleteCardFromListById(2));
     }
@@ -53,7 +53,7 @@ public class FlashCardListTest {
     @Test
     public void checkDeleteCardFromListById() {
         FlashCardList flashCardList = new FlashCardList();
-        flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+        flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
 
         Assert.assertTrue(flashCardList.deleteCardFromListById(1));
     }
@@ -61,7 +61,7 @@ public class FlashCardListTest {
     @Test
     public void checkDeleteCardFromListByIdNegative() {
         FlashCardList flashCardList = new FlashCardList();
-        flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+        flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
 
         Assert.assertFalse(flashCardList.deleteCardFromListById(2));
     }
@@ -74,7 +74,7 @@ public class FlashCardListTest {
             FlashCardList flashCardList = new FlashCardList();
             flashCardList.printCardList();
 
-            flashCardList.addCardToList(FlashCardValidator.Validate(new FlashCard(1, "girl", "девочка")));
+            flashCardList.addCardToList(FlashCardValidator.validate(new FlashCard(1, "girl", "девочка")));
             flashCardList.printCardList();
         } catch (InvalidParameterException e) {
             thrown = true;

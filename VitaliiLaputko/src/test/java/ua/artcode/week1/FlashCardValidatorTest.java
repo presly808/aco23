@@ -8,15 +8,15 @@ public class FlashCardValidatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void checkNullFlashCardObjValidation() {
-        FlashCardValidator.Validate((FlashCard) null);
+        FlashCardValidator.validate((FlashCard) null);
     }
 
     @Test
-    public void checkID_FlashCardObjValidation() {
+    public void checkIdFlashCardObjValidation() {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(new FlashCard(-1, "girl", "девочка"));
+            FlashCardValidator.validate(new FlashCard(-1, "girl", "девочка"));
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -25,11 +25,11 @@ public class FlashCardValidatorTest {
     }
 
     @Test
-    public void checkFrontEmpty_FlashCardObjValidation() {
+    public void checkFrontEmptyFlashCardObjValidation() {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(new FlashCard(1, "", "девочка"));
+            FlashCardValidator.validate(new FlashCard(1, "", "девочка"));
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -38,11 +38,11 @@ public class FlashCardValidatorTest {
     }
 
     @Test
-    public void checkFrontNull_FlashCardObjValidation() {
+    public void checkFrontNullFlashCardObjValidation() {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(new FlashCard(1, null, "девочка"));
+            FlashCardValidator.validate(new FlashCard(1, null, "девочка"));
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -51,11 +51,11 @@ public class FlashCardValidatorTest {
     }
 
     @Test
-    public void checkBackEmpty_FlashCardObjValidation() {
+    public void checkBackEmptyFlashCardObjValidation() {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(new FlashCard(1, "girl", ""));
+            FlashCardValidator.validate(new FlashCard(1, "girl", ""));
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -64,11 +64,11 @@ public class FlashCardValidatorTest {
     }
 
     @Test
-    public void checkBackNull_FlashCardObjValidation() {
+    public void checkBackNullFlashCardObjValidation() {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(new FlashCard(1, "girl", null));
+            FlashCardValidator.validate(new FlashCard(1, "girl", null));
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -81,7 +81,7 @@ public class FlashCardValidatorTest {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(-2);
+            FlashCardValidator.validate(-2);
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -94,7 +94,7 @@ public class FlashCardValidatorTest {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate(0);
+            FlashCardValidator.validate(0);
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -107,7 +107,7 @@ public class FlashCardValidatorTest {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate("");
+            FlashCardValidator.validate("");
         } catch (InvalidParameterException e) {
             thrown = true;
         }
@@ -120,7 +120,7 @@ public class FlashCardValidatorTest {
         boolean thrown = false;
 
         try {
-            FlashCardValidator.Validate((String) null);
+            FlashCardValidator.validate((String) null);
         } catch (InvalidParameterException e) {
             thrown = true;
         }

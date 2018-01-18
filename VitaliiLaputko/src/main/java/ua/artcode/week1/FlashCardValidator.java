@@ -4,25 +4,25 @@ import java.security.InvalidParameterException;
 
 public class FlashCardValidator {
 
-    public static FlashCard Validate(FlashCard card) {
+    public static FlashCard validate(FlashCard card) {
         if (card == null)
             throw new InvalidParameterException("Card obj is null.");
 
-        Validate(card.getId());
-        Validate(card.getFront());
-        Validate(card.getBack());
+        validate(card.getId());
+        validate(card.getFront());
+        validate(card.getBack());
 
         return card;
     }
 
-    public static String Validate(String str) {
+    public static String validate(String str) {
         if (str == null || str.isEmpty())
             throw new InvalidParameterException("Card value {" + str + "} is null.");
 
         return str;
     }
 
-    public static int Validate(int id) {
+    public static int validate(int id) {
         if (id <= 0)
             throw new InvalidParameterException("Card Id{" + id + "} is incorrect");
 
