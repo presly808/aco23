@@ -6,7 +6,7 @@ import org.junit.Test;
 
 /**
  * Created by serhii on 15.01.18.
- */git
+ */
 public class ITestImplTest {
     @Test
     public void sum() throws Exception {
