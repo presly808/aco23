@@ -11,120 +11,48 @@ public class FlashCardValidatorTest {
         FlashCardValidator.validate((FlashCard) null);
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkIdFlashCardObjValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(new FlashCard(-1, "girl", "девочка"));
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect FlashCardObj ID parameter validation", thrown);
+        FlashCardValidator.validate(new FlashCard(-1, "girl", "девочка"));
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkFrontEmptyFlashCardObjValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(new FlashCard(1, "", "девочка"));
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect FlashCardObj Front parameter validation", thrown);
+        FlashCardValidator.validate(new FlashCard(1, "", "девочка"));
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkFrontNullFlashCardObjValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(new FlashCard(1, null, "девочка"));
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect FlashCardObj Front parameter validation", thrown);
+        FlashCardValidator.validate(new FlashCard(1, null, "девочка"));
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkBackEmptyFlashCardObjValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(new FlashCard(1, "girl", ""));
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect FlashCardObj Back parameter validation", thrown);
+        FlashCardValidator.validate(new FlashCard(1, "girl", ""));
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkBackNullFlashCardObjValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(new FlashCard(1, "girl", null));
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect FlashCardObj Back parameter validation", thrown);
+        FlashCardValidator.validate(new FlashCard(1, "girl", null));
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkNegativeIntValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(-2);
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect Negative Int validation", thrown);
+        FlashCardValidator.validate(-2);
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkZeroIntValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate(0);
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect ZeroInt validation", thrown);
+        FlashCardValidator.validate(0);
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkEmptyStringValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate("");
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect ZeroInt validation", thrown);
+        FlashCardValidator.validate("");
     }
 
-    @Test
+    @Test(expected=InvalidParameterException.class)
     public void checkNullStringValidation() {
-        boolean thrown = false;
-
-        try {
-            FlashCardValidator.validate((String) null);
-        } catch (InvalidParameterException e) {
-            thrown = true;
-        }
-
-        Assert.assertTrue("Incorrect ZeroInt validation", thrown);
+        FlashCardValidator.validate((String) null);
     }
 }

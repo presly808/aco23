@@ -58,6 +58,7 @@ public class FlashCardList {
             System.err.println("Card list is empty!");
             return false;
         }
+
         /*Logic for deleting last element in card list, for saving resources in case large CardList*/
         if (cardList[position-1].getId() == id) {
             deleteActionWithoutCopy(position-1);
@@ -77,13 +78,11 @@ public class FlashCardList {
     }
 
     public void printCardList(){
-        if (position != 0){
-            for (int i = 0; i < position; i++) {
-                System.out.format("Card id => %s; card front => %s; card back => %s.\n",
-                        + cardList[i].getId(), cardList[i].getFront(), cardList[i].getBack());
-            }
-        } else {
-            System.out.println("Card list is empty!");
+        if(position == 0) return;
+
+        for (int i = 0; i < position; i++) {
+            System.out.format("Card id => %s; card front => %s; card back => %s.\n",
+                    + cardList[i].getId(), cardList[i].getFront(), cardList[i].getBack());
         }
     }
 
