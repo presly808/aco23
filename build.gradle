@@ -53,16 +53,22 @@ task copyTask {
     doLast {
         def module_with_tests = "functional-tests"
 
+
         if (project.hasProperty("task") && project.hasProperty("myModule")) {
+            def courseJsonObj = parseJson('functional-tests/course-tasks.json')
+
+            def taskDesc = courseJsonObj.tasks[task]
+            def baseClasses = taskDesc.baseClasses;
+            def testClasses = taskDesc.testClasses;
 
             copy {
-                from "$module_with_tests/src/test/java/$task"
-                into "$myModule/src/test/java/$task"
+                from "$module_with_tests/src/test/java/$baseClasses"
+                into "$myModule/src/test/java/$baseClasses"
             }
 
             copy {
-                from "$module_with_tests/src/main/java/$task"
-                into "$myModule/src/main/java/$task"
+                from "$module_with_tests/src/main/java/$testClasses"
+                into "$myModule/src/main/java/$testClasses"
             }
             println "The Common Tests of $task have been copied into $myModule"
         }
@@ -74,7 +80,7 @@ task showAllTasks() {
     doLast {
         def parsed = parseJson('functional-tests/course-tasks.json')
         def tasks = parsed.tasks;
-        for(task in tasks){
+        for (task in tasks) {
             println task
         }
     }
@@ -84,13 +90,4 @@ def parseJson(path) {
     def jsonFile = file(path)
     def parsedJson = new JsonSlurper().parseText(jsonFile.text)
     return parsedJson
-}
-
-task testGitC {
-    doLast {
-        println "CHECK GIT"
-        exec {
-            commandLine 'git', 'log', '-n', '1'
-        }
-    }
 }
