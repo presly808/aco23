@@ -35,7 +35,10 @@ public class Manager implements Worker {
     }
 
     public boolean addSubworker(Worker worker) {
-        return worker != null || workers.add(worker);
+        if (worker == null) {
+            return false;
+        }
+        return workers.add(worker);
     }
 
     public List<Worker> getSubworkers() {

@@ -29,7 +29,6 @@ public class ManagerTest {
 
         manager.addSubworker(manager1);
 
-
         int actual = 3000 + (2000 / 20 + 2000 / 20) + 4000 / 20;
 
         Assert.assertThat(manager.calculateSalary(), CoreMatchers.equalTo(actual));
