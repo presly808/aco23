@@ -1,7 +1,5 @@
 package company.model;
 
-import week2.Worker;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,15 +17,15 @@ public class Manager extends Employee {
     }
 
     public Manager(String name, int salary) {
-        super(name,salary);
+        super(name, salary);
         this.employeeList = new LinkedList<>();
     }
 
-    public boolean addSubworker(Employee employee){
+    public boolean addSubworker(Employee employee) {
         return employee != null && employeeList.add(employee);
     }
 
-    public List<Employee> getSubworkers(){
+    public List<Employee> getSubworkers() {
         return employeeList;
     }
 

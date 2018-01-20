@@ -1,15 +1,12 @@
 package company.controller;
 
 import company.db.AppDb;
+import company.model.Employee;
 import company.model.Manager;
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
-import company.model.Employee;
 
-import java.util.regex.Matcher;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class MainControllerTest {
     @Test
