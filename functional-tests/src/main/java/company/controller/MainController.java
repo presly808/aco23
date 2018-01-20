@@ -15,6 +15,8 @@ public interface MainController {
 
     int calculateSalary(Employee employee);
 
+    int calculateSalaries();
+
     Employee getById(int id);
 
     List<Employee> findWithFilter(String name);

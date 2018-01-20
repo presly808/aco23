@@ -1,6 +1,7 @@
 package company.controller;
 
 import company.db.AppDb;
+import company.model.Manager;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,6 +48,30 @@ public class MainControllerTest {
 
     @Test
     public void findWithFilter() throws Exception {
+
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+        mainController.addEmployee(new Employee("anton", 3000));
+        mainController.addEmployee(new Employee("Andrey", 3000));
+        mainController.addEmployee(new Employee("Ivan", 3000));
+        assertThat(mainController.findWithFilter("an").size(), CoreMatchers.equalTo(2));
+
+    }
+
+    @Test
+    public void calculateSalaries() throws Exception {
+
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
+        Manager man = new Manager("anton", 5000);
+        man.addSubworker(new Employee("1", 1000));
+        man.addSubworker(new Employee("2", 1000));
+
+        mainController.addEmployee(man);
+        mainController.addEmployee(new Employee("anton", 3000));
+        mainController.addEmployee(new Employee("Andrey", 3000));
+        mainController.addEmployee(new Employee("Ivan", 3000));
+        assertThat(mainController.calculateSalaries(), CoreMatchers.equalTo(9000 + 5100));
+
     }
 
 }

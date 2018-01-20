@@ -32,6 +32,11 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
+    public int calculateSalaries() {
+        return 0;
+    }
+
+    @Override
     public Employee getById(int id) {
         return null;
     }
