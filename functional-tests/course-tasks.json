@@ -7,9 +7,9 @@
       "testClasses":"week1"
     },
     "week2" : {
-      "title": "SOLID and OOP",
-      "baseClasses":"week3",
-      "testClasses":"week3"
+      "title": "ManagerTask",
+      "baseClasses":"week2",
+      "testClasses":"week2"
     },
     "week3" : {
       "title": "DesignPatterns",
