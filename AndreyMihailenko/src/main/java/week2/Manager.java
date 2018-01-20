@@ -11,10 +11,10 @@ public class Manager implements Worker {
     private String name;
     private int salary;
     private List<Worker> workers;
-    public final double COEFICIENT = 0.05;
+    private final double COEFICIENT = 0.05;
 
 
-    public Manager(String name, int salary) {
+    Manager(String name, int salary) {
         this.name = name;
         this.salary = salary;
         workers = new LinkedList<>();
@@ -24,6 +24,9 @@ public class Manager implements Worker {
         return salary;
     }
 
+    public String getName() {
+        return name;
+    }
 
     // manager has fixed salary + 5% from each employee that subordinate to manager
     public int calculateSalary() {
@@ -35,10 +38,7 @@ public class Manager implements Worker {
     }
 
     public boolean addSubworker(Worker worker) {
-        if (worker == null) {
-            return false;
-        }
-        return workers.add(worker);
+        return worker != null && workers.add(worker);
     }
 
     public List<Worker> getSubworkers() {
