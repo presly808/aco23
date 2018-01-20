@@ -17,14 +17,14 @@ public class ManagerTest {
         manager.addSubworker(new Employee("Valera", 2000));
         manager.addSubworker(new Employee("Olena", 2000));
 
-        Assert.assertThat(manager.calculateSalary(), CoreMatchers.equalTo(3300));
+        assertThat(manager.calculateSalary(), CoreMatchers.equalTo(3300));
 
     }
 
     @Test
     public void addSubworker() {
         Manager manager = new Manager("Oleg", 3000);
-        Assert.assertThat(manager.addSubworker(new Employee("Ivan", 2000)),
+        assertThat(manager.addSubworker(new Employee("Ivan", 2000)),
                 CoreMatchers.equalTo(true));
     }
 
@@ -35,7 +35,7 @@ public class ManagerTest {
         manager.addSubworker(new Employee("Valera", 2000));
         manager.addSubworker(new Employee("Petro", 2000));
 
-        Assert.assertThat(manager.getSubworkers().size(), CoreMatchers.equalTo(3));
+        assertThat(manager.getSubworkers().size(), CoreMatchers.equalTo(3));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ManagerTest {
 
         int actual = 4000 + 2000 / 20 + (1000 + 2000 / 20 + 2000 / 20) / 20;
 
-        Assert.assertEquals(actual, manager.calculateSalary());
+        assertEquals(actual, manager.calculateSalary());
     }
 
 }
