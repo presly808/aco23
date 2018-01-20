@@ -3,6 +3,7 @@ package company.db;
 import company.model.Employee;
 import company.model.Manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,21 +11,43 @@ import java.util.List;
  */
 public class AppDb {
 
+    private List<Employee> employeeList;
 
-    public Employee add(Employee employee){
-        return null;
+    public AppDb() {
+        this.employeeList = new ArrayList<>();
     }
 
-    public List<Employee> getAll(){
-        return null;
+    public AppDb(List<Employee> employeeList) {
+        this.employeeList = new ArrayList<>(employeeList);
     }
 
-    public Employee remove(int id){
-        return null;
+    public Employee add(Employee employee) {
+        employeeList.add(employee);
+        return employee;
     }
 
-    public Employee getById(int id){
-        return null;
+    public List<Employee> getAll() {
+        return employeeList;
     }
 
+    public Employee remove(int id) {
+        Employee employee = null;
+        for (Employee e : employeeList) {
+            if (e.getId() == id) {
+                employee = e;
+                break;
+            }
+        }
+        employeeList.remove(employee);
+
+        return employee;
+    }
+
+    public Employee getById(int id) {
+        for (Employee e : employeeList)
+            if (e.getId() == id)
+                return e;
+
+        return null;
+    }
 }
