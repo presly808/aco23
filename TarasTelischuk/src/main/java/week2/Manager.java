@@ -45,12 +45,10 @@ public class Manager implements Worker {
     // manager has fixed salary + 5% from each employee that subordinate to manager
     @Override
     public int calculateSalary(){
-        int resultSalary = salary;
-
+        int resultSalary = salary
         for (Worker worker : workers) {
             resultSalary += worker.calculateSalary() / 20;
         }
-
         return resultSalary;
     }
 
