@@ -3,9 +3,6 @@ package week2;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * You can add any additional classes to make structure more flexible and scalable
- */
 public class Manager implements Worker {
 
     private String name;
