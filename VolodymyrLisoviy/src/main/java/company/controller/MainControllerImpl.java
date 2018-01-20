@@ -4,6 +4,8 @@ import company.db.AppDb;
 import company.model.Employee;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Created by serhii on 20.01.18.
@@ -18,31 +20,35 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee addEmployee(Employee employee) {
-        return null;
+        return appDb.add(employee);
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-        return null;
+        return appDb.getAll();
     }
 
     @Override
     public int calculateSalary(Employee employee) {
-        return 0;
+        return employee.calculateSalary();
     }
 
     @Override
     public int calculateSalaries() {
-        return 0;
+        return appDb.getAll().stream().mapToInt(Employee::calculateSalary).sum();
     }
 
     @Override
     public Employee getById(int id) {
-        return null;
+        return appDb.getById(id);
     }
 
     @Override
     public List<Employee> findWithFilter(String name) {
-        return null;
+        return find(employee -> employee.getName().contains(name), appDb.getAll());
+    }
+
+    private List<Employee> find(Predicate<Employee> predicate, List<Employee> employeeList) {
+        return employeeList.stream().filter(predicate).collect(Collectors.toList());
     }
 }
