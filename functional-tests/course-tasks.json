@@ -15,6 +15,11 @@
       "title": "DesignPatterns",
       "baseClasses":"week3",
       "testClasses":"week3"
+    },
+    "company" : {
+      "title": "MVCPatternCompany",
+      "baseClasses":"company",
+      "testClasses":"company"
     }
   }
 }
