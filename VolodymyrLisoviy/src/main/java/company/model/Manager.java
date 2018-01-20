@@ -1,5 +1,8 @@
 package company.model;
 
+import week2.Worker;
+
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,5 +29,18 @@ public class Manager extends Employee {
 
     public List<Employee> getSubworkers(){
         return employeeList;
+    }
+
+    @Override
+    public int calculateSalary() {
+        return salary + employeeList.stream().mapToInt(Employee::getSalary).sum() / 20;
+    }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                ", name='" + name + '\'' +
+                ", employeeList=" + Arrays.toString(employeeList.toArray()) +
+                '}';
     }
 }
