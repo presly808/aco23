@@ -1,10 +1,14 @@
 package week2;
 
 
-public class Employee {
+public class Employee implements Worker {
 
-    private final String name;
+    private String name;
     private int salary;
+
+    public Employee() {
+
+    }
 
     public Employee(String name, int salary) {
         this.name = name;
@@ -13,6 +17,10 @@ public class Employee {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSalary() {
@@ -24,10 +32,7 @@ public class Employee {
     }
 
     @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", salary=" + salary +
-                '}';
+    public int calculateSalary() {
+        return salary;
     }
 }
