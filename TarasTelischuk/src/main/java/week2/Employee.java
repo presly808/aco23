@@ -3,7 +3,7 @@ package week2;
 
 public class Employee implements Worker {
 
-    private String name;
+    public String name;
     private int salary;
 
     public Employee() {
