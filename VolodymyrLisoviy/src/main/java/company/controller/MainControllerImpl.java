@@ -45,7 +45,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public List<Employee> findWithFilter(String name) {
-        return find(employee -> employee.getName().contains(name), appDb.getAll());
+        return find(employee -> employee.getName().toLowerCase().contains(name.toLowerCase()), appDb.getAll());
     }
 
     private List<Employee> find(Predicate<Employee> predicate, List<Employee> employeeList) {
