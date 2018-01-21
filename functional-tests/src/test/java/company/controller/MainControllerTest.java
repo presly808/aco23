@@ -149,6 +149,8 @@ public class MainControllerTest {
         emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp1.setStartWorkDate(new Date());
 
+        mainController.addEmployee(emp1);
+
         assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
     }
 
