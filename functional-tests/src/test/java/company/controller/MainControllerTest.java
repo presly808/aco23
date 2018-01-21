@@ -53,7 +53,7 @@ public class MainControllerTest {
         mainController.addEmployee(new Employee("anton", 3000));
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
-        assertThat(mainController.findWithFilter("an").size(), CoreMatchers.equalTo(2));
+        assertThat(mainController.findWithFilter("an").size(), CoreMatchers.equalTo(3));
 
     }
 
