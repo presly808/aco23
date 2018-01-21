@@ -6,16 +6,21 @@ import company.model.Manager;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
+import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 public class MainControllerTest {
+
     @Test
     public void addEmployee() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
-
-
     }
 
     @Test
@@ -71,4 +76,66 @@ public class MainControllerTest {
 
     }
 
+    @Test
+    public void filterWithPredicate() {
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
+        Employee emp1 = new Employee("anton", 1000);
+
+        emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
+        emp1.setStartWorkDate(new Date());
+
+        Employee emp2 = new Employee("Andrey", 3000);
+        emp2.setBirthday(new GregorianCalendar(1985, 4, 22));
+        emp2.setStartWorkDate(new Date(new GregorianCalendar(2017, 4, 22).toInstant().toEpochMilli()));
+
+        Employee emp3 = new Employee("Ivan", 4000);
+        emp3.setBirthday(new GregorianCalendar(1990, 4, 22));
+        emp3.setStartWorkDate(new Date(new GregorianCalendar(2017, 4, 22).toInstant().toEpochMilli()));
+
+        mainController.addEmployee(emp1);
+        mainController.addEmployee(emp2);
+        mainController.addEmployee(emp3);
+
+        List<Employee> result = mainController.filterWithPredicate((employee -> employee.getSalary() >= 3000),
+                Comparator.comparing(Employee::getName));
+
+        assertThat(result, CoreMatchers.hasItem(emp2));
+        assertThat(result, CoreMatchers.hasItem(emp3));
+        assertThat(result.get(0).getName(), CoreMatchers.equalTo("Andrey"));
+
+    }
+
+    @Test
+    public void fireWorker() {
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
+        Employee emp1 = new Employee("anton", 1000);
+
+        emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
+        emp1.setStartWorkDate(new Date());
+        mainController.addEmployee(emp1);
+
+        assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
+    }
+
+    @Test
+    public void areWorkersEqual() {
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+        Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
+        Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
+
+        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
+    }
+
+
+    @Test
+    public void areWorkersNotEqual() {
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+        Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
+        Employee em2 = mainController.addEmployee(new Employee("Serhey", 3000));
+
+        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
+
+    }
 }
