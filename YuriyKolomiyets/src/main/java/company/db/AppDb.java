@@ -27,7 +27,6 @@ public class AppDb {
         }
         return null;
     }
-
     public List<Employee> getAll() {
         return workersList;
     }
