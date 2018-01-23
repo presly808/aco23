@@ -3,7 +3,6 @@ package week2;
 
 public class Employee {
 
-
     private String name;
     private int salary;
 
@@ -22,5 +21,4 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
-
 }
