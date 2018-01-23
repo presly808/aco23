@@ -1,7 +1,6 @@
 package company.db;
 
 import company.model.Employee;
-import company.model.Manager;
 
 import java.util.ArrayList;
 import java.util.List;

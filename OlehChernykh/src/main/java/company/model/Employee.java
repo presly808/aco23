@@ -46,6 +46,18 @@ public class Employee {
         this.endWorkDate = endWorkDate;
     }
 
+    public GregorianCalendar getBirthday() {
+        return birthday;
+    }
+
+    public Date getStartWorkDate() {
+        return startWorkDate;
+    }
+
+    public Date getEndWorkDate() {
+        return endWorkDate;
+    }
+
     public int calculatesalary(){
         return salary;
     }

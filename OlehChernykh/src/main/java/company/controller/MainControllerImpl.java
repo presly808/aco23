@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Created by serhii on 20.01.18.
@@ -92,7 +90,6 @@ public class MainControllerImpl implements MainController, EmployeePredicate {
 
     @Override
     public boolean filter(Employee employee) {
-        ArrayList <Employee> employees = new ArrayList<>();
         for (Employee em: appDb.getAll()) {
             if (em.getSalary() < 3000) return true;
         }
