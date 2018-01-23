@@ -1,5 +1,6 @@
 package week2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,12 +15,14 @@ public class Manager {
     private List<Worker> workersList;
 
     public Manager() {
+        this.workersList = new ArrayList<>();
+
     }
 
-    public Manager(String name, int salary, List<Worker> workersList) {
+    public Manager(String name, int salary) {
         this.name = name;
         this.salary = salary;
-        this.workersList = workersList;
+        this.workersList = new ArrayList<>();
     }
 
     public String getName() {
