@@ -13,20 +13,36 @@ public class AppDb {
 
     private ArrayList<Employee> employees;
 
+    public AppDb(){
+        this.employees = new ArrayList<>();
+    }
 
     public Employee add(Employee employee){
-        return null;
+        employees.add(employee);
+        return employee;
     }
 
     public List<Employee> getAll(){
-        return null;
+        return employees;
     }
 
-    public Employee remove(int id){
-        return null;
+    public Employee remove(int id) {
+        Employee employee = null;
+        for (Employee em : employees) {
+            if (em.getId() == id) {
+                employee = em;
+                break;
+            }
+        }
+        employees.remove(employee);
+
+        return employee;
     }
 
     public Employee getById(int id){
+        for (Employee em: employees)
+            if (em.getId() == id)
+                return em;
         return null;
     }
 

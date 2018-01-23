@@ -1,10 +1,13 @@
 package company.utils;
 
+
 /**
  * Created by serhii on 20.01.18.
  */
 public class MyUtils {
+
+
     public static int genId() {
-        return (int) (Math.random() * 101);
+        return (int) (Math.random() *100);
     }
 }

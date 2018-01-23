@@ -12,16 +12,21 @@ public class Manager extends Employee {
 
     public Manager(String name, int salary) {
         super(name,salary);
+        this.employees = new ArrayList<>();
 
     }
 
     public boolean addSubworker(Employee employee){
-        return employees.add(employee);
+        if (employee != null) {
+            return employees.add(employee);
+        }
+        return false;
     }
 
-    public List<Employee> getSubworkers(){
-        return employees;
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "employees=" + employees +
+                '}';
     }
-
-
 }
