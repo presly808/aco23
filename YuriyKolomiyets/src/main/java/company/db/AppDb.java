@@ -30,5 +30,4 @@ public class AppDb {
     public List<Employee> getAll() {
         return workersList;
     }
-
 }
