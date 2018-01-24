@@ -4,7 +4,6 @@ package company.model;
 import company.utils.MyUtils;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Objects;
 
 public class Employee {

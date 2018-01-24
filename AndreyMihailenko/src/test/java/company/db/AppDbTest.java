@@ -12,11 +12,10 @@ import static org.junit.Assert.*;
 public class AppDbTest {
 
     private AppDb appDb;
-    private List<Employee> employees;
 
     @Before
     public void setUp() {
-        employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("Andrey", 3456));
         employees.add(new Employee("Vova", 2567));
         employees.add(new Employee("Sanya", 2333));

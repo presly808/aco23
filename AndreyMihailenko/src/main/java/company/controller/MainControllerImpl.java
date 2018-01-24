@@ -6,7 +6,6 @@ import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 /**

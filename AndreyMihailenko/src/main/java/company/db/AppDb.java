@@ -1,7 +1,6 @@
 package company.db;
 
 import company.model.Employee;
-import company.model.Manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class AppDb {
     }
 
     public AppDb(List<Employee> employees) {
-        this.employees = new ArrayList<>();
+        this.employees = new ArrayList<>(employees);
     }
 
     public Employee add(Employee employee){
