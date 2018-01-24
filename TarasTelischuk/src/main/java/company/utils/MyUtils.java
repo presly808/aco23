@@ -8,8 +8,7 @@ import java.util.Random;
  */
 public class MyUtils {
 
-    private static Random random = new SecureRandom();
     public static int genId() {
-        return random.nextInt();
+        return (int)(Math.random()*1000);
     }
 }

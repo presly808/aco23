@@ -2,7 +2,11 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.utils.filtering.EmployeePredicate;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -36,7 +40,11 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public int calculateSalaries() {
-        return 0;
+        int salaries = 0;
+        for (Employee empl: appDb.getAll()){
+            salaries += empl.calculateSalary();
+        }
+        return salaries;
     }
 
     @Override
@@ -46,7 +54,46 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public List<Employee> findWithFilter(String name) {
+        List<Employee> result = new ArrayList<>();
+        for (Employee empl: appDb.getAll()) {
+            if(empl.getName().toLowerCase().contains(name)){
+                result.add(empl);
+            }
+        }
+        return result;
+    }
+
+
+    @Override
+    public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
         return null;
     }
 
+    @Override
+    public Employee fireWorker(int workerId) {
+        for (Employee employee : appDb.getEmployees()) {
+            if (employee.getId() == workerId) {
+                appDb.getEmployees().remove(employee);
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Employee updateWorker(Employee worker) {
+        return null;
+    }
+
+    @Override
+    public boolean areWorkersEqual(int emp1id, int eml2id) {
+        Employee emp1 = appDb.getById(emp1id);
+        Employee emp2 = appDb.getById(eml2id);
+        return !(emp1.equals(emp2));
+    }
+
+
+    private List<Employee> filter(Predicate<Employee> predicate, List<Employee> employees) {
+        return employees.stream().filter(predicate).collect(Collectors.toList());
+    }
 }
