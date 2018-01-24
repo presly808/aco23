@@ -87,9 +87,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
-        Employee emp1 = appDb.getById(emp1id);
-        Employee emp2 = appDb.getById(eml2id);
-        return !(emp1.equals(emp2));
+        return appDb.getById(emp1id).equals(appDb.getById(eml2id));
     }
 
 
