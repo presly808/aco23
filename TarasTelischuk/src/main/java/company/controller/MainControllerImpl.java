@@ -66,7 +66,14 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
-        return null;
+        List<Employee> result = new ArrayList<>();
+        for (Employee employee : appDb.getAll()) {
+            if (predicate.filter(employee)) {
+                result.add(employee);
+            }
+        }
+        result.sort(comparator);
+        return result;
     }
 
     @Override
@@ -88,10 +95,5 @@ public class MainControllerImpl implements MainController {
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
         return appDb.getById(emp1id).equals(appDb.getById(eml2id));
-    }
-
-
-    private List<Employee> filter(Predicate<Employee> predicate, List<Employee> employees) {
-        return employees.stream().filter(predicate).collect(Collectors.toList());
     }
 }
