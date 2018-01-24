@@ -146,9 +146,4 @@ public class MainControllerTest {
         assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
     }
 
-
-    @Test
-    public void updateWorker() throws Exception {
-    }
-
 }

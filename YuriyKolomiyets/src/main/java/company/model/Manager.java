@@ -50,7 +50,7 @@ public class Manager extends Employee {
         // manager has fixed salary + 5% from each employee that subordinate to manager
 
         public int calculateSalary() {
-            if (workersList.isEmpty() || workersList == null) {
+            if (workersList.isEmpty()) {
                 return salary;
             }
             for (Employee employee : workersList) {

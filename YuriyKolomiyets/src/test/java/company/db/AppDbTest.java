@@ -1,6 +1,5 @@
 package company.db;
 
-import company.controller.MainControllerImpl;
 import company.model.Employee;
 import org.junit.Test;
 

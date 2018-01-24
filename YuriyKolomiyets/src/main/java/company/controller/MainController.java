@@ -27,7 +27,5 @@ public interface MainController {
 
     Employee fireWorker(int workerId);
 
-    Employee updateWorker(Employee worker);
-
     boolean areWorkersEqual(int emp1id, int eml2id);
 }

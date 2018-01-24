@@ -5,7 +5,6 @@ import company.model.Employee;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -86,11 +85,6 @@ public class MainControllerImpl implements MainController {
                 return employee;
             }
         }
-        return null;
-    }
-
-    @Override
-    public Employee updateWorker(Employee worker) {
         return null;
     }
 
