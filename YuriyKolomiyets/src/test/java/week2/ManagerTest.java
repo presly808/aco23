@@ -1,34 +1,34 @@
 package week2;
 
-import org.junit.Assert;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class ManagerTest {
 
     @Test
     public void getName() {
         Manager manager = new Manager("Oleg", 300);
-        Assert.assertEquals("Oleg", manager.getName());
+        assertEquals("Oleg", manager.getName());
     }
 
     @Test
     public void setName() {
         Manager manager = new Manager();
         manager.setName("Oleg");
-        Assert.assertEquals("Oleg", manager.getName());
+        assertEquals("Oleg", manager.getName());
     }
 
     @Test
     public void getSalary() {
         Manager manager = new Manager("Oleg", 300);
-        Assert.assertEquals(300, manager.getSalary());
+        assertEquals(300, manager.getSalary());
     }
 
     @Test
     public void setSalary() {
         Manager manager = new Manager();
         manager.setSalary(300);
-        Assert.assertEquals(300, manager.getSalary());
+        assertEquals(300, manager.getSalary());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class ManagerTest {
         Employee employee2 = new Employee("Ivan", 2000);
         manager.addSubworker(employee1);
         manager.addSubworker(employee2);
-        Assert.assertEquals(0, manager.calculateSalary());
+        assertEquals(0, manager.calculateSalary());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ManagerTest {
         Manager manager = new Manager("Oleg", 300);
         Employee employee1 = new Employee("Ivan", 1000);
         manager.addSubworker(employee1);
-        Assert.assertEquals(1, manager.getWorkersList().size());
+        assertEquals(1, manager.getWorkersList().size());
     }
 
     @Test
@@ -54,6 +54,6 @@ public class ManagerTest {
         Manager manager = new Manager("Oleg", 300);
         Employee employee1 = new Employee("Ivan", 1000);
         manager.addSubworker(employee1);
-        Assert.assertEquals(employee1, manager.getSubworkers().get(0));
+        assertEquals(employee1, manager.getSubworkers().get(0));
     }
 }
