@@ -2,7 +2,8 @@ package company.model;
 
 
 import company.utils.MyUtils;
-
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,11 +12,16 @@ public class Employee {
     private int id;
     private String name;
     private int salary;
+    private GregorianCalendar birthday;
+    private Date startWorkDate;
+    private Date endWorkDate;
 
     public Employee() {
     }
 
     public Employee(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
         this.id = MyUtils.genId();
     }
 
@@ -43,8 +49,32 @@ public class Employee {
         return salary;
     }
 
-    public int calculateSalary(Employee employee){
-        return employee.getSalary();
+    public GregorianCalendar getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(GregorianCalendar birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getStartWorkDate() {
+        return startWorkDate;
+    }
+
+    public void setStartWorkDate(Date startWorkDate) {
+        this.startWorkDate = startWorkDate;
+    }
+
+    public Date getEndWorkDate() {
+        return endWorkDate;
+    }
+
+    public void setEndWorkDate(Date endWorkDate) {
+        this.endWorkDate = endWorkDate;
+    }
+
+    public int calculateSalary(){
+        return salary;
     }
 
     @Override

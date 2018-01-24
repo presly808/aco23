@@ -22,7 +22,6 @@ public class Manager extends Employee {
 
     }
 
-
     public boolean addSubworker(Employee employee) {
         return employee != null && employees.add(employee);
     }
@@ -32,10 +31,10 @@ public class Manager extends Employee {
     }
 
     @Override
-    public int calculateSalary(Employee employee) {
+    public int calculateSalary() {
         int res = getSalary();
         for (Employee employee1 : employees){
-            res += employee.getSalary() / 20;
+            res += employee1.getSalary() / 20;
         }
         return res;
     }

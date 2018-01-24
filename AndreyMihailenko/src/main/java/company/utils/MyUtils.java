@@ -5,6 +5,6 @@ package company.utils;
  */
 public class MyUtils {
     public static int genId() {
-        return (int) Math.random()*1000;
+        return (int) (Math.random()*Integer.MAX_VALUE);
     }
 }
