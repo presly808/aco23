@@ -71,9 +71,9 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee fireWorker(int workerId) {
-        for (Employee employee : appDb.getEmployees()) {
-            if (employee.getId() == workerId) {
-                appDb.getEmployees().remove(employee);
+        for (Employee employee : appDb.getAll()) {
+            if (employee.getId() == workerId){
+                appDb.getAll().remove(employee);
                 return employee;
             }
         }
