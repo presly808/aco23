@@ -6,7 +6,7 @@ import company.utils.filtering.EmployeePredicate;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Employee implements Worker, Comparator<Employee>, EmployeePredicate {
+public class Employee implements Worker, Comparator<Employee> {
 
 
     private int id;
@@ -95,11 +95,6 @@ public class Employee implements Worker, Comparator<Employee>, EmployeePredicate
         } else {
             return 0;
         }
-    }
-
-    @Override
-    public boolean filter(Employee employee) {
-        return false;
     }
 }
 

@@ -112,7 +112,6 @@ public class MainControllerTest {
         emp3.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp3.setStartWorkDate(new Date(new GregorianCalendar(2017, 4, 22).toInstant().toEpochMilli()));
 
-        mainController.addEmployee(emp1);
         mainController.addEmployee(emp2);
         mainController.addEmployee(emp3);
 
@@ -126,7 +125,6 @@ public class MainControllerTest {
             return res;
 
         }), Comparator.comparing(Employee::getName));
-
 
         assertThat(result, CoreMatchers.hasItem(emp2));
         assertThat(result, CoreMatchers.hasItem(emp3));
