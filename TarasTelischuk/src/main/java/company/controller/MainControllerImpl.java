@@ -89,7 +89,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee updateWorker(Employee worker) {
-        return null;
+        return appDb.update(worker);
     }
 
     @Override

@@ -4,6 +4,7 @@ import company.model.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by serhii on 20.01.18.
@@ -44,6 +45,18 @@ public class AppDb {
             }
         }
         return null;
+    }
+
+    public Employee update(Employee worker) {
+        ListIterator<Employee> iterator = employees.listIterator();
+        Employee employee = null;
+        while (iterator.hasNext()){
+            if ((employee = iterator.next()).equals(worker)){
+                iterator.set(worker);
+                break;
+            }
+        }
+        return employee;
     }
 
 }
