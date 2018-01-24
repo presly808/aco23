@@ -46,4 +46,16 @@ public class EmployeeTest {
         assertEquals(3000, employee.getSalary());
     }
 
+    @Test
+    public void getBirthday(){
+        assertEquals(new GregorianCalendar(1990, 4, 22), employee.getBirthday());
+    }
+
+    @Test
+    public void setBirthday(){
+        employee.setBirthday(new GregorianCalendar(2006, 3, 27));
+        assertEquals(new GregorianCalendar(2006, 3, 27), employee.getBirthday());
+    }
+
+
 }
