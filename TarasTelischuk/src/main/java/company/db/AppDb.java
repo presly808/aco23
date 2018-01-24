@@ -17,6 +17,10 @@ public class AppDb {
         this.employees = new ArrayList<>();
     }
 
+    public AppDb(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     public Employee add(Employee employee) {
         employees.add(employee);
         return employee;
