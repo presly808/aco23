@@ -17,10 +17,14 @@ public class Employee {
 
     public Employee(String name, int salary) {
         this.id = MyUtils.genId(100);
+        this.name = name;
+        this.salary = salary;
     }
 
     public Employee(String name, int salary, GregorianCalendar calendar, Double startWorkDate) {
         this.id = MyUtils.genId(100);
+        this.salary = salary;
+        // ...
     }
 
     public void setId(int id) {
@@ -69,5 +73,17 @@ public class Employee {
 
     public void setEndWorkDate(Date endWorkDate) {
         this.endWorkDate = endWorkDate;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Employee) {
+           Employee emp = (Employee) obj;
+           return this.name.equals(emp.name) && this.salary == emp.salary;
+        }
+        return false;
     }
 }

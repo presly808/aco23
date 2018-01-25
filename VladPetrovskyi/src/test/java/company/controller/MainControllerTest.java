@@ -1,18 +1,17 @@
 package company.controller;
 
 import company.db.AppDb;
-import company.model.Manager;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
 import company.model.Employee;
+import company.model.Manager;
+import company.utils.filtering.EmployeePredicate;
+import company.utils.filtering.EmployeePredicateImpl;
+import org.hamcrest.CoreMatchers;
+import org.junit.Test;
 
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.regex.Matcher;
 
 import static org.junit.Assert.*;
 
@@ -25,7 +24,7 @@ public class MainControllerTest {
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
 
-        assertTrue(mainController.areWorkersEqual(em1.getId(),em2.getId()));
+        assertTrue(mainController.areWorkersEqual(em1.getId(), em2.getId()));
 
     }
 
@@ -36,7 +35,8 @@ public class MainControllerTest {
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Serhey", 3000));
 
-        assertFalse(mainController.areWorkersEqual(em1.getId(),em2.getId()));
+        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
+
 
     }
 
@@ -124,17 +124,11 @@ public class MainControllerTest {
         mainController.addEmployee(emp2);
         mainController.addEmployee(emp3);
 
-        List<Employee> result = mainController.filterWithPredicate((employee -> {
-            boolean res = true;
+//        EmployeePredicate predicate = new EmployeePredicateImpl();
 
-            if (employee.getSalary() < 3000) {
-                return false;
-            }
-
-            return res;
-
-        }), Comparator.comparing(Employee::getName));
-
+        List<Employee> result = mainController.filterWithPredicate(
+                (employee -> employee.getSalary() < 3000), // or 'predicate'
+                Comparator.comparing(Employee::getName));
 
         assertThat(result, CoreMatchers.hasItem(emp2));
         assertThat(result, CoreMatchers.hasItem(emp3));
@@ -150,6 +144,8 @@ public class MainControllerTest {
 
         emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp1.setStartWorkDate(new Date());
+
+        mainController.addEmployee(emp1);
 
         assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
     }

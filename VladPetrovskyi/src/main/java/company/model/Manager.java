@@ -8,21 +8,22 @@ import java.util.List;
  */
 public class Manager extends Employee {
 
-    private ArrayList<Employee>employees;
+    private List<Employee> employees = new ArrayList<>(); // initialize
 
     public Manager(String name, int salary) {
-        super(name,salary);
-        this.employees = new ArrayList<>();
-
+        super(name, salary);
     }
 
-    public boolean addSubworker(Employee employee){
+    public boolean addSubworker(Employee employee) {
         return employees.add(employee);
     }
 
-    public List<Employee> getSubworkers(){
+    public List<Employee> getSubworkers() {
         return employees;
     }
 
-
+/*        Employee manager = new Manager("Vlad", 3432432);
+//        manager.addSubworker();
+        Manager manager1 = (Manager) manager
+        manager1.addSubworker();*/
 }
