@@ -1,7 +1,7 @@
 package company.model;
 
 import org.hamcrest.CoreMatchers;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 
