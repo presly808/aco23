@@ -6,10 +6,8 @@ import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+
 
 /**
  * Created by serhii on 20.01.18.

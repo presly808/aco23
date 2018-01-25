@@ -1,9 +1,10 @@
 package company.model;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-
+import static org.junit.Assert.assertThat;
 import org.junit.Test;
+
+
 
 
 public class ManagerTest {
@@ -11,7 +12,7 @@ public class ManagerTest {
     @Test
     public void addSubworker(){
         Manager man = new Manager("Andry", 6300);
-        Assert.assertThat(man.addSubworker(new Employee("Sveta",4968)),
+        assertThat(man.addSubworker(new Employee("Sveta",4968)),
                 CoreMatchers.equalTo(true));
     }
 
@@ -24,7 +25,7 @@ public class ManagerTest {
         manager.addSubworker(new Employee("Viktor", 6500));
         manager.addSubworker(new Employee("Taras", 7500));
 
-        Assert.assertThat(manager.getSubworkers().size(), CoreMatchers.equalTo(4));
+        assertThat(manager.getSubworkers().size(), CoreMatchers.equalTo(4));
     }
 
 }
