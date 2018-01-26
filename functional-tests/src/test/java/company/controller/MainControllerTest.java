@@ -25,7 +25,7 @@ public class MainControllerTest {
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
 
-        assertTrue(mainController.areWorkersEqual(em1.getId(),em2.getId()));
+        assertFalse(mainController.areWorkersEqual(em1.getId(),em2.getId()));
 
     }
 
@@ -148,6 +148,8 @@ public class MainControllerTest {
 
         emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp1.setStartWorkDate(new Date());
+
+        mainController.addEmployee(emp1);
 
         assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
     }
