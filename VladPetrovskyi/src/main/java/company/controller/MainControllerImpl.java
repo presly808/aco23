@@ -65,11 +65,15 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public List<Employee> findWithFilter(String name) {
-        // getall()
-        // List<Employee> filtered = new ArrayList<>()
-        // ...equals ignore case - add to list
-        // return list
-        return null;
+        List<Employee> employees = getAllEmployees();
+        List<Employee> filtered = new ArrayList<>();
+
+        for (int i = 0; i < employees.size(); i++) {
+          if(employees.get(i).getName().toLowerCase().contains(name.toLowerCase())){
+              filtered.add(employees.get(i));
+          }
+        }
+        return filtered;
     }
 
     @Override
