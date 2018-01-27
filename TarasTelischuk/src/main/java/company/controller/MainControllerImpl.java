@@ -2,11 +2,13 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
 import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 
@@ -103,4 +105,23 @@ public class MainControllerImpl implements MainController {
     public void addListener(MyListener myListener) {
         listeners.add(myListener);
     }
+
+    @Override
+    public void callListener() {
+        for (MyListener listner: listeners) {
+            listner.eventOccur(new MyEvent(new Date(), getClass().getName() + getMethodName(), null));
+            
+        }
+
+    }
+
+    private static String getMethodName() {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            return e.getStackTrace()[2].getMethodName();
+
+        }
+    }
+
 }

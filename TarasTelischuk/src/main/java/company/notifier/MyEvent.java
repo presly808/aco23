@@ -14,6 +14,12 @@ public class MyEvent {
     public MyEvent() {
     }
 
+    public MyEvent(Date date, String place, Object info) {
+        this.date = date;
+        this.place = place;
+        this.info = info;
+    }
+
     public Date getDate() {
         return date;
     }
