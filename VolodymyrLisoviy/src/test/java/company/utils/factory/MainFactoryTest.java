@@ -25,15 +25,15 @@ public class MainFactoryTest {
         Employee mid = null;
         for (int i = 0; i < COUNT; i++) {
             int salary = (int) (Math.random() * 5000) + 1000;
-            if (i == 0) {
-                first = mainController.addEmployee(new Employee(String.valueOf(i), salary));
+            if(i == 0){
+                first = mainController.addEmployee(new Employee(String.valueOf(i),salary));
             }
 
-            if (i == COUNT / 2) {
+            if(i == COUNT / 2){
                 mid = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
 
-            if (i == COUNT - 1) {
+            if(i == COUNT - 1){
                 last = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
 
@@ -46,6 +46,10 @@ public class MainFactoryTest {
         Employee employee2 = mainController.getById(mid.getId());
 
 
+
+
+
+
     }
 
     @Test
@@ -54,11 +58,10 @@ public class MainFactoryTest {
 
 
         int salary = (int) (Math.random() * 5000) + 1000;
-        Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"), salary));
+        Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"),salary));
 
         mainController.addListener(obj -> {
             System.out.println("event has been occurred");
-            System.out.println(obj.getPlace());
             Assert.assertThat(obj, CoreMatchers.notNullValue());
             Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
             Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
