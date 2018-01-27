@@ -2,10 +2,13 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,9 +17,15 @@ import java.util.List;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
+    private List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
+    }
+
+    public List<MyListener> getListeners() {
+        return listeners;
     }
 
     @Override
@@ -82,6 +91,7 @@ public class MainControllerImpl implements MainController {
         for (Employee employee : appDb.getWorkersList()) {
             if (employee.getId() == workerId) {
                 appDb.getWorkersList().remove(employee);
+                callListener();
                 return employee;
             }
         }
@@ -91,5 +101,26 @@ public class MainControllerImpl implements MainController {
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
         return emp1id == eml2id;
+    }
+
+    @Override
+    public void addListener(MyListener myListener) {
+        listeners.add(myListener);
+    }
+
+    @Override
+    public void callListener() {
+        for (MyListener myListener:listeners) {
+            myListener.eventOccur(new MyEvent(new Date(), getClass().getName().toString() + getMethodName().toString(),null ));
+        }
+    }
+
+    public static String getMethodName() {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            return e.getStackTrace()[2].getMethodName();
+
+        }
     }
 }

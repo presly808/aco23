@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +42,6 @@ public class MainFactoryTest {
             if(i == COUNT - 1){
                 last = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
-
 
         }
 
