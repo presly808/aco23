@@ -1,5 +1,4 @@
 package company.controller;
-
 import company.model.Employee;
 import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
@@ -114,5 +113,14 @@ public class MainControllerTime  implements MainController {
         long end = System.currentTimeMillis();
         System.out.println("method 'addListener' time = " + (end - start));
     }
+
+    @Override
+    public void callListener() {
+        long start = System.currentTimeMillis();
+        mainController.callListener();
+        long end = System.currentTimeMillis();
+        System.out.println("method 'callListener' time = " + (end - start));
+    }
+
 
 }
