@@ -64,6 +64,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee fireWorker(int workerId) {
+        callListener();
         Employee employee = appDb.remove(workerId);
         if (employee != null)
             employee.setEndWorkDate(new Date());
@@ -89,7 +90,10 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public void callListener() {
-        listeners.forEach(myListener -> myListener.eventOccur(new MyEvent(new Date(), ReflectionUtils.getMethodName(), null)));
+//        for (MyListener listener : listeners) {
+//            listener.eventOccur(new MyEvent(new Date(), ReflectionUtils.getMethodName(1), null));
+//        }
+        listeners.forEach(myListener -> myListener.eventOccur(new MyEvent(new Date(), ReflectionUtils.getMethodName(3), null)));
     }
 
     private List<Employee> find(Predicate<Employee> predicate, List<Employee> employeeList) {

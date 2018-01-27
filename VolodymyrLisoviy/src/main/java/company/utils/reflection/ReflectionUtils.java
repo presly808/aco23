@@ -2,11 +2,10 @@ package company.utils.reflection;
 
 public class ReflectionUtils {
 
-    public static String getMethodName(){
-        try {
-            throw new Exception();
-        } catch (Exception e) {
-            return e.getStackTrace()[1].getMethodName();
-        }
+    public static String getMethodName(int level){
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        if (level + 2 < 0 || level + 2 >= stackTraceElements.length)
+            return "no such level";
+        return stackTraceElements[2 + level].getClassName() + ":" + stackTraceElements[2 + level].getMethodName();
     }
 }

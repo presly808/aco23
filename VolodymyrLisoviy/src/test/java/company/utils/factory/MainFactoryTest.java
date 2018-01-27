@@ -2,8 +2,6 @@ package company.utils.factory;
 
 import company.controller.MainController;
 import company.model.Employee;
-import company.notifier.MyEvent;
-import company.notifier.MyListener;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -60,6 +58,7 @@ public class MainFactoryTest {
 
         mainController.addListener(obj -> {
             System.out.println("event has been occurred");
+            System.out.println(obj.getPlace());
             Assert.assertThat(obj, CoreMatchers.notNullValue());
             Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
             Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
