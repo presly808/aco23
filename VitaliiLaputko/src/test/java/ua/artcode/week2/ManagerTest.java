@@ -16,7 +16,6 @@ public class ManagerTest {
         manager.addSubworker(new Employee("Olena", 2000));
 
         Assert.assertThat(manager.calculateSalary(), CoreMatchers.equalTo(3300));
-
     }
 
     @Test
@@ -35,5 +34,4 @@ public class ManagerTest {
 
         Assert.assertThat(manager.getSubworkers().size(), CoreMatchers.equalTo(3));
     }
-
 }
