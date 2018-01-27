@@ -1,6 +1,7 @@
 package company.utils.factory;
 
 import company.controller.MainController;
+import company.controller.MainControllerImpl;
 import company.model.Employee;
 import company.notifier.MyEvent;
 import company.notifier.MyListener;
@@ -9,7 +10,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by serhii on 27.01.18.
@@ -22,6 +26,7 @@ public class MainFactoryTest {
     public void create() throws Exception {
         MainController mainController = MainFactory.create(true);
 
+        Assert.assertThat(mainController.getClass(), CoreMatchers.not(MainControllerImpl.class));
 
         Employee first = null;
         Employee last = null;
@@ -43,22 +48,21 @@ public class MainFactoryTest {
 
         }
 
-
         Employee employee = mainController.getById(first.getId());
         Employee employee1 = mainController.getById(last.getId());
         Employee employee2 = mainController.getById(mid.getId());
 
-
-
-
-
-
+        Assert.assertNotEquals(employee.getId(), 0);
+        Assert.assertNotEquals(employee1.getId(), 0);
+        Assert.assertNotEquals(employee2.getId(), 0);
     }
 
     @Test
     public void testListener() throws Exception {
         MainController mainController = MainFactory.create(true);
 
+        List<Boolean> booleanList = new ArrayList<>(1);
+        booleanList.add(false);
 
         int salary = (int) (Math.random() * 5000) + 1000;
         Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"),salary));
@@ -73,10 +77,13 @@ public class MainFactoryTest {
                 Assert.assertThat(obj.getDate().toString(),
                         CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
                 Assert.assertThat(obj, CoreMatchers.notNullValue());
+
+                booleanList.set(0,true);
             }
         });
 
         mainController.fireWorker(saved.getId());
+        Assert.assertThat(booleanList.get(0), CoreMatchers.equalTo(true));
 
     }
 
