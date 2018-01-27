@@ -37,8 +37,6 @@ public class MainFactoryTest {
             if (i == COUNT - 1) {
                 last = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
-
-
         }
 
 
@@ -46,7 +44,9 @@ public class MainFactoryTest {
         Employee employee1 = mainController.getById(last.getId());
         Employee employee2 = mainController.getById(mid.getId());
 
-
+        Assert.assertNotNull(employee);
+        Assert.assertNotNull(employee1);
+        Assert.assertNotNull(employee2);
     }
 
     @Test
