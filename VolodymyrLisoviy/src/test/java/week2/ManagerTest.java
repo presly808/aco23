@@ -3,7 +3,8 @@ package week2;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by serhii on 19.01.18.
@@ -41,7 +42,7 @@ public class ManagerTest {
     public void calculateSalary2() {
         Manager manager = new Manager("Main manager", 4000);
 
-        Manager manager1 = new Manager("Manager 1" , 1000);
+        Manager manager1 = new Manager("Manager 1", 1000);
         manager1.addSubworker(new Employee("Ivan", 2000));
         manager1.addSubworker(new Employee("Valera", 2000));
 

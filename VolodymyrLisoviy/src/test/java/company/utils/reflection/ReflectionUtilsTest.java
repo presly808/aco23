@@ -3,8 +3,7 @@ package company.utils.reflection;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class ReflectionUtilsTest {
 

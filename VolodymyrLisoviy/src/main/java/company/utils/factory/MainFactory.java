@@ -10,7 +10,7 @@ import company.db.AppDb;
  */
 public class MainFactory {
 
-    public static MainController create(boolean withProfiling){
+    public static MainController create(boolean withProfiling) {
         MainController mainController = new MainControllerImpl(new AppDb());
 
         return withProfiling ? new ProfilingMainController(mainController) : mainController;

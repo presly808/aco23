@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by serhii on 27.01.18.
@@ -25,15 +26,15 @@ public class MainFactoryTest {
         Employee mid = null;
         for (int i = 0; i < COUNT; i++) {
             int salary = (int) (Math.random() * 5000) + 1000;
-            if(i == 0){
-                first = mainController.addEmployee(new Employee(String.valueOf(i),salary));
+            if (i == 0) {
+                first = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
 
-            if(i == COUNT / 2){
+            if (i == COUNT / 2) {
                 mid = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
 
-            if(i == COUNT - 1){
+            if (i == COUNT - 1) {
                 last = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
 
@@ -46,21 +47,17 @@ public class MainFactoryTest {
         Employee employee2 = mainController.getById(mid.getId());
 
 
-
-
-
-
     }
 
     @Test
     public void testListener() {
         MainController mainController = MainFactory.create(true);
 
-
         int salary = (int) (Math.random() * 5000) + 1000;
-        Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"),salary));
-
+        Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"), salary));
+        final AtomicBoolean isInvoked = new AtomicBoolean(false);
         mainController.addListener(obj -> {
+            isInvoked.set(true);
             System.out.println("event has been occurred");
             Assert.assertThat(obj, CoreMatchers.notNullValue());
             Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
@@ -71,7 +68,7 @@ public class MainFactoryTest {
         });
 
         mainController.fireWorker(saved.getId());
-
+        Assert.assertTrue("listener was not called", isInvoked.get());
     }
 
 }
