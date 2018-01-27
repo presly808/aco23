@@ -3,23 +3,24 @@
   "tasks" : {
     "week1" : {
       "title": "Basics and TestTask",
-      "baseClasses":"week1",
-      "testClasses":"week1"
+      "baseClasses":["week1"],
+      "testClasses":["week1"]
     },
     "week2" : {
       "title": "ManagerTask",
-      "baseClasses":"week2",
-      "testClasses":"week2"
+      "baseClasses":["week2"],
+      "testClasses":["week2"]
     },
     "week3" : {
       "title": "DesignPatterns",
-      "baseClasses":"week3",
-      "testClasses":"week3"
+      "baseClasses":["company/notifier", "company/utils/factory"],
+      "testClasses":["company/utils/factory"]
     },
     "company" : {
       "title": "MVCPatternCompany",
-      "baseClasses":"company",
-      "testClasses":"company"
+      "baseClasses":["company"],
+      "testClasses":["company"]
     }
+
   }
 }
