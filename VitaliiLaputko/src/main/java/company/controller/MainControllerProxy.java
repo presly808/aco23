@@ -1,6 +1,8 @@
-package company;
+package company.controller;
 
 import company.controller.MainController;
+import company.controller.MainControllerImpl;
+import company.db.AppDb;
 import company.model.Employee;
 import company.utils.filtering.EmployeePredicate;
 
@@ -8,6 +10,12 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MainControllerProxy implements MainController {
+
+    MainController mainController;
+
+    public MainControllerProxy() {
+        mainController = new MainControllerImpl(new AppDb());
+    }
 
     @Override
     public Employee addEmployee(Employee employee) {

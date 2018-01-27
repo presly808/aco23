@@ -1,5 +1,6 @@
-package company;
+package company.controller;
 
+import company.controller.MainControllerDecorator;
 import company.model.Employee;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;

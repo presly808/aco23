@@ -1,4 +1,4 @@
-package company;
+package company.controller;
 
 public interface MyAction {
 

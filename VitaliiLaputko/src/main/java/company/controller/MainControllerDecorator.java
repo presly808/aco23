@@ -1,7 +1,5 @@
-package company;
+package company.controller;
 
-import company.controller.MainController;
-import company.controller.MainControllerImpl;
 import company.db.AppDb;
 import company.model.Employee;
 import company.utils.filtering.EmployeePredicate;
