@@ -8,6 +8,9 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
  * Created by serhii on 27.01.18.
  */
@@ -66,6 +69,9 @@ public class MainFactoryTest {
                 System.out.println("event has been occurred");
                 Assert.assertThat(obj, CoreMatchers.notNullValue());
                 Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
+                Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
+                Assert.assertThat(obj.getDate().toString(),
+                        CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
                 Assert.assertThat(obj, CoreMatchers.notNullValue());
             }
         });
