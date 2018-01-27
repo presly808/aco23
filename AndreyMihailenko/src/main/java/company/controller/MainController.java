@@ -1,6 +1,7 @@
 package company.controller;
 
 import company.model.Employee;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.Comparator;
@@ -27,4 +28,6 @@ public interface MainController {
     Employee updateWorker(Employee worker);
 
     boolean areWorkersEqual(int emp1id, int eml2id);
+
+    void addListener(MyListener myListener);
 }

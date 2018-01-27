@@ -1,6 +1,7 @@
 package company.controller;
 
 import company.model.Employee;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.Comparator;
@@ -118,5 +119,13 @@ public class MainControllerProfiling implements MainController {
         end();
         message("areWorkersEqual");
         return equals;
+    }
+
+    @Override
+    public void addListener(MyListener myListener) {
+        start();
+        mainController.addListener(myListener);
+        end();
+        message("addListener");
     }
 }
