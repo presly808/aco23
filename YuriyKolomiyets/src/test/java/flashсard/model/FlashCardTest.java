@@ -45,10 +45,9 @@ public class FlashCardTest {
         Assert.assertEquals("b", flashCard.getBack());
     }
 
-    /*@Test
-    public String toString() {
-        FlashCard flashсard = new FlashCard(1, "A", "b");
-        Assert.assertEquals("FlashCard id 1, front: A, back: b", flashсard.toString());
-        return  flashсard.toString();
-    }*/
+    @Test
+    public void testToString() {
+        FlashCard flashCard = new FlashCard(1, "A", "b");
+        Assert.assertEquals("FlashCard id 1, front: 'A', back: 'b'", flashCard.toString());
+    }
 }
