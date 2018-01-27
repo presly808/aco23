@@ -2,6 +2,7 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.Comparator;
@@ -66,5 +67,15 @@ public class MainControllerImpl implements MainController {
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
         return false;
+    }
+
+    @Override
+    public void addListener(MyListener myListener) {
+
+    }
+
+    @Override
+    public void callListener() {
+
     }
 }
