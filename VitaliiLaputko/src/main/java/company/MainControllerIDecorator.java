@@ -1,6 +1,8 @@
 package company;
 
+import company.controller.MainController;
 import company.controller.MainControllerImpl;
+import company.db.AppDb;
 import company.model.Employee;
 import company.utils.filtering.EmployeePredicate;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 public class MainControllerIDecorator{
 
-    MainControllerImpl mainController;
+    MainController mainController = new MainControllerImpl(new AppDb());
 
     public MainControllerIDecorator() {
     }
