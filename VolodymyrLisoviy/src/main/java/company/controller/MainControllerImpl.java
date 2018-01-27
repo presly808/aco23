@@ -2,8 +2,12 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
+import company.utils.reflection.ReflectionUtils;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -16,9 +20,11 @@ import java.util.stream.Collectors;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
+    private List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
     }
 
     @Override
@@ -74,6 +80,16 @@ public class MainControllerImpl implements MainController {
         Employee e1 = appDb.getById(emp1id);
         Employee e2 = appDb.getById(eml2id);
         return e1 != null && e2 != null && e1.equals(e2);
+    }
+
+    @Override
+    public void addListener(MyListener myListener) {
+        listeners.add(myListener);
+    }
+
+    @Override
+    public void callListener() {
+        listeners.forEach(myListener -> myListener.eventOccur(new MyEvent(new Date(), ReflectionUtils.getMethodName(), null)));
     }
 
     private List<Employee> find(Predicate<Employee> predicate, List<Employee> employeeList) {
