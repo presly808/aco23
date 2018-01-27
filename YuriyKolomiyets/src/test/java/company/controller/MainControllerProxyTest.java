@@ -96,7 +96,6 @@ public class MainControllerProxyTest {
             if (employee.getSalary() < 3000) {
                 return false;
             }
-
             return res;
 
         }), Comparator.comparing(Employee::getName));
