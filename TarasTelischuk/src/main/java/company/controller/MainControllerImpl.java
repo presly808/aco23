@@ -2,6 +2,7 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
+    private List<MyListener> listeners;
 
 
     public MainControllerImpl(AppDb appDb) {
@@ -92,6 +94,13 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
-        return appDb.getById(emp1id).equals(appDb.getById(eml2id));
+        Employee emp1 = appDb.getById(emp1id);
+        Employee emp2 = appDb.getById(eml2id);
+        return emp1 != null && emp2 != null && emp1.equals(emp2);
+    }
+
+    @Override
+    public void addListener(MyListener myListener) {
+        listeners.add(myListener);
     }
 }
