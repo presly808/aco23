@@ -9,11 +9,11 @@ import company.utils.filtering.EmployeePredicate;
 import java.util.Comparator;
 import java.util.List;
 
-public class MainControllerIDecorator{
+public class MainControllerDecorator {
 
     MainController mainController = new MainControllerImpl(new AppDb());
 
-    public MainControllerIDecorator() {
+    public MainControllerDecorator() {
     }
 
     private Object timeCount(MyAction action){
