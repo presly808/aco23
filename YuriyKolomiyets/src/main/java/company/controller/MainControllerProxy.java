@@ -3,7 +3,6 @@ package company.controller;
 import company.model.Employee;
 import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
-
 import java.util.Comparator;
 import java.util.List;
 
