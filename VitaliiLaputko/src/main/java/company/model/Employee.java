@@ -11,7 +11,7 @@ public class Employee {
 
     private int id;
     private String name;
-    private int salary;
+    protected int salary;
     private GregorianCalendar birthday;
     private Date startWorkDate;
     private Date endWorkDate;
@@ -28,6 +28,10 @@ public class Employee {
         this.id = MyUtils.genId();
         this.name = name;
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -66,12 +70,16 @@ public class Employee {
         this.startWorkDate = startWorkDate;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public Date getEndWorkDate() {
         return endWorkDate;
+    }
+
+    public void setEndWorkDate(Date endWorkDate) {
+        this.endWorkDate = endWorkDate;
+    }
+
+    public int calculateSalary(){
+        return salary;
     }
 
     @Override
@@ -79,10 +87,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id;
-    }
-
-    public void setEndWorkDate(Date endWorkDate) {
-        this.endWorkDate = endWorkDate;
+        return salary == employee.salary &&
+                Objects.equals(name, employee.name);
     }
 }

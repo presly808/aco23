@@ -48,4 +48,13 @@ public class AppDb {
         }
         return null;
     }
+
+    public Employee update(Employee employee) {
+        for (int i = 0; i < employeesDb.size(); i++)
+            if (employeesDb.get(i).equals(employee)) {
+            employeesDb.set(i, employee);
+            return employee;
+        }
+        return null;
+    }
 }

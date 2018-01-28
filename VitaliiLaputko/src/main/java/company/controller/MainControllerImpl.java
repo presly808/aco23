@@ -7,8 +7,8 @@ import company.utils.filtering.EmployeePredicate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static com.sun.deploy.config.JREInfo.getAll;
 
 /**
  * Created by serhii on 20.01.18.
@@ -33,7 +33,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public int calculateSalary(Employee employee) {
-        int salary = employee.getSalary();
+        int salary = employee.calculateSalary();
         System.out.println(employee.getName() + " salary => " + salary);
 
         return salary;
@@ -70,21 +70,26 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
-        return null;
+        return appDb.getAll().stream().filter(employee -> predicate.filter(employee))
+                .sorted(comparator).collect(Collectors.toList());
     }
 
     @Override
     public Employee fireWorker(int workerId) {
-        for (int i = 0; i < appDb.getAll().size(); i++) {
-            if (appDb.getAll().get(i).getId() == workerId) appDb.remove(i);
+        Employee fireEmployee = appDb.getById(workerId);
+
+        if (fireEmployee != null) {
+            for (int i = 0; i < appDb.getAll().size(); i++) {
+                if (appDb.getAll().get(i).equals(fireEmployee)) appDb.remove(i);
+            }
         }
 
-        return null;
+        return fireEmployee;
     }
 
     @Override
     public Employee updateWorker(Employee worker) {
-        return null;
+        return appDb.update(worker);
     }
 
     @Override
