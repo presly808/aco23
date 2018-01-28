@@ -19,8 +19,7 @@ public class MainControllerTime  implements MainController {
     public Employee addEmployee(Employee employee) {
         long start = System.currentTimeMillis();
         Employee emp1 = mainController.addEmployee(employee);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'addEmployee' time = " + (end - start));
+        System.out.println("method 'addEmployee' time = " + (System.currentTimeMillis() - start));
         return emp1;
     }
 
@@ -29,8 +28,7 @@ public class MainControllerTime  implements MainController {
     public List<Employee> getAllEmployees() {
         long start = System.currentTimeMillis();
         List<Employee> list = mainController.getAllEmployees();
-        long end = System.currentTimeMillis();
-        System.out.println("method 'getAllEmployees' time = " + (end - start));
+        System.out.println("method 'getAllEmployees' time = " + (System.currentTimeMillis() - start));
         return list;
     }
 
@@ -38,8 +36,7 @@ public class MainControllerTime  implements MainController {
     public int calculateSalary(Employee employee) {
         long start = System.currentTimeMillis();
         int salary = mainController.calculateSalary(employee);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'calculateSalary' time = " + (end - start));
+        System.out.println("method 'calculateSalary' time = " + (System.currentTimeMillis() - start));
         return salary;
     }
 
@@ -47,8 +44,7 @@ public class MainControllerTime  implements MainController {
     public int calculateSalaries() {
         long start = System.currentTimeMillis();
         int salaries = mainController.calculateSalaries();
-        long end = System.currentTimeMillis();
-        System.out.println("method 'calculateSalaries' time = " + (end - start));
+        System.out.println("method 'calculateSalaries' time = " + (System.currentTimeMillis() - start));
         return salaries;
     }
 
@@ -56,8 +52,7 @@ public class MainControllerTime  implements MainController {
     public Employee getById(int id) {
         long start = System.currentTimeMillis();
         Employee employee = mainController.getById(id);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'getById' time = " + (end - start));
+        System.out.println("method 'getById' time = " + (System.currentTimeMillis() - start));
         return employee;
     }
 
@@ -65,8 +60,7 @@ public class MainControllerTime  implements MainController {
     public List<Employee> findWithFilter(String name) {
         long start = System.currentTimeMillis();
         List<Employee> list = mainController.findWithFilter(name);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'findWithFilter' time = " + (end - start));
+        System.out.println("method 'findWithFilter' time = " + (System.currentTimeMillis() - start));
         return list;
     }
 
@@ -74,8 +68,7 @@ public class MainControllerTime  implements MainController {
     public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
         long start = System.currentTimeMillis();
         List<Employee> list = mainController.filterWithPredicate(predicate, comparator);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'filterWithPredicate' time = " + (end - start));
+        System.out.println("method 'filterWithPredicate' time = " + (System.currentTimeMillis() - start));
         return list;
     }
 
@@ -83,8 +76,7 @@ public class MainControllerTime  implements MainController {
     public Employee fireWorker(int workerId) {
         long start = System.currentTimeMillis();
         Employee employee = mainController.fireWorker(workerId);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'fireWorker' time = " + (end - start));
+        System.out.println("method 'fireWorker' time = " + (System.currentTimeMillis() - start));
         return employee;
     }
 
@@ -92,8 +84,7 @@ public class MainControllerTime  implements MainController {
     public Employee updateWorker(Employee worker) {
         long start = System.currentTimeMillis();
         Employee employee = mainController.updateWorker(worker);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'updateWorker' time = " + (end - start));
+        System.out.println("method 'updateWorker' time = " + (System.currentTimeMillis() - start));
         return employee;
     }
 
@@ -101,8 +92,7 @@ public class MainControllerTime  implements MainController {
     public boolean areWorkersEqual(int emp1id, int eml2id) {
         long start = System.currentTimeMillis();
         boolean result = mainController.areWorkersEqual(emp1id, eml2id);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'areWorkersEqual' time = " + (end - start));
+        System.out.println("method 'areWorkersEqual' time = " + (System.currentTimeMillis() - start));
         return result;
     }
 
@@ -110,16 +100,14 @@ public class MainControllerTime  implements MainController {
     public void addListener(MyListener myListener) {
         long start = System.currentTimeMillis();
         mainController.addListener(myListener);
-        long end = System.currentTimeMillis();
-        System.out.println("method 'addListener' time = " + (end - start));
+        System.out.println("method 'addListener' time = " + (System.currentTimeMillis()- start));
     }
 
     @Override
     public void callListener() {
         long start = System.currentTimeMillis();
         mainController.callListener();
-        long end = System.currentTimeMillis();
-        System.out.println("method 'callListener' time = " + (end - start));
+        System.out.println("method 'callListener' time = " + (System.currentTimeMillis() - start));
     }
 
 
