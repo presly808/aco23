@@ -1,8 +1,11 @@
-package company.controller;
+package company.proxy;
 
+import company.controller.MainController;
+import company.controller.MainControllerImpl;
 import company.model.Employee;
 import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -14,7 +17,6 @@ public class MainControllerProxy implements MainController {
         this.mainControllerImpl = mainControllerImpl;
     }
 
-
     @Override
     public Employee addEmployee(Employee employee) {
         long start = System.currentTimeMillis();
@@ -24,7 +26,6 @@ public class MainControllerProxy implements MainController {
         System.out.println(res + " addEmployee time");
 
         return employee;
-
     }
 
     @Override

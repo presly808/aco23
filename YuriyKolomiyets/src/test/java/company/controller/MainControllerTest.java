@@ -17,6 +17,7 @@ import static org.junit.Assert.assertThat;
 public class MainControllerTest {
 
 
+
     @Test
     public void areWorkersEqual() throws Exception {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
