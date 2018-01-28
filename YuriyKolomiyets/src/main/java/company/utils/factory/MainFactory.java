@@ -2,7 +2,7 @@ package company.utils.factory;
 
 import company.controller.MainController;
 import company.controller.MainControllerImpl;
-import company.controller.MainControllerProxy;
+import company.proxy.MainControllerProxy;
 import company.db.AppDb;
 
 /**
