@@ -1,6 +1,7 @@
 package company.controller;
 
 import company.model.Employee;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.Comparator;
@@ -8,15 +9,21 @@ import java.util.List;
 
 public class MainControllerProxy implements MainController {
 
-    private MainControllerImpl mainController;
+    private MainController mainController;
 
+    public MainControllerProxy(MainControllerImpl mainController) {
+        this.mainController = mainController;
+    }
+
+    public MainControllerProxy(MainController mainController) {
+    }
 
     @Override
-    public Employee addEmployee(Employee employee) {
+    public Employee addEmployee (Employee employee) {
         long startTime = System.nanoTime();
         Employee employee1 = mainController.addEmployee(employee);
         long endTime = System.nanoTime();
-        System.out.println (endTime -startTime);
+        System.out.println ("addEmployee" + (endTime -startTime));
         return employee1;
     }
 
@@ -100,4 +107,24 @@ public class MainControllerProxy implements MainController {
         System.out.println(endTime - startTime);
         return isWorkerEqual;
     }
+
+    @Override
+    public void addListener(MyListener listener) {
+        long startTime = System.nanoTime();
+        mainController.addListener(listener);
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime);
+
+
+    }
+
+    @Override
+    public void callListener() {
+        long startTime = System.nanoTime();
+        mainController.callListener();
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime);
+
+    }
+
 }

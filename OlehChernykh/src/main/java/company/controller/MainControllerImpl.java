@@ -2,6 +2,9 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
+import company.notifier.MyListener;
+import company.utils.MyUtils;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.ArrayList;
@@ -15,9 +18,11 @@ import java.util.List;
 public class MainControllerImpl implements MainController, EmployeePredicate {
 
     private AppDb appDb;
+    List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
     }
 
     @Override
@@ -68,6 +73,7 @@ public class MainControllerImpl implements MainController, EmployeePredicate {
 
     @Override
     public Employee fireWorker(int workerId) {
+        callListener();
         Employee employee = appDb.getById(workerId);
         if (employee != null)
             employee.setEndWorkDate(new Date());
@@ -94,5 +100,22 @@ public class MainControllerImpl implements MainController, EmployeePredicate {
             if (em.getSalary() < 3000) return true;
         }
         return false;
+    }
+
+
+    @Override
+    public void addListener(MyListener listener) {
+        this.listeners.add(listener);
+
+    }
+
+
+    @Override
+    public void callListener() {
+        for (MyListener listener: listeners) {
+            listener.eventOccur(new MyEvent(new Date(),this.getClass().getName() + "."
+                    + MyUtils.getMethodName(3).toString(),null));
+        }
+
     }
 }
