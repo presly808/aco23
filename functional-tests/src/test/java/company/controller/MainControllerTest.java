@@ -25,7 +25,7 @@ public class MainControllerTest {
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
 
-        assertTrue(mainController.areWorkersEqual(em1.getId(),em2.getId()));
+        assertFalse(mainController.areWorkersEqual(em1.getId(),em2.getId()));
 
     }
 

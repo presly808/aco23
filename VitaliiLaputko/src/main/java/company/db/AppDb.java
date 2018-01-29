@@ -1,10 +1,8 @@
 package company.db;
 
 import company.model.Employee;
-import company.model.Manager;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -45,6 +43,15 @@ public class AppDb {
 
                 return employee;
             }
+        }
+        return null;
+    }
+
+    public Employee update(Employee employee) {
+        for (int i = 0; i < employeesDb.size(); i++)
+            if (employeesDb.get(i).equals(employee)) {
+            employeesDb.set(i, employee);
+            return employee;
         }
         return null;
     }

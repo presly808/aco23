@@ -1,6 +1,5 @@
 package company.model;
 
-
 import company.utils.MyUtils;
 
 import java.util.Date;
@@ -11,23 +10,27 @@ public class Employee {
 
     private int id;
     private String name;
-    private int salary;
+    protected int salary;
     private GregorianCalendar birthday;
     private Date startWorkDate;
     private Date endWorkDate;
 
-    public Employee(String name, int salary, GregorianCalendar calendar, Double startWorkDate) {
+    public Employee(String name, int salary, GregorianCalendar calendar, Date startWorkDate) {
         this.id = MyUtils.genId();
         this.name = name;
         this.salary = salary;
         this.birthday = calendar;
-        this.startWorkDate =new Date(String.valueOf(startWorkDate));
+        this.startWorkDate = startWorkDate;
     }
 
     public Employee(String name, int salary) {
         this.id = MyUtils.genId();
         this.name = name;
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -66,12 +69,16 @@ public class Employee {
         this.startWorkDate = startWorkDate;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public Date getEndWorkDate() {
         return endWorkDate;
+    }
+
+    public void setEndWorkDate(Date endWorkDate) {
+        this.endWorkDate = endWorkDate;
+    }
+
+    public int calculateSalary(){
+        return salary;
     }
 
     @Override
@@ -79,10 +86,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id;
-    }
-
-    public void setEndWorkDate(Date endWorkDate) {
-        this.endWorkDate = endWorkDate;
+        return salary == employee.salary &&
+                Objects.equals(name, employee.name);
     }
 }

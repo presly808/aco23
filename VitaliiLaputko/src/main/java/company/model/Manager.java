@@ -15,17 +15,10 @@ public class Manager extends Employee {
         subworkers = new ArrayList<>();
     }
 
-    /*public int calculateSalary() {
-        return salary + subworkers.stream().mapToInt(Employee::getSalary).sum() / 20;
-    }*/
-    public int calculateSalary(Employee employee){
-        int salary = 0;
-
-        for (Employee em: subworkers) {
-            salary += em.getSalary() / 100 * 5;
-        }
-
-        System.out.println("Employee " + employee.getName() + " salary => " + salary);
+    public int calculateSalary(){
+        int salary = this.getSalary();
+        //get 5% from all subworkers
+        for (Employee em: subworkers) salary += em.getSalary() / 100 * 5;
 
         return salary;
     }

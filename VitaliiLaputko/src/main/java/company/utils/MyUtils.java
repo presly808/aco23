@@ -7,6 +7,6 @@ import java.util.Random;
  */
 public class MyUtils {
     public static int genId() {
-        return new Random().nextInt();
+        return new Random().nextInt(Integer.MAX_VALUE);
     }
 }
