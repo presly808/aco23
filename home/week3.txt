@@ -1,0 +1,20 @@
+ACO23
+* Finish all uncompleted tasks.
+* Java8 https://www.youtube.com/watch?v=4SvaVGv9GGE&t=6515s
+* Java8 Tasks Simple
+	http://codingbat.com/java/Functional-1
+	http://codingbat.com/java/Functional-2
+* Map
+	http://codingbat.com/java/Map-1
+	http://codingbat.com/java/Map-2
+
+* Algo+DS
+	https://www.youtube.com/watch?v=x8s_cab0MSk&t=7143s&index=8&list=PLvmHg49t5OCRWqG58bycrLoAr85e-e9dd
+	https://www.youtube.com/watch?v=__EutOsErSA&index=9&list=PLvmHg49t5OCRWqG58bycrLoAr85e-e9dd
+
+For undestanding you may use resources of visualization
+	https://visualgo.net/en
+	http://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+
+If free time remains, i suggest to start doing the following excercises
+	http://codingbat.com/java/Recursion-1
