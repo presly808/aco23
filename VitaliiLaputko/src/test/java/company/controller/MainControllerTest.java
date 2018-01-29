@@ -141,7 +141,6 @@ public class MainControllerTest {
         mainController.addEmployee(em1);
         mainController.updateWorker(em2);
 
-        assertTrue(em1.equals(em2));
         assertThat(mainController.getAllEmployees().get(0).getStartWorkDate().toString(),
                 CoreMatchers.equalTo(new Date().toString()));
     }
