@@ -1,6 +1,5 @@
 package company.model;
 
-
 import company.utils.MyUtils;
 
 import java.util.Date;
@@ -16,12 +15,12 @@ public class Employee {
     private Date startWorkDate;
     private Date endWorkDate;
 
-    public Employee(String name, int salary, GregorianCalendar calendar, Double startWorkDate) {
+    public Employee(String name, int salary, GregorianCalendar calendar, Date startWorkDate) {
         this.id = MyUtils.genId();
         this.name = name;
         this.salary = salary;
         this.birthday = calendar;
-        this.startWorkDate =new Date(String.valueOf(startWorkDate));
+        this.startWorkDate = startWorkDate;
     }
 
     public Employee(String name, int salary) {

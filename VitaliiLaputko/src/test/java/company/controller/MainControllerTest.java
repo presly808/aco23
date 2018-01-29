@@ -15,9 +15,8 @@ import static org.junit.Assert.*;
 
 public class MainControllerTest {
 
-
     @Test
-    public void areWorkersEqual() throws Exception {
+    public void areWorkersEqual() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
@@ -25,9 +24,8 @@ public class MainControllerTest {
         assertTrue(mainController.areWorkersEqual(em1.getId(),em2.getId()));
     }
 
-
     @Test
-    public void areWorkersNotEqual() throws Exception {
+    public void areWorkersNotEqual() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Serhey", 3000));
@@ -35,53 +33,47 @@ public class MainControllerTest {
         assertFalse(mainController.areWorkersEqual(em1.getId(),em2.getId()));
     }
 
-
     @Test
-    public void addEmployee() throws Exception {
+    public void addEmployee() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
     }
 
     @Test
-    public void getAllEmployees() throws Exception {
+    public void getAllEmployees() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(2));
-
     }
 
     @Test
-    public void calculateSalary() throws Exception {
+    public void calculateSalary() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.calculateSalary(withId), CoreMatchers.equalTo(3000));
     }
 
     @Test
-    public void getById() throws Exception {
+    public void getById() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getById(withId.getId()), CoreMatchers.equalTo(withId));
-
     }
 
     @Test
-    public void findWithFilter() throws Exception {
-
+    public void findWithFilter() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         mainController.addEmployee(new Employee("anton", 3000));
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.findWithFilter("an").size(), CoreMatchers.equalTo(3));
-
     }
 
     @Test
-    public void calculateSalaries() throws Exception {
-
+    public void calculateSalaries() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Manager man = new Manager("anton", 5000);
@@ -93,15 +85,13 @@ public class MainControllerTest {
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.calculateSalaries(), CoreMatchers.equalTo(9000 + 5100));
-
     }
 
     @Test
-    public void filterWithPredicate() throws Exception {
+    public void filterWithPredicate() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Employee emp1 = new Employee("anton", 1000);
-
         emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp1.setStartWorkDate(new Date());
 
@@ -117,30 +107,19 @@ public class MainControllerTest {
         mainController.addEmployee(emp2);
         mainController.addEmployee(emp3);
 
-        List<Employee> result = mainController.filterWithPredicate((employee -> {
-            boolean res = true;
-
-            if (employee.getSalary() < 3000) {
-                return false;
-            }
-
-            return res;
-
-        }), Comparator.comparing(Employee::getName));
-
+        List<Employee> result = mainController.filterWithPredicate((employee -> employee.getSalary() >= 3000),
+                Comparator.comparing(Employee::getName));
 
         assertThat(result, CoreMatchers.hasItem(emp2));
         assertThat(result, CoreMatchers.hasItem(emp3));
         assertThat(result.get(0).getName(), CoreMatchers.equalTo("Andrey"));
-
     }
 
     @Test
-    public void fireWorker() throws Exception {
+    public void fireWorker() {
         MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Employee emp1 = new Employee("anton", 1000);
-
         emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp1.setStartWorkDate(new Date());
 
@@ -149,10 +128,21 @@ public class MainControllerTest {
         assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
     }
 
-
     @Test
-    public void updateWorker() throws Exception {
+    public void updateWorker() {
+        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+        Employee em1 = new Employee("Ivan", 3000);
+        Employee em2 = new Employee(
+                "Ivan",
+                3000,
+                new GregorianCalendar(2013,10,28),
+                new Date());
 
+        mainController.addEmployee(em1);
+        mainController.updateWorker(em2);
+
+        assertTrue(em1.equals(em2));
+        assertThat(mainController.getAllEmployees().get(0).getStartWorkDate().toString(),
+                CoreMatchers.equalTo(new Date().toString()));
     }
-
 }
