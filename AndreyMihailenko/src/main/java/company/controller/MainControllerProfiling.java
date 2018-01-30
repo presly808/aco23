@@ -18,9 +18,9 @@ public class MainControllerProfiling implements MainController {
 
     private LogContainer logContainer;
 
-
     public MainControllerProfiling(MainController mainController) {
         this.mainController = mainController;
+        this.logContainer = new LogContainer();
     }
 
 
@@ -93,10 +93,11 @@ public class MainControllerProfiling implements MainController {
 
     @Override
     public void addListener(MyListener myListener) {
+        mainController.addListener(myListener);
     }
 
     @Override
     public void callListener() {
-
+        mainController.calculateSalaries();
     }
 }

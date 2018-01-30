@@ -33,8 +33,4 @@ public interface MainController extends Observable {
 
     boolean areWorkersEqual(int emp1id, int eml2id);
 
-    void addListener(MyListener myListener);
-
-    void callListener();
-
     }

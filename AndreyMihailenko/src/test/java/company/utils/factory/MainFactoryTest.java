@@ -20,10 +20,10 @@ import java.util.List;
  */
 public class MainFactoryTest {
 
-    public static final int COUNT = 1_000_000;
+    private static final int COUNT = 1_000_000;
 
     @Test
-    public void create() throws Exception {
+    public void create(){
         MainController mainController = MainFactory.create(true);
 
         Assert.assertThat(mainController.getClass(), CoreMatchers.not(MainControllerImpl.class));
@@ -58,7 +58,7 @@ public class MainFactoryTest {
     }
 
     @Test
-    public void testListener() throws Exception {
+    public void testListener() {
         MainController mainController = MainFactory.create(true);
 
         List<Boolean> booleanList = new ArrayList<>(1);
@@ -67,19 +67,15 @@ public class MainFactoryTest {
         int salary = (int) (Math.random() * 5000) + 1000;
         Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"),salary));
 
-        mainController.addListener(new MyListener() {
-            @Override
-            public void eventOccur(MyEvent obj) {
-                System.out.println("event has been occurred");
-                Assert.assertThat(obj, CoreMatchers.notNullValue());
-                Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
-                Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
-                Assert.assertThat(obj.getDate().toString(),
-                        CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
-                Assert.assertThat(obj, CoreMatchers.notNullValue());
+        mainController.addListener(obj -> {
+            System.out.println("event has been occurred");
+            Assert.assertThat(obj, CoreMatchers.notNullValue());
+            Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
+            Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
+            Assert.assertThat(obj.getDate().toString(),
+                    CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
 
-                booleanList.set(0,true);
-            }
+            booleanList.set(0,true);
         });
 
         mainController.fireWorker(saved.getId());

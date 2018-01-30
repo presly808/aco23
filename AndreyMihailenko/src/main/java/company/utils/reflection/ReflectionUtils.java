@@ -10,13 +10,4 @@ public class ReflectionUtils {
         return Thread.currentThread().getStackTrace()[id].getMethodName();
     }
 
-    public static void main(String[] args) {
-        test();
-    }
-
-    private static void test() {
-        System.out.println(getMethodName(3));
-    }
-
-
 }
