@@ -21,8 +21,6 @@ public class MainControllerProfilingTest {
         MainControllerProfiling mainController = new MainControllerProfiling(new MainControllerImpl(new AppDb()));
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
-
-
     }
 
     @Test
@@ -31,7 +29,6 @@ public class MainControllerProfilingTest {
         mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(2));
-
     }
 
     @Test
@@ -47,7 +44,6 @@ public class MainControllerProfilingTest {
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getById(withId.getId()), CoreMatchers.equalTo(withId));
-
     }
 
     @Test
@@ -58,7 +54,6 @@ public class MainControllerProfilingTest {
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.findWithFilter("an").size(), CoreMatchers.equalTo(3));
-
     }
 
     @Test
@@ -75,7 +70,6 @@ public class MainControllerProfilingTest {
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.calculateSalaries(), CoreMatchers.equalTo(9000 + 5100));
-
     }
 
     @Test
@@ -102,11 +96,7 @@ public class MainControllerProfilingTest {
         List<Employee> result = mainController.filterWithPredicate((employee -> {
             boolean res = true;
 
-            if (employee.getSalary() < 3000) {
-                return false;
-            }
-
-            return res;
+            return employee.getSalary() >= 3000 && res;
 
         }), Comparator.comparing(Employee::getName));
 
