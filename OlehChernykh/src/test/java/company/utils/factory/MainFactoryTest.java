@@ -19,7 +19,7 @@ public class MainFactoryTest {
     private static final int COUNT = 1_000_000;
 
     @Test
-    public void create() throws Exception {
+    public void create() {
         MainController mainController = MainFactory.create(true);
 
         Assert.assertThat(mainController.getClass(), CoreMatchers.not(MainControllerImpl.class));
@@ -54,7 +54,7 @@ public class MainFactoryTest {
     }
 
     @Test
-    public void testListener() throws Exception {
+    public void testListener() {
         MainController mainController = MainFactory.create(true);
 
         List<Boolean> booleanList = new ArrayList<>(1);
