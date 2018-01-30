@@ -29,8 +29,9 @@ public interface MainController extends Observable {
 
     Employee fireWorker(int workerId);
 
+    Employee updateWorker(Employee worker);
 
     boolean areWorkersEqual(int emp1id, int eml2id);
 
-    void addListener(MyListener myListener);
+
 }

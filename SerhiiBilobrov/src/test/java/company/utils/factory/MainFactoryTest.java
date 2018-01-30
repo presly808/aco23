@@ -76,7 +76,6 @@ public class MainFactoryTest {
                 Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
                 Assert.assertThat(obj.getDate().toString(),
                         CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
-                Assert.assertThat(obj, CoreMatchers.notNullValue());
 
                 atomicBoolean.set(true);
             }
