@@ -5,7 +5,6 @@ import company.model.Employee;
 import company.model.Manager;
 import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Comparator;
@@ -67,15 +66,6 @@ public class MainControllerProxyTest {
         mainController.addListener(obj -> {
         });
         assertThat(mainController.getListeners().size(), CoreMatchers.not(0));
-
-    }
-
-    @Test
-    public void callListener() {
-        MainController mainController = MainFactory.create(true);
-        mainController.addListener(obj -> Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker")));
-        Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"),1000));
-        mainController.fireWorker(saved.getId());
 
     }
 
