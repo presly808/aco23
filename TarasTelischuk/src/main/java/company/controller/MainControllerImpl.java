@@ -82,13 +82,15 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee fireWorker(int workerId) {
-        for (Employee employee : appDb.getAll()) {
+      /*  for (Employee employee : appDb.getAll()) {
             if (employee.getId() == workerId){
                 appDb.getAll().remove(employee);
                 return employee;
             }
         }
-        return null;
+        return null;*/
+      callListener();
+      return appDb.remove(workerId);
     }
 
     @Override
@@ -110,9 +112,10 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public void callListener() {
-            listeners.forEach(myListener ->
-                    myListener.eventOccur(new MyEvent(new Date(), Reflection.getMethodName(3), null)));
-
+        MyEvent obj = new MyEvent(new Date(), this.getClass().getName() + "." + Reflection.getMethodName(3), "some info");
+        for (MyListener listener : listeners) {
+            listener.eventOccur(obj);
+        }
     }
 
 }

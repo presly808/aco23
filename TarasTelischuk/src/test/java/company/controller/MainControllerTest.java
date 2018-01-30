@@ -2,7 +2,9 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Manager;
+import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
+import org.junit.Before;
 import org.junit.Test;
 import company.model.Employee;
 import java.util.Comparator;
@@ -13,10 +15,16 @@ import static org.junit.Assert.*;
 
 public class MainControllerTest {
 
+    private MainController mainController;
+
+    @Before
+    public void before(){
+        mainController = MainFactory.create(true);
+    }
+
 
     @Test
     public void areWorkersEqual() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
 
@@ -27,7 +35,6 @@ public class MainControllerTest {
 
     @Test
     public void areWorkersNotEqual() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Serhey", 3000));
 
@@ -38,7 +45,6 @@ public class MainControllerTest {
 
     @Test
     public void addEmployee() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
 
@@ -47,7 +53,6 @@ public class MainControllerTest {
 
     @Test
     public void getAllEmployees() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(2));
@@ -56,14 +61,12 @@ public class MainControllerTest {
 
     @Test
     public void calculateSalary() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.calculateSalary(withId), CoreMatchers.equalTo(3000));
     }
 
     @Test
     public void getById() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getById(withId.getId()), CoreMatchers.equalTo(withId));
@@ -73,7 +76,6 @@ public class MainControllerTest {
     @Test
     public void findWithFilter() throws Exception {
 
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         mainController.addEmployee(new Employee("anton", 3000));
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
@@ -83,8 +85,6 @@ public class MainControllerTest {
 
     @Test
     public void calculateSalaries() throws Exception {
-
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Manager man = new Manager("anton", 5000);
         man.addSubworker(new Employee("1", 1000));
@@ -100,7 +100,6 @@ public class MainControllerTest {
 
     @Test
     public void filterWithPredicate() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Employee emp1 = new Employee("anton", 1000);
 
@@ -139,7 +138,6 @@ public class MainControllerTest {
 
     @Test
     public void fireWorker() throws Exception {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Employee emp1 = new Employee("anton", 1000);
 

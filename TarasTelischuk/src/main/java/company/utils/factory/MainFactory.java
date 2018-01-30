@@ -11,8 +11,7 @@ import company.db.AppDb;
 public class MainFactory {
 
     public static MainController create(boolean withProfiling){
-        MainController mainController = new MainControllerImpl(new AppDb());
-        return withProfiling ? new MainControllerProxy(mainController) : mainController;
+        return new MainControllerProxy(new MainControllerImpl(new AppDb()));
     }
 
 }
