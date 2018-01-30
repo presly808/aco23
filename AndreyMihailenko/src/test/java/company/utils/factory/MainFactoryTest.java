@@ -3,16 +3,12 @@ package company.utils.factory;
 import company.controller.MainController;
 import company.controller.MainControllerImpl;
 import company.model.Employee;
-import company.notifier.MyEvent;
-import company.notifier.MyListener;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**

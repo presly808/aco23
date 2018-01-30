@@ -3,7 +3,6 @@ package company.notifier;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
 
 import static org.junit.Assert.*;
 

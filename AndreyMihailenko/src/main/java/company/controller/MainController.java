@@ -1,7 +1,6 @@
 package company.controller;
 
 import company.model.Employee;
-import company.notifier.MyListener;
 import company.notifier.Observable;
 import company.utils.filtering.EmployeePredicate;
 
@@ -33,4 +32,4 @@ public interface MainController extends Observable {
 
     boolean areWorkersEqual(int emp1id, int eml2id);
 
-    }
+}

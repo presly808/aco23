@@ -1,20 +1,16 @@
 package company.controller;
 
-import company.db.AppDb;
 import company.model.Manager;
 import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import company.model.Employee;
 
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.regex.Matcher;
 
 import static org.junit.Assert.*;
 
