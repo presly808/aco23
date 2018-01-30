@@ -1,16 +1,18 @@
 package company.controller;
+
 import company.model.Employee;
 import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 
-public class MainControllerTime  implements MainController {
+public class MainControllerProxy implements MainController {
 
     private MainController mainController;
 
-    public MainControllerTime(MainController mainController) {
+    public MainControllerProxy(MainController mainController) {
         this.mainController = mainController;
     }
 
@@ -19,7 +21,8 @@ public class MainControllerTime  implements MainController {
     public Employee addEmployee(Employee employee) {
         long start = System.currentTimeMillis();
         Employee emp1 = mainController.addEmployee(employee);
-        System.out.println("method 'addEmployee' time = " + (System.currentTimeMillis() - start));
+        long end = System.currentTimeMillis();
+        System.out.println("method 'addEmployee' time = " + (end - start));
         return emp1;
     }
 
