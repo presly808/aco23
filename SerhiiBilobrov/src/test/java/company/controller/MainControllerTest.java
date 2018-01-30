@@ -61,8 +61,10 @@ public class MainControllerTest {
     public void getAllEmployees() throws Exception {
 
         mainController.addEmployee(new Employee("Ivan", 3000));
+        mainController.addEmployee(new Employee("Ivan", 3000,
+                new GregorianCalendar(2017,3,12),new Date()));
         mainController.addEmployee(new Employee("Ivan", 3000));
-        assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(2));
+        assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(3));
 
     }
 
