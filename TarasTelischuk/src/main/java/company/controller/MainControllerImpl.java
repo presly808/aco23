@@ -5,6 +5,7 @@ import company.model.Employee;
 import company.notifier.MyEvent;
 import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
+import company.utils.reflection.Reflection;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,7 +19,7 @@ import java.util.List;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
-    private List<MyListener> listeners;
+   private List<MyListener> listeners;
 
 
     public MainControllerImpl(AppDb appDb) {
@@ -108,20 +109,9 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public void callListener() {
-        for (MyListener listner: listeners) {
-            listner.eventOccur(new MyEvent(new Date(), getClass().getName() + getMethodName(), null));
-            
-        }
+            listeners.forEach(myListener ->
+                    myListener.eventOccur(new MyEvent(new Date(), Reflection.getMethodName(3), null)));
 
-    }
-
-    private static String getMethodName() {
-        try {
-            throw new Exception();
-        } catch (Exception e) {
-            return e.getStackTrace()[2].getMethodName();
-
-        }
     }
 
 }
