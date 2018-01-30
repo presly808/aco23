@@ -17,12 +17,16 @@ import java.util.List;
  */
 public class MainControllerImpl implements MainController, EmployeePredicate {
 
-    private AppDb appDb;
+    public AppDb appDb;
     List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
         this.listeners = new ArrayList<>();
+    }
+
+    public List<MyListener> getListeners() {
+        return listeners;
     }
 
     @Override
@@ -114,8 +118,10 @@ public class MainControllerImpl implements MainController, EmployeePredicate {
     public void callListener() {
         for (MyListener listener: listeners) {
             listener.eventOccur(new MyEvent(new Date(),this.getClass().getName() + "."
-                    + MyUtils.getMethodName(3).toString(),null));
+                    + MyUtils.getMethodName(3),null));
         }
 
     }
+
+
 }

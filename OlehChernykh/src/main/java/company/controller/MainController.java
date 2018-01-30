@@ -7,7 +7,6 @@ import company.utils.filtering.EmployeePredicate;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Observer;
 
 /**
  * Created by serhii on 20.01.18.

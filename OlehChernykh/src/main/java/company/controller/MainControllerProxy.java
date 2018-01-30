@@ -15,15 +15,12 @@ public class MainControllerProxy implements MainController {
         this.mainController = mainController;
     }
 
-    public MainControllerProxy(MainController mainController) {
-    }
-
     @Override
     public Employee addEmployee (Employee employee) {
         long startTime = System.nanoTime();
         Employee employee1 = mainController.addEmployee(employee);
         long endTime = System.nanoTime();
-        System.out.println ("addEmployee" + (endTime -startTime));
+        System.out.println ("addEmployee execution time is " + (endTime - startTime));
         return employee1;
     }
 
@@ -32,7 +29,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         List<Employee> employeeList = mainController.getAllEmployees();
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("getAllEmployees execution time is " + (endTime -startTime));
         return employeeList;
     }
 
@@ -41,7 +38,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         int salary = mainController.calculateSalary(employee);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("calculateSalary execution time is " + (endTime - startTime));
         return salary;
     }
 
@@ -50,7 +47,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         int salaries = mainController.calculateSalaries();
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("calculateSalaries execution time is " + (endTime - startTime));
         return salaries;
     }
 
@@ -59,7 +56,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         Employee employee = mainController.getById(id);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("getById execution time is " + (endTime - startTime));
         return employee;
     }
 
@@ -68,7 +65,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         List<Employee> employees = mainController.findWithFilter(name);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("findWithFilter execution time is " + (endTime - startTime));
         return employees;
     }
 
@@ -77,7 +74,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         List<Employee> employees = mainController.filterWithPredicate(predicate,comparator);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("filterWithPredicate execution time is " + (endTime - startTime));
         return employees;
     }
 
@@ -86,7 +83,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         Employee employee = mainController.fireWorker(workerId);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("fireWorker execution time is " + (endTime - startTime));
         return employee;
     }
 
@@ -95,7 +92,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         Employee employee = mainController.updateWorker(worker);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("updateWorker execution time is " + (endTime - startTime));
         return employee;
     }
 
@@ -104,7 +101,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         boolean isWorkerEqual = mainController.areWorkersEqual(emp1id,eml2id);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("areWorkersEqual execution time is " + (endTime - startTime));
         return isWorkerEqual;
     }
 
@@ -113,7 +110,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         mainController.addListener(listener);
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("addListener execution time is " + (endTime - startTime));
 
 
     }
@@ -123,7 +120,7 @@ public class MainControllerProxy implements MainController {
         long startTime = System.nanoTime();
         mainController.callListener();
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        System.out.println ("callListener execution time is " + (endTime - startTime));
 
     }
 
