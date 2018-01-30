@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class MainControllerImpl implements MainController, EmployeePredicate {
 
-    public AppDb appDb;
-    List<MyListener> listeners;
+    private AppDb appDb;
+    private List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
