@@ -94,4 +94,9 @@ public class MainControllerImpl implements MainController {
     public void addListener(MyListener myListener) {
 
     }
+
+    @Override
+    public void callListener() {
+
+    }
 }

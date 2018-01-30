@@ -2,130 +2,101 @@ package company.controller;
 
 import company.model.Employee;
 import company.notifier.MyListener;
+import company.utils.MyAction;
 import company.utils.filtering.EmployeePredicate;
+import company.utils.logger.LogContainer;
+import company.utils.logger.LogEvent;
+import company.utils.reflection.ReflectionUtils;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class MainControllerProfiling implements MainController {
 
     private MainController mainController;
 
-    private long start;
-    private long end;
+    private LogContainer logContainer;
+
 
     public MainControllerProfiling(MainController mainController) {
         this.mainController = mainController;
     }
 
-    public void start() {
-        start = System.nanoTime();
-    }
 
-    public void end() {
-        end = System.nanoTime();
-    }
+    private Object countTime(MyAction action){
+        long start = System.currentTimeMillis();
 
-    public void message(String methodName) {
-        System.out.printf("%s method time = %s (ns)\n", methodName, end - start);
+        Object ret = action.invoke();
+
+        long end = System.currentTimeMillis();
+
+        int parent_method_index = 3;
+        logContainer.saveLog(new LogEvent(this.getClass().getName()+ "." +
+                ReflectionUtils.getMethodName(parent_method_index),
+                new Date(),
+                "has been worked for" + (end - start)));
+
+        return ret;
     }
 
 
     @Override
     public Employee addEmployee(Employee employee) {
-        start();
-        Employee employee1 = mainController.addEmployee(employee);
-        end();
-        message("addEmployee");
-        return employee;
+        return (Employee) countTime(() -> mainController.addEmployee(employee));
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-        start();
-        List<Employee> employeeList = mainController.getAllEmployees();
-        end();
-        message("getAllEmployees");
-        return employeeList;
+        return (List<Employee>) countTime(() -> mainController.getAllEmployees());
     }
 
     @Override
     public int calculateSalary(Employee employee) {
-        start();
-        int salary = mainController.calculateSalary(employee);
-        end();
-        message("calculateSalary");
-        return salary;
+        return (Integer) countTime(() -> mainController.calculateSalary(employee));
     }
 
     @Override
     public int calculateSalaries() {
-        start();
-        int salarys = mainController.calculateSalaries();
-        end();
-        message("calculateSalaries");
-        return salarys;
+        return (Integer) countTime(() -> mainController.calculateSalaries());
     }
 
     @Override
     public Employee getById(int id) {
-        start();
-        Employee employee = mainController.getById(id);
-        end();
-        message("getById");
-        return employee;
+        return (Employee) countTime(() -> mainController.getById(id));
     }
 
     @Override
     public List<Employee> findWithFilter(String name) {
-        start();
-        List<Employee> employeeList = mainController.findWithFilter(name);
-        end();
-        message("findWithFilter");
-        return employeeList;
+        return (List<Employee>) countTime(() -> mainController.findWithFilter(name));
     }
 
     @Override
     public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
-        start();
-        List<Employee> employeeList = mainController.filterWithPredicate(predicate, comparator);
-        end();
-        message("filterWithPredicate");
-        return employeeList;
+        return (List<Employee>) countTime(() -> mainController.filterWithPredicate(predicate, comparator));
     }
 
     @Override
     public Employee fireWorker(int workerId) {
-        start();
-        Employee employee = mainController.fireWorker(workerId);
-        end();
-        message("fireWorker");
-        return employee;
+        return (Employee) countTime(() -> mainController.fireWorker(workerId));
     }
 
     @Override
     public Employee updateWorker(Employee worker) {
-        start();
-        Employee employee = mainController.updateWorker(worker);
-        end();
-        message("updateWorker");
-        return employee;
+        return (Employee) countTime(() -> mainController.updateWorker(worker));
     }
 
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
-        start();
-        boolean equals = mainController.areWorkersEqual(emp1id, eml2id);
-        end();
-        message("areWorkersEqual");
-        return equals;
+        return (Boolean) countTime(() -> mainController.areWorkersEqual(emp1id, eml2id));
     }
 
     @Override
     public void addListener(MyListener myListener) {
-        start();
-        mainController.addListener(myListener);
-        end();
-        message("addListener");
+    }
+
+    @Override
+    public void callListener() {
+
     }
 }
