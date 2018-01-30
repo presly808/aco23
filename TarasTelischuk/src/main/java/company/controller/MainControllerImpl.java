@@ -19,11 +19,12 @@ import java.util.List;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
-   private List<MyListener> listeners;
+    private List<MyListener> listeners;
 
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
     }
 
     @Override
