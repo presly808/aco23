@@ -71,7 +71,6 @@ public class MainControllerProxy implements MainController {
     @Override
     public Employee fireWorker(int workerId) {
         return (Employee) countTime(() -> mainController.fireWorker(workerId));
-
     }
 
     @Override
