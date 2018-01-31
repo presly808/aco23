@@ -30,7 +30,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee addEmployee(Employee employee) {
-        appDb.getWorkersList().add(employee);
+        appDb.add(employee);
         return employee;
     }
 
@@ -41,6 +41,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public int calculateSalary(Employee employee) {
+
         return employee.getSalary();
     }
 
@@ -112,7 +113,7 @@ public class MainControllerImpl implements MainController {
     @Override
     public void callListener() {
         for (MyListener myListener:listeners) {
-            myListener.eventOccur(new MyEvent(new Date(), getClass().getName().toString() + getMethodName().toString(),null ));
+            myListener.eventOccur(new MyEvent(new Date(), getClass().getName().toString() + getMethodName().toString(), null));
         }
     }
 
