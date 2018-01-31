@@ -1,7 +1,5 @@
 package company.utils.logger;
 
-import java.util.Date;
-
 public class LogEvent {
 
     private final String place;

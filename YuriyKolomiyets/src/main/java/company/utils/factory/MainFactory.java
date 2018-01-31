@@ -11,7 +11,7 @@ import company.proxy.MainControllerProxy;
 public class MainFactory {
 
     public static MainController create(boolean withProfiling){
-        if (withProfiling == true) {
+        if (withProfiling) {
             return new MainControllerProxy(new MainControllerImpl(new AppDb()));
         } else {
             return new MainControllerImpl(new AppDb());
