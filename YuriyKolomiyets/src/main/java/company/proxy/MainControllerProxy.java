@@ -96,6 +96,7 @@ public class MainControllerProxy implements MainController {
         System.out.println(res + " addListener() time");
     }
 
+
     @Override
     public void callListener() {
         long start = System.currentTimeMillis();
