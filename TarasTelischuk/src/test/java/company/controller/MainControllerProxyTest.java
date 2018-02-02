@@ -127,12 +127,5 @@ public class MainControllerProxyTest {
 
     }
 
-    @Test
-    public void addListener() throws Exception {
-    }
-
-    @Test
-    public void callListener() throws Exception {
-    }
 
 }
