@@ -1,6 +1,5 @@
 package company.controller;
 
-import company.db.AppDb;
 import company.model.Manager;
 import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
