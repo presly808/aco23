@@ -3,24 +3,22 @@ package company.utils.factory;
 import company.controller.MainController;
 import company.controller.MainControllerImpl;
 import company.model.Employee;
-import company.notifier.MyEvent;
-import company.notifier.MyListener;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.time.LocalDateTime;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by serhii on 27.01.18.
  */
 public class MainFactoryTest {
 
-    public static final int COUNT = 1_000_000;
+    private static final int COUNT = 1_000_000;
 
     @Test
-    public void create() throws Exception {
+    public void create() {
         MainController mainController = MainFactory.create(true);
 
         Assert.assertThat(mainController.getClass(), CoreMatchers.not(MainControllerImpl.class));
@@ -42,6 +40,7 @@ public class MainFactoryTest {
                 last = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
 
+
         }
 
         Employee employee = mainController.getById(first.getId());
@@ -54,31 +53,29 @@ public class MainFactoryTest {
     }
 
     @Test
-    public void testListener() throws Exception {
+    public void testListener() {
         MainController mainController = MainFactory.create(true);
 
-        final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+        List<Boolean> booleanList = new ArrayList<>(1);
+        booleanList.add(false);
 
         int salary = (int) (Math.random() * 5000) + 1000;
         Employee saved = mainController.addEmployee(new Employee(String.valueOf("test"),salary));
 
-        mainController.addListener(new MyListener() {
-            @Override
-            public void eventOccur(MyEvent obj) {
-                System.out.println("event has been occurred");
-                Assert.assertThat(obj, CoreMatchers.notNullValue());
-                Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
-                Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
-                Assert.assertThat(obj.getDate().toString(),
-                        CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
-                Assert.assertThat(obj, CoreMatchers.notNullValue());
+        mainController.addListener(obj -> {
+            System.out.println("event has been occurred");
+            Assert.assertThat(obj, CoreMatchers.notNullValue());
+            Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("Controller"));
+            Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
+            Assert.assertThat(obj.getDate().toString(),
+                    CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
+            Assert.assertThat(obj, CoreMatchers.notNullValue());
 
-                atomicBoolean.set(true);
-            }
+            booleanList.set(0,true);
         });
 
         mainController.fireWorker(saved.getId());
-        Assert.assertThat(atomicBoolean.get(), CoreMatchers.equalTo(true));
+        Assert.assertThat(booleanList.get(0), CoreMatchers.equalTo(true));
 
     }
 

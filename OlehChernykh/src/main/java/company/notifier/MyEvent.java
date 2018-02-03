@@ -11,13 +11,12 @@ public class MyEvent {
     private String place;
     private Object info;
 
-    public MyEvent() {
-    }
 
-    public MyEvent(Date date, String place, Object info) {
+
+    public MyEvent(Date date, String methodName, Object o) {
         this.date = date;
-        this.place = place;
-        this.info = info;
+        this.place = methodName;
+        this.info = o;
     }
 
     public Date getDate() {

@@ -1,6 +1,5 @@
-package company.proxy;
+package company.controller;
 
-import company.controller.MainController;
 import company.model.Employee;
 import company.notifier.MyListener;
 import company.utils.MyAction;
@@ -10,32 +9,41 @@ import company.utils.logger.LogEvent;
 import company.utils.reflection.ReflectionUtils;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
-public class MainControllerProxy implements MainController {
+public class MainControllerProfiling implements MainController {
 
     private MainController mainController;
+
     private LogContainer logContainer;
 
-    public MainControllerProxy(MainController mainController) {
+    public MainControllerProfiling(MainController mainController) {
         this.mainController = mainController;
         this.logContainer = new LogContainer();
     }
 
-    private Object countTime(MyAction action) {
+
+    private Object countTime(MyAction action){
         long start = System.currentTimeMillis();
 
         Object ret = action.invoke();
 
         long end = System.currentTimeMillis();
-        long res = end - start;
-        int parent_method_index_stack = 3;
-        String place = ReflectionUtils.getMethodName(parent_method_index_stack);
-        System.out.println(place + " work time: " + res);
-        logContainer.saveLog(new LogEvent(
-                place,
-                res));
+
+        int parent_method_index = 3;
+        logContainer.saveLog(new LogEvent(this.getClass().getName()+ "." +
+                ReflectionUtils.getMethodName(parent_method_index),
+                new Date(),
+                "has been worked for" + (end - start)));
+
         return ret;
+    }
+
+
+    @Override
+    public Employee addEmployee(Employee employee) {
+        return (Employee) countTime(() -> mainController.addEmployee(employee));
     }
 
     @Override
@@ -74,35 +82,22 @@ public class MainControllerProxy implements MainController {
     }
 
     @Override
-    public boolean areWorkersEqual(int emp1id, int eml2id) {
+    public Employee updateWorker(Employee worker) {
+        return (Employee) countTime(() -> mainController.updateWorker(worker));
+    }
 
+    @Override
+    public boolean areWorkersEqual(int emp1id, int eml2id) {
         return (Boolean) countTime(() -> mainController.areWorkersEqual(emp1id, eml2id));
     }
 
     @Override
-    public Employee addEmployee(Employee employee) {
-        mainController.addEmployee(employee);
-        return employee;
-
-        //return (Employee) countTime(() -> mainController.addEmployee(employee));
-    }
-
-    @Override
     public void addListener(MyListener myListener) {
-        long start = System.currentTimeMillis();
         mainController.addListener(myListener);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " addListener() time");
     }
-
 
     @Override
     public void callListener() {
-        long start = System.currentTimeMillis();
-        mainController.callListener();
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " callListener() time");
+        mainController.calculateSalaries();
     }
 }

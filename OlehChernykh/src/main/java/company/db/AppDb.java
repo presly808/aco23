@@ -17,6 +17,7 @@ public class AppDb {
     }
 
     public Employee add(Employee employee){
+        if (employee != null)
         employees.add(employee);
         return employee;
     }
