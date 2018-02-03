@@ -18,7 +18,7 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node addToHead(Node chain, Object val) {
-        return null;
+        return new Node(chain, val);
     }
 
     @Override
@@ -34,8 +34,20 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNode(Object... mas) {
+        if (mas.length == 0){
+            return null;
+        }
+        Node headPointer = new Node(null, null);
+        Node lastPointer = headPointer;
+        int count = 0;
+        for (Object obj: mas) {
+            lastPointer.next = new Node( null, obj);
+            lastPointer = lastPointer.next;
+            count++;
+        }
+        System.out.println("Create Node count = " + count);
 
-        return null;
+        return headPointer;
     }
 
     @Override

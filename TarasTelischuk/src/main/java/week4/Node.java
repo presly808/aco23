@@ -8,7 +8,7 @@ public class Node {
     public Node next;
     public Object value;
 
-    public Node(int i, Object value) {
+    public Node() {
     }
 
     public Node(Node next, Object value) {
