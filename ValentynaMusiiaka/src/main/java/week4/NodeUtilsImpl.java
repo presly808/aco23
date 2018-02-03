@@ -20,22 +20,41 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node addToHead(Node chain, Object val) {
-
-        //find head
-        //add head
-
-        //method returns new head
-        return null;
+        return new Node(chain, val);
     }
 
     @Override
     public String toString(Node chain) {
-        return null;
+
+        Node currentNode = chain;
+        StringBuilder chainToString = new StringBuilder();
+
+        while (currentNode.next != null) {
+            chainToString.append(currentNode.value);
+            chainToString.append(", ");
+            currentNode = currentNode.next;
+        }
+
+        chainToString.append(currentNode.value);
+
+        return chainToString.toString();
     }
 
     @Override
     public Node createNode(Object... mas) {
-        return null;
+        if (mas.length < 1) {
+            return null;
+        }
+
+        Node currentNode = new Node(null, mas[0]);
+        Node head = currentNode;
+
+        for (int i = 1; i < mas.length; i++) {
+            addToTail(currentNode, mas[i]);
+            currentNode = currentNode.next;
+        }
+
+        return head;
     }
 
     @Override
