@@ -43,7 +43,7 @@ public class NodeUtilsImpl implements NodeUtils {
         Node lastPointer = headPointer;
         int count = 0;
         for (Object obj: mas) {
-            lastPointer.next = new Node( null, (int)obj +1);
+            lastPointer.next = new Node( null, (int)obj + 1);
             lastPointer = lastPointer.next;
             count++;
 
@@ -72,13 +72,13 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node remove(Node chain, Object val) {
-        if (chain.value != null){
-            return new Node();
+        if (chain.value == null){
+            return null;
         }
         if (chain.value == val || chain.next != null){
             return new Node(chain.next.next, chain.next.value);
         }
-        return null;
+        return new Node();
      }
 
     @Override
