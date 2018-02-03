@@ -1,134 +1,106 @@
 package company.proxy;
 
 import company.controller.MainController;
-import company.controller.MainControllerImpl;
 import company.model.Employee;
 import company.notifier.MyListener;
+import company.utils.MyAction;
 import company.utils.filtering.EmployeePredicate;
+import company.utils.logger.LogContainer;
+import company.utils.logger.LogEvent;
+import company.utils.reflection.ReflectionUtils;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class MainControllerProxy implements MainController {
 
-    private MainControllerImpl mainControllerImpl;
+    private MainController mainController;
+    private LogContainer logContainer;
 
-    public MainControllerProxy(MainControllerImpl mainControllerImpl) {
-        this.mainControllerImpl = mainControllerImpl;
+    public MainControllerProxy(MainController mainController) {
+        this.mainController = mainController;
+        this.logContainer = new LogContainer();
     }
 
-    @Override
-    public Employee addEmployee(Employee employee) {
+    private Object countTime(MyAction action) {
         long start = System.currentTimeMillis();
-        mainControllerImpl.addEmployee(employee);
+
+        Object ret = action.invoke();
+
         long end = System.currentTimeMillis();
         long res = end - start;
-        System.out.println(res + " addEmployee time");
-
-        return employee;
+        int parent_method_index_stack = 3;
+        String place = ReflectionUtils.getMethodName(parent_method_index_stack);
+        System.out.println(place + " work time: " + res);
+        logContainer.saveLog(new LogEvent(
+                place,
+                res));
+        return ret;
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-        long start = System.currentTimeMillis();
-        List<Employee> allEmployees = mainControllerImpl.getAllEmployees();
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " getAllEmployees time");
-
-        return allEmployees;
+        return (List<Employee>) countTime(() -> mainController.getAllEmployees());
     }
 
     @Override
     public int calculateSalary(Employee employee) {
-        long start = System.currentTimeMillis();
-        int salary = mainControllerImpl.calculateSalary(employee);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " calculateSalary time");
-
-        return salary;
+        return (Integer) countTime(() -> mainController.calculateSalary(employee));
     }
 
     @Override
     public int calculateSalaries() {
-        long start = System.currentTimeMillis();
-        int salary = mainControllerImpl.calculateSalaries();
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " calculateSalaries() time");
-
-        return salary;
+        return (Integer) countTime(() -> mainController.calculateSalaries());
     }
 
     @Override
     public Employee getById(int id) {
-        long start = System.currentTimeMillis();
-        Employee employee = mainControllerImpl.getById(id);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " getById() time");
-
-        return employee;
+        return (Employee) countTime(() -> mainController.getById(id));
     }
 
     @Override
     public List<Employee> findWithFilter(String name) {
-        long start = System.currentTimeMillis();
-        List<Employee> filteredList = mainControllerImpl.findWithFilter(name);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " findWithFilter() time");
-
-        return filteredList;
+        return (List<Employee>) countTime(() -> mainController.findWithFilter(name));
     }
 
     @Override
     public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
-        long start = System.currentTimeMillis();
-        List<Employee> filteredList = mainControllerImpl.filterWithPredicate(predicate, comparator);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " filterWithPredicate() time");
-
-        return filteredList;
+        return (List<Employee>) countTime(() -> mainController.filterWithPredicate(predicate, comparator));
     }
 
     @Override
     public Employee fireWorker(int workerId) {
-        long start = System.currentTimeMillis();
-        Employee firedEmployee = mainControllerImpl.fireWorker(workerId);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " fireWorker() time");
-
-        return firedEmployee;
+        return (Employee) countTime(() -> mainController.fireWorker(workerId));
     }
 
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
-        long start = System.currentTimeMillis();
-        boolean areEqual = mainControllerImpl.areWorkersEqual(emp1id, eml2id);
-        long end = System.currentTimeMillis();
-        long res = end - start;
-        System.out.println(res + " fireWorker() time");
 
-        return areEqual;
+        return (Boolean) countTime(() -> mainController.areWorkersEqual(emp1id, eml2id));
+    }
+
+    @Override
+    public Employee addEmployee(Employee employee) {
+        mainController.addEmployee(employee);
+        return employee;
+
+        //return (Employee) countTime(() -> mainController.addEmployee(employee));
     }
 
     @Override
     public void addListener(MyListener myListener) {
         long start = System.currentTimeMillis();
-        mainControllerImpl.addListener(myListener);
+        mainController.addListener(myListener);
         long end = System.currentTimeMillis();
         long res = end - start;
         System.out.println(res + " addListener() time");
     }
 
+
     @Override
     public void callListener() {
         long start = System.currentTimeMillis();
-        mainControllerImpl.callListener();
+        mainController.callListener();
         long end = System.currentTimeMillis();
         long res = end - start;
         System.out.println(res + " callListener() time");
