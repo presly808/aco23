@@ -1,5 +1,7 @@
 package week4;
 
+import java.util.Arrays;
+
 /**
  * Created by serhii on 03.02.18.
  */
@@ -9,10 +11,7 @@ public class NodeUtilsImpl implements NodeUtils {
     public void addToTail(Node first, Object val) {
 
         //find tail
-        Node currentNode = first;
-        while (currentNode.next != null) {
-            currentNode = currentNode.next;
-        }
+        Node currentNode = getTail(first);
 
         //add node
         currentNode.next = new Node(null, val);
@@ -42,9 +41,7 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNode(Object... mas) {
-        if (mas.length < 1) {
-            return null;
-        }
+        if (mas.length < 1) return null;
 
         Node currentNode = new Node(null, mas[0]);
         Node head = currentNode;
@@ -59,31 +56,91 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNodeR(Object... mas) {
-        return null;
+            // условие выхода из рекурсии
+        if(mas.length == 0) return null;
+
+        return new Node(createNodeR(Arrays.copyOfRange(mas, 1, mas.length)), mas[0]);
     }
 
     @Override
     public int count(Node chain) {
-        return 0;
+            // условие выхода из рекурсии
+        if(chain == null) return 0;
+
+        return count(chain.next) + 1;
     }
 
     @Override
     public Node remove(Node chain, Object val) {
+        Node currentNode = chain;
+
+        while (currentNode.next != null) {
+
+            if (currentNode.value.equals(val)) {
+                currentNode.next = null;
+                return currentNode;
+            }
+
+            currentNode = currentNode.next;
+        }
+
         return null;
     }
 
     @Override
     public Object[] toArray(Node chain) {
-        return new Object[0];
+
+        Object[] nodesArray = new Object[count(chain)];
+        Node currentNode = chain;
+
+        for (int i = 0; i < nodesArray.length; i++) {
+            nodesArray[i] = currentNode.value;
+            currentNode = currentNode.next;
+
+        }
+
+        return nodesArray;
     }
 
     @Override
     public Node reverse(Node curr) {
-        return null;
+//        find tail
+        Node tailNode = getTail(curr);
+
+//        set link to the head of reversed nodes
+        Node pointerNode = tailNode;
+
+//        reverse all "next" links for each node
+        while (pointerNode.value != curr.value) {
+            pointerNode.next = getPrevious(curr, pointerNode);
+            pointerNode = pointerNode.next;
+        }
+
+        return tailNode;
+    }
+
+    private Node getPrevious(Node head, Node toFind) {
+
+        while (head.next.value != toFind.value) {
+            head = head.next;
+        }
+
+        return head;
+    }
+
+    private Node getTail(Node chain) {
+        while (chain.next != null) {
+            chain = chain.next;
+        }
+
+        return chain;
     }
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        return null;
+        next.next = curr;
+        curr.next = prev;
+
+        return prev;
     }
 }
