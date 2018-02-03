@@ -8,10 +8,23 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public void addToTail(Node first, Object val) {
 
+        //find tail
+        Node currentNode = first;
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+
+        //add node
+        currentNode.next = new Node(null, val);
     }
 
     @Override
     public Node addToHead(Node chain, Object val) {
+
+        //find head
+        //add head
+
+        //method returns new head
         return null;
     }
 
