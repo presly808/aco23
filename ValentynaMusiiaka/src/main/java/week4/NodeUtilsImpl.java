@@ -119,21 +119,21 @@ public class NodeUtilsImpl implements NodeUtils {
         return tailNode;
     }
 
-    private Node getPrevious(Node head, Node toFind) {
+    private Node getPrevious(Node headNode, Node toFind) {
 
-        while (head.next.value != toFind.value) {
-            head = head.next;
+        while (headNode.next.value != toFind.value) {
+            headNode = headNode.next;
         }
 
-        return head;
+        return headNode;
     }
 
-    private Node getTail(Node chain) {
-        while (chain.next != null) {
-            chain = chain.next;
+    private Node getTail(Node curr) {
+        while (curr.next != null) {
+            curr = curr.next;
         }
 
-        return chain;
+        return curr;
     }
 
     @Override
