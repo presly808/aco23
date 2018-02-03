@@ -1,5 +1,7 @@
 package week4;
 
+import java.util.Arrays;
+
 /**
  * Created by serhii on 03.02.18.
  */
@@ -25,7 +27,7 @@ public class NodeUtilsImpl implements NodeUtils {
     public String toString(Node chain) {
         StringBuilder sb = new StringBuilder();
         Node node = chain;
-        while(node != null) {
+        while (node != null) {
             sb.append(node.toString()).append(" -> ");
             node = node.next;
         }
@@ -35,7 +37,7 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public Node createNode(Object... mas) {
         Node first = new Node(null, mas[0]);
-        final Node head  = first;
+        final Node head = first;
 
         for (int i = 1; i < mas.length; i++) {
             first.next = new Node(null, mas[i]);
@@ -47,16 +49,11 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNodeR(Object... mas) {
-        Node first = new Node(null, mas[mas.length - 1]);
-        final Node head  = first;
-
-        for (int i = mas.length - 2; i >= 0; i--) {
-            first.next = new Node(null, mas[i]);
-            first = first.next;
-        }
-
-        return head;
+        if (mas.length == 0)
+            return null;
+        return new Node(createNodeR(Arrays.copyOfRange(mas, 1, mas.length)), mas[0]);
     }
+
 
     @Override
     public int count(Node chain) {
@@ -70,8 +67,28 @@ public class NodeUtilsImpl implements NodeUtils {
     }
 
     @Override
-    public Node remove(Node chain, Object val) {
+    public int countR(Node chain) {
+        if (chain == null)
+            return 0;
+        return 1 + countR(chain.next);
+    }
 
+    @Override
+    public Node remove(Node chain, Object val) {
+        Node node = chain;
+        Node prev = null;
+        while (node != null) {
+            if (node.value.equals(val)) {
+                if (node == chain) {
+                    return node;
+                } else {
+                    prev.next = node.next;
+                    return node;
+                }
+            }
+            prev = node;
+            node = node.next;
+        }
         return null;
     }
 
@@ -81,7 +98,7 @@ public class NodeUtilsImpl implements NodeUtils {
 
         Node node = chain;
         int index = 0;
-        while(node != null) {
+        while (node != null) {
             o[index++] = node.value;
             node = node.next;
         }
@@ -105,6 +122,13 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        return null;
+        curr.next = prev;
+        prev = curr;
+        if (next == null) {
+            return curr;
+        }
+        curr = next;
+        next = curr.next;
+        return reverse(curr, next, prev);
     }
 }

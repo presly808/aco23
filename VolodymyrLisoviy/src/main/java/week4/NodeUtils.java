@@ -15,6 +15,8 @@ public interface NodeUtils {
 
     int count(Node chain);
 
+    int countR(Node chain);
+
     Node remove(Node chain, Object val);
 
     Object[] toArray(Node chain);
