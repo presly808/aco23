@@ -93,16 +93,25 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node reverse(Node curr) {
-            Object[] arr = toArray(curr);
-            Node forRet = new Node(null, arr[arr.length - 1]);
-            for (int i = arr.length  - 2; i > 0; i--) {
-                forRet.next = new Node(null, arr[i]);
-            }
-            return forRet;
+        Node node = curr;
+        Node prev = curr.next;
+
+        while (node != null){
+            Node next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+            return prev;
     }
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        return null;
+        curr.next = prev;
+        prev = curr;
+        if (next == null){
+            return curr;
+        }
+        return reverse(next, next.next, prev);
     }
 }
