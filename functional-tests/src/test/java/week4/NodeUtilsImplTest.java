@@ -58,7 +58,7 @@ public class NodeUtilsImplTest {
         Node node = nodeUtils.createNode(mas);
 
         Assert.assertThat(node, CoreMatchers.equalTo(1));
-        Assert.assertThat(node.next.next.next.next.next, CoreMatchers.equalTo(6));
+        Assert.assertThat(node.next.next.next.next.next.value, CoreMatchers.equalTo(6));
 
     }
 
@@ -69,7 +69,7 @@ public class NodeUtilsImplTest {
         Node node = nodeUtils.createNodeR(mas);
 
         Assert.assertThat(node, CoreMatchers.equalTo(1));
-        Assert.assertThat(node.next.next.next.next.next, CoreMatchers.equalTo(6));
+        Assert.assertThat(node.next.next.next.next.next.value, CoreMatchers.equalTo(6));
 
     }
 
@@ -101,8 +101,8 @@ public class NodeUtilsImplTest {
     public void reverse() throws Exception {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Node newHead = nodeUtils.reverse(node);
-        Assert.assertThat(newHead.value, CoreMatchers.equalTo(5));
-        Assert.assertThat(newHead.next.next, CoreMatchers.equalTo(3));
+        Assert.assertThat(newHead.value, CoreMatchers.equalTo(3));
+        Assert.assertThat(newHead.next.next.value, CoreMatchers.equalTo(5));
 
     }
 
