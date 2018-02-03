@@ -1,8 +1,6 @@
 package company.notifier;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Created by serhii on 27.01.18.
@@ -45,5 +43,4 @@ public class MyEvent {
     public void setInfo(Object info) {
         this.info = info;
     }
-
 }
