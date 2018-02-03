@@ -93,7 +93,7 @@ public class NodeUtilsImplTest {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Object[] actual = nodeUtils.toArray(node);
         Assert.assertThat(actual.length, CoreMatchers.equalTo(3));
-        Assert.assertThat(actual[0], CoreMatchers.equalTo(3));
+        Assert.assertThat(actual[0], CoreMatchers.equalTo(5));
 
     }
 
