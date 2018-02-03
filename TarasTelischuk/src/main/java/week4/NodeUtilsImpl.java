@@ -1,5 +1,7 @@
 package week4;
 
+import java.util.Arrays;
+
 /**
  * Created by serhii on 03.02.18.
  */
@@ -34,16 +36,17 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNode(Object... mas) {
-        if (mas.length == 0){
+       if (mas.length == 0){
             return null;
         }
-        Node headPointer = new Node(null, null);
+        Node headPointer = new Node(null, mas[0]);
         Node lastPointer = headPointer;
         int count = 0;
-        for (Object obj: mas) {
-            lastPointer.next = new Node( null, obj);
+        for (int i = 1; i < mas.length; i++) {
+            lastPointer.next = new Node( null, mas[i]);
             lastPointer = lastPointer.next;
             count++;
+
         }
         System.out.println("Create Node count = " + count);
 
@@ -52,18 +55,31 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNodeR(Object... mas) {
-        return null;
+        if (mas == null || mas.length == 0) {
+            return null;
+        }
+        return new Node(createNodeR(Arrays.copyOfRange(mas, 1, mas.length)), mas[0]);
+
     }
 
     @Override
     public int count(Node chain) {
+        if (chain != null) {
+            return count(chain.next) + 1;
+        }
         return 0;
     }
 
     @Override
     public Node remove(Node chain, Object val) {
+        if (chain.value != null){
+            return new Node();
+        }
+        if (chain.value == val || chain.next != null){
+            return new Node(chain.next.next, chain.next.value);
+        }
         return null;
-    }
+     }
 
     @Override
     public Object[] toArray(Node chain) {
