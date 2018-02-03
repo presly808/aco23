@@ -16,6 +16,11 @@
       "baseClasses":["company/notifier", "company/utils/factory"],
       "testClasses":["company/utils/factory"]
     },
+    "week4" : {
+      "title": "NodeUtils",
+      "baseClasses":["week4"],
+      "testClasses":["week4"]
+    },
     "company" : {
       "title": "MVCPatternCompany",
       "baseClasses":["company"],
