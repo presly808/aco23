@@ -83,16 +83,46 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Object[] toArray(Node chain) {
-        return new Object[0];
+        if (chain == null){
+            System.out.println("Incorrect chain");
+            return null;
+        }
+        Node lastPointer = chain;
+        Object[] arr = new Object[count(chain)];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = lastPointer.value;
+            lastPointer = lastPointer.next;
+        }
+        return arr;
     }
 
     @Override
     public Node reverse(Node curr) {
-        return null;
+        if (curr == null){
+            System.out.println("Incorrect curr");
+            return null;
+        }
+        Node headPointer = curr;
+        Node lastPointer = headPointer.next;
+        while (lastPointer != null) {
+            Node nextPointer = lastPointer.next;
+            lastPointer.next = headPointer;
+            headPointer = lastPointer;
+            lastPointer = nextPointer;
+        }
+        return headPointer;
     }
 
+
     @Override
-    public Node reverse(Node curr, Node next, Node prev) {
-        return null;
+    public Node reverseR(Node curr, Node next, Node prev) {
+        curr.next = prev;
+        prev = curr;
+
+        if (next == null){
+            return curr;
+        }
+        return reverseR(next, next.next, prev);
     }
 }

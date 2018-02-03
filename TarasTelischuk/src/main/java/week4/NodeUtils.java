@@ -23,7 +23,6 @@ public interface NodeUtils {
     Node reverse(Node curr);
 
     //reverse usin recursion
-    Node reverse(Node curr, Node next, Node prev);
-
+    Node reverseR(Node curr, Node next, Node prev);
 
 }

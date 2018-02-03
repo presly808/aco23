@@ -106,4 +106,14 @@ public class NodeUtilsImplTest {
 
     }
 
+    @Test
+    public void reverseR() throws Exception {
+        Node node2 = new Node(null, 3);
+        Node node1 = new Node(node2, 4);
+        Node node = new Node(node1, 5);
+        Node newHead = nodeUtils.reverseR(node, node1, null);
+        Assert.assertThat(newHead.value, CoreMatchers.equalTo(3));
+        Assert.assertThat(newHead.next.next.value, CoreMatchers.equalTo(5));
+    }
+
 }
