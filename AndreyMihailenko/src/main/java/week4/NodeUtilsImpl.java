@@ -81,10 +81,11 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Object[] toArray(Node chain) {
+        Node node = chain;
         Object[] forRet = new Object[count(chain)];
         for (int i = 0; i < forRet.length; i++) {
-            forRet[i] = chain.value;
-            chain = chain.next;
+            forRet[i] = node.value;
+            node = node.next;
         }
         return forRet;
     }
@@ -105,11 +106,12 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        curr.next = prev;
-        prev = curr;
+        Node before = prev;
+        curr.next = before;
+        before = curr;
         if (next == null){
             return curr;
         }
-        return reverse(next, next.next, prev);
+        return reverse(next, next.next, before);
     }
 }
