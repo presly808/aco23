@@ -33,6 +33,13 @@
 12. A codereviewer will check you code and leaves some comments\
 	if have problem -> go to 4th point
 	else you branch will be merged into master
+	
+	
+Quick update of your branch by master's changes (if master is updated, we want to have all new changes in our branch)
+git -> repository -> fetch (update origin from github)
+being on your branch you will chose (branch -> origin/master -> merge)
+
+
 
 
 
