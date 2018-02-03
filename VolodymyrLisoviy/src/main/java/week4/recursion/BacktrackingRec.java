@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Created by serhii on 03.02.18.
@@ -28,12 +27,12 @@ public class BacktrackingRec {
     }
 
     // [1,5,10,20,9,7] , 13 -> [1,5,7]
-    public static int[] findChainIfPossible(int[] mas, int target){
+    public static int[] findChainIfPossible(int[] mas, int target) {
         if (!canFindSum(mas, target))
             return new int[0];
 
         if (target == mas[0])
-            return new int[] {target};
+            return new int[]{target};
 
         int[] buf = Arrays.copyOfRange(mas, 1, mas.length);
 
@@ -46,7 +45,7 @@ public class BacktrackingRec {
     }
 
     // more complex solution based on above method
-    public static Map<Integer, List<Integer>> allPossibleCombination(int[] income, int[] targets){
+    public static Map<Integer, List<Integer>> allPossibleCombination(int[] income, int[] targets) {
         Map<Integer, List<Integer>> map = new HashMap<>();
 
         for (int target : targets) {
