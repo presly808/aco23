@@ -4,7 +4,6 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by serhii on 03.02.18.
@@ -14,7 +13,7 @@ public class NodeUtilsImplTest {
     private NodeUtils nodeUtils = new NodeUtilsImpl();
 
     @Test
-    public void addToTail() throws Exception {
+    public void addToTail() {
 
         Node node = new Node(null, 5);
 
@@ -25,11 +24,10 @@ public class NodeUtilsImplTest {
         Assert.assertThat(node.next.next.value, CoreMatchers.equalTo(7));
 
 
-
     }
 
     @Test
-    public void addToHead() throws Exception {
+    public void addToHead() {
 
         Node node = new Node(null, 5);
 
@@ -39,8 +37,8 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void testToString() throws Exception {
-        Node node = new Node(new Node(new Node(null,3), 4), 5);
+    public void testToString() {
+        Node node = new Node(new Node(new Node(null, 3), 4), 5);
 
 
         String actual = nodeUtils.toString(node);
@@ -52,8 +50,8 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void createNode() throws Exception {
-        Integer[] mas = {1,2,3,4,5,6};
+    public void createNode() {
+        Integer[] mas = {1, 2, 3, 4, 5, 6};
 
         Node node = nodeUtils.createNode(mas);
 
@@ -63,8 +61,8 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void createNodeR() throws Exception {
-        Integer[] mas = {1,2,3,4,5,6};
+    public void createNodeR() {
+        Integer[] mas = {1, 2, 3, 4, 5, 6};
 
         Node node = nodeUtils.createNodeR(mas);
 
@@ -74,24 +72,24 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void count() throws Exception {
-        Node node = new Node(new Node(new Node(null,3), 4), 5);
+    public void count() {
+        Node node = new Node(new Node(new Node(null, 3), 4), 5);
         Assert.assertThat(nodeUtils.count(node), CoreMatchers.equalTo(3));
 
 
     }
 
     @Test
-    public void remove() throws Exception {
-        Node node = new Node(new Node(new Node(null,3), 4), 5);
-        Assert.assertThat(nodeUtils.remove(node,4).value, CoreMatchers.equalTo(4));
+    public void remove() {
+        Node node = new Node(new Node(new Node(null, 3), 4), 5);
+        Assert.assertThat(nodeUtils.remove(node, 4).value, CoreMatchers.equalTo(4));
 
     }
 
 
     @Test
-    public void toArray() throws Exception {
-        Node node = new Node(new Node(new Node(null,3), 4), 5);
+    public void toArray() {
+        Node node = new Node(new Node(new Node(null, 3), 4), 5);
         Object[] actual = nodeUtils.toArray(node);
         Assert.assertThat(actual.length, CoreMatchers.equalTo(3));
         Assert.assertThat(actual[0], CoreMatchers.equalTo(5));
@@ -99,8 +97,8 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void reverse() throws Exception {
-        Node node = new Node(new Node(new Node(null,3), 4), 5);
+    public void reverse() {
+        Node node = new Node(new Node(new Node(null, 3), 4), 5);
         Node newHead = nodeUtils.reverse(node);
         Assert.assertThat(newHead.value, CoreMatchers.equalTo(3));
         Assert.assertThat(newHead.next.next.value, CoreMatchers.equalTo(5));
@@ -108,7 +106,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void reverseR() throws Exception {
+    public void reverseR() {
         Node node1 = new Node(null, 3);
         Node node2 = new Node(node1, 4);
         Node node3 = new Node(node2, 5);

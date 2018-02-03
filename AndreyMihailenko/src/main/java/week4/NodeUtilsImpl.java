@@ -1,7 +1,5 @@
 package week4;
 
-import javax.crypto.interfaces.PBEKey;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.Arrays;
 
 /**
