@@ -30,8 +30,14 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNode(Object... mas) {
+        Node node = new Node(null, mas[0]);
+        Node head = node;
 
-        return null;
+        for (int i = 1; i < mas.length; i++) {
+            addToTail(node, mas[i]);
+            node = node.next;
+        }
+        return head;
     }
 
     @Override
