@@ -42,8 +42,8 @@ public class NodeUtilsImpl implements NodeUtils {
         Node headPointer = new Node(null, mas[0]);
         Node lastPointer = headPointer;
         int count = 0;
-        for (int i = 1; i < mas.length; i++) {
-            lastPointer.next = new Node( null, mas[i]);
+        for (Object obj: mas) {
+            lastPointer.next = new Node( null, (int)obj +1);
             lastPointer = lastPointer.next;
             count++;
 
