@@ -127,8 +127,6 @@ public class NodeUtilsImpl implements NodeUtils {
         if (next == null) {
             return curr;
         }
-        curr = next;
-        next = curr.next;
-        return reverse(curr, next, prev);
+        return reverse(next, next.next, prev);
     }
 }
