@@ -45,6 +45,10 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNodeR(Object... mas) {
+        Node head = new Node(null, mas[0]);
+        Node last = head;
+
+
         return null;
     }
 
@@ -69,7 +73,7 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public Object[] toArray(Node chain) {
         List<Object> objects = new ArrayList<>();
-        while (chain.next != null) {
+        while (chain != null) {
             objects.add(chain.value);
             chain = chain.next;
         }
