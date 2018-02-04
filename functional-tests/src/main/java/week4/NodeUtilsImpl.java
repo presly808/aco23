@@ -45,13 +45,33 @@ public class NodeUtilsImpl implements NodeUtils {
         return new Object[0];
     }
 
+    // 1,2,3,4,5 -> 5,4,3,2,1
     @Override
     public Node reverse(Node curr) {
-        return null;
+
+        Node next = null;
+        Node prev = null;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
     }
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        return null;
+
+        if(curr == null){
+            return prev;
+        }
+
+        next = curr.next;
+        curr.next = prev;
+
+        return reverse(next, next, curr);
     }
 }
