@@ -1,5 +1,6 @@
 package week4.recursion;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,15 @@ public class BacktrackingRec {
 
     // [1,5,10,20,9,7] , 14-> true
     public static boolean canFindSum(int[] mas, int target){
-        return true;
+        if(mas.length == 0){
+            return false;
+        }
+        if(target == 0){
+            return true;
+        }
+        int [] mas1 = Arrays.copyOfRange(mas, 0, mas.length);
+        return canFindSum(mas1, target - mas[0]) || canFindSum(mas1, target);
+
     }
 
     // [1,5,10,20,9,7] , 13 -> [1,5,7]
