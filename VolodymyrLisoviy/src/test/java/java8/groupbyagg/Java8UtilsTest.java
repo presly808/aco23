@@ -20,7 +20,6 @@ import static org.junit.Assert.*;
 public class Java8UtilsTest {
 
     private List<User> userList;
-
     @Before
     public void before(){
         userList = new ArrayList<>();
@@ -59,7 +58,7 @@ public class Java8UtilsTest {
         assertThat(departmentListMap.keySet().size(), equalTo(3));
         assertThat(departmentListMap.get(new Department(1,"","")).size(),
                 equalTo(2));
-        assertThat(departmentListMap.values().size(), equalTo(6));
+        assertThat(departmentListMap.values().size(), equalTo(3));
     }
 
     @Test
