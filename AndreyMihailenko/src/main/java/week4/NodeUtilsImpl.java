@@ -90,6 +90,7 @@ public class NodeUtilsImpl implements NodeUtils {
         return forRet;
     }
 
+    //
     @Override
     public Node reverse(Node curr) {
         Node node = curr;
@@ -103,6 +104,7 @@ public class NodeUtilsImpl implements NodeUtils {
         }
             return prev;
     }
+
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
