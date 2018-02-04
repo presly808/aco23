@@ -68,7 +68,7 @@ public class Java8UtilsTest {
     public void groupByDepartmentWithSumOfSalaries() throws Exception {
         Map<Department, Double> departmentDoubleMap = Java8Utils.groupByDepartmentWithSumOfSalaries(userList, 2);
         assertThat(departmentDoubleMap.get(new Department(1,"","")),
-                equalTo(8000));
+                equalTo(8000.0));
 
     }
 
