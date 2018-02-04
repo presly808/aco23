@@ -107,8 +107,8 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node reverse(Node curr) {
-        Node prevNode = curr;
-        Node node = curr.next;
+        Node prevNode = null;
+        Node node = curr;
 
         while (node != null) {
             Node nextNode = node.next;
@@ -123,10 +123,9 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
         curr.next = prev;
-        prev = curr;
         if (next == null) {
             return curr;
         }
-        return reverse(next, next.next, prev);
+        return reverse(next, next.next, curr);
     }
 }
