@@ -8,6 +8,7 @@ import company.model.Manager;
 import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Comparator;
@@ -17,17 +18,21 @@ import static org.junit.Assert.*;
 
 public class MainControllerProxyTest {
 
+    private MainController mainController;
+
+    @Before
+    public void before(){
+        mainController = MainFactory.create(true);
+    }
+
     @Test
     public void addEmployee() throws Exception {
-        MainControllerProxy mainControllerProxy = new MainControllerProxy(
-                new MainControllerImpl(new AppDb()));
-        Employee withId = mainControllerProxy.addEmployee(new Employee("Ivan", 3000));
+        Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
     }
 
     @Test
     public void getAllEmployees() throws Exception {
-        MainController mainController = MainFactory.create(true);
         mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(2));
@@ -35,14 +40,12 @@ public class MainControllerProxyTest {
 
     @Test
     public void calculateSalary() throws Exception {
-        MainController mainController = MainFactory.create(true);
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.calculateSalary(withId), CoreMatchers.equalTo(3000));
     }
 
     @Test
     public void calculateSalaries() throws Exception {
-        MainController mainController = MainFactory.create(true);
 
         Manager man = new Manager("anton", 5000);
         man.addSubworker(new Employee("1", 1000));
@@ -57,7 +60,6 @@ public class MainControllerProxyTest {
 
     @Test
     public void getById() throws Exception {
-        MainController mainController = MainFactory.create(true);
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getById(withId.getId()), CoreMatchers.equalTo(withId));
@@ -74,7 +76,6 @@ public class MainControllerProxyTest {
 
     @Test
     public void callListener() throws Exception {
-        MainController mainController = MainFactory.create(true);
         mainController.addListener(obj -> {
             Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
 
@@ -86,7 +87,6 @@ public class MainControllerProxyTest {
 
     @Test
     public void filterWithPredicate() throws Exception {
-        MainController mainController = MainFactory.create(true);
 
         Employee emp1 = new Employee("anton", 1000);
         Employee emp2 = new Employee("Andrey", 3000);
@@ -108,7 +108,6 @@ public class MainControllerProxyTest {
 
     @Test
     public void areWorkersEqual() throws Exception {
-        MainController mainController = MainFactory.create(true);
         Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
         Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
         assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
@@ -116,7 +115,6 @@ public class MainControllerProxyTest {
 
     @Test
     public void findWithFilter() throws Exception {
-        MainController mainController = MainFactory.create(true);
         mainController.addEmployee(new Employee("anton", 3000));
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));

@@ -2,22 +2,30 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
+import company.notifier.MyListener;
+import company.utils.MyUtils;
 import company.utils.filtering.EmployeePredicate;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by serhii on 20.01.18.
+ *  Created by serhii on 20.01.18.
  */
 public class MainControllerImpl implements MainController, EmployeePredicate {
 
     private AppDb appDb;
+    private List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
+    }
+
+    public List<MyListener> getListeners() {
+        return listeners;
     }
 
     @Override
@@ -68,6 +76,7 @@ public class MainControllerImpl implements MainController, EmployeePredicate {
 
     @Override
     public Employee fireWorker(int workerId) {
+        callListener();
         Employee employee = appDb.getById(workerId);
         if (employee != null)
             employee.setEndWorkDate(new Date());
@@ -95,4 +104,23 @@ public class MainControllerImpl implements MainController, EmployeePredicate {
         }
         return false;
     }
+
+
+    @Override
+    public void addListener(MyListener listener) {
+        this.listeners.add(listener);
+
+    }
+
+
+    @Override
+    public void callListener() {
+        for (MyListener listener: listeners) {
+            listener.eventOccur(new MyEvent(new Date(),this.getClass().getName() + "."
+                    + MyUtils.getMethodName(3),null));
+        }
+
+    }
+
+
 }
