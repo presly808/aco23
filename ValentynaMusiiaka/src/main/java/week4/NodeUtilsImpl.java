@@ -128,12 +128,12 @@ public class NodeUtilsImpl implements NodeUtils {
         return startPosition;
     }
 
-    private Node getTail(Node currentNode) {
-        while (currentNode.next != null) {
-            currentNode = currentNode.next;
+    private Node getTail(Node curr) {
+        while (curr.next != null) {
+            curr = curr.next;
         }
 
-        return currentNode;
+        return curr;
     }
 
     @Override
