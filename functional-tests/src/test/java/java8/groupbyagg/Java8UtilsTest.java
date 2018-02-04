@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,8 @@ public class Java8UtilsTest {
 
     @Before
     public void before(){
+        userList = new ArrayList<>();
+
         Department it = new Department(1,"IT","KIEV");
         Department support = new Department(2,"SUPPORT","KIEV");
         Department test = new Department(3,"TEST","ODESSA");
@@ -46,8 +49,8 @@ public class Java8UtilsTest {
     public void topBySalaryWithLimit() throws Exception {
         List<User> res = Java8Utils.topBySalaryWithLimit(userList,2);
         assertThat(res.size(), is(2));
-        assertThat(res.get(0).money, equalTo(5000));
-        assertThat(res.get(1).money, equalTo(3500));
+        assertThat(res.get(0).money, equalTo(5000.0));
+        assertThat(res.get(1).money, equalTo(3500.0));
     }
 
     @Test
@@ -55,11 +58,10 @@ public class Java8UtilsTest {
         Map<Department, List<User>> departmentListMap = Java8Utils.groupByDepartment(userList);
 
 
-
         assertThat(departmentListMap.keySet().size(), equalTo(3));
         assertThat(departmentListMap.get(new Department(1,"","")).size(),
                 equalTo(2));
-        assertThat(departmentListMap.values().size(), equalTo(6));
+        assertThat(departmentListMap.values().stream().flatMap(List::stream), equalTo(6));
     }
 
     @Test
