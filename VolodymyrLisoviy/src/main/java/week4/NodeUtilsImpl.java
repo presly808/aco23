@@ -107,8 +107,8 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node reverse(Node curr) {
-        Node prevNode = curr;
-        Node node = curr.next;
+        Node prevNode = null;
+        Node node = curr;
 
         while (node != null) {
             Node nextNode = node.next;
