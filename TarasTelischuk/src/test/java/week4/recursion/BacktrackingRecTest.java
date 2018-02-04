@@ -24,7 +24,7 @@ public class BacktrackingRecTest {
 
     @Test
     public void canFindSumNeg() throws Exception {
-        boolean res = BacktrackingRec.canFindSum(new int[]{1,5,10,20,9,7},120);
+        boolean res = BacktrackingRec.canFindSum(new int[]{1,5,10,20,9,7},23);
         Assert.assertFalse(res);
     }
 
