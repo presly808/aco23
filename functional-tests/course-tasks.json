@@ -29,6 +29,11 @@
       "title": "MVCPatternCompany",
       "baseClasses":["company"],
       "testClasses":["company"]
+    },
+    "java8groupbyagg" : {
+      "title": "java8groupbyagg",
+      "baseClasses":["java8/groupbyagg"],
+      "testClasses":["java8/groupbyagg"]
     }
 
   }
