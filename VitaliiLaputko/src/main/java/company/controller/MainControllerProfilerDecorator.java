@@ -2,22 +2,23 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.utils.MyAction;
 import company.utils.filtering.EmployeePredicate;
 
 import java.util.Comparator;
 import java.util.List;
 
-public class MainControllerDecorator {
+public class MainControllerProfilerDecorator {
 
     MainController mainController = new MainControllerImpl(new AppDb());
 
-    public MainControllerDecorator() {
+    public MainControllerProfilerDecorator() {
     }
 
     private Object timeCount(MyAction action){
         long startTime = System.currentTimeMillis();
         // start
-        Object ret = action.action();
+        Object ret = action.invoke();
         // end
         long endTime = System.currentTimeMillis();
 

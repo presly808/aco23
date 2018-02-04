@@ -10,14 +10,14 @@ public class MainControllerIDecoratorTest {
 
     @Test
     public void addEmployee() {
-        MainControllerDecorator mainControllerIDecorator = new MainControllerDecorator();
+        MainControllerProfilerDecorator mainControllerIDecorator = new MainControllerProfilerDecorator();
         Employee withId = mainControllerIDecorator.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
     }
 
     @Test
     public void getAllEmployees() {
-        MainControllerDecorator mainControllerIDecorator = new MainControllerDecorator();
+        MainControllerProfilerDecorator mainControllerIDecorator = new MainControllerProfilerDecorator();
         mainControllerIDecorator.addEmployee(new Employee("Ivan", 3000));
         mainControllerIDecorator.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainControllerIDecorator.getAllEmployees().size(), CoreMatchers.equalTo(2));
