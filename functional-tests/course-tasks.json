@@ -20,6 +20,10 @@
       "title": "NodeUtils",
       "baseClasses":["week4"],
       "testClasses":["week4"]
+    },"recursion" : {
+      "title": "recursion",
+      "baseClasses":["week4/recursion"],
+      "testClasses":["week4/recursion"]
     },
     "company" : {
       "title": "MVCPatternCompany",
