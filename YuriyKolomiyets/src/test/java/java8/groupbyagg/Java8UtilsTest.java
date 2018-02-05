@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -57,10 +58,11 @@ public class Java8UtilsTest {
     public void groupByDepartment() throws Exception {
         Map<Department, List<User>> departmentListMap = Java8Utils.groupByDepartment(userList);
 
+
         assertThat(departmentListMap.keySet().size(), equalTo(3));
         assertThat(departmentListMap.get(new Department(1,"","")).size(),
                 equalTo(2));
-        assertThat(departmentListMap.values().stream().flatMap(List::stream), equalTo(6));
+        assertThat(departmentListMap.values().stream().flatMap(List::stream).collect(Collectors.toList()).size(), equalTo(6));
     }
 
     @Test
