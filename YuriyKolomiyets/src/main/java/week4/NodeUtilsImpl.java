@@ -29,7 +29,7 @@ public class NodeUtilsImpl implements NodeUtils {
         Node newNode = createOneNode(val);
 
         if (chain == null) {
-            return chain = newNode;
+            return newNode;
 
         } else {
             newNode.next = chain;
@@ -116,7 +116,7 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public Node reverse(Node curr) {
 
-        Node next = curr;
+        Node next;
         Node prev = null;
 
         while (curr != null){

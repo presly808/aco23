@@ -3,7 +3,6 @@ package week4.recursion;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static java.util.Arrays.copyOfRange;
 
@@ -48,7 +47,7 @@ public class BacktrackingRec {
 
         addAndRet(buff, mas[0]);
 
-        int[] arr = Arrays.copyOfRange(mas, 1, mas.length);
+        int[] arr = copyOfRange(mas, 1, mas.length);
 
         int[] a1 = findChainIfPossible(arr, buff, target);
         int[] a2 = findChainIfPossible(arr, addAndRet(buff, mas[0]),target - mas[0]);

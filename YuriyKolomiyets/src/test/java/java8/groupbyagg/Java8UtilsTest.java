@@ -1,9 +1,6 @@
 package java8.groupbyagg;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +26,7 @@ public class Java8UtilsTest {
         Department it = new Department(1,"IT","KIEV");
         Department support = new Department(2,"SUPPORT","KIEV");
         Department test = new Department(3,"TEST","ODESSA");
-        Department man = new Department(4,"MAN","ODESSA");
+        //Department man = new Department(4,"MAN","ODESSA");
 
 
         userList.add(new User(1,"Kolia", 3000, it));
