@@ -1,9 +1,6 @@
 package java8.groupbyagg;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,8 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by serhii on 04.02.18.
@@ -20,32 +19,32 @@ import static org.junit.Assert.*;
 public class Java8UtilsTest {
 
     private List<User> userList;
+
     @Before
-    public void before(){
+    public void before() {
         userList = new ArrayList<>();
-        Department it = new Department(1,"IT","KIEV");
-        Department support = new Department(2,"SUPPORT","KIEV");
-        Department test = new Department(3,"TEST","ODESSA");
-        Department man = new Department(4,"MAN","ODESSA");
+        Department it = new Department(1, "IT", "KIEV");
+        Department support = new Department(2, "SUPPORT", "KIEV");
+        Department test = new Department(3, "TEST", "ODESSA");
 
 
-        userList.add(new User(1,"Kolia", 3000, it));
-        userList.add(new User(2,"Oleg", 2000, test));
-        userList.add(new User(3,"Ivan", 5000, it));
-        userList.add(new User(4,"Olesia", 1000, support));
-        userList.add(new User(5,"Petro", 2500, test));
-        userList.add(new User(6,"Jenia", 3500, support));
+        userList.add(new User(1, "Kolia", 3000, it));
+        userList.add(new User(2, "Oleg", 2000, test));
+        userList.add(new User(3, "Ivan", 5000, it));
+        userList.add(new User(4, "Olesia", 1000, support));
+        userList.add(new User(5, "Petro", 2500, test));
+        userList.add(new User(6, "Jenia", 3500, support));
     }
 
     @After
-    public void after(){
+    public void after() {
         userList = null;
     }
 
 
     @Test
     public void topBySalaryWithLimit() {
-        List<User> res = Java8Utils.topBySalaryWithLimit(userList,2);
+        List<User> res = Java8Utils.topBySalaryWithLimit(userList, 2);
         assertThat(res.size(), is(2));
         assertThat(res.get(0).money, equalTo(5000.0));
         assertThat(res.get(1).money, equalTo(3500.0));
@@ -56,7 +55,7 @@ public class Java8UtilsTest {
         Map<Department, List<User>> departmentListMap = Java8Utils.groupByDepartment(userList);
 
         assertThat(departmentListMap.keySet().size(), equalTo(3));
-        assertThat(departmentListMap.get(new Department(1,"","")).size(),
+        assertThat(departmentListMap.get(new Department(1, "", "")).size(),
                 equalTo(2));
         assertThat(departmentListMap.values().stream().flatMap(List::stream).toArray().length, equalTo(6));
     }
@@ -64,7 +63,7 @@ public class Java8UtilsTest {
     @Test
     public void groupByDepartmentWithSumOfSalaries() {
         Map<Department, Double> departmentDoubleMap = Java8Utils.groupByDepartmentWithSumOfSalaries(userList, 2);
-        assertThat(departmentDoubleMap.get(new Department(1,"","")),
+        assertThat(departmentDoubleMap.get(new Department(1, "", "")),
                 equalTo(8000.0));
 
     }
@@ -79,7 +78,7 @@ public class Java8UtilsTest {
     @Test
     public void amountOfAllSalariesUsingReduce() {
         Double aDouble = Java8Utils.amountOfAllSalariesUsingReduce(userList);
-        assertEquals(17000,aDouble,0);
+        assertEquals(17000, aDouble, 0);
 
     }
 
@@ -87,6 +86,12 @@ public class Java8UtilsTest {
     public void maxSalariesViaCollector() {
         Double res = Java8Utils.maxSalariesViaCollector(userList);
         assertEquals(5000, res, 0);
+    }
+
+    @Test
+    public void groupByName() {
+        userList.add(new User(7, "Petro", 7000, null));
+        assertEquals(2, Java8Utils.groupByName(userList).get("Petro").size());
     }
 
 }
