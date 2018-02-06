@@ -115,14 +115,15 @@ public class NodeUtilsImpl implements NodeUtils {
     }
 
 
+
+
     @Override
     public Node reverseR(Node curr, Node next, Node prev) {
         curr.next = prev;
-        prev = curr;
 
         if (next == null){
             return curr;
         }
-        return reverseR(next, next.next, prev);
+        return reverseR(next, next.next, curr);
     }
 }
