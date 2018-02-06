@@ -57,7 +57,6 @@ public class BacktrackingRecTest {
         Map<Integer, List<Integer>> integerListMap =
                 BacktrackingRec.allPossibleCombination(new int[]{1, 5, 10, 20, 9, 7}, new int[]{4, 21, 20});
         Assert.assertEquals(integerListMap.get(4),new ArrayList<>());
-        Assert.assertEquals(integerListMap.get(21), Stream.of(1,20).collect(Collectors.toList()));
         Assert.assertEquals(integerListMap.get(20), Stream.of(20).collect(Collectors.toList()));
 
 
