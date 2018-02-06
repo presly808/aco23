@@ -1,8 +1,11 @@
 package week4.recursion;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by serhii on 03.02.18.
@@ -28,7 +31,7 @@ public class BacktrackingRec {
         return findChainIfPossible(mas, new int[0], target);
     }
 
-        private static int[] findChainIfPossible(int[] mas, int[] buf, int target){
+    private static int[] findChainIfPossible(int[] mas, int[] buf, int target){
         if(mas.length == 0){
             return target == 0 ? buf : new int[]{};
         }
@@ -48,8 +51,13 @@ public class BacktrackingRec {
 //-------------------------------------------------------------------------------------------------
 
     // more complex solution based on above method
-    public static Map<Integer, List<Integer>> allPossibleCombination(int[] income, int[] targets){
-        return null;
+    public static Map<Integer, List<Integer>> allPossibleCombination(int[] income, int[] targets) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+
+        for (int target: targets){
+            map.put(target, IntStream.of(findChainIfPossible(income, target)).boxed().collect(Collectors.toList()));
+        }
+        return map;
     }
 
 }

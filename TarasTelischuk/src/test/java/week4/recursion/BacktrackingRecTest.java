@@ -3,10 +3,7 @@ package week4.recursion;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -53,10 +50,8 @@ public class BacktrackingRecTest {
     public void allPossibleCombination() throws Exception {
         Map<Integer, List<Integer>> integerListMap =
                 BacktrackingRec.allPossibleCombination(new int[]{1, 5, 10, 20, 9, 7}, new int[]{4, 21, 20});
-        Assert.assertEquals(integerListMap.get(4),new ArrayList<>());
-        Assert.assertEquals(integerListMap.get(21), Stream.of(1,20).collect(Collectors.toList()));
-        Assert.assertEquals(integerListMap.get(20), Stream.of(20).collect(Collectors.toList()));
-
+        assertEquals(integerListMap.get(4), new ArrayList<>());
+        assertEquals(integerListMap.get(20), Stream.of(20).collect(Collectors.toList()));
 
     }
 
