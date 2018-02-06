@@ -1,19 +1,15 @@
 package week4.recursion;
 
-import org.hamcrest.CoreMatchers;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
 
 /**
  * Created by serhii on 03.02.18.
