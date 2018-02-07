@@ -118,20 +118,23 @@ public class NodeUtilsImpl implements NodeUtils {
     }
 
     private Node getPrevious(Node chain, Node toFind) {
+        Node current = chain;
 
-        while (chain.next.value != toFind.value) {
-            chain = chain.next;
+        while (current.next.value != toFind.value) {
+            current = current.next;
         }
 
-        return chain;
+        return current;
     }
 
     private Node getTail(Node chain) {
-        while (chain.next != null) {
-            chain = chain.next;
+        Node current = chain;
+
+        while (current.next != null) {
+            current = current.next;
         }
 
-        return chain;
+        return current;
     }
 
     @Override
@@ -151,15 +154,16 @@ public class NodeUtilsImpl implements NodeUtils {
     }
 
     @Override
-    public Node reverse(Node chainCurr, Node chainPrev, Node chainNext) {
+    public Node reverse(Node curr, Node prev, Node next) {
+        Node currentNode = curr;
 
-        chainPrev = chainCurr.next;
-        chainCurr.next = chainNext;
+        prev = currentNode.next;
+        currentNode.next = next;
 
 //        условие выхода из рекурсии
-        if(chainPrev == null) return chainCurr;
+        if(prev == null) return currentNode;
 
-        return reverse(chainPrev, chainPrev.next, chainCurr);
+        return reverse(prev, prev.next, currentNode);
     }
 }
 
