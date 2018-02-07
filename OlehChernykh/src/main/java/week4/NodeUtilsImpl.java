@@ -17,19 +17,18 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node addToHead(Node chain, Object val) {
-        Node head = new Node(chain,val);
-        return head;
+        return new Node(chain,val);
     }
 
     @Override
     public String toString(Node chain) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         Node iter = chain;
-        while (iter != null) {
-            res += iter.value + "->";
+        while (null != iter) {
+            res.append(iter.value).append("->");
             iter = iter.next;
         }
-        return res;
+        return res.toString();
     }
 
     @Override
@@ -78,9 +77,8 @@ public class NodeUtilsImpl implements NodeUtils {
             objects.add(chain.value);
             chain = chain.next;
         }
-        Object[] obj = objects.toArray();
 
-        return obj;
+        return objects.toArray();
     }
 
     @Override

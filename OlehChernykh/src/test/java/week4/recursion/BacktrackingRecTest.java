@@ -12,40 +12,40 @@ import static org.junit.Assert.*;
  */
 public class BacktrackingRecTest {
     @Test
-    public void canFindSum() throws Exception {
+    public void canFindSum() {
         boolean res = BacktrackingRec.canFindSum(new int[]{1, 5, 10, 20, 9, 7}, 34);
         Assert.assertTrue(res);
     }
 
     @Test
-    public void canFindSumNeg() throws Exception {
+    public void canFindSumNeg() {
         boolean res = BacktrackingRec.canFindSum(new int[]{1, 5, 10, 20, 9, 7}, 120);
         Assert.assertFalse(res);
     }
 
     @Test
-    public void findChainIfPossible() throws Exception {
+    public void findChainIfPossible() {
         int[] res = BacktrackingRec.findChainIfPossible(new int[]{1, 5, 10, 20, 9, 7}, 34);
         Assert.assertArrayEquals(new int[]{5, 20, 9}, res);
 
     }
 
     @Test
-    public void findChainIfPossibleNeg() throws Exception {
+    public void findChainIfPossibleNeg() {
         int[] res = BacktrackingRec.findChainIfPossible(new int[]{1, 5, 10, 20, 9, 7}, 115);
         Assert.assertArrayEquals(new int[]{}, res);
 
     }
 
     @Test
-    public void findChainIfPossibleNeg2() throws Exception {
+    public void findChainIfPossibleNeg2() {
         int[] res = BacktrackingRec.findChainIfPossible(new int[]{1, 5, 10, 20, 9, 7}, 4);
         Assert.assertArrayEquals(new int[]{}, res);
 
     }
 
     @Test
-    public void allPossibleCombination() throws Exception {
+    public void allPossibleCombination() {
         Map<Integer, List<Integer>> integerListMap =
                 BacktrackingRec.allPossibleCombination(new int[]{1, 5, 10, 20, 9, 7}, new int[]{4, 21, 20});
         assertEquals(integerListMap.get(4), new ArrayList<>());

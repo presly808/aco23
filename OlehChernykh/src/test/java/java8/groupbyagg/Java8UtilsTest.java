@@ -43,7 +43,7 @@ public class Java8UtilsTest {
 
 
     @Test
-    public void topBySalaryWithLimit() throws Exception {
+    public void topBySalaryWithLimit() {
         List<User> res = Java8Utils.topBySalaryWithLimit(userList,2);
         assertThat(res.size(), is(2));
         assertThat(res.get(0).money, equalTo(5000.0));
@@ -51,7 +51,7 @@ public class Java8UtilsTest {
     }
 
     @Test
-    public void groupByDepartment() throws Exception {
+    public void groupByDepartment() {
         Map<Department, List<User>> departmentListMap = Java8Utils.groupByDepartment(userList);
 
 
@@ -62,7 +62,7 @@ public class Java8UtilsTest {
     }
 
     @Test
-    public void groupByDepartmentWithSumOfSalaries() throws Exception {
+    public void groupByDepartmentWithSumOfSalaries() {
         Map<Department, Double> departmentDoubleMap = Java8Utils.groupByDepartmentWithSumOfSalaries(userList, 2);
         assertThat(departmentDoubleMap.get(new Department(1,"","")),
                 equalTo(8000.0));
@@ -70,21 +70,21 @@ public class Java8UtilsTest {
     }
 
     @Test
-    public void groupByCityName() throws Exception {
+    public void groupByCityName() {
         Map<String, List<User>> stringListMap = Java8Utils.groupByCityName(userList);
         assertThat(stringListMap.keySet().size(), equalTo(2));
         assertThat(stringListMap.get("KIEV").size(), equalTo(4));
     }
 
     @Test
-    public void amountOfAllSalariesUsingReduce() throws Exception {
+    public void amountOfAllSalariesUsingReduce() {
         Double aDouble = Java8Utils.amountOfAllSalariesUsingReduce(userList);
         assertEquals(17000,aDouble,0);
 
     }
 
     @Test
-    public void maxSalariesViaCollector() throws Exception {
+    public void maxSalariesViaCollector() {
         Double res = Java8Utils.maxSalariesViaCollector(userList);
         assertEquals(5000, res, 0);
     }

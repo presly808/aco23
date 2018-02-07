@@ -12,7 +12,7 @@ public class NodeUtilsImplTest {
     private NodeUtils nodeUtils = new NodeUtilsImpl();
 
     @Test
-    public void addToTail() throws Exception {
+    public void addToTail() {
 
         Node node = new Node(null, 5);
 
@@ -27,7 +27,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void addToHead() throws Exception {
+    public void addToHead() {
 
         Node node = new Node(null, 5);
 
@@ -37,7 +37,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void testToString() throws Exception {
+    public void testToString() {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
 
 
@@ -50,7 +50,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void createNode() throws Exception {
+    public void createNode() {
         Integer[] mas = {1,2,3,4,5,6};
 
         Node node = nodeUtils.createNode(mas);
@@ -61,7 +61,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void createNodeR() throws Exception {
+    public void createNodeR() {
         Integer[] mas = {1,2,3,4,5,6};
 
         Node node = nodeUtils.createNodeR(mas);
@@ -72,7 +72,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void count() throws Exception {
+    public void count() {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Assert.assertThat(nodeUtils.count(node), CoreMatchers.equalTo(3));
 
@@ -80,14 +80,14 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void remove() throws Exception {
+    public void remove() {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Assert.assertThat(nodeUtils.remove(node,4).value, CoreMatchers.equalTo(4));
 
     }
 
     @Test
-    public void toArray() throws Exception {
+    public void toArray() {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Object[] actual = nodeUtils.toArray(node);
         Assert.assertThat(actual.length, CoreMatchers.equalTo(3));
@@ -96,7 +96,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void reverse() throws Exception {
+    public void reverse() {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Node newHead = nodeUtils.reverse(node);
         Assert.assertThat(newHead.value, CoreMatchers.equalTo(3));
@@ -105,7 +105,7 @@ public class NodeUtilsImplTest {
     }
 
     @Test
-    public void reverseR() throws Exception {
+    public void reverseR() {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
         Node newHead = nodeUtils.reverse(node,null,null);
         Assert.assertThat(newHead.value, CoreMatchers.equalTo(3));
