@@ -55,7 +55,7 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public int count(Node chain) {
         int count = 0;
-        while (chain != null)
+        while (null != chain)
         {
             count++;
             chain = chain.next;
