@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import static org.junit.Assert.*;
 
 /**
  * Created by serhii on 03.02.18.
@@ -48,8 +47,8 @@ public class BacktrackingRecTest {
     public void allPossibleCombination() {
         Map<Integer, List<Integer>> integerListMap =
                 BacktrackingRec.allPossibleCombination(new int[]{1, 5, 10, 20, 9, 7}, new int[]{4, 21, 20});
-        assertEquals(integerListMap.get(4), new ArrayList<>());
-        assertEquals(integerListMap.get(20), Stream.of(20).collect(Collectors.toList()));
+        Assert.assertEquals(integerListMap.get(4), new ArrayList<>());
+        Assert.assertEquals(integerListMap.get(20), Stream.of(20).collect(Collectors.toList()));
 
 
 

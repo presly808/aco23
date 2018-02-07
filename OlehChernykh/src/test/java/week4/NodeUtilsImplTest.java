@@ -53,7 +53,7 @@ public class NodeUtilsImplTest {
     public void createNode() {
         Integer[] mas = {1,2,3,4,5,6};
 
-        Node node = nodeUtils.createNode(mas);
+        Node node = nodeUtils.createNode((Object[]) mas);
 
         Assert.assertThat(node.value, CoreMatchers.equalTo(1));
         Assert.assertThat(node.next.next.next.next.next.value, CoreMatchers.equalTo(6));
@@ -64,7 +64,7 @@ public class NodeUtilsImplTest {
     public void createNodeR() {
         Integer[] mas = {1,2,3,4,5,6};
 
-        Node node = nodeUtils.createNodeR(mas);
+        Node node = nodeUtils.createNodeR((Object[]) mas);
 
         Assert.assertThat(node.value, CoreMatchers.equalTo(1));
         Assert.assertThat(node.next.next.next.next.next.value, CoreMatchers.equalTo(6));

@@ -85,7 +85,7 @@ public class NodeUtilsImpl implements NodeUtils {
     public Node reverse(Node curr) {
         Node prev = null;
         Node current = curr;
-        Node next = null;
+        Node next;
         while (current != null) {
             next = current.next;
             current.next = prev;

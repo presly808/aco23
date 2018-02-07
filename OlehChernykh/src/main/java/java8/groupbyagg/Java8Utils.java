@@ -3,9 +3,9 @@ package java8.groupbyagg;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import static java.util.stream.Collectors.groupingBy;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.groupingBy;
 
 /**
  * Created by serhii on 04.02.18.
@@ -37,7 +37,7 @@ public class Java8Utils {
     }
 
     public static Double maxSalariesViaCollector(List<User> list){
-        return list.stream().collect(Collectors.maxBy(Comparator.comparingDouble(user -> user.money))).get().money;
+        return list.stream().max(Comparator.comparingDouble(user -> user.money)).get().money;
     }
 
 
