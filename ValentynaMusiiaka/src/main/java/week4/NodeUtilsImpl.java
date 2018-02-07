@@ -101,7 +101,7 @@ public class NodeUtilsImpl implements NodeUtils {
         return nodesArray;
     }
 
-    public Node reverse_old(Node curr) {
+    public Node reverseOld(Node curr) {
 //        find tail
         Node tailNode = getTail(curr);
 
@@ -117,21 +117,21 @@ public class NodeUtilsImpl implements NodeUtils {
         return tailNode;
     }
 
-    private Node getPrevious(Node startNode, Node toFind) {
+    private Node getPrevious(Node toStart, Node toFind) {
 
-        while (startNode.next.value != toFind.value) {
-            startNode = startNode.next;
+        while (toStart.next.value != toFind.value) {
+            toStart = toStart.next;
         }
 
-        return startNode;
+        return toStart;
     }
 
-    private Node getTail(Node currNode) {
-        while (currNode.next != null) {
-            currNode = currNode.next;
+    private Node getTail(Node toStart) {
+        while (toStart.next != null) {
+            toStart = toStart.next;
         }
 
-        return currNode;
+        return toStart;
     }
 
     @Override
@@ -151,15 +151,15 @@ public class NodeUtilsImpl implements NodeUtils {
     }
 
     @Override
-    public Node reverse(Node curr, Node next, Node prev) {
+    public Node reverse(Node currElem, Node nextElem, Node prevElem) {
 
-        next = curr.next;
-        curr.next = prev;
+        nextElem = currElem.next;
+        currElem.next = prevElem;
 
 //        условие выхода из рекурсии
-        if(next == null) return curr;
+        if(nextElem == null) return currElem;
 
-        return reverse(next, next.next, curr);
+        return reverse(nextElem, nextElem.next, currElem);
     }
 }
 
