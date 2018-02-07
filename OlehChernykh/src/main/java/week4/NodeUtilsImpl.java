@@ -1,8 +1,6 @@
 package week4;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by serhii on 03.02.18.
@@ -102,11 +100,12 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        if (curr == null){
+        Node newNode = curr;
+        if (newNode == null){
             return prev;
         }
-        next = curr.next;
-        curr.next = prev;
+        next = newNode.next;
+        newNode.next = prev;
 
         return reverse(next,next,prev);
     }
