@@ -10,9 +10,6 @@ public class User {
     public double money;
     public Department department;
 
-    public User() {
-    }
-
     public User(int id, String name, double money, Department department) {
         this.id = id;
         this.name = name;
