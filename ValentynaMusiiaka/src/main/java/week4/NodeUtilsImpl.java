@@ -29,8 +29,7 @@ public class NodeUtilsImpl implements NodeUtils {
         StringBuilder chainToString = new StringBuilder();
 
         while (currentNode.next != null) {
-            chainToString.append(currentNode.value);
-            chainToString.append(", ");
+            chainToString.append(currentNode.value).append(", ");
             currentNode = currentNode.next;
         }
 
@@ -102,8 +101,7 @@ public class NodeUtilsImpl implements NodeUtils {
         return nodesArray;
     }
 
-    @Override
-    public Node reverse(Node curr) {
+    public Node reverse_old(Node curr) {
 //        find tail
         Node tailNode = getTail(curr);
 
@@ -119,28 +117,49 @@ public class NodeUtilsImpl implements NodeUtils {
         return tailNode;
     }
 
-    private Node getPrevious(Node startPosition, Node toFind) {
+    private Node getPrevious(Node startNode, Node toFind) {
 
-        while (startPosition.next.value != toFind.value) {
-            startPosition = startPosition.next;
+        while (startNode.next.value != toFind.value) {
+            startNode = startNode.next;
         }
 
-        return startPosition;
+        return startNode;
     }
 
-    private Node getTail(Node curr) {
-        while (curr.next != null) {
-            curr = curr.next;
+    private Node getTail(Node currNode) {
+        while (currNode.next != null) {
+            currNode = currNode.next;
         }
 
-        return curr;
+        return currNode;
+    }
+
+    @Override
+    public Node reverse(Node chain) {
+        Node previousNode = null;
+        Node currentNode = chain;
+        Node nextNode = currentNode;
+
+        while (nextNode != null) {
+            currentNode = nextNode;
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+
+        }
+        return currentNode;
     }
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        next.next = curr;
+
+        next = curr.next;
         curr.next = prev;
 
-        return prev;
+//        условие выхода из рекурсии
+        if(next == null) return curr;
+
+        return reverse(next, next.next, curr);
     }
 }
+
