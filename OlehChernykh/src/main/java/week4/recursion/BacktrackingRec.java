@@ -1,9 +1,8 @@
 package week4.recursion;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by serhii on 03.02.18.
@@ -17,35 +16,23 @@ public class BacktrackingRec {
         }
         int[] mas2 = Arrays.copyOfRange(mas, 1, mas.length);
 
-        boolean branch0 = target == 0;
         boolean branch1 = canFindSum(mas2, target - mas[0]);
         boolean branch2 = canFindSum(mas2 ,target);
 
-        return branch0 || branch1 || branch2;
+        return target == 0 || branch1 || branch2;
     }
 
     // [1,5,10,20,9,7] , 13 -> [1,5,7]
     public static int[] findChainIfPossible(int[] mas, int target){
-
-
-
-        List<Integer> costs = new LinkedList<Integer>();
-        for(int combination : mas) {
-            if(target - combination >= 0) {
-               // costs.add(findChainIfPossible(mas, target - combination) + 1);
-            }
+        return findChainIfPossible(mas, new int[0], target);
         }
 
 
-        return mas;
-    }
     private static int[] findChainIfPossible(int[] mas, int[] buff, int target){
         if(mas.length == 0){
             return target == 0 ? buff : new int[]{};
         }
-
         int[] arr = Arrays.copyOfRange(mas,1,mas.length);
-
         int[] a1 = findChainIfPossible(arr,buff,target);
         int[] a2 = findChainIfPossible(arr,addAndRet(buff,mas[0]),target - mas[0]);
 
@@ -53,12 +40,19 @@ public class BacktrackingRec {
     }
 
     private static int[] addAndRet(int[] buff, int ma) {
-        return buff;
+        int[] newArr = Arrays.copyOf(buff, buff.length + 1);
+        newArr[newArr.length - 1] = ma;
+        return newArr;
     }
 
     // more complex solution based on above method
     public static Map<Integer, List<Integer>> allPossibleCombination(int[] income, int[] targets){
-        return null;
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for (int target : targets) {
+            map.put(target, IntStream.of(findChainIfPossible(income, target)).boxed().collect(Collectors.toList()));
+        }
+
+        return map;
     }
 
 }

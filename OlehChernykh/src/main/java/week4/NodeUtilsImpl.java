@@ -45,11 +45,12 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Node createNodeR(Object... mas) {
-        Node head = new Node(null, mas[0]);
-        Node last = head;
-
-
-        return null;
+        if (mas.length == 0){
+            return null;
+        }
+        Node created = new Node(null, mas[0]);
+        created.next = createNodeR(Arrays.copyOfRange(mas,1,mas.length));
+        return created;
     }
 
     @Override
