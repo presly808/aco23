@@ -11,8 +11,13 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public void addToTail(Node first, Object val) {
-        while (first.next!=null)first = first.next;
-        first.next = new Node(null,val);
+        if (first.next == null){
+            Node newNode = new Node(null,val);
+            first.next = newNode;
+            return;
+
+        }
+        addToTail(first.next,val);
     }
 
     @Override
@@ -55,10 +60,11 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public int count(Node chain) {
         int count = 0;
-        while (null != chain)
+        Node node = chain;
+        while (null != node)
         {
             count++;
-            chain = chain.next;
+            node = node.next;
         }
         return count;
     }
@@ -72,40 +78,36 @@ public class NodeUtilsImpl implements NodeUtils {
 
     @Override
     public Object[] toArray(Node chain) {
-        List<Object> objects = new ArrayList<>();
-        while (chain != null) {
-            objects.add(chain.value);
-            chain = chain.next;
+        int size = count(chain);
+        Object[] res = new Object[size];
+        for (int i = 0; i < size - 1; i++) {
+            res[i] = chain.value;
         }
-
-        return objects.toArray();
+        return res;
     }
 
     @Override
     public Node reverse(Node curr) {
         Node prev = null;
-        Node current = curr;
-        Node next;
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
+        Node node = curr;
+        while (node != null) {
+            Node next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
         }
-        curr = prev;
-        return curr;
+        return prev;
     }
 
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+        if (curr == null){
+            return prev;
         }
-        curr = prev;
-        return curr;
+        next = curr.next;
+        curr.next = prev;
+
+        return reverse(next,next,prev);
     }
 }

@@ -3,8 +3,8 @@ package java8.groupbyagg;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import static java.util.stream.Collectors.groupingBy;
 import java.util.stream.Collectors;
+import static java.util.stream.Collectors.groupingBy;
 
 
 /**
@@ -18,7 +18,7 @@ public class Java8Utils {
     }
 
     public static Map<Department, List<User>> groupByDepartment(List<User> list){
-        return list.stream().collect(Collectors.groupingBy(user->user.department));
+        return list.stream().collect(groupingBy(user->user.department));
     }
 
     public static Map<Department, Double> groupByDepartmentWithSumOfSalaries(List<User> list, int limit){
