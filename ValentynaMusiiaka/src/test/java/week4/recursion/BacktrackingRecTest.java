@@ -1,7 +1,5 @@
 package week4.recursion;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;

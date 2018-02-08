@@ -14,12 +14,12 @@ public class BacktrackingRec {
         if(mas.length == 0) return target == 0;
         if(target == 0) return true;
 
+        int[] arr = mas;
+        int targetDecreased = target - arr[0];
+        arr = Arrays.copyOfRange(arr, 1, arr.length);
 
-        int targetDecreased = target - mas[0];
-        mas = Arrays.copyOfRange(mas, 1, mas.length);
-
-        boolean branch1 = canFindSum(mas, targetDecreased);
-        boolean branch2 = canFindSum(mas, target);
+        boolean branch1 = canFindSum(arr, targetDecreased);
+        boolean branch2 = canFindSum(arr, target);
 
         return branch1 || branch2;
     }
