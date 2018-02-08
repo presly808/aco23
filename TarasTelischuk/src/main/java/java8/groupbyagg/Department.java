@@ -9,8 +9,6 @@ public class Department {
     public String name;
     public String city;
 
-    public Department() {
-    }
 
     public Department(int id, String name, String city) {
         this.id = id;

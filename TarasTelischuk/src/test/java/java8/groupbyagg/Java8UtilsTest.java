@@ -62,7 +62,7 @@ public class Java8UtilsTest {
         assertThat(departmentListMap.keySet().size(), equalTo(3));
         assertThat(departmentListMap.get(new Department(1,"","")).size(),
                 equalTo(2));
-        assertThat(departmentListMap.values().stream().flatMap(List::stream).collect(Collectors.toList()),
+        assertThat(departmentListMap.values().stream().flatMap(List::stream).toArray().length,
                 equalTo(6));
     }
 

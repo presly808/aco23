@@ -10,14 +10,18 @@ public class User {
     public double money;
     public Department department;
 
-    public User() {
-    }
 
     public User(int id, String name, double money, Department department) {
         this.id = id;
         this.name = name;
         this.money = money;
         this.department = department;
+    }
+
+
+    public  double getMoney() {
+        return money;
+
     }
 
     @Override
