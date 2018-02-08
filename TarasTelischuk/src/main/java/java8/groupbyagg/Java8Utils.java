@@ -1,14 +1,12 @@
 package java8.groupbyagg;
 
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.summingDouble;
-import static java.util.stream.Collectors.toMap;
 
 /**
  * Created by serhii on 04.02.18.
