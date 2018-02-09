@@ -1,0 +1,12 @@
+Videos
+    Exceptions
+    https://www.youtube.com/watch?v=FDuLwPWfWZY&list=PLvmHg49t5OCQeODC20iDQpBOXFXHJz2em&index=11&t=3769s
+    JavaIO
+    https://www.youtube.com/watch?v=fDMdHt5KlxM&list=PLvmHg49t5OCQeODC20iDQpBOXFXHJz2em&index=12
+    Generics
+    https://www.youtube.com/watch?v=B5WLAIIjKLU&list=PLvmHg49t5OCQeODC20iDQpBOXFXHJz2em&index=10
+
+JavaScript Basics
+    Pass all free points
+    https://www.codecademy.com/learn/introduction-to-javascript
+
