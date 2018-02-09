@@ -2,13 +2,16 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
+import company.utils.reflection.ReflectionUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 /**
  * Created by serhii on 20.01.18.
@@ -16,9 +19,11 @@ import java.util.stream.Collectors;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
+    private List<MyListener> listeners;
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
     }
 
     @Override
@@ -70,7 +75,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public List<Employee> filterWithPredicate(EmployeePredicate predicate, Comparator<Employee> comparator) {
-        return appDb.getAll().stream().filter(employee -> predicate.filter(employee))
+        return appDb.getAll().stream().filter(predicate::filter)
                 .sorted(comparator).collect(Collectors.toList());
     }
 
@@ -95,5 +100,18 @@ public class MainControllerImpl implements MainController {
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
         return appDb.getById(emp1id).equals(appDb.getById(eml2id));
+    }
+
+    @Override
+    public void addListener(MyListener listener) {
+        this.listeners.add(listener);
+    }
+
+    @Override
+    public void callListener() {
+        MyEvent obj = new MyEvent(new Date(), this.getClass().getName() + "." + ReflectionUtils.getMethodName(3), "some info");
+        for (MyListener listener : listeners) {
+            listener.eventOccur(obj);
+        }
     }
 }

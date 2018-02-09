@@ -10,9 +10,10 @@ import java.util.List;
 
 public class MainControllerProfilerDecorator {
 
-    MainController mainController = new MainControllerImpl(new AppDb());
+    MainController mainController;
 
     public MainControllerProfilerDecorator() {
+        mainController = new MainControllerImpl(new AppDb());
     }
 
     private Object timeCount(MyAction action){

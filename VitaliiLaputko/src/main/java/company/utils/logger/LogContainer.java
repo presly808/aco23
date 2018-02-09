@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogContainer {
-    private List<LogEvent> logCotainer;
+
+    private List<LogEvent> logEventList;
 
     public LogContainer() {
-        this.logCotainer = new ArrayList<>();
+        this.logEventList = new ArrayList<>();
     }
 
-    public void saveLog(LogEvent event) { logCotainer.add(event); }
+    public void saveLog(LogEvent event) { logEventList.add(event); }
 }

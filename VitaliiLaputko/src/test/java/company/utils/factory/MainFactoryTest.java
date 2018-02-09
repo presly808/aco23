@@ -10,6 +10,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -20,7 +22,7 @@ public class MainFactoryTest {
     public static final int COUNT = 1_000_000;
 
     @Test
-    public void create() {
+    public void create() throws Exception {
         MainController mainController = MainFactory.create(true);
 
         Assert.assertThat(mainController.getClass(), CoreMatchers.not(MainControllerImpl.class));
@@ -41,6 +43,8 @@ public class MainFactoryTest {
             if(i == COUNT - 1){
                 last = mainController.addEmployee(new Employee(String.valueOf(i), salary));
             }
+
+
         }
 
         Employee employee = mainController.getById(first.getId());
@@ -53,9 +57,8 @@ public class MainFactoryTest {
     }
 
     @Test
-    public void testListener() {
+    public void testListener() throws Exception {
         MainController mainController = MainFactory.create(true);
-
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         int salary = (int) (Math.random() * 5000) + 1000;
@@ -70,7 +73,6 @@ public class MainFactoryTest {
                 Assert.assertThat(obj.getPlace(), CoreMatchers.containsString("fireWorker"));
                 Assert.assertThat(obj.getDate().toString(),
                         CoreMatchers.containsString(String.valueOf(LocalDateTime.now().getMinute())));
-                Assert.assertThat(obj, CoreMatchers.notNullValue());
 
                 atomicBoolean.set(true);
             }

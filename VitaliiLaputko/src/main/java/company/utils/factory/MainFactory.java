@@ -6,8 +6,10 @@ import company.controller.MainControllerProfilerProxy;
 import company.db.AppDb;
 
 public class MainFactory {
-
     public static MainController create(boolean withProfiling){
-        return new MainControllerProfilerProxy(new MainControllerImpl(new AppDb()));
+        MainController mainController = new MainControllerImpl(new AppDb());
+
+        return withProfiling ? new MainControllerProfilerProxy(mainController)
+                : mainController;
     }
 }
