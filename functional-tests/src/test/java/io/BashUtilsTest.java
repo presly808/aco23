@@ -47,7 +47,7 @@ public class BashUtilsTest {
     @Test
     public void ls() throws Exception {
         List<String> ls = BashUtils.ls(".");
-        assertThat(ls, hasItems("gradle.build", "src"));
+        assertThat(ls, hasItems("build.gradle", "src"));
     }
 
     @Test
