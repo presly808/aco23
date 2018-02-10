@@ -28,7 +28,5 @@ public class TestJsSimple {
 
         System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
         System.out.println("My out " + s);
-
-
     }
 }
