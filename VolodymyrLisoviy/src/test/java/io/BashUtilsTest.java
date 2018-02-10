@@ -26,8 +26,7 @@ public class BashUtilsTest {
 
     @Test(expected = FileNotFoundException.class)
     public void catNeg() throws Exception {
-        String path = BashUtils.class.getResource("tests.txt").getFile();
-        String res = BashUtils.cat(path);
+        String res = BashUtils.cat("unreal.txt");
     }
 
     @Test
@@ -47,7 +46,7 @@ public class BashUtilsTest {
 
     @Test
     public void ls() throws Exception {
-        List<String> ls = BashUtils.ls(".");
+        List<String> ls = BashUtils.ls(BashUtils.class.getResource(".").getFile());
         assertThat(ls, hasItems("BashUtils.class", "test.txt"));
     }
 

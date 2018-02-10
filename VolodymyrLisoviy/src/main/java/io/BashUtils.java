@@ -5,10 +5,7 @@ import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -50,7 +47,7 @@ public class BashUtils {
 
     public static boolean copy(String src, String dest) throws Exception {
         File source = new File(src);
-        File copy = new File(dest + "/" + source.getName());
+        File copy = new File(dest);
 
         try(InputStream is = new FileInputStream(source); OutputStream os = new FileOutputStream(copy)) {
             int count;
@@ -71,8 +68,11 @@ public class BashUtils {
     }
 
     public static List<String> find(String path, String targetName) throws FileNotFoundException {
-        File file = new File(path);
-        return Arrays.asList(Objects.requireNonNull(file.list((dir, name) -> name.equals(targetName))));
+        if (!Files.exists(Paths.get(path))) {
+            throw new FileNotFoundException();
+        }
+
+        return findR(new File(path), targetName);
     }
 
     public static List<String> grep(String lines, String targetWord){
@@ -83,4 +83,17 @@ public class BashUtils {
         return null;
     }
 
+    private static List<String> findR(File file, String targetName) {
+        List<String> list = new ArrayList<>();
+        for (File f : file.listFiles()) {
+            if (f.isDirectory()) {
+                list.addAll(findR(f, targetName));
+            } else {
+                if (f.getName().contains(targetName)) {
+                    list.add(f.getName());
+                }
+            }
+        }
+        return list;
+    }
 }
