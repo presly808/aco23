@@ -15,7 +15,7 @@ public class TestJsSimple {
 
     @Test
     public void testCheck() throws FileNotFoundException, ScriptException {
-        new PipedInputStream()
+
         ScriptEngine scriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
 //        Object res = scriptEngine.eval(new FileReader(TestJsSimple.class.getResource("task1.js").getFile()));
         Object res = scriptEngine.eval(

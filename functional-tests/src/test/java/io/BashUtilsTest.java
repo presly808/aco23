@@ -46,8 +46,8 @@ public class BashUtilsTest {
 
     @Test
     public void ls() throws Exception {
-        List<String> ls = BashUtils.ls(BashUtils.class.getResource(".").getFile());
-        assertThat(ls, hasItems("BashUtils.class"));
+        List<String> ls = BashUtils.ls(BashUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        assertThat(ls, hasItems("BashUtils.class", "test.txt"));
     }
 
     @Test
