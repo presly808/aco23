@@ -66,7 +66,7 @@ public class BashUtilsTest {
 
     @Test
     public void find() throws Exception {
-        List<String> bashUtils = BashUtils.find("../", "BashUtils");
+        List<String> bashUtils = BashUtils.find(".", "BashUtils.class");
 
         assertThat(bashUtils.size(), is(1));
         assertThat(bashUtils.get(0), containsString("BashUtils.class"));
