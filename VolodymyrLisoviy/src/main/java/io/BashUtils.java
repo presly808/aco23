@@ -1,38 +1,66 @@
 package io;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Created by serhii on 10.02.18.
  */
 public class BashUtils {
 
-    public static String cat(String path) throws FileNotFoundException {
-        return null;
+    public static String cat(String path) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(path)));
     }
 
-    public static boolean writeInto(String path, String src, boolean append)
-            throws IOException {
-        return false;
+    public static boolean writeInto(String path, String src, boolean append) throws IOException {
+        try(Writer writer = new FileWriter(path, append)) {
+            writer.write(src);
+            writer.flush();
+        }
+        return true;
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
+        File file = new File(path);
+        if (file.isDirectory()) {
+            return Arrays.stream(file.listFiles()).map(File::getName).collect(Collectors.toList());
+        }
         return null;
     }
 
     public static boolean copy(String src, String dest) throws Exception {
-        return false;
+        File source = new File(src);
+        File copy = new File(dest + "/" + source.getName());
+
+        try(InputStream is = new FileInputStream(source); OutputStream os = new FileOutputStream(copy)) {
+            int count;
+            byte[] buf = new byte[1024];
+            while ((count = is.read(buf)) != -1) {
+                os.write(buf, 0, count);
+                os.flush();
+            }
+        }
+
+        return true;
     }
 
-    public static boolean move(String src, String dest) throws  Exception{
-        return false;
+    public static boolean move(String src, String dest) throws  Exception {
+        boolean result = copy(src, dest);
+        Files.delete(Paths.get(src));
+        return result;
     }
 
-    public static List<String> find(String path, String targetName) throws FileNotFoundException{
-        return null;
+    public static List<String> find(String path, String targetName) throws FileNotFoundException {
+        File file = new File(path);
+        return Arrays.asList(Objects.requireNonNull(file.list((dir, name) -> name.equals(targetName))));
     }
 
     public static List<String> grep(String lines, String targetWord){
