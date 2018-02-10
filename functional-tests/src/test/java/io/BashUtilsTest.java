@@ -52,7 +52,7 @@ public class BashUtilsTest {
 
     @Test
     public void copy() throws Exception {
-        boolean copy = BashUtils.copy("test.txt", "test_copy.txt");
+        boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
     }
 

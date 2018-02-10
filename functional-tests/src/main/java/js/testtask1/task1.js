@@ -4,4 +4,4 @@ function sum(a, b){
     return a + b;
 }
 
-console.log(23);
+assert z == 23;
