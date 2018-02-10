@@ -1,9 +1,12 @@
 package io;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by serhii on 10.02.18.
@@ -11,30 +14,17 @@ import java.util.Map;
 public class BashUtils {
 
     public static String cat(String path) throws FileNotFoundException {
-        try{
-            File file = new File(path);
-            if(!file.exists()){
-                throw new FileNotFoundException(path);
-            }
+        File file = new File(path);
+        if (!file.exists()) {
+            throw new FileNotFoundException();
         }
-        catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        Reader reader = new FileReader(path);
-        StringBuilder sb = new StringBuilder();
-        char[] buffer = new char[1024];
-
-        int count = -1;
+        String str = "";
         try {
-            while ((count = reader.read(buffer)) != -1) {
-                sb.append(buffer, 0, count);
-            }
-        }catch (IOException e){
+            str = Files.readAllLines(Paths.get(path)).toString();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return sb.toString();
-
-        //return Files.walk(Path.get(path)).filter(Files::isRegularFile).forEach(System.out::println);
+        return str;
     }
 
     public static boolean writeInto(String path, String src, boolean append) throws IOException {
@@ -64,28 +54,50 @@ public class BashUtils {
     }
 
     public static boolean copy(String src, String dest) throws Exception {
-        if (src != null){
-            String buffer = cat(src);
-            writeInto(dest,buffer,true);
+        Path source = Paths.get(src);
+        Path destination = Paths.get(dest);
+        try {
+            Files.copy(source, destination);
             return true;
+        } catch (IOException e){
+            e.printStackTrace();
         }
         throw new Exception();
     }
 
     public static boolean move(String src, String dest) throws  Exception{
-        return false;
+        Path source = Paths.get(src);
+        Path destination = Paths.get(dest);
+        try {
+            Files.move(source, destination);
+            return true;
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        throw new Exception();
+    }
+    public static List<String> find(String path, String targetName) throws FileNotFoundException {
+        Path start = Paths.get(path);
+        int maxDepth = 5;
+        try (Stream<Path> stream = Files.walk(start, maxDepth)) {
+            return stream.map(String::valueOf).filter(p -> p.contains(targetName)).collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        throw new FileNotFoundException();
+
     }
 
-    public static List<String> find(String path, String targetName) throws FileNotFoundException{
+    public static List<String> grep(String lines, String targetWord) throws IOException {
+        return Arrays.stream(lines.split("\n")).filter(l->l.contains(targetWord)).collect(Collectors.toList());
 
-        return null;
-    }
-
-    public static List<String> grep(String lines, String targetWord){
-        return null;
     }
 
     public static Map<String, String> grepR(String path, String targetWord){
+        File file = new File(path);
+        Map<String, String> map = new HashMap<>();
+        if (file.isDirectory()){
+        }
         return null;
     }
 
