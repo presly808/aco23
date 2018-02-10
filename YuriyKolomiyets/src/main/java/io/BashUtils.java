@@ -1,14 +1,9 @@
 package io;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BashUtils {
 
@@ -62,15 +57,28 @@ public class BashUtils {
 
     public static List<String> ls(String path) throws FileNotFoundException {
 
-        List<String> res = new ArrayList<>();
+        File folder = new File(path);
 
-        try (Stream<Path> paths = Files.walk(Paths.get(path))) {
-            paths.filter(Files::isRegularFile).forEach(Collectors.toList(res));
-        } catch (IOException e) {
-            e.printStackTrace();
+        try {
+            if (!folder.exists()) {
+                throw new FileNotFoundException("Could not find folder: " + path);
+            }
+        } catch (FileNotFoundException ex){
+            ex.printStackTrace();
         }
 
-        return res;
+        File[] listOfFiles = folder.listFiles();
+        List<String> list = new ArrayList<>();
+
+        if (listOfFiles != null){
+            for (File listOfFile : listOfFiles) {
+                if (listOfFile.isFile()) {
+                    list.add(listOfFile.getName());
+                }
+            }
+            return list;
+        }
+        throw new FileNotFoundException();
     }
 
     public static boolean copy(String src, String dest) throws Exception {
