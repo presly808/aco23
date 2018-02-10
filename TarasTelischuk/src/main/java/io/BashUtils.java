@@ -15,12 +15,11 @@ public class BashUtils {
     public static String cat(String path) throws FileNotFoundException {
         Reader reader = new FileReader(path);
         StringBuilder sb = new StringBuilder();
-        char[] buff = new char[1024];
         int count;
 
         try{
-            while((count = reader.read(buff)) != -1 ){
-                sb.append(buff,0, count);
+            while((count = reader.read()) != -1 ){
+                sb.append(count);
             }
         }
         catch (IOException ex){
