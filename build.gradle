@@ -44,9 +44,21 @@ allprojects {
         }
     }
 
+    task copyTaskWithPatterns(type: Copy) {
+        from 'src/main/java'
+        into 'build/classes/main'
+        include '**/*.txt'
+        include '**/*.js'
+        include '**/*.html'
+        include '**/*.properties'
+        include '**/*.json'
+        include '**/*.MD'
+        exclude '**/*.java'
+    }
+
+    compileJava.dependsOn copyTaskWithPatterns
     check.dependsOn jacocoTestCoverageVerification
     check.dependsOn jacocoTestReport
-
 }
 
 // ./gradlew -PmyModule=SerhiiBilobrov -Ptask=week1 copyTask
@@ -62,8 +74,8 @@ task copyTask {
             def baseClasses = taskDesc.baseClasses;
             def testClasses = taskDesc.testClasses;
 
-            if(!project.hasProperty("testOnly")){
-                for(def baseClass in baseClasses){
+            if (!project.hasProperty("testOnly")) {
+                for (def baseClass in baseClasses) {
                     def intoPath = "$baseClass".endsWith(".java") ?
                             baseClass.substring(0, baseClass.lastIndexOf("/")) : baseClass
 
@@ -76,7 +88,7 @@ task copyTask {
                 println "The Base classes of $task have been copied into $myModule"
             }
 
-            for(def testClass in testClasses){
+            for (def testClass in testClasses) {
                 def intoPath = "$testClass".endsWith(".java") ?
                         testClass.substring(0, testClass.lastIndexOf("/")) : testClass
                 copy {

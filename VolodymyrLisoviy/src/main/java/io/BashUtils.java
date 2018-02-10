@@ -17,7 +17,19 @@ import java.util.stream.Collectors;
 public class BashUtils {
 
     public static String cat(String path) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(path)));
+        File file = new File(path);
+        if (!file.exists()) {
+            throw new FileNotFoundException();
+        }
+        StringBuilder sb = new StringBuilder();
+        try(Reader reader = new FileReader(path)) {
+            int count;
+            char[] buf = new char[1024];
+            while((count = reader.read(buf)) != -1) {
+                sb.append(buf, 0, count);
+            }
+        }
+        return sb.toString();
     }
 
     public static boolean writeInto(String path, String src, boolean append) throws IOException {
