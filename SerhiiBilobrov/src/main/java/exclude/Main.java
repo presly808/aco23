@@ -25,7 +25,7 @@ interface Foo {
 
 class FooImpl implements Foo {
     public Object bar(Object obj){
-       return "Test";
+       return "TestWeb";
     }
 
     @Override
