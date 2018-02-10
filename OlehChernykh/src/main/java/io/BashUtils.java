@@ -11,10 +11,20 @@ import java.util.Map;
 public class BashUtils {
 
     public static String cat(String path) throws FileNotFoundException {
+        try{
+            File file = new File(path);
+            if(!file.exists()){
+                throw new FileNotFoundException(path);
+            }
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
         Reader reader = new FileReader(path);
         StringBuilder sb = new StringBuilder();
         char[] buffer = new char[1024];
-        int count;
+
+        int count = -1;
         try {
             while ((count = reader.read(buffer)) != -1) {
                 sb.append(buffer, 0, count);
@@ -28,12 +38,12 @@ public class BashUtils {
     }
 
     public static boolean writeInto(String path, String src, boolean append) throws IOException {
-        try (Writer writer = new FileWriter(path)){
+        try (Writer writer = new FileWriter(path, append)){
             writer.write(src);
-            if (append){
-                writer.flush();
-            }
-            writer.close();
+            writer.flush();
+        }
+        catch (IOException e){
+            e.printStackTrace();
         }
         return true;
     }
