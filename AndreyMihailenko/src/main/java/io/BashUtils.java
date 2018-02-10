@@ -12,10 +12,16 @@ import java.util.Map;
 public class BashUtils {
 
     public static String cat(String path) throws FileNotFoundException {
+
+        File f = new File(path);
+
+        if(!f.exists() || f.isDirectory()) {
+            throw new FileNotFoundException();
+        }
         Reader reader = new FileReader(path);
         StringBuilder stringBuilder = new StringBuilder();
 
-        char[] buff = new char[Integer.MAX_VALUE];
+        char[] buff = new char[100];
         int count;
         try {
             while ((count = reader.read(buff)) != -1) {
@@ -46,7 +52,7 @@ public class BashUtils {
         List<String> list = new ArrayList<>();
         if (listOfFiles != null){
             for (File listOfFile : listOfFiles) {
-                if (listOfFile.isFile() || listOfFile.isDirectory()) {
+                if (listOfFile.isFile()) {
                     list.add(listOfFile.getName());
                 }
             }
@@ -58,8 +64,7 @@ public class BashUtils {
     public static boolean copy(String src, String dest) throws Exception {
         if (src != null){
             String buff = cat(src);
-            writeInto(dest, buff, true);
-            return true;
+            return  writeInto(dest, buff, true);
         }
         throw new Exception();
     }
