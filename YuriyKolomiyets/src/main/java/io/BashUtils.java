@@ -53,9 +53,7 @@ public class BashUtils {
         } catch (IOException exception){
             exception.printStackTrace();
         }
-
         return ret;
-
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
@@ -105,6 +103,9 @@ public class BashUtils {
     }
 
     public static boolean move(String src, String dest) throws Exception {
+
+        //File file = new File(path);
+
         return false;
     }
 
