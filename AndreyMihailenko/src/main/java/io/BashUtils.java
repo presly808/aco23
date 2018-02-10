@@ -56,6 +56,7 @@ public class BashUtils {
                     list.add(listOfFile.getName());
                 }
             }
+            System.out.println("LS test" + list);
             return list;
         }
         throw new FileNotFoundException();
