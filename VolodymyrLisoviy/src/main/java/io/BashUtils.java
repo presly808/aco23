@@ -1,9 +1,7 @@
 package io;
 
 import java.io.*;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,10 +17,10 @@ public class BashUtils {
             throw new FileNotFoundException();
         }
         StringBuilder sb = new StringBuilder();
-        try(Reader reader = new FileReader(path)) {
+        try (Reader reader = new FileReader(path)) {
             int count;
             char[] buf = new char[1024];
-            while((count = reader.read(buf)) != -1) {
+            while ((count = reader.read(buf)) != -1) {
                 sb.append(buf, 0, count);
             }
         }
@@ -30,7 +28,7 @@ public class BashUtils {
     }
 
     public static boolean writeInto(String path, String src, boolean append) throws IOException {
-        try(Writer writer = new FileWriter(path, append)) {
+        try (Writer writer = new FileWriter(path, append)) {
             writer.write(src);
             writer.flush();
         }
@@ -38,6 +36,9 @@ public class BashUtils {
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
+        if (!Files.exists(Paths.get(path))) {
+            throw new FileNotFoundException();
+        }
         File file = new File(path);
         if (file.isDirectory()) {
             return Arrays.stream(file.listFiles()).map(File::getName).collect(Collectors.toList());
@@ -49,7 +50,7 @@ public class BashUtils {
         File source = new File(src);
         File copy = new File(dest);
 
-        try(InputStream is = new FileInputStream(source); OutputStream os = new FileOutputStream(copy)) {
+        try (InputStream is = new FileInputStream(source); OutputStream os = new FileOutputStream(copy)) {
             int count;
             byte[] buf = new byte[1024];
             while ((count = is.read(buf)) != -1) {
@@ -61,7 +62,7 @@ public class BashUtils {
         return true;
     }
 
-    public static boolean move(String src, String dest) throws  Exception {
+    public static boolean move(String src, String dest) throws Exception {
         boolean result = copy(src, dest);
         Files.delete(Paths.get(src));
         return result;
@@ -75,12 +76,25 @@ public class BashUtils {
         return findR(new File(path), targetName);
     }
 
-    public static List<String> grep(String lines, String targetWord){
-        return null;
+    public static List<String> grep(String lines, String targetWord) {
+        return Arrays.stream(lines.split("\n"))
+                .filter(line -> line.contains(targetWord)).collect(Collectors.toList());
     }
 
-    public static Map<String, String> grepR(String path, String targetWord){
-        return null;
+    public static Map<String, String> grepR(String path, String targetWord) throws IOException {
+        File file = new File(path);
+        Map<String, String> map = new HashMap<>();
+        if (file.isDirectory()) {
+            for (File f : file.listFiles()) {
+                Map<String, String> retMap = grepR(f.getPath(), targetWord);
+                retMap.keySet().forEach(key -> map.put(key, retMap.get(key)));
+            }
+        } else {
+            Optional<String> oStr = Arrays.stream(cat(path).split("\n")).filter(line -> line.contains(targetWord)).findFirst();
+            oStr.ifPresent(s -> map.put(file.getName(), s));
+        }
+
+        return map;
     }
 
     private static List<String> findR(File file, String targetName) {
