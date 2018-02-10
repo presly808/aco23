@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +44,7 @@ public class BashUtils {
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
-        return null;
+        return Arrays.asList(System.getenv(path).split(":"));
     }
 
     public static boolean copy(String src, String dest) throws Exception {
