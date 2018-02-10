@@ -34,6 +34,11 @@
       "title": "java8groupbyagg",
       "baseClasses":["java8/groupbyagg"],
       "testClasses":["java8/groupbyagg"]
+    },
+    "io" : {
+      "title": "io",
+      "baseClasses":["io"],
+      "testClasses":["io"]
     }
 
   }
