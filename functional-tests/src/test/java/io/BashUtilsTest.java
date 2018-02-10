@@ -26,7 +26,7 @@ public class BashUtilsTest {
 
     @Test(expected = FileNotFoundException.class)
     public void catNeg() throws Exception {
-        String res = BashUtils.cat(BashUtils.class.getResource("tests.txt").getFile());
+        String res = BashUtils.cat("unreal.txt");
     }
 
     @Test
