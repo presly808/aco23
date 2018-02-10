@@ -1,7 +1,9 @@
 package io;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +13,30 @@ import java.util.Map;
 public class BashUtils {
 
     public static String cat(String path) throws FileNotFoundException {
-        return null;
+        Reader reader = new FileReader(path);
+        StringBuilder sb = new StringBuilder();
+        char[] buff = new char[1024];
+        int count;
+
+        try{
+            while((count = reader.read(buff)) != -1 ){
+                sb.append(buff,0, count);
+            }
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        }
+        finally {
+            try {
+                reader.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
     }
+
 
     public static boolean writeInto(String path, String src, boolean append)
             throws IOException {
