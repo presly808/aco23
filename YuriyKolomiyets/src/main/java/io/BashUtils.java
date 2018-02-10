@@ -1,12 +1,29 @@
 package io;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BashUtils {
 
     public static String cat(String path) throws FileNotFoundException {
+
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                throw new FileNotFoundException("Could not find file: " + path);
+            }
+        }
+
+        catch (FileNotFoundException ex){
+            ex.printStackTrace();
+        }
 
         Reader reader = new FileReader(path);
 
@@ -39,12 +56,21 @@ public class BashUtils {
             exception.printStackTrace();
         }
 
-        return false;
+        return true;
 
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
-        return ;
+
+        List<String> res = new ArrayList<>();
+
+        try (Stream<Path> paths = Files.walk(Paths.get(path))) {
+            paths.filter(Files::isRegularFile).forEach(Collectors.toList(res));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return res;
     }
 
     public static boolean copy(String src, String dest) throws Exception {
