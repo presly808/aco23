@@ -43,15 +43,18 @@ public class BashUtils {
     public static boolean writeInto(String path, String src, boolean append)
             throws IOException {
 
+        boolean ret = false;
+
         try (Writer writer = new FileWriter(path, append)) {
             writer.write(src);
             writer.flush();
+            ret = true;
 
         } catch (IOException exception){
             exception.printStackTrace();
         }
 
-        return true;
+        return ret;
 
     }
 
@@ -72,6 +75,7 @@ public class BashUtils {
 
         if (listOfFiles != null){
             for (File listOfFile : listOfFiles) {
+                System.out.println(listOfFile.getName());
                 if (listOfFile.isFile()) {
                     list.add(listOfFile.getName());
                 }
@@ -82,7 +86,22 @@ public class BashUtils {
     }
 
     public static boolean copy(String src, String dest) throws Exception {
-        return false;
+
+        String res = "";
+        boolean ret = false;
+        try {
+            res = res +  cat(src);
+        } catch (FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+
+        try {
+            ret = writeInto(dest, res, false);
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+
+        return ret;
     }
 
     public static boolean move(String src, String dest) throws Exception {
