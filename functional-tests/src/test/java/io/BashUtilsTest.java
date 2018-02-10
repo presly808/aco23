@@ -47,12 +47,12 @@ public class BashUtilsTest {
     @Test
     public void ls() throws Exception {
         List<String> ls = BashUtils.ls(BashUtils.class.getResource(".").getFile());
-        assertThat(ls, hasItems("BashUtils.class", "test.txt"));
+        assertThat(ls, hasItems("BashUtils.class"));
     }
 
     @Test
     public void copy() throws Exception {
-        boolean copy = BashUtils.copy("test.txt", "test_copy.txt");
+        boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
     }
 
@@ -66,7 +66,7 @@ public class BashUtilsTest {
 
     @Test
     public void find() throws Exception {
-        List<String> bashUtils = BashUtils.find("../", "BashUtils");
+        List<String> bashUtils = BashUtils.find(".", "BashUtils.class");
 
         assertThat(bashUtils.size(), is(1));
         assertThat(bashUtils.get(0), containsString("BashUtils.class"));
