@@ -2,6 +2,9 @@ package io;
 
 import java.io.*;
 import java.nio.channels.WritableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,15 +38,11 @@ public class BashUtils {
     }
 
     public static boolean writeInto(String path, String src, boolean append) throws IOException {
-        try (Writer writer = new FileWriter(path)){
+        try (Writer writer = new FileWriter(path, append)) {
             writer.write(src);
-            if (append){
-                writer.flush();
-            } else {
-                writer.close();
-            }
+            writer.flush();
+            return true;
         }
-        return true;
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
@@ -71,7 +70,9 @@ public class BashUtils {
     }
 
     public static boolean move(String src, String dest) throws  Exception{
-        return false;
+        boolean res = copy(src, dest);
+        Files.delete(Paths.get(src));
+        return res;
     }
 
     public static List<String> find(String path, String targetName) throws FileNotFoundException{
