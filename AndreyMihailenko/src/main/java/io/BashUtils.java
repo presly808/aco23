@@ -40,7 +40,6 @@ public class BashUtils {
     public static boolean writeInto(String path, String src, boolean append) throws IOException {
         try (Writer writer = new FileWriter(path, append)) {
             writer.write(src);
-            writer.flush();
             return true;
         }
     }
@@ -51,7 +50,7 @@ public class BashUtils {
         List<String> list = new ArrayList<>();
         if (listOfFiles != null){
             for (File listOfFile : listOfFiles) {
-                if (listOfFile.isFile()) {
+                if (listOfFile.isFile() || listOfFile.isDirectory()) {
                     list.add(listOfFile.getName());
                 }
             }
@@ -71,12 +70,18 @@ public class BashUtils {
 
     public static boolean move(String src, String dest) throws  Exception{
         boolean res = copy(src, dest);
-        Files.delete(Paths.get(src));
+        new File(src).delete();
         return res;
     }
 
     public static List<String> find(String path, String targetName) throws FileNotFoundException{
-        return null;
+        List<String> res = ls(path);
+        for (String str : res) {
+            if (!str.equals(targetName)){
+                res.remove(str);
+            }
+        }
+        return res;
     }
 
     public static List<String> grep(String lines, String targetWord){
