@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MainControllerProfilerDecorator {
 
-    MainController mainController;
+    private MainController mainController;
 
     public MainControllerProfilerDecorator() {
         mainController = new MainControllerImpl(new AppDb());
