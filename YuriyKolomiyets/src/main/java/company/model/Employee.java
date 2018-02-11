@@ -15,6 +15,8 @@ public class Employee implements Worker, Comparator<Employee> {
     private Date startWorkDate;
     private Date endWorkDate;
 
+
+
     public Employee() {
         this.id = MyUtils.genId();
     }
