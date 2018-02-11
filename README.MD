@@ -16,6 +16,11 @@
 	or
 	b) open in IDEA -> choose gradle.build -> Open as project
 	
+	Delegate all build IDEA commands to gradle
+	In IDEA (Ctrl + Alt + S) 
+	Build, Execution, Deployment -> Build Tool -> Gradle -> Runner
+	Activate Delegate IDE build/run actions to Gradle 
+	
 2. Create branch (<TaskName>-<ModuleName>)\
     Before the creation ensure that current branch is `master` and\
     its was updated via (git pull)
