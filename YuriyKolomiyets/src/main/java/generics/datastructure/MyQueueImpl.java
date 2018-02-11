@@ -2,33 +2,70 @@ package generics.datastructure;
 
 import java.util.Iterator;
 
-/**
- * Created by serhii on 11.02.18.
- */
 public class MyQueueImpl<T> implements MyQueue<T> {
-    @Override
-    public boolean queue(T el) throws NoFreeSpaceException {
-        System.out.println();
-
-        return false;
 
 
-    }
+    private T[] mas = (T[]) new Object[20];
+    private int head;
+    private int tail;
+    private int queueSize;
 
 
     @Override
-    public T enqueue() throws NoElementsException {
-        return null;
+    public boolean enqueue(T el) throws NoFreeSpaceException {
+        if(queueSize > mas.length){
+            throw new NoFreeSpaceException();
+
+        } else {
+            mas[tail++] = el;
+            queueSize++;
+            return true;
+        }
     }
+
+    @Override
+    public T dequeue() throws NoElementsException {
+        if(queueSize == 0){
+            throw new NoElementsException();
+        }
+
+        T ret = mas[head++];
+        queueSize--;
+        return ret;
+    }
+
+
+
 
     @Override
     public int size() {
-        return 0;
+        return queueSize;
     }
 
     @Override
     public Iterator<T> iterator() {
-        return null;
-    }
-}
+        return new MyArrayQueueIterator();
 
+    }
+
+    public class MyArrayQueueIterator implements Iterator<T> {
+
+        int current = head;
+
+        @Override
+        public boolean hasNext() {
+            if(current < queueSize){
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public T next() {
+            T ret = mas[current++];
+            return ret;
+        }
+    }
+
+
+}
