@@ -50,6 +50,21 @@ var appDB;
 
 function addEmployee(employee){
     // add an employee to the db, that must have been initialized above
+    print(employee['id'])
+    print(employee['salary'])
+    print(employee['name'])
+    employee['id'] = 23;
 
+    return employee
 }
 
+function testFunction(fun){
+    // add an employee to the db, that must have been initialized above
+    print(fun(23))
+}
+
+
+function testBiFunction(fun){
+    // add an employee to the db, that must have been initialized above
+    print(fun(23,23))
+}
