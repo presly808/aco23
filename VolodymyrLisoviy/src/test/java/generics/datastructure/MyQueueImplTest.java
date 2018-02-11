@@ -22,10 +22,6 @@ public class MyQueueImplTest {
         myQueue.enqueue("Object");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void constructorWithSize() {
-        myQueue = new MyQueueImpl<>(-1);
-    }
 
     @Test
     public void enqueue() throws Exception {
@@ -33,11 +29,6 @@ public class MyQueueImplTest {
         assertEquals(6, myQueue.size());
     }
 
-    @Test(expected = NoFreeSpaceException.class)
-    public void enqueueException() throws Exception {
-        for (int i = 0; i < 1000; i++)
-            myQueue.enqueue("new String");
-    }
 
     @Test
     public void dequeue() throws Exception {

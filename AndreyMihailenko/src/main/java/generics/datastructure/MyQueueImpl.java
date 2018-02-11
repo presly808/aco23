@@ -7,7 +7,7 @@ import java.util.Iterator;
  */
 public class MyQueueImpl<T> implements MyQueue<T> {
 
-    private T[] mas = (T[]) new Object[10];
+    private T[] mas = (T[]) new Object[1200];
     private int tail;
     private int head;
     private int size;
