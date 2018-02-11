@@ -24,7 +24,7 @@ public class MyQueueImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void constructorWithSize() {
-        myQueue = new MyQueueImpl<>(-1);
+        myQueue = new MyQueueImpl<>();
     }
 
     @Test

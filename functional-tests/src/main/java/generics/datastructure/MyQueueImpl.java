@@ -6,13 +6,15 @@ import java.util.Iterator;
  * Created by serhii on 11.02.18.
  */
 public class MyQueueImpl<T> implements MyQueue<T> {
+
+
     @Override
-    public boolean queue(T el) throws NoFreeSpaceException {
+    public boolean enqueue(T el) throws NoFreeSpaceException {
         return false;
     }
 
     @Override
-    public T enqueue() throws NoElementsException {
+    public T dequeue() throws NoElementsException {
         return null;
     }
 

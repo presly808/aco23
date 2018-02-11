@@ -4,10 +4,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -31,7 +28,9 @@ public class SortUtilsTest {
 
     @Test
     public void mergeSortStrings() {
-        List<String> sortedList = SortUtils.mergeSort(strings, String::compareTo);
+        Comparator<String> comparator = String::compareTo;
+
+        List<String> sortedList = SortUtils.mergeSort(strings, comparator);
         strings.sort(String::compareTo);
 
         assertThat(sortedList, CoreMatchers.equalTo(strings));
@@ -39,7 +38,8 @@ public class SortUtilsTest {
 
     @Test
     public void mergeSortIntegers() {
-        List<Integer> sortedList = SortUtils.mergeSort(integers, Integer::compareTo);
+        Comparator<Integer> comparator = (o1, o2) -> o1 - o2;
+        List<Integer> sortedList = SortUtils.mergeSort(integers, comparator);
         integers.sort(Integer::compareTo);
 
         assertThat(sortedList, CoreMatchers.equalTo(integers));
@@ -47,7 +47,8 @@ public class SortUtilsTest {
 
     @Test
     public void mergeSortUsers() {
-        List<User> sortedList = SortUtils.mergeSort(users, User::compareTo);
+        Comparator<User> comparator = User::compareTo;
+        List<User> sortedList = SortUtils.mergeSort(users, comparator);
         users.sort(User::compareTo);
 
         assertThat(sortedList, CoreMatchers.equalTo(users));
