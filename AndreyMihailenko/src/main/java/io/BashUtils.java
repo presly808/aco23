@@ -5,9 +5,8 @@ import java.nio.channels.WritableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by serhii on 10.02.18.
@@ -75,20 +74,33 @@ public class BashUtils {
     }
 
     public static List<String> find(String path, String targetName) throws FileNotFoundException{
-        List<String> res = ls(path);
-        for (String str : res) {
-            if (!str.equals(targetName)){
-                res.remove(str);
+        if (!Files.exists(Paths.get(path))){
+            throw new FileNotFoundException();
+        }
+        return findR(new File(path), targetName);
+    }
+
+    public static List<String> findR(File file, String targetName) {
+        List<String> res = new ArrayList<>();
+        for (File f : Objects.requireNonNull(file.listFiles())) {
+            if (f.isDirectory()){
+                res.addAll(findR(f, targetName));
+            } else if (f.getName().contains(targetName)){
+                res.add(f.getName());
             }
         }
         return res;
     }
 
     public static List<String> grep(String lines, String targetWord){
-        return null;
+        return Arrays.stream(lines.split("\n")).filter(line -> line.contains(targetWord))
+                .collect(Collectors.toList());
     }
 
     public static Map<String, String> grepR(String path, String targetWord){
+        File file = new File(path);
+        Map<String, String> map = new HashMap<>();
+
         return null;
     }
 
