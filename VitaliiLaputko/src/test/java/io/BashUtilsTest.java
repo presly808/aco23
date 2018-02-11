@@ -1,5 +1,7 @@
 package io;
 
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -24,7 +26,7 @@ public class BashUtilsTest {
 
     @Test(expected = FileNotFoundException.class)
     public void catNeg() throws Exception {
-        String res = BashUtils.cat(BashUtils.class.getResource("tests.txt").getFile());
+        String res = BashUtils.cat("unreal.txt");
     }
 
     @Test
@@ -45,12 +47,12 @@ public class BashUtilsTest {
     @Test
     public void ls() throws Exception {
         List<String> ls = BashUtils.ls(".");
-        assertThat(ls, hasItems("BashUtils.class", "test.txt"));
+        assertThat(ls, hasItems("build.gradle", "src"));
     }
 
     @Test
     public void copy() throws Exception {
-        boolean copy = BashUtils.copy("test.txt", "test_copy.txt");
+        boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
     }
 
@@ -64,9 +66,7 @@ public class BashUtilsTest {
 
     @Test
     public void find() throws Exception {
-        List<String> bashUtils = BashUtils.find("../", "BashUtils");
-
-        assertThat(bashUtils.size(), is(1));
+        List<String> bashUtils = BashUtils.find(".", "BashUtils.class");
         assertThat(bashUtils.get(0), containsString("BashUtils.class"));
     }
 
@@ -84,7 +84,5 @@ public class BashUtilsTest {
             assertThat(key, containsString("test.txt"));
             assertThat(val, containsString("line1"));
         });
-
     }
-
 }

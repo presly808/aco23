@@ -1,10 +1,8 @@
 package io;
 
 import java.io.*;
-import java.nio.channels.FileChannel;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -67,8 +65,6 @@ public class BashUtils {
     }
 
     public static boolean copy(String src, String dest) throws Exception {
-        System.out.println(new File(src).getAbsolutePath());
-
         try (InputStream input = new FileInputStream(new File(src).getAbsolutePath());
              OutputStream output = new FileOutputStream(new File(dest).getAbsolutePath())) {
             byte[] buf = new byte[1024];
@@ -82,7 +78,8 @@ public class BashUtils {
     }
 
     public static boolean move(String src, String dest) throws Exception {
-        //Files.copy(Pa, dest, StandardCopyOption.REPLACE_EXISTING);
+        //Path path = file.getAbsolutePath() + "/" + aaa + "/" + source.getName();
+        //FileUtils.copyFile(src, new File(dest));
 
         return true;
     }
