@@ -65,7 +65,7 @@ public class BashUtils {
 
     public static boolean move(String src, String dest) throws  Exception{
         boolean res = copy(src, dest);
-        Files.delete(Paths.get(src));
+        new File(src).deleteOnExit();
         return res;
     }
 
