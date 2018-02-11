@@ -1,4 +1,4 @@
-package week2;
+package ua.artcode.week2;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
