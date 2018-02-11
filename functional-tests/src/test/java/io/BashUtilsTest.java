@@ -4,7 +4,6 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +42,6 @@ public class BashUtilsTest {
         BashUtils.writeInto("res.txt", "Content2", true);
         BashUtils.writeInto("res.txt", "Content3", true);
         assertThat(BashUtils.cat("res.txt"), containsString("Content2"));
-
-        new File("res.txt").delete();
     }
 
     @Test
@@ -57,8 +54,6 @@ public class BashUtilsTest {
     public void copy() throws Exception {
         boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
-
-        new File("test_copy.txt").delete();
     }
 
     @Test
@@ -67,8 +62,6 @@ public class BashUtilsTest {
         BashUtils.writeInto("test1.txt", "test content", false);
         boolean copy = BashUtils.move("test1.txt", "test2.txt");
         assertThat(BashUtils.cat("test2.txt"), containsString("content"));
-
-        new File("test2.txt").delete();
     }
 
     @Test
