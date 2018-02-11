@@ -17,6 +17,13 @@ public class MyQueueImpl<T> implements MyQueue<T> {
         elements = new Object[DEFAULT_CAPACITY];
     }
 
+    public MyQueueImpl(int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException("size <= 0");
+        }
+        elements = new Object[size];
+    }
+
     @Override
     public boolean enqueue(T el) throws NoFreeSpaceException {
         if (size == elements.length)
@@ -34,6 +41,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
             throw new NoElementsException();
         T toRet = (T) elements[0];
         System.arraycopy(elements, 1, elements, 0, size - 1);
+        size--;
         return toRet;
     }
 
