@@ -3,17 +3,17 @@ package generics.datastructure;
 import java.util.Iterator;
 
 public class MyQueueImpl<T> implements MyQueue<T> {
-
-
     private T[] mas = (T[]) new Object[20];
     private int head;
     private int tail;
     private int queueSize;
 
 
+
+
     @Override
     public boolean enqueue(T el) throws NoFreeSpaceException {
-        if(queueSize > mas.length){
+        if(queueSize >= mas.length){
             throw new NoFreeSpaceException();
 
         } else {
@@ -22,6 +22,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
             return true;
         }
     }
+
 
     @Override
     public T dequeue() throws NoElementsException {
