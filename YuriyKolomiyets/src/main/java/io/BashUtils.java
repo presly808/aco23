@@ -1,7 +1,10 @@
 package io;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -104,13 +107,26 @@ public class BashUtils {
 
     public static boolean move(String src, String dest) throws Exception {
 
-        //File file = new File(path);
+        boolean ret = false;
+        try {
+            copy(src, dest);
+            File file = new File(src);
+            ret = file.delete();
 
-        return false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return ret;
     }
 
     public static List<String> find(String path, String targetName) throws FileNotFoundException {
-        return null;
+
+        if (!Files.exists(Paths.get(path))) {
+            throw new FileNotFoundException();
+        }
+
+        return findRec(new File(path), targetName);
+
     }
 
     public static List<String> grep(String lines, String targetWord) {
@@ -119,6 +135,25 @@ public class BashUtils {
 
     public static Map<String, String> grepR(String path, String targetWord) {
         return null;
+    }
+
+    private static List<String> findRec(File file, String targetName) {
+
+        List<String> ret = new ArrayList<>();
+
+        // if folder -> go inside
+
+        Arrays.stream(file.listFiles()).forEach(oneFile -> {
+            if (oneFile.isDirectory()) {
+                ret.addAll(findRec(oneFile, targetName));
+
+                // if file -> check & add to list
+
+            } else if (oneFile.getName().contains(targetName)) {
+                ret.add(oneFile.getName());
+            }
+        });
+        return ret;
     }
 
 }
