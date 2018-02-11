@@ -16,6 +16,11 @@
 	or
 	b) open in IDEA -> choose gradle.build -> Open as project
 	
+	Delegate all build IDEA commands to gradle
+	In IDEA (Ctrl + Alt + S) 
+	Build, Execution, Deployment -> Build Tool -> Gradle -> Runner
+	Activate Delegate IDE build/run actions to Gradle 
+	
 2. Create branch (<TaskName>-<ModuleName>)\
     Before the creation ensure that current branch is `master` and\
     its was updated via (git pull)
@@ -33,6 +38,13 @@
 12. A codereviewer will check you code and leaves some comments\
 	if have problem -> go to 4th point
 	else you branch will be merged into master
+	
+	
+Quick update of your branch by master's changes (if master is updated, we want to have all new changes in our branch)
+git -> repository -> fetch (update origin from github)
+being on your branch you will chose (branch -> origin/master -> merge)
+
+
 
 
 
