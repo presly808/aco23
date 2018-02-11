@@ -5,9 +5,10 @@ package generics.datastructure;
  */
 public interface MyQueue<T> extends Iterable<T> {
 
+    boolean enqueue(T el) throws NoFreeSpaceException;
 
-    boolean queue(T el) throws NoFreeSpaceException;
-    T enqueue() throws NoElementsException;
+    T dequeue() throws NoElementsException;
+
     int size();
 
 }
