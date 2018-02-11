@@ -3,6 +3,20 @@ version 'unspecified'
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
 
 repositories {
     mavenCentral()
@@ -10,4 +24,22 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-}
+
+    /*compile group: 'com.github.javafaker', name: 'javafaker', version: '0.14'
+    testCompile(
+            'org.junit.vintage:junit-vintage-engine:4.12.1',
+            'org.junit.jupiter:junit-jupiter-api:5.0.1'
+    )
+    testRuntime(
+            'org.junit.jupiter:junit-jupiter-engine:5.0.1',
+            'org.junit.platform:junit-platform-launcher:1.0.1',
+            'org.junit.platform:junit-platform-runner:1.0.1'
+    )
+    compile group: 'org.junit', name: 'junit5-api', version: '5.0.0-ALPHA'
+    compile group: 'log4j', name: 'log4j', version:'1.2.17'
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.9.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: '3.9.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.9.1'
+*/}
