@@ -1,7 +1,5 @@
 package io;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -15,8 +13,6 @@ import static org.junit.Assert.*;
  * Created by serhii on 10.02.18.
  */
 public class BashUtilsTest {
-
-    private BashUtils bashUtils;
 
     @Test
     public void cat() throws Exception {

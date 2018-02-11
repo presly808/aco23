@@ -1,28 +1,28 @@
 package io;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * Created by serhii on 10.02.18.
  */
 public class BashUtils {
     public static String cat(String path) throws FileNotFoundException {
-        Reader reader = new FileReader(path);
-        StringBuilder sb = new StringBuilder();
-        char[] buff = new char[100000];
+        File file = new File(path);
+        if (!file.exists()) {
+            throw new FileNotFoundException();
+        }
 
+        StringBuilder sb = new StringBuilder();
         try {
+            Reader reader = new FileReader(path);
+            char[] buff = new char[100000];
             while (reader.read(buff) != -1)
                 sb.append(buff);
-        } catch (IOException ex) {
-
-            ex.printStackTrace();
-        }
+        } catch (IOException ex){}
 
         return sb.toString();
     }
@@ -78,8 +78,10 @@ public class BashUtils {
     }
 
     public static boolean move(String src, String dest) throws Exception {
-        //Path path = file.getAbsolutePath() + "/" + aaa + "/" + source.getName();
-        //FileUtils.copyFile(src, new File(dest));
+        File file = new File(src);
+        file.createNewFile()
+
+        FileUtils.copyFile(src, new File(dest));
 
         return true;
     }
