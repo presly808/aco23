@@ -81,6 +81,7 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee fireWorker(int workerId) {
+        callListener();
         Employee fireEmployee = appDb.getById(workerId);
 
         if (fireEmployee != null) {

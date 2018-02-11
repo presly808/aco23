@@ -2,10 +2,14 @@ package company.controller;
 
 import company.db.AppDb;
 import company.model.Employee;
+import company.notifier.MyEvent;
+import company.notifier.MyListener;
 import company.utils.filtering.EmployeePredicate;
+import company.utils.reflection.Reflection;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 
@@ -15,10 +19,12 @@ import java.util.List;
 public class MainControllerImpl implements MainController {
 
     private AppDb appDb;
+    private List<MyListener> listeners;
 
 
     public MainControllerImpl(AppDb appDb) {
         this.appDb = appDb;
+        this.listeners = new ArrayList<>();
     }
 
     @Override
@@ -76,13 +82,15 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Employee fireWorker(int workerId) {
-        for (Employee employee : appDb.getAll()) {
+      /*  for (Employee employee : appDb.getAll()) {
             if (employee.getId() == workerId){
                 appDb.getAll().remove(employee);
                 return employee;
             }
         }
-        return null;
+        return null;*/
+      callListener();
+      return appDb.remove(workerId);
     }
 
     @Override
@@ -92,6 +100,22 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public boolean areWorkersEqual(int emp1id, int eml2id) {
-        return appDb.getById(emp1id).equals(appDb.getById(eml2id));
+        Employee emp1 = appDb.getById(emp1id);
+        Employee emp2 = appDb.getById(eml2id);
+        return emp1 != null && emp2 != null && emp1.equals(emp2);
     }
+
+    @Override
+    public void addListener(MyListener myListener) {
+        listeners.add(myListener);
+    }
+
+    @Override
+    public void callListener() {
+        MyEvent obj = new MyEvent(new Date(), this.getClass().getName() + "." + Reflection.getMethodName(3), "some info");
+        for (MyListener listener : listeners) {
+            listener.eventOccur(obj);
+        }
+    }
+
 }
