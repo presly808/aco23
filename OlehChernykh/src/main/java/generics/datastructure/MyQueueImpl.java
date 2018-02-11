@@ -12,9 +12,19 @@ public class MyQueueImpl<T> implements MyQueue<T> {
     private int tail;
     private int size;
 
+    public MyQueueImpl() {
+    }
+
+    public MyQueueImpl(T[] mas, int head, int tail, int size) {
+        this.mas = mas;
+        this.head = head;
+        this.tail = tail;
+        this.size = size;
+    }
+
     @Override
     public boolean enqueue(T el) throws NoFreeSpaceException {
-        if (size > mas.length) {
+        if (size >= mas.length) {
             throw new NoFreeSpaceException();
         }
         mas[tail++] = el;
@@ -24,7 +34,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     @Override
     public T dequeue() throws NoElementsException {
-        if(size == 0){
+        if(size <= 0){
             throw  new NoElementsException();
         }
         T ret = mas[head++];
