@@ -16,10 +16,39 @@
       "baseClasses":["company/notifier", "company/utils/factory"],
       "testClasses":["company/utils/factory"]
     },
+    "week4" : {
+      "title": "NodeUtils",
+      "baseClasses":["week4"],
+      "testClasses":["week4"]
+    },"recursion" : {
+      "title": "recursion",
+      "baseClasses":["week4/recursion"],
+      "testClasses":["week4/recursion"]
+    },
     "company" : {
       "title": "MVCPatternCompany",
       "baseClasses":["company"],
       "testClasses":["company"]
+    },
+    "java8groupbyagg" : {
+      "title": "java8groupbyagg",
+      "baseClasses":["java8/groupbyagg"],
+      "testClasses":["java8/groupbyagg"]
+    },
+    "io" : {
+      "title": "io",
+      "baseClasses":["io"],
+      "testClasses":["io"]
+    },
+    "generics" : {
+      "title": "generics",
+      "baseClasses":["generics"],
+      "testClasses":["generics"]
+    },
+    "jscompany" : {
+      "title": "jscompany",
+      "baseClasses":["js/company"],
+      "testClasses":["js/company"]
     }
 
   }

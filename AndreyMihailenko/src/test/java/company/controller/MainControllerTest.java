@@ -1,8 +1,9 @@
 package company.controller;
 
-import company.db.AppDb;
 import company.model.Manager;
+import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
+import org.junit.Before;
 import org.junit.Test;
 import company.model.Employee;
 
@@ -14,18 +15,47 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class MainControllerTest {
+
+    private MainController mainController;
+
+
+    @Before
+    public void before() {
+        mainController = MainFactory.create(true);
+    }
+
+    @Test
+    public void areWorkersEqual() {
+
+        Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
+        Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
+
+        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
+
+    }
+
+
+    @Test
+    public void areWorkersNotEqual() {
+
+        Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
+        Employee em2 = mainController.addEmployee(new Employee("Serhey", 3000));
+
+        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
+
+    }
+
+
     @Test
     public void addEmployee() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(withId.getId(), CoreMatchers.not(0));
-
-
     }
 
     @Test
     public void getAllEmployees() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
         mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getAllEmployees().size(), CoreMatchers.equalTo(2));
@@ -34,14 +64,14 @@ public class MainControllerTest {
 
     @Test
     public void calculateSalary() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.calculateSalary(withId), CoreMatchers.equalTo(3000));
     }
 
     @Test
     public void getById() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
+
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
         assertThat(mainController.getById(withId.getId()), CoreMatchers.equalTo(withId));
@@ -51,7 +81,6 @@ public class MainControllerTest {
     @Test
     public void findWithFilter() {
 
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
         mainController.addEmployee(new Employee("anton", 3000));
         mainController.addEmployee(new Employee("Andrey", 3000));
         mainController.addEmployee(new Employee("Ivan", 3000));
@@ -61,8 +90,6 @@ public class MainControllerTest {
 
     @Test
     public void calculateSalaries() {
-
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Manager man = new Manager("anton", 5000);
         man.addSubworker(new Employee("1", 1000));
@@ -78,7 +105,6 @@ public class MainControllerTest {
 
     @Test
     public void filterWithPredicate() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
 
         Employee emp1 = new Employee("anton", 1000);
 
@@ -100,14 +126,9 @@ public class MainControllerTest {
         List<Employee> result = mainController.filterWithPredicate((employee -> {
             boolean res = true;
 
-            if (employee.getSalary() < 3000) {
-                return false;
-            }
-
-            return res;
+            return employee.getSalary() >= 3000 && res;
 
         }), Comparator.comparing(Employee::getName));
-
 
         assertThat(result, CoreMatchers.hasItem(emp2));
         assertThat(result, CoreMatchers.hasItem(emp3));
@@ -117,33 +138,14 @@ public class MainControllerTest {
 
     @Test
     public void fireWorker() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
-
         Employee emp1 = new Employee("anton", 1000);
 
         emp1.setBirthday(new GregorianCalendar(1990, 4, 22));
         emp1.setStartWorkDate(new Date());
+
         mainController.addEmployee(emp1);
 
         assertThat(mainController.fireWorker(emp1.getId()), CoreMatchers.equalTo(emp1));
-    }
-
-    @Test
-    public void areWorkersEqual() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
-        Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
-        Employee em2 = mainController.addEmployee(new Employee("Ivan", 3000));
-        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
-    }
-
-
-    @Test
-    public void areWorkersNotEqual() {
-        MainControllerImpl mainController = new MainControllerImpl(new AppDb());
-        Employee em1 = mainController.addEmployee(new Employee("Ivan", 3000));
-        Employee em2 = mainController.addEmployee(new Employee("Serhey", 3000));
-
-        assertFalse(mainController.areWorkersEqual(em1.getId(), em2.getId()));
     }
 
 }
