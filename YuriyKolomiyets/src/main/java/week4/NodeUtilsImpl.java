@@ -29,7 +29,7 @@ public class NodeUtilsImpl implements NodeUtils {
         Node newNode = createOneNode(val);
 
         if (chain == null) {
-            return chain = newNode;
+            return newNode;
 
         } else {
             newNode.next = chain;
@@ -116,29 +116,35 @@ public class NodeUtilsImpl implements NodeUtils {
     @Override
     public Node reverse(Node curr) {
 
-        Node next = curr;
-        Node prev = null;
+        Node prevNode = null;
+        Node node = curr;
 
-        while (curr != null){
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+        while (node != null) {
+            Node nextNode = node.next;
+            node.next = prevNode;
+            prevNode = node;
+            node = nextNode;
         }
 
-        return prev;
+        return prevNode;
 
     }
 
     @Override
     public Node reverse(Node curr, Node next, Node prev) {
-        if (curr == null) {
+        /*if (curr == null) {
             return prev;
         }
 
         next = curr.next;
         curr.next = prev;
 
-        return reverse(next, next, curr);
+        return reverse(next, next, curr);*/
+
+        curr.next = prev;
+        if (next == null) {
+            return curr;
+        }
+        return reverse(next, next.next, curr);
     }
 }
