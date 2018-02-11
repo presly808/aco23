@@ -3,10 +3,8 @@ package io;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BashUtils {
 
@@ -130,10 +128,29 @@ public class BashUtils {
     }
 
     public static List<String> grep(String lines, String targetWord) {
-        return null;
+       return Arrays.asList(lines.split("\n")).stream()
+                .filter(line -> line.contains(targetWord)).collect(Collectors.toList());
     }
 
     public static Map<String, String> grepR(String path, String targetWord) {
+
+
+        /*Map<String, String> ret = new HashMap<>();
+        List<String> grepRes = new ArrayList<>();
+
+        try {
+            String fileSource = cat(path);
+            String fileName =
+            grepRes = grep(fileSource, targetWord);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        */
+
+
+
         return null;
     }
 
@@ -155,5 +172,7 @@ public class BashUtils {
         });
         return ret;
     }
+
+
 
 }
