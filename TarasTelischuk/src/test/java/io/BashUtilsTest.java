@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class BashUtilsTest {
 
-   // private BashUtils bashUtils;
+    //private BashUtils bashUtils;
 
     @Test
     public void cat() throws Exception {
@@ -24,7 +24,7 @@ public class BashUtilsTest {
 
     @Test(expected = FileNotFoundException.class)
     public void catNeg() throws Exception {
-        String res = BashUtils.cat("unreal.txt");
+        BashUtils.cat("unreal.txt");
     }
 
     @Test
@@ -50,7 +50,7 @@ public class BashUtilsTest {
 
     @Test
     public void copy() throws Exception {
-        boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
+        BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
     }
 
@@ -58,7 +58,7 @@ public class BashUtilsTest {
     public void move() throws Exception {
         // create file before
         BashUtils.writeInto("test1.txt", "test content", false);
-        boolean copy = BashUtils.move("test1.txt", "test2.txt");
+        BashUtils.move("test1.txt", "test2.txt");
         assertThat(BashUtils.cat("test2.txt"), containsString("content"));
     }
 
