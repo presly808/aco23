@@ -22,7 +22,7 @@ public class BashUtilsTest {
 
     @Test(expected = FileNotFoundException.class)
     public void catNeg() throws Exception {
-        String res = BashUtils.cat("unreal.txt");
+        BashUtils.cat("unreal.txt");
     }
 
     @Test
@@ -78,8 +78,9 @@ public class BashUtilsTest {
     @Test
     public void grepR() throws Exception {
         Map<String, String> line1 = BashUtils.grepR(".", "line1");
-        line1.forEach((key, val) -> assertThat(val, containsString("line1")));
+        line1.forEach((key, val) -> {
+            assertThat(val, containsString("line1"));
+        });
 
     }
-
 }

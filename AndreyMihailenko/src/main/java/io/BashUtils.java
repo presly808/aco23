@@ -57,12 +57,12 @@ public class BashUtils {
         throw new FileNotFoundException();
     }
 
-    public static boolean copy(String src, String dest) throws Exception {
+    public static boolean copy(String src, String dest) throws IOException {
         if (src != null) {
             String buff = cat(src);
             return writeInto(dest, buff, true);
         }
-        throw new Exception();
+        throw new IOException();
     }
 
     public static boolean move(String src, String dest) throws Exception {
