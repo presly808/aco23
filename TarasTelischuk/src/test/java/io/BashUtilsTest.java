@@ -1,7 +1,5 @@
 package io;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -16,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class BashUtilsTest {
 
-    private BashUtils bashUtils;
+   // private BashUtils bashUtils;
 
     @Test
     public void cat() throws Exception {
@@ -82,11 +80,8 @@ public class BashUtilsTest {
     @Test
     public void grepR() throws Exception {
         Map<String, String> line1 = BashUtils.grepR(".", "line1");
-        line1.forEach((key, val) -> {
-            assertThat(key, containsString("test.txt"));
-            assertThat(val, containsString("line1"));
-        });
-
+        line1.forEach((key, val) -> assertThat(val, containsString("line1")));
+        assertThat(line1.get("test.txt"), containsString("line1"));
     }
 
 }
