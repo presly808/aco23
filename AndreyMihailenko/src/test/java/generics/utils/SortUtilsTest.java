@@ -38,7 +38,7 @@ public class SortUtilsTest {
 
     @Test
     public void mergeSortIntegers() {
-        Comparator<Integer> comparator = (o1, o2) -> o1 - o2;
+        Comparator<Integer> comparator = Comparator.comparingInt(o -> o);
         List<Integer> sortedList = SortUtils.mergeSort(integers, comparator);
         integers.sort(Integer::compareTo);
 
@@ -72,8 +72,8 @@ public class SortUtilsTest {
 
     @Test
     public void compareUsers() {
-        User u1 = new User(12, "Les", "London");
-        User u2 = new User(12, "Les", "New York");
+        User u1 = new User(12, "And", "London");
+        User u2 = new User(12, "And", "New York");
         User u3 = new User(0, "Les", "London");
 
         assertTrue(SortUtils.compare(u1, u2) == 0);
@@ -87,25 +87,11 @@ public class SortUtilsTest {
         private String name;
         private String city;
 
-        public User() {
-        }
 
         public User(int id, String name, String city) {
             this.id = id;
             this.name = name;
             this.city = city;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getCity() {
-            return city;
         }
 
         @Override

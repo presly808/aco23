@@ -39,6 +39,12 @@ public class MyQueueImplTest {
             queue.dequeue();
     }
 
+    @Test(expected = NoFreeSpaceException.class)
+    public void enqueueException() throws Exception {
+        for (int i = 0; i < 1000; i++)
+            queue.enqueue("new String");
+    }
+
     @Test
     public void size() throws Exception {
         assertEquals(2, queue.size());

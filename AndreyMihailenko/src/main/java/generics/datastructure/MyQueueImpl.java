@@ -7,7 +7,7 @@ import java.util.Iterator;
  */
 public class MyQueueImpl<T> implements MyQueue<T> {
 
-    private T[] mas = (T[]) new Object[1200];
+    private T[] mas = (T[]) new Object[900];
     private int tail;
     private int head;
     private int size;
@@ -15,7 +15,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     @Override
     public boolean enqueue(T el) throws NoFreeSpaceException {
-        if (size > mas.length){
+        if (size == mas.length){
             throw new NoFreeSpaceException();
         }
         mas[tail++] = el;
