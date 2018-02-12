@@ -1,9 +1,7 @@
 package io;
 
 import java.io.*;
-import java.nio.channels.WritableByteChannel;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,7 +15,7 @@ public class BashUtils {
 
         File f = new File(path);
 
-        if(!f.exists() || f.isDirectory()) {
+        if (!f.exists() || f.isDirectory()) {
             throw new FileNotFoundException();
         }
         Reader reader = new FileReader(path);
@@ -29,7 +27,7 @@ public class BashUtils {
             while ((count = reader.read(buff)) != -1) {
                 stringBuilder.append(buff, 0, count);
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -47,7 +45,7 @@ public class BashUtils {
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
         List<String> list = new ArrayList<>();
-        if (listOfFiles != null){
+        if (listOfFiles != null) {
             for (File listOfFile : listOfFiles) {
                 if (listOfFile.isFile() || listOfFile.isDirectory()) {
                     list.add(listOfFile.getName());
@@ -60,21 +58,21 @@ public class BashUtils {
     }
 
     public static boolean copy(String src, String dest) throws Exception {
-        if (src != null){
+        if (src != null) {
             String buff = cat(src);
-            return  writeInto(dest, buff, true);
+            return writeInto(dest, buff, true);
         }
         throw new Exception();
     }
 
-    public static boolean move(String src, String dest) throws  Exception{
+    public static boolean move(String src, String dest) throws Exception {
         boolean res = copy(src, dest);
         new File(src).delete();
         return res;
     }
 
-    public static List<String> find(String path, String targetName) throws FileNotFoundException{
-        if (!Files.exists(Paths.get(path))){
+    public static List<String> find(String path, String targetName) throws FileNotFoundException {
+        if (!Files.exists(Paths.get(path))) {
             throw new FileNotFoundException();
         }
         return findR(new File(path), targetName);
@@ -83,25 +81,35 @@ public class BashUtils {
     public static List<String> findR(File file, String targetName) {
         List<String> res = new ArrayList<>();
         for (File f : Objects.requireNonNull(file.listFiles())) {
-            if (f.isDirectory()){
+            if (f.isDirectory()) {
                 res.addAll(findR(f, targetName));
-            } else if (f.getName().contains(targetName)){
+            } else if (f.getName().contains(targetName)) {
                 res.add(f.getName());
             }
         }
         return res;
     }
 
-    public static List<String> grep(String lines, String targetWord){
+    public static List<String> grep(String lines, String targetWord) {
         return Arrays.stream(lines.split("\n")).filter(line -> line.contains(targetWord))
                 .collect(Collectors.toList());
     }
 
-    public static Map<String, String> grepR(String path, String targetWord){
+    public static Map<String, String> grepR(String path, String targetWord) throws FileNotFoundException {
         File file = new File(path);
         Map<String, String> map = new HashMap<>();
+        if (file.isDirectory()) {
+            for (File f : Objects.requireNonNull(file.listFiles())) {
+                Map<String, String> bufMap = grepR(f.getPath(), targetWord);
+                bufMap.keySet().forEach(key -> map.put(key, bufMap.get(key)));
+            }
+        } else {
+            Optional<String> stream = Arrays.stream(cat(path).split("\n"))
+                    .filter(lines -> lines.contains(targetWord)).findFirst();
+            stream.ifPresent(str -> map.put(file.getName(), str));
+        }
 
-        return null;
+        return map;
     }
 
 }

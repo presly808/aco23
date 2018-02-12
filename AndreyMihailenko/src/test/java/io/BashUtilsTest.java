@@ -1,7 +1,5 @@
 package io;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -15,8 +13,6 @@ import static org.junit.Assert.*;
  * Created by serhii on 10.02.18.
  */
 public class BashUtilsTest {
-
-    private BashUtils bashUtils;
 
     @Test
     public void cat() throws Exception {
@@ -52,7 +48,7 @@ public class BashUtilsTest {
 
     @Test
     public void copy() throws Exception {
-        boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
+        BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
     }
 
@@ -60,7 +56,7 @@ public class BashUtilsTest {
     public void move() throws Exception {
         // create file before
         BashUtils.writeInto("test1.txt", "test content", false);
-        boolean copy = BashUtils.move("test1.txt", "test2.txt");
+        BashUtils.move("test1.txt", "test2.txt");
         assertThat(BashUtils.cat("test2.txt"), containsString("content"));
     }
 
@@ -73,7 +69,7 @@ public class BashUtilsTest {
     }
 
     @Test
-    public void grep() throws Exception {
+    public void grep() {
         List<String> line2 = BashUtils.grep("line1\nline2\nline3", "line2");
         assertThat(line2.size(), is(1));
         assertThat(line2.get(0), is("line2"));
@@ -82,10 +78,7 @@ public class BashUtilsTest {
     @Test
     public void grepR() throws Exception {
         Map<String, String> line1 = BashUtils.grepR(".", "line1");
-        line1.forEach((key, val) -> {
-            assertThat(key, containsString("test.txt"));
-            assertThat(val, containsString("line1"));
-        });
+        line1.forEach((key, val) -> assertThat(val, containsString("line1")));
 
     }
 
