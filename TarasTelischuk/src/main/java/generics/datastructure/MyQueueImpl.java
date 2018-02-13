@@ -1,8 +1,9 @@
 package generics.datastructure;
 
-import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
+
 
 import java.util.Iterator;
+
 
 /**
  * Created by serhii on 11.02.18.
@@ -14,6 +15,15 @@ public class MyQueueImpl<T> implements MyQueue<T> {
     private int tail;
     private int size;
 
+    public MyQueueImpl() {
+    }
+
+    public MyQueueImpl(int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException();
+        }
+        mas = (T[]) new Object[size];
+    }
 
     @Override
     public boolean enqueue(T el) throws NoFreeSpaceException {
@@ -45,4 +55,6 @@ public class MyQueueImpl<T> implements MyQueue<T> {
     public Iterator<T> iterator() {
         return null;
     }
+
+
 }
