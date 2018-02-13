@@ -54,10 +54,8 @@ public class BashUtils {
     }
 
     public static boolean copy(String src, String dest) throws Exception {
-        Path source = Paths.get(src);
-        Path destination = Paths.get(dest);
         try {
-            Files.copy(source, destination);
+            Files.copy(Paths.get(src), Paths.get(dest));
             return true;
         } catch (IOException e){
             e.printStackTrace();
@@ -66,10 +64,8 @@ public class BashUtils {
     }
 
     public static boolean move(String src, String dest) throws  Exception{
-        Path source = Paths.get(src);
-        Path destination = Paths.get(dest);
         try {
-            Files.move(source, destination);
+            Files.move(Paths.get(src), Paths.get(dest));
             return true;
         } catch (IOException e){
             e.printStackTrace();
@@ -93,12 +89,20 @@ public class BashUtils {
 
     }
 
-    public static Map<String, String> grepR(String path, String targetWord){
+    public static Map<String, String> grepR(String path, String targetWord) throws FileNotFoundException {
         File file = new File(path);
         Map<String, String> map = new HashMap<>();
         if (file.isDirectory()){
+            for (File f : Objects.requireNonNull(file.listFiles())) {
+                Map<String, String> bufMap = grepR(f.getPath(), targetWord);
+                bufMap.keySet().forEach(key -> map.put(key, bufMap.get(key)));
+            }
+        } else {
+            Optional<String> stream = Arrays.stream(cat(path).split("\n"))
+                    .filter(lines -> lines.contains(targetWord)).findFirst();
+            stream.ifPresent(str -> map.put(file.getName(), str));
         }
-        return null;
-    }
 
+        return map;
+    }
 }

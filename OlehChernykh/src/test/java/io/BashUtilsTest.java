@@ -82,11 +82,8 @@ public class BashUtilsTest {
     @Test
     public void grepR() throws Exception {
         Map<String, String> line1 = BashUtils.grepR(".", "line1");
-        line1.forEach((key, val) -> {
-            assertThat(key, containsString("test.txt"));
-            assertThat(val, containsString("line1"));
-        });
-
+        line1.forEach((key, val) -> assertThat(val, containsString("line1")));
+        assertThat(line1.get("test.txt"), containsString("line1"));
     }
 
-}
+    }

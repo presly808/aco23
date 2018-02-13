@@ -1,4 +1,9 @@
 function User(id,age,name,salary){
+this.id = id;
+this.age = age;
+this.name = name;
+this.salary = salary;
+
 
     // assign all input arguments to this
 
@@ -9,6 +14,8 @@ function User(id,age,name,salary){
 }
 
 function Manager(id,age,name,salary) {
+User.call(this);
+
     // add subworker
     // remove subworker
     // getAllSubworkers
