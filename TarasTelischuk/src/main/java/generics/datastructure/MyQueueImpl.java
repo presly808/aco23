@@ -1,7 +1,5 @@
 package generics.datastructure;
 
-
-
 import java.util.Iterator;
 
 
@@ -10,13 +8,11 @@ import java.util.Iterator;
  */
 public class MyQueueImpl<T> implements MyQueue<T> {
 
-    private T [] mas = (T[]) new Object[1000];
+    private T [] mas = (T[]) new Object[10];
     private int head;
     private int tail;
     private int size;
 
-    public MyQueueImpl() {
-    }
 
     public MyQueueImpl(int size) {
         if (size <= 0) {
@@ -27,10 +23,10 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     @Override
     public boolean enqueue(T el) throws NoFreeSpaceException {
-        if (size > mas.length){
+        if (size >= mas.length){
             throw new NoFreeSpaceException();
         }
-        mas[tail] = el;
+        mas[tail++] = el;
         size++;
         return false;
     }
@@ -40,8 +36,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
         if (size == 0) {
             throw new NoElementsException();
         }
-        T ret = mas[head];
-        head++;
+        T ret = mas[head++];
         size--;
         return ret;
     }
@@ -53,8 +48,21 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new MyQuenueIterator<>();
     }
 
+    private class MyQuenueIterator<T> implements Iterator<T>{
 
+        int curr = head;
+        @Override
+        public boolean hasNext() {
+            return curr < tail;
+        }
+
+        @Override
+        public T next() {
+            T obj = (T) mas[curr++];
+            return obj;
+        }
+    }
 }
