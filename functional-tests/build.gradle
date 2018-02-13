@@ -5,15 +5,12 @@ version 'unspecified'
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 buildscript {
     repositories {
         mavenCentral()
     }
 }
-
-apply plugin: 'java'
 
 repositories {
     mavenCentral()
@@ -42,7 +39,7 @@ dependencies {
 
 task copyTaskWithPatterns(type: Copy) {
     from 'src/main/java'
-    into 'build/classes/main'
+    into 'build/classes/java/main'
     include '**/*.txt'
     include '**/*.js'
     include '**/*.html'
