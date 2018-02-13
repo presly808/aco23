@@ -1,20 +1,16 @@
 package io;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by serhii on 10.02.18.
  */
 public class BashUtils {
     public static String cat(String path) throws FileNotFoundException {
-        File file = new File(path);
-        if (!file.exists()) {
-            throw new FileNotFoundException();
-        }
+        checkFileExists(path);
 
         StringBuilder sb = new StringBuilder();
         try {
@@ -22,13 +18,13 @@ public class BashUtils {
             char[] buff = new char[100000];
             while (reader.read(buff) != -1)
                 sb.append(buff);
-        } catch (IOException ex){}
+        } catch (IOException ignored) {
+        }
 
         return sb.toString();
     }
 
-    public static boolean writeInto(String path, String src, boolean append)
-            throws IOException {
+    public static boolean writeInto(String path, String src, boolean append) throws IOException {
         Writer writer = new BufferedWriter(new FileWriter(path, append));
         boolean flag = true;
 
@@ -51,17 +47,12 @@ public class BashUtils {
     }
 
     public static List<String> ls(String path) throws FileNotFoundException {
-        File folder = new File(
-                new File(path).toURI().relativize(
-                        new File(path).toURI()).getPath());
-        List<String> list = new ArrayList<>();
+        File file = checkFileExists(path);
 
-        for (File listOfFile : folder.listFiles()) {
-            if (listOfFile.isFile())
-                list.add(listOfFile.getName());
-        }
-
-        return list;
+        if (file.isDirectory())
+            return Arrays.stream(file.listFiles())
+                    .map(File::getName).collect(Collectors.toList());
+        return null;
     }
 
     public static boolean copy(String src, String dest) throws Exception {
@@ -69,46 +60,54 @@ public class BashUtils {
              OutputStream output = new FileOutputStream(new File(dest).getAbsolutePath())) {
             byte[] buf = new byte[1024];
             int bytesRead;
-            while ((bytesRead = input.read(buf)) > 0) {
-                output.write(buf, 0, bytesRead);
-            }
-        }
 
+            while ((bytesRead = input.read(buf)) > 0)
+                output.write(buf, 0, bytesRead);
+        }
         return true;
     }
 
     public static boolean move(String src, String dest) throws Exception {
-        File file = new File(src);
-        file.createNewFile()
-
-        FileUtils.copyFile(src, new File(dest));
-
-        return true;
+        return copy(src, dest) && new File(src).delete();
     }
 
     public static List<String> find(String path, String targetName) throws FileNotFoundException {
-        Reader reader = new FileReader(path);
-        StringBuilder sb = new StringBuilder();
-        List<String> result = null;
+        checkFileExists(path);
+        List<String> list = new ArrayList<>();
+        getFilesRecursion(path, list);
 
-        try {
-            while (reader.read() != -1) {
-                result.add(sb.append('\n').toString());
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        return list.contains(targetName) ? Collections.singletonList(targetName) : null;
+    }
 
-        return result;
+    private static File checkFileExists(String path) throws FileNotFoundException {
+        File file = new File(path);
+        if (!file.exists()) throw new FileNotFoundException();
+
+        return file;
+    }
+
+    private static void getFilesRecursion(String path, List<String> list) {
+        for (File f: new File(path).listFiles())
+            if (f.isDirectory()) getFilesRecursion(f.getAbsolutePath(), list);
+            else list.add(f.getName());
     }
 
     public static List<String> grep(String lines, String targetWord) {
+        if (Arrays.asList(lines.split("\n")).contains(targetWord))
+            return Collections.singletonList(targetWord);
 
         return null;
     }
 
-    public static Map<String, String> grepR(String path, String targetWord) {
+    public static Map<String, String> grepR(String path, String targetWord) throws FileNotFoundException {
+        List<String> list = new ArrayList<>();
+        Map<String, String> map = new HashMap<>();
+        getFilesRecursion(path, list);
 
-        return null;
+        for (String filePaths: list)
+            if (grep(cat(String.valueOf(Paths.get(path))), targetWord) != null)
+                map.put(filePaths, String.valueOf(grep(cat(filePaths), targetWord)));
+
+        return map;
     }
 }
