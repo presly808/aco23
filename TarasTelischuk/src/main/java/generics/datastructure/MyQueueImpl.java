@@ -13,6 +13,8 @@ public class MyQueueImpl<T> implements MyQueue<T> {
     private int tail;
     private int size;
 
+    public MyQueueImpl() {
+    }
 
     public MyQueueImpl(int size) {
         if (size <= 0) {
