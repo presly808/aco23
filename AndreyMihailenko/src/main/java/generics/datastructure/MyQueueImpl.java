@@ -45,16 +45,14 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     private class MyArrayQueueIterator<T> implements Iterator<T>{
 
-        int curr = head;
-
         @Override
         public boolean hasNext() {
-            return curr < tail;
+            return head < tail;
         }
 
         @Override
         public T next() {
-            T ret = (T) mas[curr++];
+            T ret = (T) mas[head++];
             return ret;
         }
     }
