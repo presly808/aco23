@@ -53,7 +53,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
         return new MyQuenueIterator<>();
     }
 
-    private class MyQuenueIterator<T> implements Iterator<T>{
+    public class MyQuenueIterator<T> implements Iterator<T>{
 
         int curr = head;
         @Override
