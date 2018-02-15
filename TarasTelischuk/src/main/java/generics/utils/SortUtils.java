@@ -1,7 +1,6 @@
 package generics.utils;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by serhii on 11.02.18.
@@ -9,15 +8,16 @@ import java.util.List;
 public class SortUtils {
 
     // todo implement and add generics
-    public static List mergeSort(List elements, Comparator comparator){
-        return null;
+
+    public static <T>List<T> mergeSort(List<T> elements, Comparator comparator) {
+
+       List<T> sortedLst = new LinkedList<>(elements);
+       Collections.sort(sortedLst, comparator);
+       return sortedLst;
     }
 
+    public static  <T extends Comparable<T>> int compare(T o1, T o2){
 
-    public static  int compare(Object o1, Object o2){
-
-        return 0;
+        return o1.compareTo(o2);
     }
-
-
 }
