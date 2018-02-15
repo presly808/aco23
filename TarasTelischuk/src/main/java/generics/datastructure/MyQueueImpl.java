@@ -53,17 +53,16 @@ public class MyQueueImpl<T> implements MyQueue<T> {
         return new MyQuenueIterator<>();
     }
 
-    public class MyQuenueIterator<T> implements Iterator<T>{
+    private class MyQuenueIterator<T> implements Iterator<T>{
 
-        int curr = head;
         @Override
         public boolean hasNext() {
-            return curr < tail;
+            return head < tail;
         }
 
         @Override
         public T next() {
-            T obj = (T) mas[curr++];
+            T obj = (T) mas[head++];
             return obj;
         }
     }
