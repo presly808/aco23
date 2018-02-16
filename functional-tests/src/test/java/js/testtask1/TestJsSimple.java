@@ -1,5 +1,6 @@
 package js.testtask1;
 
+import jdk.nashorn.api.scripting.JSObject;
 import org.junit.Test;
 
 import javax.script.Invocable;
@@ -49,4 +50,33 @@ public class TestJsSimple {
         System.out.println("My out " + s);
         System.out.println("My out " + res1);
     }
+
+    @Test
+    public void callFunctionOopCheck() throws FileNotFoundException, ScriptException, NoSuchMethodException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+
+        ScriptEngine scriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
+        Object res = scriptEngine.eval(new FileReader(
+                TestJsSimple.class.getResource("oop.js").getFile()));
+
+
+
+        JSObject pointFunc = (JSObject)scriptEngine.get("User");
+        JSObject pointObj =  (JSObject)pointFunc.newObject("Ivan", 55);
+
+
+        Invocable invocable = (Invocable) scriptEngine;
+        Object res3 = invocable.invokeMethod(pointObj,"hello");
+
+        String s = baos.toString();
+
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        System.out.println("My out " + s);
+        System.out.println("My out " + s);
+        System.out.println(res3);
+
+    }
+
+
 }
