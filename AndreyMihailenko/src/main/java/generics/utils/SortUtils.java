@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Created by serhii on 11.02.18.
- */
+
 public class SortUtils {
 
     public static <T> List<T> mergeSort(List elements, Comparator comparator) {
