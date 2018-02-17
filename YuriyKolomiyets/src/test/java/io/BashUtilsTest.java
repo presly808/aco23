@@ -42,12 +42,6 @@ public class BashUtilsTest {
     }
 
     @Test
-    public void ls() throws Exception {
-        List<String> ls = BashUtils.ls(".");
-        assertThat(ls, hasItems("build.gradle", "src"));
-    }
-
-    @Test
     public void copy() throws Exception {
         BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
