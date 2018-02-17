@@ -1,19 +1,33 @@
-function User(id,age,name,salary){
+function User(id, age, name, salary){
+   this.id = id;
+   this.age = age;
+   this.name = name;
+   this.salary = salary;
 
     // assign all input arguments to this
-
     // create method toString
-
     // calculate salary
 
-}
+   User.prototype.toString = function(){
+   return "User: " + id + "Name: " + name + "Age: " + age + "Salary: " + salary;
+   }
 
-function Manager(id,age,name,salary) {
+   var calculateSalary = function () {
+   salary += calculateSalary;
+   }
+
+function Manager(id, age, name, salary) {
+    this.id = id;
+    this.age = age;
+    this.name = name;
+    this.salary = salary;
+    }
+
     // add subworker
     // remove subworker
     // getAllSubworkers
     // calculate salary
-}
+
 
 function AppDb(users){
     //
