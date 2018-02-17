@@ -60,16 +60,14 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     public class MyArrayQueueIterator implements Iterator<T> {
 
-        int current = head;
-
         @Override
         public boolean hasNext() {
-            return current < queueSize;
+            return head < tail;
         }
 
         @Override
         public T next() {
-            T ret = mas[current++];
+            T ret = (T) mas[head++];
             return ret;
         }
     }
