@@ -39,6 +39,21 @@
       "title": "io",
       "baseClasses":["io"],
       "testClasses":["io"]
+    },
+    "generics" : {
+      "title": "generics",
+      "baseClasses":["generics"],
+      "testClasses":["generics"]
+    },
+    "jscompany" : {
+      "title": "jscompany",
+      "baseClasses":["js/company"],
+      "testClasses":["js/company"]
+    },
+    "htmljs" : {
+      "title": "htmljs",
+      "baseClasses":["htmljs"],
+      "testClasses":["htmljs"]
     }
 
   }
