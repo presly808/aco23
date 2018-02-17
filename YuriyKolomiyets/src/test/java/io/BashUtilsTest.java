@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class BashUtilsTest {
 
-    private BashUtils bashUtils;
+  //  private BashUtils bashUtils;
 
     @Test
     public void cat() throws Exception {
@@ -76,14 +76,14 @@ public class BashUtilsTest {
         assertThat(line2.get(0), is("line2"));
     }
 
-    @Test
+   /* @Test
     public void grepR() throws Exception {
-       /* Map<String, String> line1 = BashUtils.grepR(".", "line1");
+       *//* Map<String, String> line1 = BashUtils.grepR(".", "line1");
         line1.forEach((key, val) -> {
             assertThat(key, containsString("test.txt"));
             assertThat(val, containsString("line1"));
         });
-*/
-    }
+*//*
+    }*/
 
 }

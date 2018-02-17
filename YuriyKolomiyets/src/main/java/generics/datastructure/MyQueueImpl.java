@@ -64,10 +64,7 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
         @Override
         public boolean hasNext() {
-            if(current < queueSize){
-                return true;
-            }
-            return false;
+            return current < queueSize;
         }
 
         @Override
