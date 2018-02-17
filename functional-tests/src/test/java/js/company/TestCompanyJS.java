@@ -17,7 +17,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * Created by serhii on 11.02.18.
+ * 123456789
  */
 public class TestCompanyJS {
 
@@ -48,9 +48,10 @@ public class TestCompanyJS {
         emp.put("name", "Ivan");
         emp.put("salary", "3000");
         Object res = invocable.invokeFunction("addEmployee", emp);
+
         Map<String,Object> employee = (Map<String, Object>) res;
 
-        System.out.println(employee);
+        System.out.println(employee.containsKey("id"));
         String allPrintsInsideJs = baos.toString();
 
         restoreDefaultSystemOut();
