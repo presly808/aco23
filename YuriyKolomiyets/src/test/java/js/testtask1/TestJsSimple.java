@@ -1,3 +1,4 @@
+/*
 package js.testtask1;
 
 import org.junit.Test;
@@ -8,9 +9,11 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.*;
 
+*/
 /**
  * Created by serhii on 10.02.18.
- */
+ *//*
+
 public class TestJsSimple {
 
     @Test
@@ -50,3 +53,4 @@ public class TestJsSimple {
         System.out.println("My out " + res1);
     }
 }
+*/

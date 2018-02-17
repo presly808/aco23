@@ -50,27 +50,27 @@ public class NodeUtilsImplTest {
 
     }
 
-    @Test
+ /*   @Test
     public void createNode() throws Exception {
-       /* Integer[] mas = {1,2,3,4,5,6};
+       *//* Integer[] mas = {1,2,3,4,5,6};
 
         Node node = nodeUtils.createNode(mas);
 
         assertThat(node.value, CoreMatchers.equalTo(1));
         assertThat(node.next.next.next.next.next.value, CoreMatchers.equalTo(6));
-*/
+*//*
     }
 
     @Test
     public void createNodeR() throws Exception {
-        /*Integer[] mas = {1,2,3,4,5,6};
+        *//*Integer[] mas = {1,2,3,4,5,6};
 
         Node node = nodeUtils.createNodeR(mas);
 
         assertThat(node.value, CoreMatchers.equalTo(1));
         assertThat(node.next.next.next.next.next.value, CoreMatchers.equalTo(6));
-*/
-    }
+*//*
+    }*/
 
     @Test
     public void count() throws Exception {
