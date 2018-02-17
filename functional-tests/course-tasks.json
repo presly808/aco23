@@ -49,6 +49,11 @@
       "title": "jscompany",
       "baseClasses":["js/company"],
       "testClasses":["js/company"]
+    },
+    "htmljs" : {
+      "title": "htmljs",
+      "baseClasses":["htmljs"],
+      "testClasses":["htmljs"]
     }
 
   }
