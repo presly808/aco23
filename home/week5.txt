@@ -1,0 +1,13 @@
+SimpleHttpServer
+https://www.youtube.com/watch?v=y29TRjLScYo
+
+
+Prepare notes(i suggest mindmaps as notes) basing on the following materials, we will use it at class
+    Ajax
+    https://learn.javascript.ru/ajax
+
+    Dom
+    https://learn.javascript.ru/document
+
+    Events
+    https://learn.javascript.ru/events-and-interfaces

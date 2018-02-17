@@ -50,6 +50,14 @@ var appDB;
 
 function addEmployee(employee){
     // add an employee to the db, that must have been initialized above
+}
+
+function getAllEmployees(){
+    return null;
+}
+
+function calculateSalary(employee){
 
 }
+
 
