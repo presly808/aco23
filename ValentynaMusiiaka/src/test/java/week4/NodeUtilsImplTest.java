@@ -1,6 +1,7 @@
 package week4;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -21,7 +22,7 @@ public class NodeUtilsImplTest {
         nodeUtils.addToTail(node, 7);
         nodeUtils.addToTail(node, 8);
 
-        assertThat(node.next.next.value, CoreMatchers.equalTo(7));
+        Assert.assertThat(node.next.next.value, CoreMatchers.equalTo(7));
 
 
 
@@ -75,7 +76,7 @@ public class NodeUtilsImplTest {
     @Test
     public void count() throws Exception {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
-        assertThat(nodeUtils.count(node), CoreMatchers.equalTo(3));
+        Assert.assertThat(nodeUtils.count(node), CoreMatchers.equalTo(3));
 
 
     }
