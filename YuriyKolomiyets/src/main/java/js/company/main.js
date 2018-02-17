@@ -7,6 +7,9 @@ function User(id,age,name,salary){
             this._name = name;
             this._salary = salary;
 
+
+
+
     // create method toString
 
 
