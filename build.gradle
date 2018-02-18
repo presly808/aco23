@@ -18,6 +18,9 @@ allprojects {
 
     dependencies {
         testCompile 'junit:junit:4.11'
+
+//        compile project(':common')
+
         compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
         compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.1'
 

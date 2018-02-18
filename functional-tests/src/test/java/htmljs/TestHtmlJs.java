@@ -72,11 +72,11 @@ public class TestHtmlJs {
         List<WebElement> listItems = webDriver.findElements(By.cssSelector("li"));
 
         Assert.assertThat(listItems.size(), CoreMatchers.is(2));
-        Assert.assertThat(listItems.get(1).getAttribute("value"), CoreMatchers.is("new line"));
+        Assert.assertThat(listItems.get(1).getText(), CoreMatchers.is("new line"));
 
         removeButton.click();
         List<WebElement> afterRemList = webDriver.findElements(By.cssSelector("li"));
-        Assert.assertThat(listItems.size(), CoreMatchers.is(1));
+        Assert.assertThat(afterRemList.size(), CoreMatchers.is(1));
 
     }
 
