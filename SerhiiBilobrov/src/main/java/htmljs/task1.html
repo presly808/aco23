@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+
+    <ul>
+        <li>First</li>
+    </ul>
+
+    <br>
+
+    <button id="addBut" title="Add new element">Add new Element</button>
+    <button id="remBut" title="Remove last element">Remove last element</button>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  var buttAdd = document.getElementById("addBut");
+  buttAdd.addEventListener('click',function(){
+    var ulEl = document.getElementsByTagName("ul")[0];
+    var li = document.createElement("li");
+    ulEl.appendChild(li);
+    li.innerHTML = "New element";        // Create a <button> element
+  })
+});
+
+</script>
+
+</body>
+
+
+</html>

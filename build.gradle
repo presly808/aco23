@@ -18,6 +18,14 @@ allprojects {
 
     dependencies {
         testCompile 'junit:junit:4.11'
+        compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+        compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.1'
+
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.9.1'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.1'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: '3.9.1'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.9.1'
+
     }
 
     jacocoTestReport {

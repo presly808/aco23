@@ -27,21 +27,20 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.9.1'
 }
 
-//task copyTaskWithPatterns(type: Copy) {
-//    from 'src/main/java'
-//    into 'build/classes/java/main'
-//    include '**/*.txt'
-//    include '**/*.js'
-//    include '**/*.html'
-//    include '**/*.properties'
-//    include '**/*.json'
-//    include '**/*.MD'
-//    include '**/*.xml'
-//    include '**/*.yaml'
-//    exclude '**/*.java'
-//}
+task copyTaskWithPatterns(type: Copy) {
+    from 'src/main/java'
+    into 'build/classes/java/main'
+    include '**/*.txt'
+    include '**/*.js'
+    include '**/*.html'
+    include '**/*.properties'
+    include '**/*.json'
+    include '**/*.MD'
+    include '**/*.xml'
+    include '**/*.yaml'
+    include '**/*'
+    exclude '**/*.java'
+}
 
 compileJava.dependsOn copyTaskWithPatterns
 compileTestJava.dependsOn compileJava
-check.dependsOn jacocoTestCoverageVerification
-check.dependsOn jacocoTestReport

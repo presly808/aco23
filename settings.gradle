@@ -7,6 +7,6 @@ include 'AndreyMihailenko'
 include 'VladPetrovskyi'
 include 'VitaliiLaputko'
 include 'ValentynaMusiiaka'
-include 'functional-tests'
+//include 'functional-tests'
 
 
