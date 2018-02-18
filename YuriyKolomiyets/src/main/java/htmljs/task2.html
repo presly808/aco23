@@ -23,10 +23,25 @@
 </div>
 
 <script>
-    <!--write js code
-        add listener to the button
-        take searchWord and add to the list
-    -->
+
+    document.addEventListener("DOMContentLoaded", function(){
+  var buttAdd = document.getElementById("addBut");
+  buttAdd.addEventListener('click',function(){
+    var ulEl = document.getElementsByTagName("ul")[0];
+    var li = document.createElement("li");
+    ulEl.appendChild(li);
+    li.innerHTML = document.getElementById('searchWord').value;
+  })
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+  var buttRem = document.getElementById("remBut");
+  buttRem.addEventListener('click',function(){
+    var ulEl = document.getElementsByTagName("ul")[0];
+    ulEl.removeChild(ulEl.childNodes[ulEl.childNodes.length-1]);
+  })
+});
+
 
 </script>
 

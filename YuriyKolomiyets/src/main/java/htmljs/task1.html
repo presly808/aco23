@@ -19,32 +19,23 @@
 </div>
 
 <script>
-    <!--write js code  -->
+    document.addEventListener("DOMContentLoaded", function(){
+  var buttAdd = document.getElementById("addBut");
+  buttAdd.addEventListener('click',function(){
+    var ulEl = document.getElementsByTagName("ul")[0];
+    var li = document.createElement("li");
+    ulEl.appendChild(li);
+    li.innerHTML = "New element";        // Create a <button> element
+  })
+});
 
-       addBut.addEventListener("click", addElement);
-       remBut.addEventListener("click", remElement);
-
-        function addElement() {
-
-            let newLi = document.createElement('li');
-            newLi.innerHTML = 'Second';
-
-            let elem = document.getElementsByTagName('ul')[0];
-            elem.appendChild(newLi);
-
-
-            };
-
-        function remElement() {
-
-          
-
-            let list = document.getElementsByTagName('ul');
-            // elem.remove(elem.length-1);
-            // elem.splice(elem.length - 1, 1);
-            list.removeChild(list.childNodes[0]);
-            };
-
+document.addEventListener("DOMContentLoaded", function(){
+  var buttRem = document.getElementById("remBut");
+  buttRem.addEventListener('click',function(){
+    var ulEl = document.getElementsByTagName("ul")[0];
+    ulEl.removeChild(ulEl.childNodes[0]);
+  })
+});
 
 </script>
 
