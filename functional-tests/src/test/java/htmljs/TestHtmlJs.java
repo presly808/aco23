@@ -1,5 +1,6 @@
 package htmljs;
 
+import com.google.gson.Gson;
 import org.hamcrest.CoreMatchers;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -9,11 +10,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import selenium.WebDriverFactory;
-import server.SparkServer;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
+
+import static spark.Spark.*;
 
 /**
  * Created by serhii on 17.02.18.
@@ -21,20 +22,25 @@ import java.util.List;
 public class TestHtmlJs {
 
     public static final String HOST = "http://localhost:9898";
-    private static SparkServer sparkServer;
+//    private static SparkServer sparkServer;
     private static WebDriver webDriver;
 
     @BeforeClass
     public static void initServerAndServeHtmlFiles(){
         String file = TestHtmlJs.class.getResource("task1.html").getFile();
         File parentFile = new File(file).getParentFile();
-        sparkServer = new SparkServer(9898, parentFile.getPath());
+
+        port(9898);
+        externalStaticFileLocation(parentFile.getPath());
+        get("/", (request, response) -> "Hello");
+        get("/items" , (request, response) -> new Gson().toJson(new String[]{"item1", "item2", "item3"}));
+
         webDriver = WebDriverFactory.getInstance();
     }
 
     @AfterClass
     public static void stopServer(){
-        sparkServer.stopServer();
+        stop();
     }
 
     @Test
