@@ -19,16 +19,16 @@
 </div>
 
 <script>
-      function add() {
-      var select = document.getElementById("container");
-      var newLi = document.createElement("ul");
-      newLi.innerHTML = '<li>Second</li>';
-      select.appendChild(newLi, this.lastCHild);
+    function add() {
+      var newEl = document.getElementsByTagName("ul")[0];
+      var li = document.createElement("li");
+      newEl.appendChild(li);
+      li.innerHTML = "New element";
     }
 
     function remove(){
-       var select = document.getElementById("container");
-       select.removeChild(container.lastChild);
+       var ulEl = document.getElementsByTagName("ul")[0];
+       ulEl.removeChild(ulEl.lastChild);
     }
 </script>
 

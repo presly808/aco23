@@ -20,9 +20,21 @@
     <button id="addBut" title="Add new element" onclick='add() '>Add new Element</button>
     <button id="remBut" title="Remove last element" onclick='remove() '>Remove last element</button>
 
+
 </div>
 
 <script>
+      function add() {
+         var newEl = document.getElementsByTagName("ul")[0];
+         var li = document.createElement("li");
+         newEl.appendChild(li);
+         li.innerHTML = document.getElementById('searchWord').value;
+      }
+
+      function remove(){
+         var newEl = document.getElementsByTagName("ul")[0];
+         newEl.removeChild(newEl.lastChild);
+      }
 
 </script>
 
