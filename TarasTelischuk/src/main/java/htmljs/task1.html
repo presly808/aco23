@@ -13,17 +13,23 @@
 
     <br>
 
-    <button id="addBut" title="Add new element">Add new Element</button>
-    <button id="remBut" title="Remove last element">Remove last element</button>
+    <button id="addBut" title="Add new element" onclick='add() '>Add new Element</button>
+    <button id="remBut" title="Remove last element" onclick='remove() '>Remove last element</button>
 
 </div>
 
 <script>
-    <!--write js code
-        add listener to the button
-        listener has to add new element(li)
-    -->
+      function add() {
+      var select = document.getElementById("container");
+      var newLi = document.createElement("ul");
+      newLi.innerHTML = '<li>Second</li>';
+      select.appendChild(newLi, this.lastCHild);
+    }
 
+    function remove(){
+       var select = document.getElementById("container");
+       select.removeChild(container.lastChild);
+    }
 </script>
 
 </body>
