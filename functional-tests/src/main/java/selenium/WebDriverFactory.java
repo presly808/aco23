@@ -56,14 +56,14 @@ public class WebDriverFactory {
 
         if (lowerCaseOsName.contains("linux")) {
             System.setProperty("webdriver.chrome.driver",
-                    "drivers/chromedriver_linux/chromedriver");
+                    WebDriverFactory.class.getResource("drivers/chromedriver_linux/chromedriver").getFile());
         } else if (lowerCaseOsName.contains("mac")) {
             System.setProperty("webdriver.chrome.driver",
-                    "chromedriver_mac/chromedriver");
+                    WebDriverFactory.class.getResource(
+                    "drivers/chromedriver_mac/chromedriver").getFile());
         } else if (lowerCaseOsName.contains("windows")) {
             System.setProperty("webdriver.chrome.driver",
-                    new File("drivers").getAbsolutePath()
-                            + "chromedriver_win/chromedriver.exe");
+                    WebDriverFactory.class.getResource("drivers/chromedriver_win/chromedriver.exe").getFile());
         } else {
             throw new AssertionError("Unsupported operating system type");
         }
