@@ -1,5 +1,9 @@
 package server;
 
+import spark.Route;
+
+import java.util.Map;
+
 import static spark.Spark.*;
 
 public class SparkServer {
@@ -14,8 +18,14 @@ public class SparkServer {
         port(port);
         externalStaticFileLocation(staticFolder);
 
+
         get("/", (request, response) -> "Server is up");
 
+    }
+
+    public SparkServer(int port, String staticFolder, Map<String, Route> routeMap) {
+        this.port = port;
+        this.staticFolder = staticFolder;
     }
 
     public void stopServer(){
