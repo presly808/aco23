@@ -1,7 +1,5 @@
 package io;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -16,8 +14,6 @@ import static org.junit.Assert.*;
  */
 public class BashUtilsTest {
 
-    private BashUtils bashUtils;
-
     @Test
     public void cat() throws Exception {
         String res = BashUtils.cat(BashUtils.class.getResource("test.txt").getFile());
@@ -27,6 +23,7 @@ public class BashUtilsTest {
     @Test(expected = FileNotFoundException.class)
     public void catNeg() throws Exception {
         String res = BashUtils.cat("unreal.txt");
+        assertNotNull(res);
     }
 
     @Test
@@ -53,6 +50,7 @@ public class BashUtilsTest {
     @Test
     public void copy() throws Exception {
         boolean copy = BashUtils.copy(BashUtils.class.getResource("test.txt").getFile(), "test_copy.txt");
+        assertTrue(copy);
         assertThat(BashUtils.cat("test_copy.txt"), containsString("line3"));
     }
 
@@ -61,6 +59,7 @@ public class BashUtilsTest {
         // create file before
         BashUtils.writeInto("test1.txt", "test content", false);
         boolean copy = BashUtils.move("test1.txt", "test2.txt");
+        assertTrue(copy);
         assertThat(BashUtils.cat("test2.txt"), containsString("content"));
     }
 
@@ -85,6 +84,7 @@ public class BashUtilsTest {
         line1.forEach((key, val) -> {
             assertThat(val, containsString("line1"));
         });
+        assertNotNull(line1);
 
     }
 
