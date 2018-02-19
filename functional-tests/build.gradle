@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.Copy
-
 version 'unspecified'
 
 apply plugin: 'java'
@@ -19,17 +17,14 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    /*compile group: 'com.github.javafaker', name: 'javafaker', version: '0.14'
-    testCompile(
-            'org.junit.vintage:junit-vintage-engine:4.12.1',
-            'org.junit.jupiter:junit-jupiter-api:5.0.1'
-    )
-    testRuntime(
-            'org.junit.jupiter:junit-jupiter-engine:5.0.1',
-            'org.junit.platform:junit-platform-launcher:1.0.1',
-            'org.junit.platform:junit-platform-runner:1.0.1'
-    )
-    compile group: 'org.junit', name: 'junit5-api', version: '5.0.0-ALPHA'*/
+//    compile project(':common')
+    // https://mvnrepository.com/artifact/com.sparkjava/spark-core
+// https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+
+
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.1'
 
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.9.1'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.1'
@@ -46,6 +41,9 @@ task copyTaskWithPatterns(type: Copy) {
     include '**/*.properties'
     include '**/*.json'
     include '**/*.MD'
+    include '**/*.xml'
+    include '**/*.yaml'
+    include '**/*'
     exclude '**/*.java'
 }
 
