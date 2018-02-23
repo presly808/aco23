@@ -7,31 +7,37 @@
 <body>
 <div id="container">
 
-    <form>
-        <input id="searchWord" type="text" title="Input search word">
-    </form>
+    <div>
+        <form>
+            <input id="productId" type="text" title="Input search word" alt="Input id">
+        </form>
+    </div>
 
-    <ul>
-        <li></li>
-    </ul>
+    <div>
+        <label>Current Product (Found)</label>
+        <span id="currentProduct"></span>
+    </div>
+
+    <div>
+        <ul id="productList">
+            <li></li>
+        </ul>
+    </div>
 
     <br>
 
-    <button id="addBut" title="Add new element">Add new Element</button>
-    <button id="remBut" title="Remove last element">Remove last element</button>
+    <div>
+        <button id="getProductById">Find Product By Input Field</button>
+        <button id="addProduct">Add Product</button>
+        <button id="remProduct">Remove Selected Product</button>
+        <button id="showAll">Show All</button>
+    </div>
 
 </div>
 
 <script>
-    <!--write js code
-        add listener to the button
-        take searchWord
-        do ajax request
-        to get data from /items
-        and add to the list
+    // write your code here
 
-        /items
-    -->
 </script>
 
 </body>

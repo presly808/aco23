@@ -63,12 +63,7 @@ public class TestJsSimple {
 
         Invocable invocable = (Invocable) scriptEngine;
 
-        Function<Integer, Integer> function = new Function<Integer,Integer>() {
-            @Override
-            public Integer apply(Integer o) {
-                return o + 1;
-            }
-        };
+        Function<Integer, Integer> function = o -> o + 1;
 
         Object resFun = invocable.invokeFunction("testFunction",function,1);
         Assert.assertThat(resFun, CoreMatchers.is(2));
@@ -83,12 +78,7 @@ public class TestJsSimple {
 
         Invocable invocable = (Invocable) scriptEngine;
 
-        BiFunction<Integer,Integer, Integer> function = new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer integer, Integer integer2) {
-                return integer + integer2;
-            }
-        };
+        BiFunction<Integer,Integer, Integer> function = (integer, integer2) -> integer + integer2;
 
         Object res = invocable.invokeFunction("testBiFunction", function,2,3);
         Assert.assertThat(res, CoreMatchers.is(5));
@@ -129,11 +119,8 @@ public class TestJsSimple {
         Object res = scriptEngine.eval(new FileReader(
                 TestJsSimple.class.getResource("oop.js").getFile()));
 
-
-
         JSObject pointFunc = (JSObject)scriptEngine.get("User");
         JSObject pointObj =  (JSObject)pointFunc.newObject("Ivan", 55);
-
 
         Invocable invocable = (Invocable) scriptEngine;
         Object res3 = invocable.invokeMethod(pointObj,"hello");
