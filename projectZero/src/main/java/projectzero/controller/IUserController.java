@@ -9,6 +9,8 @@ import java.util.function.Predicate;
 
 public interface IUserController {
 
+    String login(User user);
+    String register(String email, String pass);
     List<Order> getAll(User user);
     List<Order> getAllSortedBy(User user, Comparator<Order> comparator);
     List<Order> getFilteredBy(User user, Predicate<Order> predicate);

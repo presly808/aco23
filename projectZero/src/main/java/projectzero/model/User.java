@@ -2,31 +2,24 @@ package projectzero.model;
 
 public class User {
 
-    private final int email;
-    private String login;
+    private final String email;
     private String pass;
+    private Role role;
 
-    public User(int email, String login, String pass) {
+    public User(String email, String pass, Role role) {
         this.email = email;
-        this.login = login;
         this.pass = pass;
+        this.role = role;
     }
 
-    public User(int email) {
+    public User(String email, String pass) {
         this.email = email;
+        this.pass = pass;
+        this.role = Role.User;
     }
 
-
-    public int getEmail() {
+    public String getEmail() {
         return email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String logg) {
-        this.login = login;
     }
 
     public String getPass() {
@@ -37,11 +30,29 @@ public class User {
         this.pass = pass;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     @Override
-    public java.lang.String toString() {
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return email.equals(user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return email.hashCode();
+    }
+
+    @Override
+    public String toString() {
         return "User{" +
-                "email=" + email +
-                ", logg='" + login + '\'' +
+                "email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
                 '}';
     }
