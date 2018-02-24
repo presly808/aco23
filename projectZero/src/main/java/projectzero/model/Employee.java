@@ -4,7 +4,7 @@ public class Employee {
 
     private final int id;
     private String name;
-    private int salary;
+    private long token;
 
     public Employee(int id) {
         this.id = id;
@@ -13,12 +13,12 @@ public class Employee {
     public Employee(int id, String name, int salary) {
         this.id = id;
         this.name = name;
-        this.salary = salary;
     }
 
-    public Employee(int id, String name) {
+    public Employee(int id, String name, long token) {
         this.id = id;
         this.name = name;
+        this.token = token;
     }
 
     public int getId() {
@@ -33,15 +33,15 @@ public class Employee {
         this.name = name;
     }
 
-    public int getSalary() {
-        return salary;
+    public long getToken() {
+        return token;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setToken(long token) {
+        this.token = token;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return "Employee{" +
                 "id=" + id + '}';
