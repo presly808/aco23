@@ -3,12 +3,12 @@ package projectzero.model;
 public class User {
 
     private final int email;
-    private String logg;
+    private String login;
     private String pass;
 
-    public User(int email, String logg, String pass) {
+    public User(int email, String login, String pass) {
         this.email = email;
-        this.logg = logg;
+        this.login = login;
         this.pass = pass;
     }
 
@@ -21,12 +21,12 @@ public class User {
         return email;
     }
 
-    public String getLogg() {
-        return logg;
+    public String getLogin() {
+        return login;
     }
 
-    public void setLogg(String logg) {
-        this.logg = logg;
+    public void setLogin(String logg) {
+        this.login = login;
     }
 
     public String getPass() {
@@ -41,7 +41,7 @@ public class User {
     public java.lang.String toString() {
         return "User{" +
                 "email=" + email +
-                ", logg='" + logg + '\'' +
+                ", logg='" + login + '\'' +
                 ", pass='" + pass + '\'' +
                 '}';
     }
