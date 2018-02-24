@@ -1,6 +1,7 @@
 package projectzero.utils;
 
 import com.google.gson.Gson;
+import projectzero.model.Order;
 import projectzero.model.User;
 
 import java.io.*;
@@ -14,55 +15,32 @@ public class JSONUtils {
 
     private static Gson gson = new Gson();
 
+    // TODO: 24-Feb-18 Ask Serhii for generify
+    // TODO: 24-Feb-18 Orders
+
     /**
      * Add User to Json file
      *
      * @param path - path of Json file
      * @param user - adding user
-     * @throws IOException
+     * @throws IOException when problems with reading
      */
     public static void addUser(String path, User user) throws IOException {
-        List<User> users = readFromFile(path);
+        List<User> users = readUsersFromFile(path);
         users.add(user);
         writeListIntoFile(path, users);
     }
 
-    /**
-     * Write a list of users into Json file
-     *
-     * @param path  - path of Json file
-     * @param users - list af adding users
-     */
-    private static void writeListIntoFile(String path, List<User> users) {
-        File file = new File(path);
-        try (Writer writer = new FileWriter(file, false)) {
-            writer.write(gson.toJson(users));
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @param path - path of Json file
-     * @param email - incoming email
-     * @return - User with incoming email
-     * @throws IOException
-     */
-    public static User findUserByEmail(String path, String email) throws IOException {
-        List<User> users = readFromFile(path);
-        return null;
-    }
 
     /**
      * Remove user from Json file
      *
      * @param path - path of Json file
      * @param user - user which will removed
-     * @throws IOException
+     * @throws IOException when problems with reading
      */
     public void removeUser(String path, User user) throws IOException {
-        List<User> users = readFromFile(path);
+        List<User> users = readUsersFromFile(path);
         users.remove(user);
         writeListIntoFile(path, users);
     }
@@ -72,19 +50,42 @@ public class JSONUtils {
      *
      * @param path - path of Json file
      * @return list of users in Json file
-     * @throws IOException
+     * @throws IOException when problems with reading
      */
-    public static List<User> readFromFile(String path) throws IOException {
+    @SuppressWarnings("unchecked")
+    public static List<User> readUsersFromFile(String path) throws IOException {
         File file = new File(path);
         List<User> list = new ArrayList<>();
         if (file.length() != 0) {
             String jString = new String(Files.readAllBytes(Paths.get(path)));
-            User[] users = gson.fromJson(jString, User[].class);
-            Collections.addAll(list, users);
-
-            return list;
+            Collections.addAll(list, gson.fromJson(jString, User[].class));
         }
         return list;
     }
 
+    public static List<Order> readOrdersFromFile(String path) throws IOException {
+        File file = new File(path);
+        List<Order> list = new ArrayList<>();
+        if (file.length() != 0) {
+            String jString = new String(Files.readAllBytes(Paths.get(path)));
+            Collections.addAll(list, gson.fromJson(jString, Order[].class));
+        }
+        return list;
+    }
+
+    /**
+     * Write a list of any objects into Json file
+     *
+     * @param path  - path of Json file
+     * @param list - list of adding objects
+     */
+    private static void writeListIntoFile(String path, List<?> list) {
+        File file = new File(path);
+        try (Writer writer = new FileWriter(file, false)) {
+            writer.write(gson.toJson(list));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

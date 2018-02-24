@@ -2,7 +2,7 @@ package projectzero.model;
 
 public class User {
 
-    private final String email;
+    private final String email; // unique
     private String pass;
     private Role role;
 
@@ -54,6 +54,7 @@ public class User {
         return "User{" +
                 "email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
