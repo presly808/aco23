@@ -9,15 +9,10 @@ public class User {
     public User() {
     }
 
-    public User(int id, String email, String pass) {
-        this.id = id;
+
+    public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
-    }
-
-    public User(int id, String email) {
-        this.id = id;
-        this.email = email;
     }
 
     public int getId() {
