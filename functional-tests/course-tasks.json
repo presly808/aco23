@@ -52,7 +52,7 @@
     },
     "htmljs" : {
       "title": "htmljs",
-      "baseClasses":["htmljs","selenium","server"],
+      "baseClasses":["htmljs"],
       "testClasses":["htmljs"]
     }
 

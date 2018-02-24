@@ -81,8 +81,7 @@ public class MainControllerProxy implements MainController {
 
     @Override
     public Employee addEmployee(Employee employee) {
-        mainController.addEmployee(employee);
-        return employee;
+        return mainController.addEmployee(employee);
 
         //return (Employee) countTime(() -> mainController.addEmployee(employee));
     }
