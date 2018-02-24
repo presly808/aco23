@@ -9,7 +9,7 @@ public class Order {
     private String receiverName;
     private String targetCity;
     private LocalDateTime sendDate;
-    private String status;
+    private OrderStatus orderStatus;
 
     public Order() {
     }
@@ -20,15 +20,12 @@ public class Order {
         this.targetCity = targetCity;
     }
 
-    @Override
-    public String toString() {
-        return "Order id: " + id +
-                ", senderName: " + senderName + '\'' +
-                ", receiverName: " + receiverName + '\'' +
-                ", targetCity: " + targetCity + '\'' +
-                ", sendDate: " + sendDate +
-                ", status" + status + '\'' +
-                '}';
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public int getId() {
@@ -71,11 +68,5 @@ public class Order {
         this.sendDate = sendDate;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

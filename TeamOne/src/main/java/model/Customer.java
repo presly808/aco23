@@ -12,6 +12,11 @@ public class Customer extends User {
         this.name = name;
     }
 
+    public Customer(String email, String pass, String phone, String name) {
+        super(email, pass);
+        this.phone = phone;
+        this.name = name;
+    }
 
     public String editUserName() {
         return null;
