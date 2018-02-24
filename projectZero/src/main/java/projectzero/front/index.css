@@ -29,12 +29,14 @@
     min-width: 20%;
 }
 
-#loginDiv > form > input, #joinDiv > form > input {
+#loginDiv > form > input,
+#joinDiv > form > input {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-#loginDiv > p, #joinDiv > p {
+#loginDiv > p,
+#joinDiv > p {
     padding-top: 10px;
 }
 

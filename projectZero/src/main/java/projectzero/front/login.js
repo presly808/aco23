@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#register').click(function () {
+    $('#joinHref').click(function () {
         $('#mainDiv').load("join.html #joinDiv");
         $('#header').find('> h1').text('Sign Up');
         $.getScript("join.js");
