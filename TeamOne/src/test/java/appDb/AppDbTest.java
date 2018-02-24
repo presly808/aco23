@@ -41,4 +41,10 @@ public class AppDbTest {
         appDb.removeOrder(testOrder);
         assertEquals(0,appDb.getOrders().size());
     }
+
+    @Test
+    public void getUsers() {
+        appDb.addUser(testUser);
+        assertTrue(appDb.getUsers().containsKey("test@gmail.com"));
+    }
 }

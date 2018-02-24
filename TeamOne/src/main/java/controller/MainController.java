@@ -10,15 +10,15 @@ public interface MainController {
 
 
     Map<String, User> getAllUsers();
-    Map<String, Order> getAllOrders();
+    Map<Integer, Order> getAllOrders();
 
     User getById(int id);
     Order getOrderbyId(int id);
 
-    Map<String, User> filterByName (String name);
-    Map<String, User> filterByCity (String city);
-    Map<String, User> filterByReciever (String receiverName);
-    Map<String, User> filterByDate (LocalDateTime dateTime);
+    Map<Integer, User> filterByName (String name);
+    Map<Integer, User> filterByCity (String city);
+    Map<Integer, User> filterByReciever (String receiverName);
+    Map<Integer, User> filterByDate (LocalDateTime dateTime);
 
     public String changeOrderStatus (Order order);
 
