@@ -6,7 +6,7 @@ public class Order {
 
     private int id;
     private String senderName;
-    private String recieverName;
+    private String receiverName;
     private String targetCity;
     private LocalDateTime sendDate;
     private String status;
@@ -14,9 +14,20 @@ public class Order {
     public Order() {
     }
 
-    public Order(String senderName, String recieverName, String targetCity) {
+    public Order(String senderName, String receiverName, String targetCity) {
         this.senderName = senderName;
-        this.recieverName = recieverName;
+        this.receiverName = receiverName;
         this.targetCity = targetCity;
+    }
+
+    @Override
+    public String toString() {
+        return "Order id: " + id +
+                ", senderName: " + senderName + '\'' +
+                ", receiverName: " + receiverName + '\'' +
+                ", targetCity: " + targetCity + '\'' +
+                ", sendDate: " + sendDate +
+                ", status" + status + '\'' +
+                '}';
     }
 }

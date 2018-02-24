@@ -1,28 +1,26 @@
 package controller;
 
+import model.Order;
 import model.User;
-import model.UserPredicate;
 
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Map;
 
 public interface MainController {
 
-    User addUser(User User);
 
-    List<User> getAllUsers();
+    Map<String, User> getAllUsers();
+    Map<String, Order> getAllOrders();
 
     User getById(int id);
+    Order getOrderbyId(int id);
 
-    List<User> findWithFilter(String name);
+    Map<String, User> filterByName (String name);
+    Map<String, User> filterByCity (String city);
+    Map<String, User> filterByReciever (String receiverName);
+    Map<String, User> filterByDate (LocalDateTime dateTime);
 
-    List<User> filterWithPredicate(UserPredicate predicate, Comparator<User> comparator);
+    public String changeOrderStatus (Order order);
 
-    User fireWorker(int workerId);
 
-    User updateWorker(User worker);
-
-    boolean areWorkersEqual(int emp1id, int eml2id);
-
-    void addListener(MyListener listener);
 }

@@ -5,15 +5,17 @@ import model.Order;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppDb {
 
-    private ArrayList<User> users;
-    private ArrayList<Order> orders;
+    private Map <String, User> users;
+    private Map <String, Order> orders;
 
     public AppDb(){
-        this.users = new ArrayList<>();
-        this.orders = new ArrayList<>();
+        this.users = new HashMap<>();
+        this.orders = new HashMap<>();
     }
 
     public User addUser (User user){
