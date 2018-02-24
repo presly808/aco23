@@ -8,6 +8,6 @@ public class KeyUtils {
     private static SecureRandom random = new SecureRandom();
 
     public static String getUniqueKey() {
-        return new BigInteger(64, random).toString(32);
+        return new BigInteger(256, random).toString(32);
     }
 }
