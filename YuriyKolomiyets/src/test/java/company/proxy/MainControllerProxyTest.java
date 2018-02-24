@@ -9,6 +9,7 @@ import company.utils.factory.MainFactory;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Comparator;
@@ -25,6 +26,7 @@ public class MainControllerProxyTest {
         mainController = MainFactory.create(true);
     }
 
+    @Ignore
     @Test
     public void addEmployee() throws Exception {
         Employee withId = mainController.addEmployee(new Employee("Ivan", 3000));

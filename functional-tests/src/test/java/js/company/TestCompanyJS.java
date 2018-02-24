@@ -1,5 +1,7 @@
 package js.company;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import javafx.beans.binding.ObjectExpression;
 import org.junit.After;
 import org.junit.Before;
@@ -47,6 +49,7 @@ public class TestCompanyJS {
         Map<String, Object> emp = new HashMap<>();
         emp.put("name", "Ivan");
         emp.put("salary", "3000");
+
         Object res = invocable.invokeFunction("addEmployee", emp);
 
         Map<String,Object> employee = (Map<String, Object>) res;
