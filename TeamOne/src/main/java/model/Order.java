@@ -6,17 +6,67 @@ public class Order {
 
     private int id;
     private String senderName;
-    private String recieverName;
+    private String receiverName;
     private String targetCity;
     private LocalDateTime sendDate;
-    private String status;
+    private OrderStatus orderStatus;
 
     public Order() {
     }
 
-    public Order(String senderName, String recieverName, String targetCity) {
+    public Order(String senderName, String receiverName, String targetCity) {
         this.senderName = senderName;
-        this.recieverName = recieverName;
+        this.receiverName = receiverName;
         this.targetCity = targetCity;
     }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public String getTargetCity() {
+        return targetCity;
+    }
+
+    public void setTargetCity(String targetCity) {
+        this.targetCity = targetCity;
+    }
+
+    public LocalDateTime getSendDate() {
+        return sendDate;
+    }
+
+    public void setSendDate(LocalDateTime sendDate) {
+        this.sendDate = sendDate;
+    }
+
+
 }
