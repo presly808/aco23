@@ -37,7 +37,7 @@ public class User {
         this.pass = pass;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return "User{" +
                 "email=" + email +

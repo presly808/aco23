@@ -41,7 +41,7 @@ public class Employee {
         this.token = token;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return "Employee{" +
                 "id=" + id + '}';
