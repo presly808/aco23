@@ -22,7 +22,7 @@ public class NodeUtilsImplTest {
         nodeUtils.addToTail(node, 7);
         nodeUtils.addToTail(node, 8);
 
-        Assert.assertThat(node.next.next.value, CoreMatchers.equalTo(7));
+        assertThat(node.next.next.value, CoreMatchers.equalTo(7));
 
 
 
@@ -76,7 +76,7 @@ public class NodeUtilsImplTest {
     @Test
     public void count() throws Exception {
         Node node = new Node(new Node(new Node(null,3), 4), 5);
-        Assert.assertThat(nodeUtils.count(node), CoreMatchers.equalTo(3));
+        assertThat(nodeUtils.count(node), CoreMatchers.equalTo(3));
 
 
     }
