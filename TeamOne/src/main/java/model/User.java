@@ -7,7 +7,6 @@ public class User {
     private int id;
     private String email;
     private String pass;
-    private boolean isEmployee;
 
     public User() {
     }
