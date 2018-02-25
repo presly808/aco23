@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.Copy
-
 version 'unspecified'
 
 apply plugin: 'java'
@@ -18,36 +16,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-
-    /*compile group: 'com.github.javafaker', name: 'javafaker', version: '0.14'
-    testCompile(
-            'org.junit.vintage:junit-vintage-engine:4.12.1',
-            'org.junit.jupiter:junit-jupiter-api:5.0.1'
-    )
-    testRuntime(
-            'org.junit.jupiter:junit-jupiter-engine:5.0.1',
-            'org.junit.platform:junit-platform-launcher:1.0.1',
-            'org.junit.platform:junit-platform-runner:1.0.1'
-    )
-    compile group: 'org.junit', name: 'junit5-api', version: '5.0.0-ALPHA'*/
-
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.9.1'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.1'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: '3.9.1'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.9.1'
 }
 
-task copyTaskWithPatterns(type: Copy) {
-    from 'src/main/java'
-    into 'build/classes/java/main'
-    include '**/*.txt'
-    include '**/*.js'
-    include '**/*.html'
-    include '**/*.properties'
-    include '**/*.json'
-    include '**/*.MD'
-    exclude '**/*.java'
+test.onlyIf {
+    false
 }
-
-compileJava.dependsOn copyTaskWithPatterns
-compileTestJava.dependsOn compileJava

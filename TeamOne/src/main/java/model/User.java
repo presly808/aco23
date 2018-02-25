@@ -11,10 +11,14 @@ public class User {
     public User() {
     }
 
-
     public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
+        this.isEmployee = false;
+    }
+
+    public boolean isEmployee() {
+        return isEmployee;
     }
 
     public int getId() {

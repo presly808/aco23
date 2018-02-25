@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+
+    <div>
+        <form>
+            <input id="productId" type="text" title="Input search word" alt="Input id">
+        </form>
+    </div>
+
+    <div>
+        <label>Current Product</label>
+        <span id="currentProduct"></span>
+    </div>
+
+    <div>
+        <ul id="productList">
+
+        </ul>
+    </div>
+
+
+    <br>
+
+    <div>
+        <button id="getProductById">Find Product</button>
+        <button id="showAll">Show All</button>
+    </div>
+
+</div>
+
+<script>
+
+  function getAllAjax(){
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'http://localhost:8989/product/all');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+          var products = JSON.parse(xhr.responseText);
+          var ulList = document.getElementById("productList");
+          products.forEach(function(el){
+            var prodctLi = document.createElement('li');
+            prodctLi.innerHTML = el.name;
+            ulList.appendChild(prodctLi);
+          });
+      }
+      else if (xhr.status !== 200) {
+          alert('Request failed.  Returned status of ' + xhr.status);
+      }
+    };
+    xhr.send();
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+      var showAll = document.getElementById("showAll");
+      showAll.addEventListener('click',function(){
+          getAllAjax();
+      });
+  });
+
+
+
+
+
+</script>
+
+</body>
+
+
+</html>
