@@ -29,19 +29,24 @@
     </div>
 </div>
 <script>
+    var mainDiv;
     var loginDiv;
     var joinDiv;
     $(document).ready(function () {
+        mainDiv = $('#mainDiv');
         $.get('login.html', function (data) {
             loginDiv = data;
-            $('#mainDiv').html(loginDiv);
+            mainDiv.append(loginDiv);
+            $.getScript("login.js");
         });
         $.get('join.html', function (data) {
             joinDiv = data;
+            mainDiv.append(joinDiv);
+            $('#joinDiv').hide();
+            $.getScript("join.js");
         });
-        $.getScript("login.js");
-        $.getScript("join.js");
     });
+
 </script>
 </body>
 </html>

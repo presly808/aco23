@@ -7,6 +7,7 @@ import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
 import projectzero.model.User;
 import projectzero.utils.JSONUtils;
+import spark.Filter;
 import spark.Request;
 import spark.Response;
 
@@ -27,7 +28,8 @@ public class Server {
                 new UserDao("C:\\Users\\Foresstt\\Desktop\\ArtCode\\aco23\\projectZero\\src\\main\\resources\\users.json"));
         port(port);
         externalStaticFileLocation(storagePath);
-        exception(Exception.class, ((exception, request, response) -> System.out.println(exception.getMessage()))); // TODO: 24-Feb-18 Logger
+        before((request, response) ->
+                System.out.println(String.format("Protocol: %s, method: %s, path: %s", request.protocol(), request.requestMethod(), request.pathInfo())));
         initEnpoint();
     }
 
@@ -45,25 +47,23 @@ public class Server {
     // login logic
     private Object login(Request request, Response response) {
         User loginUser = JSONUtils.fromJson(request.body(), User.class);
-
+        System.out.println(loginUser);
         String key = userController.login(loginUser);
         if (key != null) {
-            response.header("key", key);
             sessionMap.put(key, loginUser);
         }
-        return response;
+        return JSONUtils.toJson(key);
     }
 
     // join logic
     private Object join(Request request, Response response) {
         User newUser = JSONUtils.fromJson(request.body(), User.class);
-
+        System.out.println(newUser);
         try {
             userController.join(newUser.getEmail(), newUser.getPass());
-            response.body("{error : \'\'}");
+            return "{error : \'\'}";
         } catch (AlreadyExistsException e) {
-            response.body("{error : " + e.getMessage() + "}");
+            return "{error : " + e.getMessage() + "}";
         }
-        return response;
     }
 }

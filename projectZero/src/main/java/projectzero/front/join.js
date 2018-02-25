@@ -1,15 +1,15 @@
 $('#joinBtn').click(function () {
-    var email = $('#inputEmail').val();
-    var pass = $('#inputPassword').val();
+    var email = $('#joinInputEmail').val();
+    var pass = $('#joinInputPassword').val();
 
     if (email && pass) {
         $.ajax({
             method: "POST",
             url: "/join",
-            data: {email: email, pass: pass}
-        })
-            .done(function (str) {
-                alert(str);
-            });
+            data: JSON.stringify({email: email, pass: pass}),
+            success: function (data, status, xhr) {
+                alert(xhr.responseText + " | " + status);
+            }
+        });
     }
 });
