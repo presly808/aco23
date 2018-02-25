@@ -1,6 +1,7 @@
 package appDb;
 
 import exceptions.LoginCredentialException;
+import model.Customer;
 import model.Order;
 import model.User;
 
@@ -21,21 +22,23 @@ public class AppDb {
     }
 
     public User addUser (User user){
-
         users.put(user.getEmail(), user);
         return user;
     }
 
     public User removeUser (User user){
-        return null;
+        users.remove(user.getEmail());
+        return user;
     }
 
     public Order addOrder (Order order){
-        return null;
+        orders.put(order.getId(), order);
+        return order;
     }
 
     public Order removeOrder (Order order){
-        return null;
+        orders.remove(order.getId());
+        return order;
     }
 
     public Map<String, User> getUsers() {
@@ -52,8 +55,6 @@ public class AppDb {
 
     public void setOrders(Map<Integer, Order> orders) {
         this.orders = orders;
-
-
     }
 
     public String createAccessToken(User user) throws LoginCredentialException {
@@ -75,5 +76,9 @@ public class AppDb {
 
     public boolean hasToken(String accessToken) {
         return accessTokenUserMap.containsKey(accessToken);
+    }
+
+    public void register(String email, String pass) {
+        users.put(email, new Customer(email, pass));
     }
 }

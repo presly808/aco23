@@ -1,11 +1,19 @@
 package server;
 
+import appDb.AppDb;
+import exceptions.LoginCredentialException;
+import model.User;
+import spark.Request;
+import spark.Response;
+import utils.JSONUtils;
+
 import static spark.Spark.*;
 
 public class SparkServer {
 
     private final int port;
     private final String staticFolder;
+    private AppDb appDb;
 
     public SparkServer(int port, String staticFolder) {
         this.port = port;
@@ -18,7 +26,38 @@ public class SparkServer {
 
     }
 
+    public static void main(String[] args) {
+        new SparkServer(8080, "TeamOne/src/main/java/view/");
+
+
+    }
+
+
     public void stopServer(){
         stop();
+    }
+
+    private void initEnpoint() {
+        post("/login", this::login);
+        post("/register", this::register);
+    }
+
+    private Object login(Request request, Response response) {
+        User loginUser = JSONUtils.fromJson(request.body(), User.class);
+
+        try {
+            String key = appDb.createAccessToken(loginUser);
+        } catch (LoginCredentialException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    private Object register(Request request, Response response) {
+        User newUser = JSONUtils.fromJson(request.body(), User.class);
+        appDb.register(newUser.getEmail(), newUser.getPass());
+        response.body("");
+
+        return response;
     }
 }
