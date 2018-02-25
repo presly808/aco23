@@ -28,8 +28,6 @@ public class SparkServer {
 
     public static void main(String[] args) {
         new SparkServer(8080, "TeamOne/src/main/java/view/");
-
-
     }
 
 
