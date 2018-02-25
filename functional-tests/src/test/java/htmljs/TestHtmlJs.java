@@ -1,11 +1,8 @@
 package htmljs;
 
-import com.google.gson.Gson;
+import htmljs.server.TestSparkServer;
 import org.hamcrest.CoreMatchers;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,33 +11,32 @@ import selenium.WebDriverFactory;
 import java.io.File;
 import java.util.List;
 
-import static spark.Spark.*;
-
 /**
  * Created by serhii on 17.02.18.
  */
 public class TestHtmlJs {
 
-    public static final String HOST = "http://localhost:9898";
-//    private static SparkServer sparkServer;
+    public static final int port = 9898;
+    public static final String HOST = "http://localhost:" + port;
+//    private static SparkStaticResourcesServer sparkServer;
     private static WebDriver webDriver;
+    private static TestSparkServer testSparkServer;
 
     @BeforeClass
     public static void initServerAndServeHtmlFiles(){
+
         String file = TestHtmlJs.class.getResource("task1.html").getFile();
         File parentFile = new File(file).getParentFile();
 
-        port(9898);
-        externalStaticFileLocation(parentFile.getPath());
-        get("/", (request, response) -> "Hello");
-        get("/items" , (request, response) -> new Gson().toJson(new String[]{"item1", "item2", "item3"}));
+        testSparkServer = new TestSparkServer(9898, parentFile.getPath());
 
-        webDriver = WebDriverFactory.getInstance();
+        webDriver = WebDriverFactory.getInstance(true);
     }
 
     @AfterClass
     public static void stopServer(){
-        stop();
+        testSparkServer.stopServer();
+        webDriver.quit();
     }
 
     @Test
@@ -63,8 +59,6 @@ public class TestHtmlJs {
     public void testTask2() throws InterruptedException {
         webDriver.navigate().to(HOST + "/task2.html");
 
-//        Thread.sleep(1000);
-
         WebElement inputSearch = webDriver.findElement(By.cssSelector("#searchWord"));
         WebElement addButton = webDriver.findElement(By.cssSelector("#addBut"));
         WebElement removeButton = webDriver.findElement(By.cssSelector("#remBut"));
@@ -86,11 +80,11 @@ public class TestHtmlJs {
 
     }
 
+    @Ignore
     @Test
     public void testTask3() throws InterruptedException {
         webDriver.navigate().to(HOST + "/task3.html");
 
-//        Thread.sleep(1000);
 
         WebElement inputSearch = webDriver.findElement(By.cssSelector("#searchWord"));
         WebElement addButton = webDriver.findElement(By.cssSelector("#addBut"));
