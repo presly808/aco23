@@ -24,6 +24,7 @@ public class Server {
 
     public Server(int port, String storagePath) {
         this.sessionMap = new HashMap<>();
+        // todo remove absolute paths
         userController = new UserControllerImpl(
                 new UserDao("C:\\Users\\Foresstt\\Desktop\\ArtCode\\aco23\\projectZero\\src\\main\\resources\\users.json"));
         port(port);
@@ -63,6 +64,7 @@ public class Server {
             userController.join(newUser.getEmail(), newUser.getPass());
             return "{error : \'\'}";
         } catch (AlreadyExistsException e) {
+            // todo toJson(e) or use spark to handle errors
             return "{error : " + e.getMessage() + "}";
         }
     }

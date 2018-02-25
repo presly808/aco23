@@ -26,6 +26,7 @@ public class UserDao implements IDao<String, User> {
         try {
             list = JSONUtils.readUsersFromFile(pathToJson);
         } catch (IOException e) {
+            e.printStackTrace();
             // TODO: 24-Feb-18 logger
         }
         return list;
@@ -38,6 +39,7 @@ public class UserDao implements IDao<String, User> {
     @Override
     public User getById(String email) {
         List<User> list = this.getAll();
+        // java8
         for (User user : list)
             if (user.getEmail().equals(email))
                 return user;
