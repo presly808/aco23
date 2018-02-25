@@ -33,6 +33,7 @@ public class BashUtils {
         } catch (FileNotFoundException ex) {
             System.out.println("File not found");
             throw ex;
+            
         } catch (IOException ex) {
             System.out.println("Java IO exception");
         }
