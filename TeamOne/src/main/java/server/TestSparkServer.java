@@ -9,8 +9,7 @@ public class TestSparkServer {
         final int PORT = 8080;
         final String STATIC_FOLDER = "TeamOne/src/main/java/view/";
 
-        port(PORT);
-        externalStaticFileLocation(STATIC_FOLDER);
+        SparkServer sparkServer = new SparkServer(PORT, STATIC_FOLDER);
 
         get("/index.html", (request, response) -> "Server is up");
 
