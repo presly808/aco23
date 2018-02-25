@@ -13,7 +13,6 @@ public class AppDbTest {
     User testUser = new User("test@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
 
-
     @Test
     public void addUser() {
         appDb.addUser(testUser);
