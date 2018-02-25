@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import com.google.gson.Gson;
@@ -9,7 +10,7 @@ public class JSONFileWrite {
 
     public static void main(String[] args) {
 
-       /*Gson gson = new Gson();
+       Gson gson = new Gson();
 
 
         try (FileWriter file = new FileWriter("db.txt")) {
@@ -18,5 +19,6 @@ public class JSONFileWrite {
             e.printStackTrace();
         }
          }
-*/
+
 }
+*/
