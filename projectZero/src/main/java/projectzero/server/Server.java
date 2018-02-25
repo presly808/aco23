@@ -6,12 +6,10 @@ import projectzero.controller.UserControllerImpl;
 import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
 import projectzero.model.User;
-import projectzero.utils.KeyUtils;
+import projectzero.utils.JSONUtils;
 import spark.Request;
 import spark.Response;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +28,7 @@ public class Server {
         port(port);
         externalStaticFileLocation(storagePath);
         exception(Exception.class, ((exception, request, response) -> System.out.println(exception.getMessage()))); // TODO: 24-Feb-18 Logger
-        initEndpoint();
+        initEnpoint();
     }
 
     public static void main(String[] args) {
@@ -39,37 +37,33 @@ public class Server {
                         "\\ArtCode\\aco23\\projectZero\\src\\main\\java\\projectzero\\front\\");
     }
 
-    private void initEndpoint() {
+    private void initEnpoint() {
         post("/login", this::login);
         post("/join", this::join);
     }
 
+    // login logic
     private Object login(Request request, Response response) {
-        String[] body = request.body().split("&");
-        String email = body[0].split("=")[1];
-        String pass = body[1].split("=")[1];
-        String key = KeyUtils.getUniqueKey();
-        sessionMap.put(key, new User(email, pass));
-        System.out.println(sessionMap.get(key));
-        return key;
+        User loginUser = JSONUtils.fromJson(request.body(), User.class);
+
+        String key = userController.login(loginUser);
+        if (key != null) {
+            response.header("key", key);
+            sessionMap.put(key, loginUser);
+        }
+        return response;
     }
 
+    // join logic
     private Object join(Request request, Response response) {
-        String[] body = request.body().split("&");
-        String email = body[0].split("=")[1];
-        String pass = body[1].split("=")[1];
+        User newUser = JSONUtils.fromJson(request.body(), User.class);
+
         try {
-            email = URLDecoder.decode(email, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            // TODO: 24-Feb-18 logger
-        }
-        System.out.println(email + " " +pass);
-        // TODO: 24-Feb-18 create new User, return true if user exists return error
-        try {
-            userController.join(email, pass);
-            return "{error : \'\'}";
+            userController.join(newUser.getEmail(), newUser.getPass());
+            response.body("{error : \'\'}");
         } catch (AlreadyExistsException e) {
-            return "{error : " + e.getMessage() + "}";
+            response.body("{error : " + e.getMessage() + "}");
         }
+        return response;
     }
 }

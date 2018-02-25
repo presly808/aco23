@@ -18,6 +18,14 @@ public class JSONUtils {
     // TODO: 24-Feb-18 Ask Serhii for generify
     // TODO: 24-Feb-18 Orders
 
+    public static<T> T  fromJson(String json, Class<T> tClass) {
+        return gson.fromJson(json, tClass);
+    }
+
+    public static String toJson(Object src) {
+        return gson.toJson(src);
+    }
+
     /**
      * Add User to Json file
      *

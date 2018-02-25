@@ -1,24 +1,21 @@
-$(document).ready(function () {
+$('#joinHref').click(function () {
+    $('#mainDiv').load("join.html #joinDiv");
+    $('#header').find('> h1').text('Sign Up');
+    $.getScript("join.js");
+});
 
-    $('#joinHref').click(function () {
-        $('#mainDiv').load("join.html #joinDiv");
-        $('#header').find('> h1').text('Sign Up');
-        $.getScript("join.js");
-    });
+$('#loginBtn').click(function () {
+    var email = $('#inputEmail').val();
+    var pass = $('#inputPassword').val();
 
-    $('#loginBtn').click(function () {
-        var email = $('#inputEmail').val();
-        var pass = $('#inputPassword').val();
-
-        if (email && pass) {
-            $.ajax({
-                method: "POST",
-                url: "/login",
-                data: {email: email, pass: pass}
-            })
-                .done(function (str) {
-                    alert(str);
-                });
-        }
-    });
+    if (email && pass) {
+        $.ajax({
+            method: "POST",
+            url: "/login",
+            data: JSON.stringify({email: email, pass: pass})
+        })
+            .done(function (str) {
+                alert(str);
+            });
+    }
 });
