@@ -10,6 +10,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+// todo the same as in appDb, create files before and remove after
+// todo add test class, that will check http requests to created endpoint
+// in new test class run spark -> send requests -> check results -> down spark
 public class MainControllerImplTest {
 
     MainController mainController = new MainControllerImpl(new AppDb());

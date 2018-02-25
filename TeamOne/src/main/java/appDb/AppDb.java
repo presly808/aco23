@@ -11,32 +11,33 @@ import java.util.UUID;
 
 public class AppDb {
 
-    private Map <String, User> users;
-    private Map <Integer, Order> orders;
+    private Map<String, User> users;
+    private Map<Integer, Order> orders;
     private Map<String, User> accessTokenUserMap;
 
-    public AppDb(){
+    public AppDb() {
         this.users = new HashMap<>();
         this.orders = new HashMap<>();
         accessTokenUserMap = new HashMap<>();
     }
 
-    public User addUser (User user){
+    // todo we need to assign id to the user
+    public User addUser(User user) {
         users.put(user.getEmail(), user);
         return user;
     }
 
-    public User removeUser (User user){
+    public User removeUser(User user) {
         users.remove(user.getEmail());
         return user;
     }
 
-    public Order addOrder (Order order){
+    public Order addOrder(Order order) {
         orders.put(order.getId(), order);
         return order;
     }
 
-    public Order removeOrder (Order order){
+    public Order removeOrder(Order order) {
         orders.remove(order.getId());
         return order;
     }

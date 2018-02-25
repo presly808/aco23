@@ -6,6 +6,7 @@ import model.User;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+// todo use exceptions in the signatures
 public interface MainController {
 
 

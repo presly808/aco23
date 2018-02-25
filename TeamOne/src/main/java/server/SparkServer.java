@@ -48,8 +48,11 @@ public class SparkServer {
         try {
             String key = appDb.createAccessToken(loginUser);
         } catch (LoginCredentialException e) {
+            // todo wrap an exception and return either or use spark exception resolver ()
             e.printStackTrace();
         }
+        // gson.toJson(new Message("succes or token"))
+        // todo return object decorated in json
         return response;
     }
 
@@ -58,6 +61,7 @@ public class SparkServer {
         appDb.register(newUser.getEmail(), newUser.getPass());
         response.body("");
 
+        // todo return message after register logic
         return response;
     }
 }

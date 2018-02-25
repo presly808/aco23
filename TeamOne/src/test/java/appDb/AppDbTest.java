@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+// todo use test db file
+// create db file in beforeClass
+// remove db file in afterClass
+// clean data in before, remove in after
 public class AppDbTest {
 
     AppDb appDb = new AppDb();
