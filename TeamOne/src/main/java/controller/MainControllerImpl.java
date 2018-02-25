@@ -1,5 +1,6 @@
 package controller;
 
+import appDb.AppDb;
 import model.Order;
 import model.User;
 
@@ -9,6 +10,11 @@ import java.util.Map;
 
 public class MainControllerImpl implements MainController {
 
+    private AppDb appDb;
+
+    public MainControllerImpl(AppDb appDb) {
+        this.appDb = appDb;
+    }
 
     @Override
     public Map<String, User> getAllUsers() {

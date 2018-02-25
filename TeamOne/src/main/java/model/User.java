@@ -7,14 +7,19 @@ public class User {
     private int id;
     private String email;
     private String pass;
+    private boolean isEmployee;
 
     public User() {
     }
 
-
     public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
+        this.isEmployee = false;
+    }
+
+    public boolean isEmployee() {
+        return isEmployee;
     }
 
     public int getId() {
