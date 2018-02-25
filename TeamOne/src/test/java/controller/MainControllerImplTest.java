@@ -1,11 +1,14 @@
 package controller;
 
 import appDb.AppDb;
+import model.Customer;
 import model.Order;
 import model.User;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class MainControllerImplTest {
 
@@ -13,6 +16,7 @@ public class MainControllerImplTest {
     AppDb appDb = new AppDb();
     User testUser = new User("test@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
+
 
     @Test
     public void getAllUsers() {
@@ -39,10 +43,26 @@ public class MainControllerImplTest {
 
     @Test
     public void filterByName() {
+
+        Customer user1 = new Customer();
+        Customer user2 = new Customer();
+        Customer user3 = new Customer();
+
+        user1.setName("Ira");
+        user2.setName("Ira");
+        user3.setName("Ivan");
+
+        appDb.addUser(user1);
+        appDb.addUser(user2);
+        appDb.addUser(user3);
+
+        assertThat(mainController.filterByName("Ira").size(), CoreMatchers.equalTo(2));
+
     }
 
     @Test
     public void filterByCity() {
+
     }
 
     @Test
@@ -56,4 +76,5 @@ public class MainControllerImplTest {
     @Test
     public void changeOrderStatus() {
     }
+
 }

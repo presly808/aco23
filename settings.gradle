@@ -9,4 +9,5 @@ include 'VitaliiLaputko'
 include 'ValentynaMusiiaka'
 include 'functional-tests'
 include 'common'
+include 'TeamOne'
 
