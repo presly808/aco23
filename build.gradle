@@ -18,8 +18,24 @@ allprojects {
 
     dependencies {
         testCompile 'junit:junit:4.11'
-        // https://mvnrepository.com/artifact/net.sourceforge.jwebunit/jwebunit-core
-        compile group: 'net.sourceforge.jwebunit', name: 'jwebunit-core', version: '3.3'
+
+        // helps to remove selfrefences in common, otherwise common would have depended on itself
+        if (!project.name.equals("common")) {
+            compile project(':common')
+        }
+
+        compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+        // https://mvnrepository.com/artifact/com.google.guava/guava
+        compile group: 'com.google.guava', name: 'guava', version: '24.0-jre'
+
+
+        compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+        compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.1'
+
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.9.1'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.1'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: '3.9.1'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.9.1'
 
     }
 
@@ -45,15 +61,9 @@ allprojects {
 
     task copyTaskWithPatterns(type: Copy) {
         from 'src/main/java'
+        from 'src/main/resources'
         into 'build/classes/java/main'
-        include '**/*.txt'
-        include '**/*.js'
-        include '**/*.html'
-        include '**/*.properties'
-        include '**/*.json'
-        include '**/*.MD'
-        include '**/*.xml'
-        include '**/*.yaml'
+        include '**/*'
         exclude '**/*.java'
     }
 

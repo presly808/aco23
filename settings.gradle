@@ -7,5 +7,6 @@ include 'AndreyMihailenko'
 include 'VladPetrovskyi'
 include 'VitaliiLaputko'
 include 'ValentynaMusiiaka'
-include 'TeamOne'
+include 'functional-tests'
+include 'common'
 

@@ -19,9 +19,47 @@ function AppDb(users){
     //
 }
 
-// create app db and use it in the methods below
-var appDB;
+function Service(db){
 
+    this.appDB = db;
+
+    this.addEmployee = function(employee){
+
+    }
+
+    this.getAllEmployees = function(){
+
+    }
+
+    this.calculateSalary = function(employee){
+
+    }
+
+    this.calculateSalaries = function(){
+
+    }
+
+    this.getById = function(id){
+
+    }
+
+    this.findWithFilter = function(name){
+
+    }
+
+    this.filterWithPredicate = function(predicate, comparator){
+
+    }
+
+    this.fireWorker = function(workerId){
+
+    }
+
+    this.updateWorker = function(worker){
+
+    }
+
+}
 
 /*
     todo create the following function, they will be invoked from the java
@@ -44,20 +82,6 @@ var appDB;
 
     Employee updateWorker(Employee worker);
 
-    boolean areWorkersEqual(int emp1id, int eml2id);
-
 */
-
-function addEmployee(employee){
-    // add an employee to the db, that must have been initialized above
-}
-
-function getAllEmployees(){
-    return null;
-}
-
-function calculateSalary(employee){
-
-}
 
 
