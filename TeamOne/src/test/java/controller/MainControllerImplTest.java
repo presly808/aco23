@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
@@ -40,24 +42,24 @@ public class MainControllerImplTest {
 
 
     @Test
-    public void getAllUsers() throws AppException {
+    public void getAllUsers() throws AppException, IOException {
         assertEquals(1, mainController.getAllUsers().size());
 
     }
 
     @Test
-    public void getAllOrders() throws AppException {
+    public void getAllOrders() throws AppException, IOException {
         assertEquals(1, mainController.getAllOrders().size());
     }
 
     @Test
-    public void getById() throws AppException {
+    public void getById() throws AppException, IOException {
         testUser.setId(1);
         assertEquals(testUser, mainController.getById(1));
     }
 
     @Test
-    public void getOrderbyId() throws AppException {
+    public void getOrderbyId() throws AppException, IOException {
         String token = appDb.createAccessToken(testUser);
         testOrder.setId(1);
         appDb.addOrder(testOrder, token);
@@ -65,21 +67,15 @@ public class MainControllerImplTest {
     }
 
     @Test
-    public void filterByName() throws AppException {
+    public void filterByName() throws AppException, IOException {
+        String token = appDb.createAccessToken(testUser);
+        Order testOrder2 = new Order("Oleg", "Andrey", "Kyiv");
+        appDb.addOrder(new Order("Andrey", "Andrey", "Kyiv"), token);
+        appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
+        appDb.addOrder(testOrder2, token);
 
-        Customer user1 = new Customer();
-        Customer user2 = new Customer();
-        Customer user3 = new Customer();
-
-        user1.setName("Ira");
-        user2.setName("Ira");
-        user3.setName("Ivan");
-
-        appDb.addUser(user1);
-        appDb.addUser(user2);
-        appDb.addUser(user3);
-
-        assertThat(mainController.filterByName("Ira").size(), CoreMatchers.equalTo(2));
+        assertThat(mainController.filterByName("Andrey").size(), CoreMatchers.equalTo(1));
+        assertThat(mainController.filterByName("Oleg").size(), CoreMatchers.equalTo(3));
 
     }
 

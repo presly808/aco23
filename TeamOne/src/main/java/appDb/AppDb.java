@@ -25,7 +25,6 @@ public class AppDb {
     // todo we need to assign id to the user
     public User addUser(User user) throws AppException {
 
-
         users.put(user.getEmail(), user);
         return user;
     }

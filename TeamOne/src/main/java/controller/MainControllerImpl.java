@@ -10,6 +10,9 @@ import model.User;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainControllerImpl implements MainController {
@@ -55,22 +58,40 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Map<Integer, User> filterByName(String name) throws AppException, IOException {
-        return null;
+    public Map<Integer, Order> filterByName(String name) throws AppException, IOException {
+        Map<Integer, Order> result = new HashMap<>();
+        for (Order order : appDb.getOrders().values()) {
+            if(order.getSenderName().equals(name)){
+                result.put(order.getId(), order);
+            }
+        }
+        return result;
     }
 
     @Override
-    public Map<Integer, User> filterByCity(String city) throws AppException, IOException {
-        return null;
+    public Map<Integer, Order> filterByCity(String city) throws AppException, IOException {
+        Map<Integer, Order> result = new HashMap<>();
+        for (Order order : appDb.getOrders().values()) {
+            if(order.getTargetCity().equals(city)){
+                result.put(order.getId(), order);
+            }
+        }
+        return result;
     }
 
     @Override
-    public Map<Integer, User> filterByReciever(String receiverName) throws AppException, IOException {
-        return null;
+    public Map<Integer, Order> filterByReciever(String receiverName) throws AppException, IOException {
+        Map<Integer, Order> result = new HashMap<>();
+        for (Order order : appDb.getOrders().values()) {
+            if(order.getReceiverName().equals(receiverName)){
+                result.put(order.getId(), order);
+            }
+        }
+        return result;
     }
 
     @Override
-    public Map<Integer, User> filterByDate(LocalDateTime dateTime) throws AppException, IOException {
+    public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws AppException, IOException {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.Random;
+import java.util.UUID;
 
 public class ModelUtils {
 
@@ -9,6 +10,6 @@ public class ModelUtils {
     private static Random random = new Random();
 
     public static int genId() {
-        return random.nextInt();
+        return  (int)(Math.random() * 50000);
     }
 }

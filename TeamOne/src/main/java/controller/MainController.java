@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-// todo use exceptions in the signatures
 public interface MainController {
 
 
@@ -20,10 +19,10 @@ public interface MainController {
     User getById(int id) throws AppException, UserNotFoundException, IOException;
     Order getOrderbyId(int id) throws AppException, IOException;
 
-    Map<Integer, User> filterByName (String name) throws AppException, IOException;
-    Map<Integer, User> filterByCity (String city) throws AppException, IOException;
-    Map<Integer, User> filterByReciever (String receiverName) throws AppException, IOException;
-    Map<Integer, User> filterByDate (LocalDateTime dateTime) throws AppException, IOException;
+    Map<Integer, Order> filterByName (String name) throws AppException, IOException;
+    Map<Integer, Order> filterByCity (String city) throws AppException, IOException;
+    Map<Integer, Order> filterByReciever (String receiverName) throws AppException, IOException;
+    Map<Integer, Order> filterByDate (LocalDateTime dateTime) throws AppException, IOException;
 
     public String changeOrderStatus (Order order, OrderStatus orderStatus, String accessToken) throws AppException, IOException;
 

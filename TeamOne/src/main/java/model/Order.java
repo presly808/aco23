@@ -1,5 +1,7 @@
 package model;
 
+import utils.ModelUtils;
+
 import java.time.LocalDateTime;
 
 public class Order {
@@ -18,6 +20,7 @@ public class Order {
         this.senderName = senderName;
         this.receiverName = receiverName;
         this.targetCity = targetCity;
+        this.id = ModelUtils.genId();
     }
 
     public OrderStatus getOrderStatus() {

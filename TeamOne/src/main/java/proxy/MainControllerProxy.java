@@ -53,23 +53,23 @@ public class MainControllerProxy implements MainController {
 
 
     @Override
-    public Map<Integer, User> filterByName(String name) throws AppException, IOException {
-        return (Map<Integer, User>) saveLog(() -> mainController.filterByName(name));
+    public Map<Integer, Order> filterByName(String name) throws AppException, IOException {
+        return (Map<Integer, Order>) saveLog(() -> mainController.filterByName(name));
     }
 
     @Override
-    public Map<Integer, User> filterByCity(String city) throws AppException, IOException {
-        return (Map<Integer, User>) saveLog(()->mainController.filterByCity(city));
+    public Map<Integer, Order> filterByCity(String city) throws AppException, IOException {
+        return (Map<Integer, Order>) saveLog(()->mainController.filterByCity(city));
     }
 
     @Override
-    public Map<Integer, User> filterByReciever(String receiverName) throws AppException, IOException {
-        return (Map<Integer, User>) saveLog(()-> mainController.filterByReciever(receiverName));
+    public Map<Integer, Order> filterByReciever(String receiverName) throws AppException, IOException {
+        return (Map<Integer, Order>) saveLog(()-> mainController.filterByReciever(receiverName));
     }
 
     @Override
-    public Map<Integer, User> filterByDate(LocalDateTime dateTime) throws AppException, IOException {
-        return (Map<Integer, User>) saveLog(()-> mainController.filterByDate(dateTime));
+    public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws AppException, IOException {
+        return (Map<Integer, Order>) saveLog(()-> mainController.filterByDate(dateTime));
     }
 
     @Override
