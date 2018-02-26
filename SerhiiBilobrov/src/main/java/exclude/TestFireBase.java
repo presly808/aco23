@@ -26,7 +26,6 @@ public class TestFireBase {
 
         FirebaseApp.initializeApp(options);
         FirebaseDatabase defaultDatabase = FirebaseDatabase.getInstance();
-        defaultDatabase.
 
     }
 }
