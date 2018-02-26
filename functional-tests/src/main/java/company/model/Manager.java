@@ -21,4 +21,7 @@ public class Manager extends Employee {
     }
 
 
+    public Object calculateSalary() {
+        return null;
+    }
 }

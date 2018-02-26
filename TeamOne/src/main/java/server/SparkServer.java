@@ -1,10 +1,12 @@
 package server;
 
 import appDb.AppDb;
+import controller.MainController;
 import exceptions.LoginCredentialException;
 import model.User;
 import spark.Request;
 import spark.Response;
+import utils.Factory;
 import utils.JSONUtils;
 
 import static spark.Spark.*;
@@ -14,6 +16,7 @@ public class SparkServer {
     private final int port;
     private final String staticFolder;
     private AppDb appDb;
+    MainController mainController = Factory.create(true);
 
     public SparkServer(int port, String staticFolder) {
         this.port = port;
