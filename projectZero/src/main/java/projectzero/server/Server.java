@@ -7,6 +7,7 @@ import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
 import projectzero.model.User;
 import projectzero.utils.JSONUtils;
+import projectzero.utils.LoggerUtils;
 import spark.Filter;
 import spark.Request;
 import spark.Response;
@@ -22,11 +23,12 @@ public class Server {
     private IEmployeeController employeeController;
     private Map<String, User> sessionMap;
 
+
     public Server(int port, String storagePath) {
         this.sessionMap = new HashMap<>();
         // todo remove absolute paths
         userController = new UserControllerImpl(
-                new UserDao("C:\\Users\\Foresstt\\Desktop\\ArtCode\\aco23\\projectZero\\src\\main\\resources\\users.json"));
+                new UserDao("C:\\Users\\Andrey\\IdeaProjects\\ACO23\\aco23\\projectZero\\src\\main\\java\\users.json"));
         port(port);
         externalStaticFileLocation(storagePath);
         before((request, response) ->
@@ -36,8 +38,7 @@ public class Server {
 
     public static void main(String[] args) {
         new Server(9817,
-                "C:\\Users\\Foresstt\\Desktop" +
-                        "\\ArtCode\\aco23\\projectZero\\src\\main\\java\\projectzero\\front\\");
+                "C:\\Users\\Andrey\\IdeaProjects\\ACO23\\aco23\\projectZero\\src\\main\\java\\projectzero\\front");
     }
 
     private void initEnpoint() {
@@ -62,9 +63,11 @@ public class Server {
         System.out.println(newUser);
         try {
             userController.join(newUser.getEmail(), newUser.getPass());
+            LoggerUtils.logInfo("Joining successful");
             return "{error : \'\'}";
         } catch (AlreadyExistsException e) {
             // todo toJson(e) or use spark to handle errors
+            LoggerUtils.logInfo("Such user is already exist");
             return "{error : " + e.getMessage() + "}";
         }
     }
