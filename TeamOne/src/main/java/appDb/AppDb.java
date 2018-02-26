@@ -1,5 +1,6 @@
 package appDb;
 
+import exceptions.AppException;
 import exceptions.LoginCredentialException;
 import model.Customer;
 import model.Order;
@@ -22,7 +23,9 @@ public class AppDb {
     }
 
     // todo we need to assign id to the user
-    public User addUser(User user) {
+    public User addUser(User user) throws AppException {
+
+
         users.put(user.getEmail(), user);
         return user;
     }
@@ -32,12 +35,21 @@ public class AppDb {
         return user;
     }
 
-    public Order addOrder(Order order) {
+    public Order addOrder(Order order, String accessToken) throws AppException {
+
+        if (!hasToken(accessToken)) {
+            throw new AppException("no access, login first");
+        }
+
         orders.put(order.getId(), order);
         return order;
     }
 
-    public Order removeOrder(Order order) {
+    public Order removeOrder(Order order, String accessToken) throws AppException {
+
+        if (!hasToken(accessToken)) {
+            throw new AppException("no access, login first");
+        }
         orders.remove(order.getId());
         return order;
     }

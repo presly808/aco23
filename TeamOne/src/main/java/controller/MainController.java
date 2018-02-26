@@ -1,6 +1,9 @@
 package controller;
 
+import exceptions.AppException;
+import exceptions.UserNotFoundException;
 import model.Order;
+import model.OrderStatus;
 import model.User;
 
 import java.time.LocalDateTime;
@@ -10,17 +13,17 @@ import java.util.Map;
 public interface MainController {
 
 
-    Map<String, User> getAllUsers();
-    Map<Integer, Order> getAllOrders();
+    Map<String, User> getAllUsers() throws AppException;
+    Map<Integer, Order> getAllOrders() throws AppException;
 
-    User getById(int id);
-    Order getOrderbyId(int id);
+    User getById(int id) throws AppException, UserNotFoundException;
+    Order getOrderbyId(int id) throws AppException;
 
-    Map<Integer, User> filterByName (String name);
-    Map<Integer, User> filterByCity (String city);
-    Map<Integer, User> filterByReciever (String receiverName);
-    Map<Integer, User> filterByDate (LocalDateTime dateTime);
+    Map<Integer, User> filterByName (String name) throws AppException;
+    Map<Integer, User> filterByCity (String city) throws AppException;
+    Map<Integer, User> filterByReciever (String receiverName) throws AppException;
+    Map<Integer, User> filterByDate (LocalDateTime dateTime) throws AppException;
 
-    public String changeOrderStatus (Order order);
+    public String changeOrderStatus (Order order, OrderStatus orderStatus, String accessToken) throws AppException;
 
 }
