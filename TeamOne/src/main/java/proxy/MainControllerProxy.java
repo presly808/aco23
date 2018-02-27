@@ -1,5 +1,6 @@
 package proxy;
 
+import appDb.AppDb;
 import controller.MainController;
 import exceptions.AppException;
 import exceptions.UserNotFoundException;
@@ -16,6 +17,8 @@ public class MainControllerProxy implements MainController {
 
     private MainController mainController;
     private LogContainer logContainer;
+    private AppDb appDb;
+
 
     public MainControllerProxy(MainController mainController) {
         this.mainController = mainController;
@@ -39,6 +42,16 @@ public class MainControllerProxy implements MainController {
     @Override
     public Map<Integer, Order> getAllOrders() throws AppException, IOException {
         return (Map<Integer, Order>) saveLog(mainController::getAllOrders);
+    }
+
+    @Override
+    public void setAppDb(AppDb appDb) {
+        this.appDb = appDb;
+    }
+
+    @Override
+    public AppDb getAppDb() {
+        return appDb;
     }
 
     @Override

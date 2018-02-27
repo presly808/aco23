@@ -7,11 +7,11 @@ import proxy.MainControllerProxy;
 
 public class Factory {
 
-    public static MainController create(boolean withProfiling) {
+    public static MainController create(boolean withProfiling, AppDb appDb) {
         if (withProfiling) {
-            return new MainControllerProxy(new MainControllerImpl(new AppDb()));
+            return new MainControllerProxy(new MainControllerImpl(appDb));
         } else {
-            return new MainControllerImpl(new AppDb());
+            return new MainControllerImpl(appDb);
         }
     }
 }

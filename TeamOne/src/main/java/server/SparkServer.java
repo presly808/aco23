@@ -15,8 +15,8 @@ public class SparkServer {
 
     private final int port;
     private final String staticFolder;
-    private AppDb appDb;
-    MainController mainController = Factory.create(true);
+    private AppDb appDb = new AppDb();
+    MainController mainController = Factory.create(true, appDb);
 
     public SparkServer(int port, String staticFolder) {
         this.port = port;
@@ -30,8 +30,11 @@ public class SparkServer {
     }
 
     public static void main(String[] args) {
+
         new SparkServer(8080, "TeamOne/src/main/java/view/");
+
     }
+
 
 
     public void stopServer(){

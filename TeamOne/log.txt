@@ -1,0 +1,2 @@
+******* LogEvent{place='getAllUsers', localDateTime=2018-02-27T15:33:52.050}******* 
+******* LogEvent{place='getAllUsers', localDateTime=2018-02-27T15:34:52.703}******* 

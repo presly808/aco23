@@ -24,6 +24,17 @@ public class MainControllerImpl implements MainController {
         this.appDb = appDb;
     }
 
+    public MainControllerImpl() {
+    }
+
+    public AppDb getAppDb() {
+        return appDb;
+    }
+
+    public void setAppDb(AppDb appDb) {
+        this.appDb = appDb;
+    }
+
     @Override
     public Map<String, User> getAllUsers() throws AppException, IOException {
         return appDb.getUsers();
@@ -33,6 +44,7 @@ public class MainControllerImpl implements MainController {
     public Map<Integer, Order> getAllOrders() throws AppException, IOException {
         return appDb.getOrders();
     }
+
 
     @Override
     public User getById(int id) throws AppException, IOException {
@@ -110,5 +122,6 @@ public class MainControllerImpl implements MainController {
         return String.valueOf(orderStatus);
 
     }
+
 
 }
