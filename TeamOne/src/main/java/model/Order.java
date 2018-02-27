@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 public class Order {
 
+    private static final int DAYS = 31;
     private int id;
     private String senderName;
     private String receiverName;
@@ -19,6 +20,7 @@ public class Order {
     public Order(String senderName, String receiverName, String targetCity) {
         this.senderName = senderName;
         this.receiverName = receiverName;
+        this.sendDate = LocalDateTime.now().minusDays((int)(Math.random() * DAYS));
         this.targetCity = targetCity;
         this.id = ModelUtils.genId();
     }

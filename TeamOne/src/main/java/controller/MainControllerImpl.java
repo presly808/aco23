@@ -92,7 +92,13 @@ public class MainControllerImpl implements MainController {
 
     @Override
     public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws AppException, IOException {
-        return null;
+        Map<Integer, Order> result = new HashMap<>();
+        for (Order order : appDb.getOrders().values()) {
+            if(order.getSendDate().equals(dateTime)){
+                result.put(order.getId(), order);
+            }
+        }
+        return result;
     }
 
     @Override
