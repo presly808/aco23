@@ -78,44 +78,49 @@ task copyTask {
     doLast {
         def module_with_tests = "functional-tests"
 
+        if (!project.hasProperty("task") || !project.hasProperty("myModule")) {
+            throw new GradleException("task or myModule properties have not been set")
+        }
 
-        if (project.hasProperty("task") && project.hasProperty("myModule")) {
-            def courseJsonObj = parseJson('functional-tests/course-tasks.json')
+        if (!new File("./${myModule}").exists()) {
+            throw new GradleException("${myModule} module doesn't exists")
+        }
 
-            def taskDesc = courseJsonObj.tasks[task]
-            def baseClasses = taskDesc.baseClasses;
-            def testClasses = taskDesc.testClasses;
 
-            if (!project.hasProperty("testOnly")) {
-                for (def baseClass in baseClasses) {
-                    def intoPath = "$baseClass".endsWith(".java") ?
-                            baseClass.substring(0, baseClass.lastIndexOf("/")) : baseClass
+        def courseJsonObj = parseJson('functional-tests/course-tasks.json')
 
-                    copy {
-                        from "$module_with_tests/src/main/java/$baseClass"
-                        into "$myModule/src/main/java/$intoPath"
-                    }
+        def taskDesc = courseJsonObj.tasks[task]
+        def baseClasses = taskDesc.baseClasses;
+        def testClasses = taskDesc.testClasses;
 
-                }
-                println "The Base classes of $task have been copied into $myModule"
-            }
+        if (!project.hasProperty("testOnly")) {
+            for (def baseClass in baseClasses) {
+                def intoPath = "$baseClass".endsWith(".java") ?
+                        baseClass.substring(0, baseClass.lastIndexOf("/")) : baseClass
 
-            for (def testClass in testClasses) {
-                def intoPath = "$testClass".endsWith(".java") ?
-                        testClass.substring(0, testClass.lastIndexOf("/")) : testClass
                 copy {
-                    from "$module_with_tests/src/test/java/$testClass"
-                    into "$myModule/src/test/java/$intoPath"
+                    from "$module_with_tests/src/main/java/$baseClass"
+                    into "$myModule/src/main/java/$intoPath"
                 }
 
             }
-            println "The Tests classes of $task have been copied into $myModule"
+            println "The Base classes of $task have been copied into $myModule"
+        }
 
+        for (def testClass in testClasses) {
+            def intoPath = "$testClass".endsWith(".java") ?
+                    testClass.substring(0, testClass.lastIndexOf("/")) : testClass
+            copy {
+                from "$module_with_tests/src/test/java/$testClass"
+                into "$myModule/src/test/java/$intoPath"
+            }
 
         }
+        println "The Tests classes of $task have been copied into $myModule"
     }
-
 }
+
+
 
 task showAllTasks() {
     doLast {
