@@ -3,6 +3,7 @@ package proxy;
 import appDb.AppDb;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class LogEvent {
@@ -18,9 +19,9 @@ public class LogEvent {
 
     @Override
     public String toString() {
-        return "LogEvent{" +
-                "place='" + place + '\'' +
-                ", localDateTime=" + localDateTime +
+        return "LogEvent: " +
+                "method occur: " + place + '\'' +
+                ", at " + localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
                 '}';
     }
 }

@@ -1,2 +1,38 @@
 ******* LogEvent{place='getAllUsers', localDateTime=2018-02-27T15:33:52.050}******* 
 ******* LogEvent{place='getAllUsers', localDateTime=2018-02-27T15:34:52.703}******* 
+******* LogEvent{place='getAllOrders', localDateTime=2018-02-27T21:54:37.281}******* 
+******* LogEvent{place='getAllUsers', localDateTime=2018-02-27T21:54:37.286}******* 
+******* LogEvent{place='getOrderbyId', localDateTime=2018-02-27T21:54:37.328}******* 
+******* LogEvent{place='getById', localDateTime=2018-02-27T21:54:37.334}******* 
+******* LogEvent{place='filterByName', localDateTime=2018-02-27T21:54:37.349}******* 
+******* LogEvent{place='filterByName', localDateTime=2018-02-27T21:54:37.378}******* 
+******* LogEvent: method occur: getAllOrders', at 2018-02-27 22:59}******* 
+******* LogEvent: method occur: getAllUsers', at 2018-02-27 22:59}******* 
+******* LogEvent: method occur: getOrderbyId', at 2018-02-27 22:59}******* 
+******* LogEvent: method occur: getById', at 2018-02-27 22:59}******* 
+******* LogEvent: method occur: filterByName', at 2018-02-27 22:59}******* 
+******* LogEvent: method occur: filterByName', at 2018-02-27 22:59}******* 
+ ******* LogEvent: method occur: getAllOrders', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: getAllUsers', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: getOrderbyId', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: getById', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-27 23:03} ******* 
+ ******* LogEvent: method occur: getAllOrders', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: getAllUsers', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: getOrderbyId', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: getById', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-27 23:06} ******* 
+ ******* LogEvent: method occur: getAllOrders', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: getAllUsers', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: getOrderbyId', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: getById', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-27 23:08} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-27 23:08} ******* 

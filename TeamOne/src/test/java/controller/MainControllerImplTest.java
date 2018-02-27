@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -80,20 +81,42 @@ public class MainControllerImplTest {
     }
 
     @Test
-    public void filterByCity() {
+    public void filterByCity() throws AppException, IOException {
+        String token = appDb.createAccessToken(testUser);
+        Order testOrder2 = new Order("Oleg", "Andrey", "Kyiv");
+        appDb.addOrder(new Order("Andrey", "Andrey", "Lviv"), token);
+        appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
+        appDb.addOrder(testOrder2, token);
+
+        assertThat(mainController.filterByCity("Kyiv").size(), CoreMatchers.equalTo(3));
+        assertThat(mainController.filterByCity("Lviv").size(), CoreMatchers.equalTo(1));
 
     }
 
     @Test
-    public void filterByReciever() {
+    public void filterByReciever() throws AppException, IOException {
+        String token = appDb.createAccessToken(testUser);
+        Order testOrder2 = new Order("Oleg", "Andrey", "Kyiv");
+        appDb.addOrder(new Order("Andrey", "Andrey", "Lviv"), token);
+        appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
+        appDb.addOrder(testOrder2, token);
+
+        assertThat(mainController.filterByReciever("Andrey").size(), CoreMatchers.equalTo(4));
+        assertThat(mainController.filterByReciever("Lviv").size(), CoreMatchers.equalTo(0));
     }
 
     @Test
-    public void filterByDate() {
+    public void filterByDate() throws AppException, IOException {
+        String token = appDb.createAccessToken(testUser);
+        Order testOrder2 = new Order("Oleg", "Andrey", "Copengagen");
+        appDb.addOrder(new Order("Andrey", "Andrey", "Lviv"), token);
+        appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
+        testOrder2.setSendDate(LocalDateTime.now());
+        appDb.addOrder(testOrder2, token);
+
+        assertThat(mainController.filterByDate(LocalDateTime.now()).size(), CoreMatchers.equalTo(1));
+
     }
 
-    @Test
-    public void changeOrderStatus() {
-    }
 
 }

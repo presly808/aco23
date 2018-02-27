@@ -21,7 +21,7 @@ public class LogContainer {
 
         FileWriter fileWriter = new FileWriter(log, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write("******* " + logEvent.toString() + "******* " + "\n");
+        bufferedWriter.write(" ******* " + logEvent.toString() + " ******* " + "\n");
         bufferedWriter.close();
     }
 }
