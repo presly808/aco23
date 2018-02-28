@@ -1,5 +1,7 @@
 package model;
 
+import utils.ModelUtils;
+
 import java.util.Objects;
 
 public class User {
@@ -14,6 +16,7 @@ public class User {
     public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
+        this.id = ModelUtils.genId();
     }
 
 
@@ -21,16 +24,9 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPass() {

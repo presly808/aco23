@@ -1,6 +1,7 @@
 package controller;
 
 import appDb.AppDb;
+import com.google.gson.Gson;
 import exceptions.AppException;
 import exceptions.LoginCredentialException;
 import model.Customer;
@@ -13,6 +14,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -23,28 +25,32 @@ public class MainControllerImplTest {
 
     AppDb appDb = new AppDb();
     MainController mainController = new MainControllerImpl(appDb);
-    User testUser = new User("test@gmail.com", "123456");
+    User testUser = new User("test3@gmail.com", "123456");
+
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
+
+    Gson gson = new Gson();
 
 
     @Before
     public void before() throws AppException {
+        Map<String, User> users = appDb.getUsers();
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
-
     }
 
 
     @After
     public void after(){
+        AppDb.restorDb();
         appDb = null;
     }
 
 
     @Test
     public void getAllUsers() throws AppException, IOException {
-        assertEquals(1, mainController.getAllUsers().size());
+        assertEquals(2, mainController.getAllUsers().size());
 
     }
 
@@ -55,8 +61,7 @@ public class MainControllerImplTest {
 
     @Test
     public void getById() throws AppException, IOException {
-        testUser.setId(1);
-        assertEquals(testUser, mainController.getById(1));
+        assertEquals(testUser, mainController.getById(testUser.getId()));
     }
 
     @Test

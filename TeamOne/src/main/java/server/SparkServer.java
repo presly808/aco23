@@ -25,6 +25,7 @@ public class SparkServer {
         port(port);
         externalStaticFileLocation(staticFolder);
 
+
 //        get("/index.html", (request, response) -> "Server is up");
 
     }

@@ -1,14 +1,18 @@
 package appDb;
 
+import com.google.gson.Gson;
 import exceptions.AppException;
 import exceptions.LoginCredentialException;
 import model.Customer;
 import model.Order;
 import model.User;
+import utils.JSONUtils;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.*;
 
 public class AppDb {
 
@@ -26,6 +30,11 @@ public class AppDb {
     public User addUser(User user) throws AppException {
 
         users.put(user.getEmail(), user);
+        try {
+            JSONUtils.addUser("user_db.txt", user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return user;
     }
 
@@ -54,6 +63,15 @@ public class AppDb {
     }
 
     public Map<String, User> getUsers() {
+        try {
+            List<User> usersList = JSONUtils.getUsersFromDb("user_db.txt");
+            for (User user : usersList) {
+                users.put(user.getEmail(), user);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return users;
     }
 
@@ -93,4 +111,26 @@ public class AppDb {
     public void register(String email, String pass) {
         users.put(email, new Customer(email, pass));
     }
+
+    public static  void restorDb() {
+        Gson gson = new Gson();
+
+        User user1 = new User("test@gmail.com", "123456");
+        User user2 = new User("test@gmail.com", "123456");
+        User user3 = new User("test@gmail.com", "123456");
+
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+
+        File file = new File("user_db.txt");
+        try (Writer writer = new FileWriter(file, false)) {
+            writer.write(gson.toJson(users));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

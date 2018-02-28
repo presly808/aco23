@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class JSONUtils {
 
@@ -27,12 +25,13 @@ public class JSONUtils {
     }
 
     public static void addUser(String path, User user) throws IOException {
+
         List<User> users = getUsersFromDb(path);
         users.add(user);
         saveUserToDb(path, users);
     }
 
-    private static void saveUserToDb(String path, List<User> users) {
+    private static void saveUserToDb(String path, List <User> users) {
         File file = new File(path);
         try (Writer writer = new FileWriter(file, false)) {
             writer.write(gson.toJson(users));
@@ -42,16 +41,16 @@ public class JSONUtils {
         }
     }
 
-    private static List<User> getUsersFromDb(String path) throws IOException {
+
+    public static List <User> getUsersFromDb(String path) throws IOException {
 
         File file = new File(path);
-        List<User> list = new ArrayList<>();
-
+        List<User> users = new ArrayList<>();
         if (file.length() != 0) {
             String jString = new String(Files.readAllBytes(Paths.get(path)));
-            Collections.addAll(list, gson.fromJson(jString, User[].class));
+            Collections.addAll(users, gson.fromJson(jString, User[].class));
         }
-        return list;
+        return users;
     }
 
 }

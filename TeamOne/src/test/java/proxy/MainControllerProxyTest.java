@@ -14,6 +14,7 @@ import org.junit.Test;
 import utils.Factory;
 
 import java.io.IOException;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -26,6 +27,7 @@ public class MainControllerProxyTest {
 
     @Before
     public void before() throws AppException {
+        Map<String, User> users = appDb.getUsers();
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
@@ -35,6 +37,8 @@ public class MainControllerProxyTest {
 
     @After
     public void after(){
+        AppDb.restorDb();
+        appDb = null;
     }
 
     @Test
@@ -50,8 +54,8 @@ public class MainControllerProxyTest {
 
     @Test
     public void getById() throws AppException, IOException {
-        testUser.setId(1);
-        assertEquals(testUser, mainController.getById(1));
+        assertEquals(testUser, mainController.getById(testUser.getId()));
+
     }
 
     @Test
