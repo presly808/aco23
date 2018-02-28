@@ -1,35 +1,28 @@
-package controller;
+package proxy;
 
 import appDb.AppDb;
-import com.google.gson.Gson;
+import controller.MainController;
+import controller.MainControllerImpl;
 import exceptions.AppException;
 import exceptions.LoginCredentialException;
-import model.Customer;
 import model.Order;
 import model.User;
 import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import utils.Factory;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
-// todo add test class, that will check http requests to created endpoint
-// in new test class run spark -> send requests -> check results -> down spark
-public class MainControllerImplTest {
-
+public class MainControllerProxyTest {
     AppDb appDb = new AppDb();
-    MainController mainController = new MainControllerImpl(appDb);
-    User testUser = new User("test3@gmail.com", "123456");
-
+    MainController mainController = Factory.create(true, appDb);
+    User testUser = new User("test@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
-
-    Gson gson = new Gson();
 
 
     @Before
@@ -38,6 +31,7 @@ public class MainControllerImplTest {
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
+
     }
 
 
@@ -47,21 +41,21 @@ public class MainControllerImplTest {
         appDb = null;
     }
 
-
     @Test
-    public void getAllUsers() throws AppException, IOException {
-        assertEquals(2, mainController.getAllUsers().size());
-
+    public void getAllUsers() throws IOException, AppException {
+        assertEquals(1, mainController.getAllUsers().size());
     }
 
     @Test
-    public void getAllOrders() throws AppException, IOException {
+    public void getAllOrders() throws IOException, AppException {
         assertEquals(1, mainController.getAllOrders().size());
+
     }
 
     @Test
     public void getById() throws AppException, IOException {
         assertEquals(testUser, mainController.getById(testUser.getId()));
+
     }
 
     @Test
@@ -74,6 +68,7 @@ public class MainControllerImplTest {
 
     @Test
     public void filterByName() throws AppException, IOException {
+
         String token = appDb.createAccessToken(testUser);
         Order testOrder2 = new Order("Oleg", "Andrey", "Kyiv");
         appDb.addOrder(new Order("Andrey", "Andrey", "Kyiv"), token);
@@ -82,7 +77,6 @@ public class MainControllerImplTest {
 
         assertThat(mainController.filterByName("Andrey").size(), CoreMatchers.equalTo(1));
         assertThat(mainController.filterByName("Oleg").size(), CoreMatchers.equalTo(3));
-
     }
 
     @Test
@@ -95,33 +89,5 @@ public class MainControllerImplTest {
 
         assertThat(mainController.filterByCity("Kyiv").size(), CoreMatchers.equalTo(3));
         assertThat(mainController.filterByCity("Lviv").size(), CoreMatchers.equalTo(1));
-
     }
-
-    @Test
-    public void filterByReciever() throws AppException, IOException {
-        String token = appDb.createAccessToken(testUser);
-        Order testOrder2 = new Order("Oleg", "Andrey", "Kyiv");
-        appDb.addOrder(new Order("Andrey", "Andrey", "Lviv"), token);
-        appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
-        appDb.addOrder(testOrder2, token);
-
-        assertThat(mainController.filterByReciever("Andrey").size(), CoreMatchers.equalTo(4));
-        assertThat(mainController.filterByReciever("Lviv").size(), CoreMatchers.equalTo(0));
-    }
-
-    @Test
-    public void filterByDate() throws AppException, IOException {
-        String token = appDb.createAccessToken(testUser);
-        Order testOrder2 = new Order("Oleg", "Andrey", "Copengagen");
-        appDb.addOrder(new Order("Andrey", "Andrey", "Lviv"), token);
-        appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
-        testOrder2.setSendDate(LocalDateTime.now());
-        appDb.addOrder(testOrder2, token);
-
-        assertThat(mainController.filterByDate(LocalDateTime.now()).size(), CoreMatchers.equalTo(1));
-
-    }
-
-
 }

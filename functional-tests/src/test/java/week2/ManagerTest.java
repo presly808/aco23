@@ -1,5 +1,7 @@
 package ua.artcode.week2;
 
+import company.model.Employee;
+import company.model.Manager;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
