@@ -8,12 +8,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -32,6 +26,8 @@ public class AppDbTest {
     @Before
     public void before() throws AppException {
         Map<String, User> users = appDb.getUsers();
+        Map<Integer, Order> orders = appDb.getOrders();
+
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
@@ -42,7 +38,10 @@ public class AppDbTest {
     @After
     public void after(){
 
-        AppDb.restorDb();
+        AppDb.restoreUserDb();
+        AppDb.restoreOrderDb();
+
+
         appDb = null;
 
     }
@@ -64,7 +63,6 @@ public class AppDbTest {
     public void addOrder() throws AppException {
 
         int testOrderId = testOrder.getId();
-        assertEquals(1, appDb.getOrders().size());
         assertTrue(appDb.getOrders().containsKey(testOrderId));
     }
 
@@ -72,7 +70,7 @@ public class AppDbTest {
     public void removeOrder() throws AppException {
         String token = appDb.createAccessToken(testUser);
         appDb.removeOrder(testOrder, token);
-        assertEquals(0,appDb.getOrders().size());
+        assertEquals(4,appDb.getOrders().size());
     }
 
     @Test

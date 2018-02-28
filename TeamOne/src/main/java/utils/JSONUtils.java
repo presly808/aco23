@@ -3,6 +3,7 @@ package utils;
 import com.google.gson.Gson;
 import model.Order;
 import model.User;
+import org.apache.xpath.operations.Or;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -30,6 +31,35 @@ public class JSONUtils {
         users.add(user);
         saveUserToDb(path, users);
     }
+
+    public static void addOrder(String path, Order order) throws IOException {
+
+        List<Order> orders = getOrdersFromDb(path);
+        orders.add(order);
+        saveOrderToDb(path, orders);
+    }
+
+    public static List<Order> getOrdersFromDb(String path) throws IOException {
+        File file = new File(path);
+        List<Order> orders = new ArrayList<>();
+        if (file.length() != 0) {
+            String jString = new String(Files.readAllBytes(Paths.get(path)));
+            Collections.addAll(orders, gson.fromJson(jString, Order[].class));
+        }
+        return orders;
+    }
+
+    private static void saveOrderToDb(String path, List<Order> orders) {
+
+        File file = new File(path);
+        try (Writer writer = new FileWriter(file, false)) {
+            writer.write(gson.toJson(orders));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static void saveUserToDb(String path, List <User> users) {
         File file = new File(path);

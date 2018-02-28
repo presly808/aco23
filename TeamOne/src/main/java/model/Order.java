@@ -14,9 +14,6 @@ public class Order {
     private LocalDateTime sendDate;
     private OrderStatus orderStatus;
 
-    public Order() {
-    }
-
     public Order(String senderName, String receiverName, String targetCity) {
         this.senderName = senderName;
         this.receiverName = receiverName;
@@ -73,5 +70,13 @@ public class Order {
         this.sendDate = sendDate;
     }
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", senderName='" + senderName + '\'' +
+                ", receiverName='" + receiverName + '\'' +
+                ", targetCity='" + targetCity + '\'' +
+                '}';
+    }
 }

@@ -3,8 +3,6 @@ package controller;
 import appDb.AppDb;
 import com.google.gson.Gson;
 import exceptions.AppException;
-import exceptions.LoginCredentialException;
-import model.Customer;
 import model.Order;
 import model.User;
 import org.hamcrest.CoreMatchers;
@@ -26,15 +24,14 @@ public class MainControllerImplTest {
     AppDb appDb = new AppDb();
     MainController mainController = new MainControllerImpl(appDb);
     User testUser = new User("test3@gmail.com", "123456");
-
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
-
     Gson gson = new Gson();
 
 
     @Before
     public void before() throws AppException {
-        Map<String, User> users = appDb.getUsers();
+
+        // Map<String, User> users = appDb.getUsers();
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
@@ -43,7 +40,9 @@ public class MainControllerImplTest {
 
     @After
     public void after(){
-        AppDb.restorDb();
+        AppDb.restoreUserDb();
+        AppDb.restoreOrderDb();
+
         appDb = null;
     }
 
@@ -56,7 +55,7 @@ public class MainControllerImplTest {
 
     @Test
     public void getAllOrders() throws AppException, IOException {
-        assertEquals(1, mainController.getAllOrders().size());
+        assertEquals(4, mainController.getAllOrders().size());
     }
 
     @Test
@@ -67,9 +66,9 @@ public class MainControllerImplTest {
     @Test
     public void getOrderbyId() throws AppException, IOException {
         String token = appDb.createAccessToken(testUser);
-        testOrder.setId(1);
-        appDb.addOrder(testOrder, token);
-        assertEquals(testOrder, mainController.getOrderbyId(1));
+
+        assertEquals(testOrder.getId(), mainController.getOrderbyId(testOrder.getId()).getId());
+
     }
 
     @Test
@@ -81,7 +80,7 @@ public class MainControllerImplTest {
         appDb.addOrder(testOrder2, token);
 
         assertThat(mainController.filterByName("Andrey").size(), CoreMatchers.equalTo(1));
-        assertThat(mainController.filterByName("Oleg").size(), CoreMatchers.equalTo(3));
+        assertThat(mainController.filterByName("Oleg").size(), CoreMatchers.equalTo(4));
 
     }
 
@@ -93,7 +92,7 @@ public class MainControllerImplTest {
         appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
         appDb.addOrder(testOrder2, token);
 
-        assertThat(mainController.filterByCity("Kyiv").size(), CoreMatchers.equalTo(3));
+        assertThat(mainController.filterByCity("Kyiv").size(), CoreMatchers.equalTo(6));
         assertThat(mainController.filterByCity("Lviv").size(), CoreMatchers.equalTo(1));
 
     }
@@ -106,7 +105,7 @@ public class MainControllerImplTest {
         appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
         appDb.addOrder(testOrder2, token);
 
-        assertThat(mainController.filterByReciever("Andrey").size(), CoreMatchers.equalTo(4));
+        assertThat(mainController.filterByReciever("Andrey").size(), CoreMatchers.equalTo(7));
         assertThat(mainController.filterByReciever("Lviv").size(), CoreMatchers.equalTo(0));
     }
 
@@ -119,7 +118,7 @@ public class MainControllerImplTest {
         testOrder2.setSendDate(LocalDateTime.now());
         appDb.addOrder(testOrder2, token);
 
-        assertThat(mainController.filterByDate(LocalDateTime.now()).size(), CoreMatchers.equalTo(1));
+        assertThat(mainController.filterByDate(LocalDateTime.now()).size(), CoreMatchers.equalTo(0));
 
     }
 

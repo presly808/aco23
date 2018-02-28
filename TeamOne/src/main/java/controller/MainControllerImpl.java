@@ -7,13 +7,10 @@ import exceptions.UserNotFoundException;
 import model.Order;
 import model.OrderStatus;
 import model.User;
-import utils.JSONUtils;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainControllerImpl implements MainController {
@@ -25,8 +22,6 @@ public class MainControllerImpl implements MainController {
         this.appDb = appDb;
     }
 
-    public MainControllerImpl() {
-    }
 
     public AppDb getAppDb() {
         return appDb;
