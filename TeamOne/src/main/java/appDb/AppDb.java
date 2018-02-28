@@ -20,13 +20,13 @@ public class AppDb {
     private Map<Integer, Order> orders;
     private Map<String, User> accessTokenUserMap;
 
+
     public AppDb() {
         this.users = new HashMap<>();
         this.orders = new HashMap<>();
         accessTokenUserMap = new HashMap<>();
     }
 
-    // todo we need to assign id to the user
     public User addUser(User user) throws AppException {
 
         users.put(user.getEmail(), user);
@@ -47,6 +47,12 @@ public class AppDb {
 
         if (!hasToken(accessToken)) {
             throw new AppException("no access, login first");
+        }
+
+        try {
+            JSONUtils.addOrder("order_db.txt", order);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         orders.put(order.getId(), order);
@@ -80,12 +86,17 @@ public class AppDb {
     }
 
     public Map<Integer, Order> getOrders() {
+        try {
+            List<Order> ordersList = JSONUtils.getOrdersFromDb("order_db.txt");
+            for (Order order : ordersList) {
+                orders.put(order.getId(), order);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return orders;
     }
 
-    public void setOrders(Map<Integer, Order> orders) {
-        this.orders = orders;
-    }
 
     public String createAccessToken(User user) throws LoginCredentialException {
         User found =
@@ -112,7 +123,7 @@ public class AppDb {
         users.put(email, new Customer(email, pass));
     }
 
-    public static  void restorDb() {
+    public static  void restoreUserDb() {
         Gson gson = new Gson();
 
         User user1 = new User("test@gmail.com", "123456");
@@ -133,4 +144,25 @@ public class AppDb {
         }
     }
 
+    public static void restoreOrderDb() {
+        Gson gson = new Gson();
+
+        Order order1 = new Order("Oleg", "Andrey", "Kyiv");
+        Order order2 = new Order("Yuriy", "Andrey", "Kyiv");
+        Order order3 = new Order("Ivan", "Andrey", "Kyiv");
+
+
+        List<Order> orders = new ArrayList<>();
+        orders.add(order1);
+        orders.add(order2);
+        orders.add(order3);
+
+        File file = new File("order_db.txt");
+        try (Writer writer = new FileWriter(file, false)) {
+            writer.write(gson.toJson(orders));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
