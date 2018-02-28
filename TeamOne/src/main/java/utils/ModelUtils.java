@@ -1,7 +1,10 @@
 package utils;
 
+import model.User;
+
+import java.io.IOException;
+import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 public class ModelUtils {
 
@@ -11,5 +14,22 @@ public class ModelUtils {
 
     public static int genId() {
         return  (int)(Math.random() * 50000);
+    }
+
+    public static int genUserId() {
+        int maxId = 0;
+        List<User> users = null;
+        try {
+            users = JSONUtils.getUsersFromDb("user_db.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (User iterUser : users) {
+            if (iterUser.getId() == maxId) {
+                maxId++;
+            }
+        }
+        return maxId;
     }
 }

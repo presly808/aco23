@@ -157,6 +157,11 @@ public class AppDb {
         orders.add(order2);
         orders.add(order3);
 
+        order1.setId(1);
+        order2.setId(2);
+        order3.setId(3);
+
+
         File file = new File("order_db.txt");
         try (Writer writer = new FileWriter(file, false)) {
             writer.write(gson.toJson(orders));

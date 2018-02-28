@@ -16,7 +16,7 @@ public class User {
     public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
-        this.id = ModelUtils.genId();
+        this.id = ModelUtils.genUserId();
     }
 
 
@@ -24,6 +24,9 @@ public class User {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
