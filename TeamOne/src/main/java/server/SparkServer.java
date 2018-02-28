@@ -23,10 +23,10 @@ public class SparkServer {
         this.staticFolder = staticFolder;
 
         port(port);
-        externalStaticFileLocation(staticFolder);
 
-
-//        get("/index.html", (request, response) -> "Server is up");
+        if(staticFolder != null) {
+            externalStaticFileLocation(staticFolder);
+        }
 
     }
 
@@ -35,8 +35,6 @@ public class SparkServer {
         new SparkServer(8080, "TeamOne/src/main/java/view/");
 
     }
-
-
 
     public void stopServer(){
         stop();

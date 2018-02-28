@@ -10,7 +10,7 @@ public class TestSparkServer {
 
     }
 
-    public TestSparkServer(int port, String resourcePath) {
+    private TestSparkServer(int port, String resourcePath) {
 
         port(port);
 
@@ -23,7 +23,7 @@ public class TestSparkServer {
 
     }
 
-    public static void enableCORS(final String origin, final String methods, final String headers) {
+    private static void enableCORS(final String origin, final String methods, final String headers) {
 
         options("/*", (request, response) -> {
 
