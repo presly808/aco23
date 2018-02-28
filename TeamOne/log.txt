@@ -41,3 +41,11 @@
  ******* LogEvent: method occur: filterByCity', at 2018-02-28 21:59} ******* 
  ******* LogEvent: method occur: filterByName', at 2018-02-28 21:59} ******* 
  ******* LogEvent: method occur: filterByName', at 2018-02-28 21:59} ******* 
+ ******* LogEvent: method occur: getAllOrders', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: getAllUsers', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: getOrderbyId', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: getById', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-28 22:03} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-02-28 22:03} ******* 
