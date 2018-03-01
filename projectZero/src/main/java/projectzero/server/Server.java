@@ -4,8 +4,10 @@ import org.apache.log4j.Logger;
 import projectzero.controller.IEmployeeController;
 import projectzero.controller.IUserController;
 import projectzero.controller.UserControllerImpl;
+import projectzero.dao.OrderDao;
 import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
+import projectzero.exceptions.NoSuchElementException;
 import projectzero.model.User;
 import projectzero.utils.JSONUtils;
 import projectzero.utils.LogUtils;
@@ -29,7 +31,7 @@ public class Server {
         this.sessionMap = new HashMap<>();
         // todo remove absolute paths
         userController = new UserControllerImpl(
-                new UserDao("users.json"));
+                new UserDao("users.json"), new OrderDao());
         port(port);
         staticFileLocation("projectzero/front");
         before((request, response) ->
@@ -47,7 +49,12 @@ public class Server {
     // login logic
     private Object login(Request request, Response response) {
         User loginUser = JSONUtils.fromJson(request.body(), User.class);
-        String key = userController.login(loginUser);
+        String key = null;
+        try {
+            key = userController.login(loginUser);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
         if (key != null) {
             sessionMap.put(key, loginUser);
         }
