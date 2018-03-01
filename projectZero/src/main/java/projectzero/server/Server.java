@@ -1,5 +1,6 @@
 package projectzero.server;
 
+import org.apache.log4j.Logger;
 import projectzero.controller.IEmployeeController;
 import projectzero.controller.IUserController;
 import projectzero.controller.UserControllerImpl;
@@ -7,7 +8,7 @@ import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
 import projectzero.model.User;
 import projectzero.utils.JSONUtils;
-import spark.Filter;
+import projectzero.utils.LogUtils;
 import spark.Request;
 import spark.Response;
 
@@ -21,26 +22,24 @@ public class Server {
     private IUserController userController;
     private IEmployeeController employeeController;
     private Map<String, User> sessionMap;
+    private Logger logger;
 
-    public Server(int port, String storagePath) {
+    public Server(int port) {
+        this.logger = LogUtils.getLogger(Server.class);
         this.sessionMap = new HashMap<>();
         // todo remove absolute paths
         userController = new UserControllerImpl(
-                new UserDao("C:\\Users\\Foresstt\\Desktop\\ArtCode\\aco23\\projectZero\\src\\main\\resources\\users.json"));
+                new UserDao("users.json"));
         port(port);
-        externalStaticFileLocation(storagePath);
+        staticFileLocation("projectzero/front");
         before((request, response) ->
-                System.out.println(String.format("Protocol: %s, method: %s, path: %s", request.protocol(), request.requestMethod(), request.pathInfo())));
-        initEnpoint();
+                logger.info(String.format("Protocol: %s, method: %s, path: %s",
+                        request.protocol(), request.requestMethod(), request.pathInfo())));
+        initEndpoints();
     }
 
-    public static void main(String[] args) {
-        new Server(9817,
-                "C:\\Users\\Foresstt\\Desktop" +
-                        "\\ArtCode\\aco23\\projectZero\\src\\main\\java\\projectzero\\front\\");
-    }
 
-    private void initEnpoint() {
+    private void initEndpoints() {
         post("/login", this::login);
         post("/join", this::join);
     }
@@ -48,7 +47,6 @@ public class Server {
     // login logic
     private Object login(Request request, Response response) {
         User loginUser = JSONUtils.fromJson(request.body(), User.class);
-        System.out.println(loginUser);
         String key = userController.login(loginUser);
         if (key != null) {
             sessionMap.put(key, loginUser);
@@ -59,7 +57,6 @@ public class Server {
     // join logic
     private Object join(Request request, Response response) {
         User newUser = JSONUtils.fromJson(request.body(), User.class);
-        System.out.println(newUser);
         try {
             userController.join(newUser.getEmail(), newUser.getPass());
             return "{error : \'\'}";

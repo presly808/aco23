@@ -8,7 +8,14 @@ $('#joinBtn').click(function () {
             url: "/join",
             data: JSON.stringify({email: email, pass: pass}),
             success: function (data, status, xhr) {
-                alert(xhr.responseText + " | " + status);
+                var error = JSON.parse(data);
+                if (!error) {
+                    alert("Success");
+                    $('#joinDiv').hide();
+                    $('#loginDiv').show();
+                } else {
+                    alert("Error: " + error);
+                }
             }
         });
     }

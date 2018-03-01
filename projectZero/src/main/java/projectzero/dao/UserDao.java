@@ -7,7 +7,6 @@ import projectzero.utils.JSONUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UserDao implements IDao<String, User> {
 
@@ -23,12 +22,14 @@ public class UserDao implements IDao<String, User> {
     @Override
     public List<User> getAll() {
         List<User> list = new ArrayList<>();
+        /*
         try {
-            list = JSONUtils.readUsersFromFile(pathToJson);
+            list = JSONUtils.readAllFromFile(pathToJson);
         } catch (IOException e) {
             e.printStackTrace();
             // TODO: 24-Feb-18 logger
         }
+        */
         return list;
     }
 
@@ -59,12 +60,7 @@ public class UserDao implements IDao<String, User> {
         if (userList.contains(user))
             throw new AlreadyExistsException("User already exists");
 
-        try {
-            JSONUtils.addUser(pathToJson, user);
-        } catch (IOException e) {
-            // TODO: 24-Feb-18 logger
-            // exception handling
-        }
+
     }
 
     /**

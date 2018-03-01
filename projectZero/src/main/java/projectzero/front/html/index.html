@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
 
@@ -37,13 +37,13 @@
         $.get('login.html', function (data) {
             loginDiv = data;
             mainDiv.append(loginDiv);
-            $.getScript("login.js");
+            $.getScript("/js/login.js");
         });
         $.get('join.html', function (data) {
             joinDiv = data;
             mainDiv.append(joinDiv);
             $('#joinDiv').hide();
-            $.getScript("join.js");
+            $.getScript("/js/join.js");
         });
     });
 
