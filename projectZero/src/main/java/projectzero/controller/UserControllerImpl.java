@@ -1,7 +1,9 @@
 package projectzero.controller;
 
+import projectzero.dao.OrderDao;
 import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
+import projectzero.exceptions.NoSuchElementException;
 import projectzero.model.Order;
 import projectzero.model.User;
 import projectzero.utils.KeyUtils;
@@ -9,23 +11,26 @@ import projectzero.utils.KeyUtils;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class UserControllerImpl implements IUserController {
 
     private UserDao userDao;
+    private OrderDao orderDao;
 
-    public UserControllerImpl(UserDao userDao) {
+    public UserControllerImpl(UserDao userDao, OrderDao orderDao) {
         this.userDao = userDao;
+        this.orderDao = orderDao;
     }
 
     @Override
-    public String login(User user) {
+    public String login(User user) throws NoSuchElementException {
         User loginUser = userDao.getById(user.getEmail());
 
         if (loginUser != null)
             return KeyUtils.getUniqueKey();
 
-        return null;
+        throw new NoSuchElementException();
     }
 
     @Override
@@ -35,16 +40,18 @@ public class UserControllerImpl implements IUserController {
 
     @Override
     public List<Order> getAll(User user) {
-        return null;
+        return orderDao.getAllByUser(user);
     }
 
     @Override
     public List<Order> getAllSortedBy(User user, Comparator<Order> comparator) {
-        return null;
+        List<Order> orders = orderDao.getAllByUser(user);
+        orders.sort(comparator);
+        return orders;
     }
 
     @Override
     public List<Order> getFilteredBy(User user, Predicate<Order> predicate) {
-        return null;
+        return orderDao.getAllByUser(user).stream().filter(predicate).collect(Collectors.toList());
     }
 }

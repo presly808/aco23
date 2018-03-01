@@ -1,6 +1,7 @@
 package projectzero.dao;
 
 import projectzero.exceptions.AlreadyExistsException;
+import projectzero.exceptions.NoSuchElementException;
 import projectzero.model.User;
 import projectzero.utils.JSONUtils;
 
@@ -16,72 +17,58 @@ public class UserDao implements IDao<String, User> {
         this.pathToJson = pathToJson;
     }
 
-    /**
-     * @return list of all users
-     */
     @Override
     public List<User> getAll() {
-        List<User> list = new ArrayList<>();
-        /*
+        List<User> users = new ArrayList<>();
         try {
-            list = JSONUtils.readAllFromFile(pathToJson);
+            users.addAll(JSONUtils.readAllFromFile(pathToJson, User.class));
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: 24-Feb-18 logger
         }
-        */
-        return list;
+        return users;
     }
 
-    /**
-     * @param email - user's email
-     * @return user with such email or null if user with current email doesn't exists
-     */
     @Override
-    public User getById(String email) {
-        List<User> list = this.getAll();
-        // java8
-        for (User user : list)
-            if (user.getEmail().equals(email))
-                return user;
-        return null;
+    public User getById(String id) throws NoSuchElementException {
+        return this.getAll().stream()
+                .filter(item -> item.getEmail().equals(id))
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 
-    /**
-     * Add new user to db
-     *
-     * @param user - new user
-     * @throws AlreadyExistsException if current user is already in db
-     */
     @Override
-    public void add(User user) throws AlreadyExistsException {
+    public void add(User newEntity) throws AlreadyExistsException {
         List<User> userList = this.getAll();
-
-        if (userList.contains(user))
-            throw new AlreadyExistsException("User already exists");
-
-
+        for (User user : userList)
+            if (user.equals(newEntity))
+                throw new AlreadyExistsException("User already exists");
+        userList.add(newEntity);
+        JSONUtils.writeListIntoFile(pathToJson, userList);
     }
 
-    /**
-     * Remove user from db
-     *
-     * @param user - user to remove
-     * @return true/false
-     */
     @Override
     public boolean remove(User user) {
-        return false;
+        List<User> userList = this.getAll();
+
+        int index = userList.indexOf(user);
+
+        if (index < 0)
+            return false;
+        userList.remove(index);
+        JSONUtils.writeListIntoFile(pathToJson, userList);
+        return true;
     }
 
-    /**
-     * Update user in db
-     *
-     * @param newUser - new user
-     * @return user before update
-     */
     @Override
-    public User update(User newUser) {
-        return null;
+    public User update(User user) throws NoSuchElementException {
+        List<User> userList = this.getAll();
+
+        int index = userList.indexOf(user);
+
+        if (index < 0)
+            throw  new NoSuchElementException();
+        User result = userList.set(index, user);
+        JSONUtils.writeListIntoFile(pathToJson, userList);
+        return result;
     }
 }

@@ -15,7 +15,7 @@ public class User {
     public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
-        this.role = Role.User;
+        this.role = Role.USER;
     }
 
     public String getEmail() {
@@ -51,7 +51,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "USER{" +
                 "email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
                 ", role=" + role +

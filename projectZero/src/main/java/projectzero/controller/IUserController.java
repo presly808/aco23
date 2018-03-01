@@ -1,6 +1,7 @@
 package projectzero.controller;
 
 import projectzero.exceptions.AlreadyExistsException;
+import projectzero.exceptions.NoSuchElementException;
 import projectzero.model.Order;
 import projectzero.model.User;
 
@@ -10,7 +11,7 @@ import java.util.function.Predicate;
 
 public interface IUserController {
 
-    String login(User user);
+    String login(User user) throws NoSuchElementException;
     void join (String email, String pass) throws AlreadyExistsException;
     List<Order> getAll(User user);
     List<Order> getAllSortedBy(User user, Comparator<Order> comparator);

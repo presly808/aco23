@@ -34,7 +34,7 @@ public class JSONUtilsTest {
         orderJsonWrite = new File("orderToWrite.json");
         orderJsonRead = new File("orderToRead.json");
         try(Writer writer = new FileWriter(userJsonRead)) {
-            writer.write("{\"email\":\"Les@gmail.com\",\"pass\":\"pass\",\"role\":\"User\"}");
+            writer.write("{\"email\":\"Les@gmail.com\",\"pass\":\"pass\",\"role\":\"USER\"}");
             writer.flush();
         }
         try(Writer writer = new FileWriter(orderJsonRead)) {
@@ -60,7 +60,7 @@ public class JSONUtilsTest {
                     "  \"owner\": {" +
                     "    \"email\": \"Les@gmail.com\"," +
                     "    \"pass\": \"pass\"," +
-                    "    \"role\": \"User\"" +
+                    "    \"role\": \"USER\"" +
                     "  }" +
                     "}");
             writer.flush();
