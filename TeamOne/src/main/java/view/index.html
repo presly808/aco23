@@ -35,7 +35,7 @@
 
       <div class="row justify-content-between">
         <div class="col">
-          <button type="submit" class="btn btn-primary">Log in</button>
+          <button type="submit" class="btn btn-primary" id="loginButton">Log in</button>
         </div>
         <div class="col">
           <button type="submit" class="btn btn-primary">Register</button>
@@ -47,6 +47,24 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script>
+  $('#loginButton').click(function () {
+    var email = $('#exampleInputEmail1').val();
+    var pass = $('#exampleInputPassword1').val();
+
+    if (email && pass) {
+        $.ajax({
+            method: "POST",
+            url: "/login",
+            data: JSON.stringify({email: email, pass: pass}),
+            success: function (data, status, xhr) {
+                alert(xhr.getResponseHeader(" Hello! Sigh in " + status);
+                $('#joinDiv').hide();
+            }
+        });
+    }
+});
+</script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/lib/bootstrap-4-2/js/bootstrap.min.js"></script>
 </body>

@@ -9,6 +9,8 @@ import spark.Response;
 import utils.Factory;
 import utils.JSONUtils;
 
+import java.util.Map;
+
 import static spark.Spark.*;
 
 public class SparkServer {
@@ -28,12 +30,23 @@ public class SparkServer {
             externalStaticFileLocation(staticFolder);
         }
 
+
+
     }
 
     public static void main(String[] args) {
 
-        new SparkServer(8080, "TeamOne/src/main/java/view/");
+        AppDb appDb = new AppDb();
+        MainController mainController = Factory.create(true, appDb);
+        Map<String, User> users = appDb.getUsers();
 
+        SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
+
+        get("/index.html", (request, response) -> "Server is up");
+
+        get("/home", (request, response) -> "Server is up");
+
+        server.initEnpoint();
     }
 
     public void stopServer(){
