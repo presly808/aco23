@@ -19,6 +19,9 @@ public class OrderDao implements IDao<Integer, Order> {
         this.pathToJson = pathToJson;
     }
 
+    /**
+     * @return list of all orders
+     */
     @Override
     public List<Order> getAll() {
         List<Order> orders = new ArrayList<>();
@@ -30,12 +33,21 @@ public class OrderDao implements IDao<Integer, Order> {
         return orders;
     }
 
+    /**
+     * @param user - user used in search through the list of orders
+     * @return list of orders which user have
+     */
     public List<Order> getAllByUser(User user) {
         return this.getAll().stream()
                 .filter(order -> order.getOwner().equals(user))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param id - id used in search through the list of orders
+     * @return order with current id
+     * @throws NoSuchElementException if order not found in list
+     */
     @Override
     public Order getById(Integer id) throws NoSuchElementException {
         List<Order> orders = this.getAll();
@@ -47,6 +59,10 @@ public class OrderDao implements IDao<Integer, Order> {
         throw  new NoSuchElementException();
     }
 
+    /**
+     * @param newEntity - order which will add to the list of orders
+     * @throws AlreadyExistsException if list already contains current order
+     */
     @Override
     public void add(Order newEntity) throws AlreadyExistsException {
         List<Order> orders = this.getAll();
@@ -59,6 +75,11 @@ public class OrderDao implements IDao<Integer, Order> {
         JSONUtils.writeListIntoFile(pathToJson, orders);
     }
 
+    /**
+     * @param order - order which will removed from list of orders
+     * @return true if order was removed
+     *          false if order wasn't found
+     */
     @Override
     public boolean remove(Order order) {
         List<Order> orders = this.getAll();
@@ -72,6 +93,11 @@ public class OrderDao implements IDao<Integer, Order> {
         return true;
     }
 
+    /**
+     * @param order - order which will updated
+     * @return updated order
+     * @throws NoSuchElementException if list doesn't contains current order
+     */
     @Override
     public Order update(Order order) throws NoSuchElementException {
         List<Order> orders = this.getAll();
