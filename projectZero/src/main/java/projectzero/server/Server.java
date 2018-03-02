@@ -31,7 +31,7 @@ public class Server {
         this.sessionMap = new HashMap<>();
         // todo remove absolute paths
         userController = new UserControllerImpl(
-                new UserDao("users.json"), new OrderDao());
+                new UserDao("users.json"), new OrderDao("orders.json"));
         port(port);
         staticFileLocation("projectzero/front");
         before((request, response) ->
