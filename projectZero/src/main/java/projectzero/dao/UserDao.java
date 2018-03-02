@@ -17,6 +17,9 @@ public class UserDao implements IDao<String, User> {
         this.pathToJson = pathToJson;
     }
 
+    /**
+     * @return list of all users
+     */
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
@@ -28,6 +31,11 @@ public class UserDao implements IDao<String, User> {
         return users;
     }
 
+    /**
+     * @param id - id used in search through the list of users
+     * @return user with current id
+     * @throws NoSuchElementException if user not found in list
+     */
     @Override
     public User getById(String id) throws NoSuchElementException {
         return this.getAll().stream()
@@ -36,6 +44,10 @@ public class UserDao implements IDao<String, User> {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    /**
+     * @param newEntity - user which will add to the list of users
+     * @throws AlreadyExistsException if list already contains current user
+     */
     @Override
     public void add(User newEntity) throws AlreadyExistsException {
         List<User> userList = this.getAll();
@@ -46,6 +58,11 @@ public class UserDao implements IDao<String, User> {
         JSONUtils.writeListIntoFile(pathToJson, userList);
     }
 
+    /**
+     * @param user - user which will removed from list of users
+     * @return true if user was removed
+     *          false if user wasn't found
+     */
     @Override
     public boolean remove(User user) {
         List<User> userList = this.getAll();
@@ -59,6 +76,11 @@ public class UserDao implements IDao<String, User> {
         return true;
     }
 
+    /**
+     * @param user - user which will updated
+     * @return updated use
+     * @throws NoSuchElementException if list doesn't contains current user
+     */
     @Override
     public User update(User user) throws NoSuchElementException {
         List<User> userList = this.getAll();
