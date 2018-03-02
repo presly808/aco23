@@ -7,6 +7,9 @@ public class KeyUtils {
 
     private static SecureRandom random = new SecureRandom();
 
+    /**
+     * @return randomly generated big integer key
+     */
     public static String getUniqueKey() {
         return new BigInteger(256, random).toString(32);
     }

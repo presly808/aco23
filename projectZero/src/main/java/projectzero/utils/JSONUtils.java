@@ -1,18 +1,15 @@
 package projectzero.utils;
 
 import com.google.gson.Gson;
-import projectzero.model.Order;
-import projectzero.model.User;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class JSONUtils {
 
