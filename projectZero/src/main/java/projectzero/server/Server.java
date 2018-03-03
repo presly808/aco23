@@ -9,6 +9,7 @@ import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
 import projectzero.exceptions.NoSuchElementException;
 import projectzero.model.User;
+import projectzero.utils.EmailUtils;
 import projectzero.utils.JSONUtils;
 import projectzero.utils.LogUtils;
 import spark.Request;
@@ -26,17 +27,17 @@ public class Server {
     private Map<String, User> sessionMap;
     private Logger logger;
 
-    public Server(int port) {
+    public Server(int port, String pathToUserJson, String pathToOrderJson) {
         this.logger = LogUtils.getLogger(Server.class);
         this.sessionMap = new HashMap<>();
         // todo remove absolute paths
         userController = new UserControllerImpl(
-                new UserDao("users.json"), new OrderDao("orders.json"));
+                new UserDao(pathToUserJson), new OrderDao(pathToOrderJson));
         port(port);
         staticFileLocation("projectzero/front");
         before((request, response) ->
-                logger.info(String.format("Protocol: %s, method: %s, path: %s",
-                        request.protocol(), request.requestMethod(), request.pathInfo())));
+                logger.info(String.format("Protocol: %s, method: %s, path: %s, body: %s",
+                        request.protocol(), request.requestMethod(), request.pathInfo(), request.body())));
         initEndpoints();
     }
 
@@ -44,6 +45,7 @@ public class Server {
     private void initEndpoints() {
         post("/login", this::login);
         post("/join", this::join);
+        get("/getAll", this::getAll);
     }
 
     // login logic
@@ -58,7 +60,7 @@ public class Server {
         if (key != null) {
             sessionMap.put(key, loginUser);
         }
-        return JSONUtils.toJson(key);
+        return key;
     }
 
     // join logic
@@ -66,10 +68,19 @@ public class Server {
         User newUser = JSONUtils.fromJson(request.body(), User.class);
         try {
             userController.join(newUser.getEmail(), newUser.getPass());
-            return "{error : \'\'}";
+            EmailUtils.notifyUser(newUser.getEmail(),
+                    "Welcome to porjectZero",
+                    "Congratulation with joining up");
+            return "{\"error\":\"\"}";
         } catch (AlreadyExistsException e) {
             // todo toJson(e) or use spark to handle errors
-            return "{error : " + e.getMessage() + "}";
+            return "{\"error\":\"" + e.getMessage() + "\"}";
         }
+    }
+
+    //getAll?key=
+    private Object getAll(Request request, Response response) {
+        String key = request.queryParams("key");
+        return JSONUtils.toJson(userController.getAll(sessionMap.get(key)));
     }
 }

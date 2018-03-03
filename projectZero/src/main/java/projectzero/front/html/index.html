@@ -32,6 +32,8 @@
     var mainDiv;
     var loginDiv;
     var joinDiv;
+    var tableDiv;
+    var key;
     $(document).ready(function () {
         mainDiv = $('#mainDiv');
         $.get('login.html', function (data) {
@@ -44,6 +46,12 @@
             mainDiv.append(joinDiv);
             $('#joinDiv').hide();
             $.getScript("/js/join.js");
+        });
+        $.get('table.html', function (data) {
+            tableDiv = data;
+            mainDiv.append(tableDiv);
+            $('#tableDiv').hide();
+            $.getScript("/js/table.js");
         });
     });
 

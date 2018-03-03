@@ -3,6 +3,7 @@ package projectzero.controller;
 import projectzero.dao.OrderDao;
 import projectzero.dao.UserDao;
 import projectzero.exceptions.AlreadyExistsException;
+import projectzero.exceptions.ApplicationException;
 import projectzero.exceptions.NoSuchElementException;
 import projectzero.model.Order;
 import projectzero.model.User;
@@ -27,10 +28,13 @@ public class UserControllerImpl implements IUserController {
     public String login(User user) throws NoSuchElementException {
         User loginUser = userDao.getById(user.getEmail());
 
-        if (loginUser != null)
-            return KeyUtils.getUniqueKey();
+        if (loginUser == null)
+            throw new NoSuchElementException();
 
-        throw new NoSuchElementException();
+        if (!loginUser.getPass().equals(user.getPass()))
+            throw new NoSuchElementException("Wrong password");
+
+        return KeyUtils.getUniqueKey();
     }
 
     @Override

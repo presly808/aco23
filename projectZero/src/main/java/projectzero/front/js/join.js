@@ -6,17 +6,18 @@ $('#joinBtn').click(function () {
         $.ajax({
             method: "POST",
             url: "/join",
-            data: JSON.stringify({email: email, pass: pass}),
-            success: function (data, status, xhr) {
-                var error = JSON.parse(data);
-                if (!error) {
+            data: JSON.stringify({email: email, pass: pass})
+        })
+            .done(function (data) {
+                var obj = JSON.parse(data);
+                if (!obj.error) {
                     alert("Success");
                     $('#joinDiv').hide();
                     $('#loginDiv').show();
+                    $('#header').find('> h1').text('Log In');
                 } else {
-                    alert("Error: " + error);
+                    alert("Error: " + obj.error);
                 }
-            }
-        });
+            });
     }
 });

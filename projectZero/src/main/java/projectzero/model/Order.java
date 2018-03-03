@@ -8,12 +8,12 @@ public class Order {
     private String title;
     private String description;
     private int price;
-    private String status;
+    private OrderStatus status;
     private LocalDateTime openedTime;
     private LocalDateTime closedTime;
     private User owner;
 
-    public Order(int id, String title, String description, int price, String status, User owner) {
+    public Order(int id, String title, String description, int price, OrderStatus status, User owner) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -51,11 +51,11 @@ public class Order {
         this.price = price;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

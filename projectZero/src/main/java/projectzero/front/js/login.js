@@ -12,12 +12,15 @@ $('#loginBtn').click(function () {
         $.ajax({
             method: "POST",
             url: "/login",
-            data: JSON.stringify({email: email, pass: pass}),
-            success: function (data, status, xhr) {
-                alert(xhr.getResponseHeader('key') + " | " + status);
-                $('#joinDiv').hide();
-                $('#loginDiv').show();
-            }
-        });
+            data: JSON.stringify({email: email, pass: pass})
+        })
+            .done(function (data) {
+                key = data;
+                alert(key);
+                $('#loginDiv').hide();
+                $('#tableDiv').show();
+                $('#header').find('> h1').text('Orders');
+                refresh();
+            })
     }
 });

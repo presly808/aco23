@@ -2,6 +2,7 @@ package projectzero.utils;
 
 import org.junit.*;
 import projectzero.model.Order;
+import projectzero.model.OrderStatus;
 import projectzero.model.User;
 
 import java.io.File;
@@ -24,7 +25,7 @@ public class JSONUtilsTest {
     @Before
     public void setUp() {
         user = new User("Les@gmail.com", "pass");
-        order = new Order(0, "Title", "descr", 100, "Good", user);
+        order = new Order(0, "Title", "descr", 100, OrderStatus.CREATED, user);
     }
 
     @BeforeClass

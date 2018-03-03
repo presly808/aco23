@@ -41,12 +41,11 @@ public class JSONUtils {
      * @param list - list of adding objects
      */
     public static void writeListIntoFile(String path, List<?> list) {
-        File file = new File(path);
-        try (Writer writer = new FileWriter(file, false)) {
+        try (Writer writer = new FileWriter(path, false)) {
             for (Object o : list) {
                 writer.write(gson.toJson(o));
                 writer.write('\n');
-                writer.close();
+                writer.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
