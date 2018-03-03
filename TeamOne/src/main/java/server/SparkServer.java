@@ -1,6 +1,7 @@
 package server;
 
 import appDb.AppDb;
+import com.google.gson.Gson;
 import controller.MainController;
 import exceptions.LoginCredentialException;
 import model.User;
@@ -32,8 +33,8 @@ public class SparkServer {
 
     public static void main(String[] args) {
 
-        new SparkServer(8080, "TeamOne/src/main/java/view/");
-
+        SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
+        server.initEnpoint();
     }
 
     public void stopServer(){
@@ -60,7 +61,16 @@ public class SparkServer {
     }
 
     private Object register(Request request, Response response) {
-        User newUser = JSONUtils.fromJson(request.body(), User.class);
+
+        Gson gson = new Gson();
+        String jsonRequest = gson.toJson(request.body());
+
+        jsonRequest = jsonRequest.replace("\\\"", "");
+        jsonRequest = jsonRequest.replace("\"{", "{");
+        jsonRequest = jsonRequest.replace("}\"", "}");
+
+        User newUser = JSONUtils.fromJson(jsonRequest, User.class);
+
         appDb.register(newUser.getEmail(), newUser.getPass());
         response.body("");
 
