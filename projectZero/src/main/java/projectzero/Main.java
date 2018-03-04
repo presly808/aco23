@@ -2,6 +2,7 @@ package projectzero;
 
 import projectzero.server.Server;
 
+// todo describe in read me how to run server
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +10,7 @@ public class Main {
             System.out.println("Run with 2 args");
             System.exit(-1);
         }
+        // todo name args
         new Server(9817, args[0], args[1]);
     }
 }

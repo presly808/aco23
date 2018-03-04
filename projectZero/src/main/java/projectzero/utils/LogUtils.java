@@ -7,6 +7,7 @@ import org.apache.log4j.PropertyConfigurator;
 public class LogUtils {
 
     static {
+        // todo it executes by default, it means you can remove the below line
         PropertyConfigurator.configure(LogUtils.class.getResource("/log4j.properties"));
     }
 

@@ -29,15 +29,19 @@ public class Server {
 
     public Server(int port, String pathToUserJson, String pathToOrderJson) {
         this.logger = LogUtils.getLogger(Server.class);
+
         this.sessionMap = new HashMap<>();
         // todo remove absolute paths
         userController = new UserControllerImpl(
                 new UserDao(pathToUserJson), new OrderDao(pathToOrderJson));
+
+
         port(port);
         staticFileLocation("projectzero/front");
         before((request, response) ->
                 logger.info(String.format("Protocol: %s, method: %s, path: %s, body: %s",
                         request.protocol(), request.requestMethod(), request.pathInfo(), request.body())));
+
         initEndpoints();
     }
 
@@ -71,6 +75,7 @@ public class Server {
             EmailUtils.notifyUser(newUser.getEmail(),
                     "Welcome to porjectZero",
                     "Congratulation with joining up");
+            // json.toJson(new MyError())
             return "{\"error\":\"\"}";
         } catch (AlreadyExistsException e) {
             // todo toJson(e) or use spark to handle errors

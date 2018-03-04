@@ -24,13 +24,14 @@ public class JSONUtils {
     }
 
 
-    /**
+    /**runAsync
      * Reading from Json file
      *
      * @param path - path of Json file
      * @return list of stmth in Json file
      */
     public static <T> List<T> readAllFromFile(String path, Class<T> objClass) throws IOException {
+        // todo read all by one try, do not parse by lines
         return Files.readAllLines(Paths.get(path)).stream().map(line -> gson.fromJson(line, objClass)).collect(Collectors.toList());
     }
 
@@ -48,6 +49,7 @@ public class JSONUtils {
                 writer.flush();
             }
         } catch (IOException e) {
+            // todo logger
             e.printStackTrace();
         }
     }

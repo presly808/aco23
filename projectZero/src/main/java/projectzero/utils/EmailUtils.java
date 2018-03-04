@@ -46,7 +46,8 @@ public class EmailUtils {
      * @param password - password of sender gmail account
      * @throws MessagingException if problems with connection or authentication
      */
-    private static void sendHTMLEmail(String from, String to, String title, String htmlText, String password) throws MessagingException {
+    private static void sendHTMLEmail(String from, String to, String title, String htmlText, String password)
+            throws MessagingException {
         Message message = new MimeMessage(getSession(from, password));
 
         message.setFrom(new InternetAddress(from));

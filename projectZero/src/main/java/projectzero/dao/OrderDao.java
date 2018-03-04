@@ -51,6 +51,7 @@ public class OrderDao implements IDao<Integer, Order> {
     @Override
     public Order getById(Integer id) throws NoSuchElementException {
         List<Order> orders = this.getAll();
+        // todo java8
         for (Order order : orders){
             if (id.equals(order.getId())){
                 return order;

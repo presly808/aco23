@@ -1,5 +1,6 @@
 $('#refreshBtn').click(refresh);
 
+// todo use header to send your accessToken
 function refresh() {
     $.ajax({
         method: "GET",
@@ -17,6 +18,7 @@ function refresh() {
  * @param tbody - table body
  * @param orders - arr of orders
  */
+ // todo use jquery
 function addToTable(tbody, orders) {
     orders.forEach(function (value) {
        var tr = document.createElement('tr');
