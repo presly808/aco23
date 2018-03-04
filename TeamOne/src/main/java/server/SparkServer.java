@@ -1,6 +1,7 @@
 package server;
 
 import appDb.AppDb;
+import com.google.gson.Gson;
 import controller.MainController;
 import exceptions.LoginCredentialException;
 import model.User;
@@ -8,8 +9,6 @@ import spark.Request;
 import spark.Response;
 import utils.Factory;
 import utils.JSONUtils;
-
-import java.util.Map;
 
 import static spark.Spark.*;
 
@@ -30,22 +29,11 @@ public class SparkServer {
             externalStaticFileLocation(staticFolder);
         }
 
-
-
     }
 
     public static void main(String[] args) {
 
-        AppDb appDb = new AppDb();
-        MainController mainController = Factory.create(true, appDb);
-        Map<String, User> users = appDb.getUsers();
-
         SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
-
-        get("/index.html", (request, response) -> "Server is up");
-
-        get("/home", (request, response) -> "Server is up");
-
         server.initEnpoint();
     }
 
@@ -73,7 +61,16 @@ public class SparkServer {
     }
 
     private Object register(Request request, Response response) {
-        User newUser = JSONUtils.fromJson(request.body(), User.class);
+
+        Gson gson = new Gson();
+        String jsonRequest = gson.toJson(request.body());
+
+        jsonRequest = jsonRequest.replace("\\\"", "");
+        jsonRequest = jsonRequest.replace("\"{", "{");
+        jsonRequest = jsonRequest.replace("}\"", "}");
+
+        User newUser = JSONUtils.fromJson(jsonRequest, User.class);
+
         appDb.register(newUser.getEmail(), newUser.getPass());
         response.body("");
 
