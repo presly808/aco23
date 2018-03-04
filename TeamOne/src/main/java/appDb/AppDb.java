@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
 
+// todo make inteface for AppDB, follow DI principle in SOLID
 public class AppDb {
 
     private Map<String, User> users;
@@ -33,6 +34,7 @@ public class AppDb {
         try {
             JSONUtils.addUser("user_db.txt", user);
         } catch (IOException e) {
+            // todo should be logged like other events
             e.printStackTrace();
         }
         return user;
@@ -135,6 +137,7 @@ public class AppDb {
         users.add(user2);
         users.add(user3);
 
+        // todo all paths should be visible and extracted to appropriated place
         File file = new File("user_db.txt");
         try (Writer writer = new FileWriter(file, false)) {
             writer.write(gson.toJson(users));
@@ -147,6 +150,7 @@ public class AppDb {
     public static void restoreOrderDb() {
         Gson gson = new Gson();
 
+        // such logic is not for this class, create your utilites
         Order order1 = new Order("Oleg", "Andrey", "Kyiv");
         Order order2 = new Order("Yuriy", "Andrey", "Kyiv");
         Order order3 = new Order("Ivan", "Andrey", "Kyiv");

@@ -14,9 +14,11 @@ import java.util.Map;
 public interface MainController {
 
 
+    // todo IOException is not related to business logic
     Map<String, User> getAllUsers() throws AppException, IOException;
     Map<Integer, Order> getAllOrders() throws AppException, IOException;
 
+    // todo all methods in interface are public by defaults
     public void setAppDb(AppDb appDb);
     public AppDb getAppDb();
 

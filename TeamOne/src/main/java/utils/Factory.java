@@ -5,6 +5,8 @@ import controller.MainController;
 import controller.MainControllerImpl;
 import proxy.MainControllerProxy;
 
+
+// todo rename factory, give more readable name
 public class Factory {
 
     public static MainController create(boolean withProfiling, AppDb appDb) {

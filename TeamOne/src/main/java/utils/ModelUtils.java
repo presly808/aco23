@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
+
+// todo save with the last id into json
 public class ModelUtils {
 
     // todo cover case when data will be loaded from the db file and application restarts

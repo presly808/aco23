@@ -5,10 +5,7 @@ import model.Order;
 import model.User;
 import org.apache.xpath.operations.Or;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -39,21 +36,30 @@ public class JSONUtils {
         saveOrderToDb(path, orders);
     }
 
+
+    // todo apache commons, guava have a lot of utils and useful methods
+    // from
     public static List<Order> getOrdersFromDb(String path) throws IOException {
         File file = new File(path);
         List<Order> orders = new ArrayList<>();
         if (file.length() != 0) {
             String jString = new String(Files.readAllBytes(Paths.get(path)));
             Collections.addAll(orders, gson.fromJson(jString, Order[].class));
+//            Arrays.asList(gson.fromJson(new FileReader(path), Order[].class));
         }
+
+        // Order[] orders1 = gson.fromJson(new FileReader(path), Order[].class);
         return orders;
     }
 
     private static void saveOrderToDb(String path, List<Order> orders) {
 
         File file = new File(path);
+
+        gson.toJson(null);
         try (Writer writer = new FileWriter(file, false)) {
             writer.write(gson.toJson(orders));
+            // todo remove close
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

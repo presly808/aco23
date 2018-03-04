@@ -15,6 +15,8 @@ public class LogContainer {
         this.logEventList = new ArrayList<>();
     }
 
+    // todo wrong creating and closing of the stream
+    // todo extract filename as a constant
     public void saveLog(LogEvent logEvent) throws IOException {
         logEventList.add(logEvent);
         File log = new File("log.txt");

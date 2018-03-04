@@ -16,8 +16,12 @@ public class SparkServer {
 
     private final int port;
     private final String staticFolder;
+
+    // todo init data within constructor
     private AppDb appDb = new AppDb();
-    MainController mainController = Factory.create(true, appDb);
+
+    // todo  modifier
+    private MainController mainController = Factory.create(true, appDb);
 
     public SparkServer(int port, String staticFolder) {
         this.port = port;
@@ -31,6 +35,7 @@ public class SparkServer {
 
     }
 
+    // todo format code, move this method to the bottom
     public static void main(String[] args) {
 
         SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
@@ -62,9 +67,12 @@ public class SparkServer {
 
     private Object register(Request request, Response response) {
 
+        // todo create Gson only one time and keep as a singleton
         Gson gson = new Gson();
+        // todo request.body() is already json do not transform toJson
         String jsonRequest = gson.toJson(request.body());
 
+        // todo i suppose we can remove replace logic
         jsonRequest = jsonRequest.replace("\\\"", "");
         jsonRequest = jsonRequest.replace("\"{", "{");
         jsonRequest = jsonRequest.replace("}\"", "}");
