@@ -10,15 +10,6 @@ public class EmailUtils {
 
     private static Properties props;
 
-    static {
-        props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-    }
-
     public static void notifyUser(String email, String title, String text) {
         CompletableFuture.runAsync(() ->
         {
@@ -65,5 +56,9 @@ public class EmailUtils {
                         return new PasswordAuthentication(email.substring(0, email.indexOf("@")), password);
                     }
                 });
+    }
+
+    public static void setProps(Properties props) {
+        EmailUtils.props = props;
     }
 }
