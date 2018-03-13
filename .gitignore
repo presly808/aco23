@@ -25,3 +25,6 @@ hs_err_pid*
 
 build/
 .gradle/
+
+#for projectZero
+projectZero/src/main/java/projectzero/front/node_modules/
