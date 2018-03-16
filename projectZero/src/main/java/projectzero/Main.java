@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-// todo describe in read me how to run server
 public class Main {
 
     public static void main(String[] args) {
@@ -29,21 +28,10 @@ public class Main {
         String pathToLog4jProperties = appProperties.getProperty("pathToLog4jProperties");
         LogUtils.configLogger(pathToLog4jProperties);
 
-
-        String pathToMailProperties = appProperties.getProperty("pathToMailProperties");
-
-        Properties mailProperties = new Properties();
-        try (InputStream io = new FileInputStream(pathToMailProperties)) {
-            mailProperties.load(io);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        EmailUtils.setProps(mailProperties);
-
         String pathToUsersJSON = appProperties.getProperty("pathToUsersJSON");
         String pathToOrdersJSON = appProperties.getProperty("pathToOrdersJSON");
+        String externalStaticFileLocation = appProperties.getProperty("externalStaticFileLocation");
 
-        new Server(9817, pathToUsersJSON, pathToOrdersJSON);
+        new Server(9817, pathToUsersJSON, pathToOrdersJSON, externalStaticFileLocation);
     }
 }

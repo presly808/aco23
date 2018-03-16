@@ -9,7 +9,6 @@ public interface IDao<Key, Entity> {
 
     List<Entity> getAll();
 
-    // todo better to throw ex instead of null
     Entity getById(Key id) throws NoSuchElementException;
 
     void add(Entity newEntity) throws AlreadyExistsException;

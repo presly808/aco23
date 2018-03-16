@@ -35,11 +35,11 @@ public class JSONUtilsTest {
         orderJsonWrite = new File("orderToWrite.json");
         orderJsonRead = new File("orderToRead.json");
         try(Writer writer = new FileWriter(userJsonRead)) {
-            writer.write("{\"email\":\"Les@gmail.com\",\"pass\":\"pass\",\"role\":\"USER\"}");
+            writer.write("[{\"email\":\"Les@gmail.com\",\"pass\":\"pass\",\"role\":\"USER\"}]");
             writer.flush();
         }
         try(Writer writer = new FileWriter(orderJsonRead)) {
-            writer.write("{" +
+            writer.write("[{" +
                     "  \"id\": 0," +
                     "  \"title\": \"Title\"," +
                     "  \"description\": \"descr\"," +
@@ -63,7 +63,7 @@ public class JSONUtilsTest {
                     "    \"pass\": \"pass\"," +
                     "    \"role\": \"USER\"" +
                     "  }" +
-                    "}");
+                    "}]");
             writer.flush();
         }
     }
@@ -78,15 +78,17 @@ public class JSONUtilsTest {
 
     @Test
     public void readFromFile() throws Exception {
-        List<User> userList = JSONUtils.readAllFromFile(userJsonRead.toString(), User.class);
-        Assert.assertEquals(user, userList.get(0));
-        List<Order> orderList = JSONUtils.readAllFromFile(orderJsonRead.toString(), Order.class);
-        Assert.assertEquals(order, orderList.get(0));
+        User[]userList = JSONUtils.readAllFromFile(userJsonRead.toString(), User[].class);
+        Assert.assertEquals(user, userList[0]);
+        Order[] orderList = JSONUtils.readAllFromFile(orderJsonRead.toString(), Order[].class);
+        Assert.assertEquals(order, orderList[0]);
     }
 
     @Test
     public void writeListIntoFile() {
         JSONUtils.writeListIntoFile(userJsonWrite.toString(), Collections.singletonList(user));
+        Assert.assertTrue(Files.exists(userJsonWrite.toPath()));
         JSONUtils.writeListIntoFile(orderJsonWrite.toString(), Collections.singletonList(order));
+        Assert.assertTrue(Files.exists(orderJsonWrite.toPath()));
     }
 }

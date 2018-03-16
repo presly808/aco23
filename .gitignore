@@ -28,3 +28,4 @@ build/
 
 #for projectZero
 projectZeroFront/front/node_modules/
+logs.txt

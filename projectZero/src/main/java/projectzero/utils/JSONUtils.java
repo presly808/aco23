@@ -1,11 +1,9 @@
 package projectzero.utils;
 
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -14,8 +12,9 @@ import java.util.stream.Collectors;
 public class JSONUtils {
 
     private static Gson gson = new Gson();
+    private static Logger logger = LogUtils.getLogger(JSONUtils.class);
 
-    public static<T> T  fromJson(String json, Class<T> tClass) {
+    public static <T> T  fromJson(String json, Class<T> tClass) {
         return gson.fromJson(json, tClass);
     }
 
@@ -30,9 +29,10 @@ public class JSONUtils {
      * @param path - path of Json file
      * @return list of stmth in Json file
      */
-    public static <T> List<T> readAllFromFile(String path, Class<T> objClass) throws IOException {
-        // todo read all by one try, do not parse by lines
-        return Files.readAllLines(Paths.get(path)).stream().map(line -> gson.fromJson(line, objClass)).collect(Collectors.toList());
+    public static <T> T readAllFromFile(String path, Class<T> objClass) throws IOException {
+        try(Reader reader = new FileReader(path)) {
+            return gson.fromJson(reader , objClass);
+        }
     }
 
     /**
@@ -43,14 +43,10 @@ public class JSONUtils {
      */
     public static void writeListIntoFile(String path, List<?> list) {
         try (Writer writer = new FileWriter(path, false)) {
-            for (Object o : list) {
-                writer.write(gson.toJson(o));
-                writer.write('\n');
-                writer.flush();
-            }
+            writer.write(gson.toJson(list));
+            writer.flush();
         } catch (IOException e) {
-            // todo logger
-            e.printStackTrace();
+            logger.info(e.getMessage());
         }
     }
 }

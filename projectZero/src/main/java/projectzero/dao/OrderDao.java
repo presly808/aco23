@@ -8,6 +8,7 @@ import projectzero.utils.JSONUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class OrderDao implements IDao<Integer, Order> {
     public List<Order> getAll() {
         List<Order> orders = new ArrayList<>();
         try {
-            orders.addAll(JSONUtils.readAllFromFile(pathToJson, Order.class));
+            orders.addAll(Arrays.asList(JSONUtils.readAllFromFile(pathToJson, Order[].class)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,29 +51,22 @@ public class OrderDao implements IDao<Integer, Order> {
      */
     @Override
     public Order getById(Integer id) throws NoSuchElementException {
-        List<Order> orders = this.getAll();
-        // todo java8
-        for (Order order : orders){
-            if (id.equals(order.getId())){
-                return order;
-            }
-        }
-        throw  new NoSuchElementException();
+        return this.getAll().stream().filter(order -> order.getId() == id).findFirst().orElseThrow(NoSuchElementException::new);
     }
 
     /**
-     * @param newEntity - order which will add to the list of orders
+     * @param newOrder - order which will add to the list of orders
      * @throws AlreadyExistsException if list already contains current order
      */
     @Override
-    public void add(Order newEntity) throws AlreadyExistsException {
+    public void add(Order newOrder) throws AlreadyExistsException {
         List<Order> orders = this.getAll();
-        for (Order order : orders){
-            if (order.equals(newEntity)){
-                throw new AlreadyExistsException("Order already exist");
-            }
-        }
-        orders.add(newEntity);
+
+        if (orders.contains(newOrder))
+            throw new AlreadyExistsException("Order already exist");
+
+        orders.add(newOrder);
+
         JSONUtils.writeListIntoFile(pathToJson, orders);
     }
 
@@ -89,8 +83,11 @@ public class OrderDao implements IDao<Integer, Order> {
 
         if (index < 0)
             return false;
+
         orders.remove(index);
+
         JSONUtils.writeListIntoFile(pathToJson, orders);
+
         return true;
     }
 
@@ -107,8 +104,11 @@ public class OrderDao implements IDao<Integer, Order> {
 
         if (index < 0)
             throw  new NoSuchElementException();
+
         Order result = orders.set(index, order);
+
         JSONUtils.writeListIntoFile(pathToJson, orders);
+
         return result;
     }
 }

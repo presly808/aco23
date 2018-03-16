@@ -1,19 +1,20 @@
 package projectzero.server;
 
 import org.apache.log4j.Logger;
-import projectzero.controller.IEmployeeController;
 import projectzero.controller.IUserController;
 import projectzero.controller.UserControllerImpl;
 import projectzero.dao.OrderDao;
 import projectzero.dao.UserDao;
-import projectzero.exceptions.AlreadyExistsException;
-import projectzero.exceptions.NoSuchElementException;
+import projectzero.exceptions.JoinException;
+import projectzero.exceptions.LoginException;
+import projectzero.model.AppResponse;
 import projectzero.model.User;
 import projectzero.utils.EmailUtils;
 import projectzero.utils.JSONUtils;
 import projectzero.utils.LogUtils;
 import spark.Request;
 import spark.Response;
+import spark.ResponseTransformer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,48 +24,53 @@ import static spark.Spark.*;
 public class Server {
 
     private IUserController userController;
-    private IEmployeeController employeeController;
     private Map<String, User> sessionMap;
     private Logger logger;
 
-    public Server(int port, String pathToUserJson, String pathToOrderJson) {
+    public Server(int port, String pathToUserJson, String pathToOrderJson, String externalStaticFileLocation) {
         this.logger = LogUtils.getLogger(Server.class);
 
         this.sessionMap = new HashMap<>();
-        // todo remove absolute paths
+
         userController = new UserControllerImpl(
                 new UserDao(pathToUserJson), new OrderDao(pathToOrderJson));
 
 
         port(port);
-        staticFileLocation("projectzero/front");
-        before((request, response) ->
-                logger.info(String.format("Protocol: %s, method: %s, path: %s, body: %s",
-                        request.protocol(), request.requestMethod(), request.pathInfo(), request.body())));
+        externalStaticFileLocation(externalStaticFileLocation);
+        before(
+                (request, response) -> logger.info(String.format("Protocol: %s, method: %s, path: %s, body: %s",
+                        request.protocol(), request.requestMethod(), request.pathInfo(), request.body())),
+                (request, response) -> response.type("application/json")
+        );
 
         initEndpoints();
     }
 
 
     private void initEndpoints() {
-        post("/login", this::login);
-        post("/join", this::join);
-        get("/getAll", this::getAll);
+        ResponseTransformer rs = JSONUtils::toJson; // map returned object to JSON
+        post("/login", this::login, rs);
+        post("/join", this::join, rs);
+        get("/getAll", this::getAll, rs);
     }
 
     // login logic
     private Object login(Request request, Response response) {
         User loginUser = JSONUtils.fromJson(request.body(), User.class);
-        String key = null;
+        String key;
         try {
             key = userController.login(loginUser);
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-        }
-        if (key != null) {
+
+            response.header("key", key);
+
             sessionMap.put(key, loginUser);
+        } catch (LoginException e) {
+            logger.info(e.getMessage());
+            return new AppResponse(new AppResponse.Error(e.getMessage()));
         }
-        return key;
+
+        return new AppResponse(loginUser.getRole());
     }
 
     // join logic
@@ -73,19 +79,20 @@ public class Server {
         try {
             userController.join(newUser.getEmail(), newUser.getPass());
             EmailUtils.notifyUser(newUser.getEmail(),
-                    "Welcome to porjectZero",
+                    "Welcome to projectZero",
                     "Congratulation with joining up");
-            // json.toJson(new MyError())
-            return "{\"error\":\"\"}";
-        } catch (AlreadyExistsException e) {
-            // todo toJson(e) or use spark to handle errors
-            return "{\"error\":\"" + e.getMessage() + "\"}";
+
+            return new AppResponse("Welcome to projectZero");
+        } catch (JoinException e) {
+            logger.info(e.getMessage());
+            return new AppResponse(new AppResponse.Error(e.getMessage()));
         }
     }
 
-    //getAll?key=
+    //getAll (key in header)
     private Object getAll(Request request, Response response) {
-        String key = request.queryParams("key");
-        return JSONUtils.toJson(userController.getAll(sessionMap.get(key)));
+        String key = request.headers("key");
+        return userController.getAll(sessionMap.get(key));
     }
+
 }

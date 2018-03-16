@@ -7,6 +7,7 @@ import projectzero.utils.JSONUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UserDao implements IDao<String, User> {
@@ -24,7 +25,7 @@ public class UserDao implements IDao<String, User> {
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         try {
-            users.addAll(JSONUtils.readAllFromFile(pathToJson, User.class));
+            users.addAll(Arrays.asList(JSONUtils.readAllFromFile(pathToJson, User[].class)));
         } catch (IOException e) {
             e.printStackTrace();
         }

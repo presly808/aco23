@@ -19,21 +19,26 @@ class App extends React.Component {
             headerText: 'Log In',
             showLogin: true,
             showJoin: false,
-            showTable: false
+            showTable: false,
+            key: null,
+            role: null
         };
 
         this.loginFunction = this.loginFunction.bind(this);
         this.toJoinFunction = this.toJoinFunction.bind(this);
         this.joinFunction = this.joinFunction.bind(this);
         this.refreshFunction = this.refreshFunction.bind(this);
+
     }
 
-    loginFunction() {
-        alert('Logged in');
+    loginFunction(key, role) {
+        alert('Logged in(key=' + key + ')');
         this.setState({
             headerText: 'Table',
             showLogin: false,
-            showTable: true
+            showTable: true,
+            key: key,
+            role: role
         });
     }
 
