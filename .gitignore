@@ -27,4 +27,4 @@ build/
 .gradle/
 
 #for projectZero
-projectZero/src/main/java/projectzero/front/node_modules/
+projectZeroFront/front/node_modules/

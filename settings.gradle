@@ -10,4 +10,5 @@ include 'ValentynaMusiiaka'
 include 'functional-tests'
 include 'common'
 include 'projectZero'
+include 'projectZeroFront'
 
