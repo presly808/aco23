@@ -56,7 +56,6 @@ public class SparkServer {
         // todo return object decorated in json
         return response;
     }
-
     private Object register(Request request, Response response) {
 
         // todo create Gson only one time and keep as a singleton
