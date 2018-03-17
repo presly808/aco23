@@ -105,10 +105,6 @@ $(document).ready(function() {
 
   $('#loginBtn').click(loginUser);
 
-  window.registerForm = $('#registerForm');
-  window.authUser = $('#authUser');
-  window.loginForm = $('#loginForm');
-
   $('#toggleRegister').click(function() {
     openRegister();
   });
@@ -147,9 +143,11 @@ function addNewUserToDb() {
     type: 'POST',
     url: '/register',
     contentType: 'application/json',
+    //TODO add all fields values to DB
     data: JSON.stringify({email: $('#exampleInputEmail2').val(), pass: $('#exampleInputPassword2').val()}),
 
   //TODO wtite success and errror handling
+  //TODO Add condition to verify whether user was created with no error
     success(response) {
       alert('Login ok ' + response);
     },
@@ -160,7 +158,6 @@ function addNewUserToDb() {
     });
 }
 
-// TODO Add condition to verify whether user was created with no error
 function changePageView() {
   $('#registerForm').hide();
   $('#authUser').show();
