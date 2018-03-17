@@ -43,7 +43,6 @@ class App extends React.Component {
     }
 
     toJoinFunction() {
-        alert('To Join');
         this.setState({
             headerText: 'Sign up',
             showLogin: false,

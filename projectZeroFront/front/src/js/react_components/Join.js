@@ -9,12 +9,12 @@ class Login extends React.Component {
         this.state = {
             email: '',
             pass: '',
-            joinFunction: props.joinFunction
         };
 
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePass = this.handlePass.bind(this);
         this.handleJoin = this.handleJoin.bind(this);
+        this.request = this.request.bind(this);
     }
 
     handleEmail(event) {
@@ -29,22 +29,32 @@ class Login extends React.Component {
         });
     }
 
-    handleJoin() {
+    handleJoin(data) {
+        alert(data);
+        const error = data.error;
+        const response = data.response;
+
+        if (error) {
+            alert(error.detailMessage);
+        } else {
+            alert(response);
+            this.props.joinFunction();
+        }
+    }
+
+    request() {
         $.ajax({
             method: "POST",
             url: "/join",
             data: JSON.stringify({email: this.state.email, pass: this.state.pass}),
+            success: function(data) {
+                this.handleJoin(data);
+            }.bind(this),
+            error: function(xhr, status, err) {
+                alert(status + " " + err.toString());
+            }
         })
-            .done(function (data) {
-                const response = data.response;
-                const error = data.error;
-                if (error) {
-                    alert(error.message);
-                } else {
-                    alert(response);
-                    this.state.joinFunction();
-                }
-            });
+
     }
 
     render() {
@@ -58,7 +68,7 @@ class Login extends React.Component {
                     <input type="password" className="form-control" placeholder={'Enter password'}
                            onChange={this.handlePass}/>
                 </form>
-                <button className="btn btn-lg btn-success btn-block" onClick={this.handleJoin}>Sign Up</button>
+                <button className="btn btn-lg btn-success btn-block" onClick={this.request}>Sign Up</button>
                 <p className="text-center">Join us now</p>
             </div>
         );
