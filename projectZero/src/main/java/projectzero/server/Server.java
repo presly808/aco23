@@ -67,7 +67,7 @@ public class Server {
             sessionMap.put(key, loginUser);
         } catch (LoginException e) {
             logger.info(e.getMessage());
-            return new AppResponse(new AppResponse.Error(e.getMessage()));
+            return new AppResponse(e);
         }
 
         return new AppResponse(loginUser.getRole());
@@ -84,8 +84,8 @@ public class Server {
 
             return new AppResponse("Welcome to projectZero");
         } catch (JoinException e) {
-            logger.info(e.getMessage());
-            return new AppResponse(new AppResponse.Error(e.getMessage()));
+            logger.info(e);
+            return new AppResponse(e);
         }
     }
 

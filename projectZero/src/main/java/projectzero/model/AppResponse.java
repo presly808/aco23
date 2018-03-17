@@ -3,9 +3,9 @@ package projectzero.model;
 public class AppResponse {
 
     private Object response;
-    private Error error;
+    private Exception error;
 
-    public AppResponse(Object response, Error error) {
+    public AppResponse(Object response, Exception error) {
         this.response = response;
         this.error = error;
     }
@@ -14,7 +14,7 @@ public class AppResponse {
         this.response = response;
     }
 
-    public AppResponse(Error error) {
+    public AppResponse(Exception error) {
         this.error = error;
     }
 
@@ -26,20 +26,11 @@ public class AppResponse {
         this.response = response;
     }
 
-    public Error getError() {
+    public Exception getError() {
         return error;
     }
 
-    public void setError(Error error) {
+    public void setError(Exception error) {
         this.error = error;
-    }
-    
-
-    public static class Error {
-        public Error(String message) {
-            this.message = message;
-        }
-
-        private String message;
     }
 }
