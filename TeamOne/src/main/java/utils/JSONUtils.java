@@ -3,90 +3,92 @@ package utils;
 import com.google.gson.Gson;
 import model.Order;
 import model.User;
-import org.apache.xpath.operations.Or;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Arrays.asList;
 
 public class JSONUtils {
 
     private static Gson gson = new Gson();
 
-    public static<T> T  fromJson(String json, Class<T> tClass) {
+   public static<T> T  fromJson(String json, Class<T> tClass) {
         return gson.fromJson(json, tClass);
     }
 
-    public static String toJson(Object src) {
+   public static String toJson(Object src) {
         return gson.toJson(src);
     }
 
-    public static void addUser(String path, User user) throws IOException {
+    public static List<User> readUsersFromFile(String path, Class<User[]> objClass) throws IOException {
 
-        List<User> users = getUsersFromDb(path);
-        users.add(user);
-        saveUserToDb(path, users);
+        User[] cache = gson.fromJson(new FileReader(path), objClass);
+
+        return new ArrayList<>(asList(cache));
+
     }
 
-    public static void addOrder(String path, Order order) throws IOException {
+    public static List<Order> readOrdersFromFile(String path, Class<Order[]> objClass) throws IOException {
 
-        List<Order> orders = getOrdersFromDb(path);
-        orders.add(order);
-        saveOrderToDb(path, orders);
+        Order[] cache = gson.fromJson(new FileReader(path), objClass);
+
+        return new ArrayList<>(asList(cache));
+
+
     }
 
+    public static void writeListIntoFile(String path, List<?> list) throws IOException {
+
+        Writer writer = new FileWriter(path, false);
+
+        writer.write(gson.toJson(list));
+
+        writer.flush();
+
+        // todo use flash and close the stream
+
+    }
 
     // todo apache commons, guava have a lot of utils and useful methods
-    // from
+
     public static List<Order> getOrdersFromDb(String path) throws IOException {
-        File file = new File(path);
-        List<Order> orders = new ArrayList<>();
-        if (file.length() != 0) {
-            String jString = new String(Files.readAllBytes(Paths.get(path)));
-            Collections.addAll(orders, gson.fromJson(jString, Order[].class));
-//            Arrays.asList(gson.fromJson(new FileReader(path), Order[].class));
-        }
 
-        // Order[] orders1 = gson.fromJson(new FileReader(path), Order[].class);
+        List<Order> orders = readOrdersFromFile(path, Order[].class);
         return orders;
-    }
 
-    private static void saveOrderToDb(String path, List<Order> orders) {
-
-        File file = new File(path);
-
-        gson.toJson(null);
-        try (Writer writer = new FileWriter(file, false)) {
-            writer.write(gson.toJson(orders));
-            // todo remove close
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private static void saveUserToDb(String path, List <User> users) {
-        File file = new File(path);
-        try (Writer writer = new FileWriter(file, false)) {
-            writer.write(gson.toJson(users));
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
     public static List <User> getUsersFromDb(String path) throws IOException {
 
-        File file = new File(path);
-        List<User> users = new ArrayList<>();
-        if (file.length() != 0) {
-            String jString = new String(Files.readAllBytes(Paths.get(path)));
-            Collections.addAll(users, gson.fromJson(jString, User[].class));
-        }
+        List<User> users = readUsersFromFile(path, User[].class);
         return users;
     }
 
+    public static void saveUsersToDb(String userDbPath, Map<String, User> users) {
+
+        List<User> usersList = new ArrayList<>(users.values());
+
+        try {
+            writeListIntoFile(userDbPath, usersList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveOrdersToDb(String ordersDbPath, Map<Integer, Order> orders) {
+        List<Order> orderList = new ArrayList<>(orders.values());
+
+        try {
+            writeListIntoFile(ordersDbPath, orderList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

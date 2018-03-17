@@ -1,6 +1,6 @@
 package proxy;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import controller.MainController;
 import exceptions.AppException;
 import model.Order;
@@ -15,9 +15,11 @@ import java.io.IOException;
 import java.util.Map;
 
 import static org.junit.Assert.*;
+import static utils.TestUtils.restoreOrderDb;
+import static utils.TestUtils.restoreUserDb;
 
 public class MainControllerProxyTest {
-    AppDb appDb = new AppDb();
+    AppDbImpl appDb = new AppDbImpl();
     MainController mainController = Factory.create(true, appDb);
     User testUser = new User("test@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
@@ -35,8 +37,8 @@ public class MainControllerProxyTest {
 
     @After
     public void after(){
-        AppDb.restoreUserDb();
-        AppDb.restoreOrderDb();
+        restoreUserDb();
+        restoreOrderDb();
 
         appDb = null;
     }

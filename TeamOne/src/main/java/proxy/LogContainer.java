@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+// todo move to utills or even delete if we use log4j
 public class LogContainer {
 
     private List<LogEvent> logEventList;
