@@ -1,7 +1,6 @@
 package server;
 
 import appDb.AppDbImpl;
-import com.google.gson.Gson;
 import controller.MainController;
 import exceptions.LoginCredentialException;
 import model.User;
@@ -20,7 +19,7 @@ public class SparkServer {
     private AppDbImpl appDb;
 
     // todo  modifier
-    private MainController mainController = Factory.create(true, appDb);
+    private MainController mainController = Factory.create(appDb);
 
     public SparkServer(int port, String staticFolder) {
         this.port = port;

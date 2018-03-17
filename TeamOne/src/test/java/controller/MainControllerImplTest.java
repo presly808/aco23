@@ -32,7 +32,6 @@ public class MainControllerImplTest {
     @Before
     public void before() throws AppException {
 
-        // Map<String, User> users = appDb.getUsers();
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
