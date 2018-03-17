@@ -34,18 +34,18 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Map<String, User> getAllUsers() throws AppException, IOException {
+    public Map<String, User> getAllUsers() throws AppException {
         return appDb.getUsers();
     }
 
     @Override
-    public Map<Integer, Order> getAllOrders() throws AppException, IOException {
+    public Map<Integer, Order> getAllOrders() throws AppException{
         return appDb.getOrders();
     }
 
 
     @Override
-    public User getById(int id) throws AppException, IOException {
+    public User getById(int id) throws UserNotFoundException {
 
         // todo java 8 at the end apply findFirst
         //User res = appDb.getUsers().entrySet().stream().filter(user -> user.getValue().getId() == id).limit(1);
@@ -58,7 +58,7 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Order getOrderbyId(int id) throws AppException, IOException {
+    public Order getOrderById(int id) throws OrderNotFoundException {
         for (Order order : appDb.getOrders().values()){
             if (order.getId() == id){
                 return order;
@@ -69,7 +69,7 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Map<Integer, Order> filterByName(String name) throws AppException, IOException {
+    public Map<Integer, Order> filterByName(String name) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
         for (Order order : appDb.getOrders().values()) {
             if(order.getSenderName().equals(name)){
@@ -80,7 +80,7 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Map<Integer, Order> filterByCity(String city) throws AppException, IOException {
+    public Map<Integer, Order> filterByCity(String city) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
         for (Order order : appDb.getOrders().values()) {
             if(order.getTargetCity().equals(city)){
@@ -91,7 +91,7 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Map<Integer, Order> filterByReciever(String receiverName) throws AppException, IOException {
+    public Map<Integer, Order> filterByReceiver(String receiverName) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
         for (Order order : appDb.getOrders().values()) {
             if(order.getReceiverName().equals(receiverName)){
@@ -102,7 +102,7 @@ public class MainControllerImpl implements MainController {
     }
 
     @Override
-    public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws AppException, IOException {
+    public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
         for (Order order : appDb.getOrders().values()) {
             if(order.getSendDate().equals(dateTime)){
@@ -112,14 +112,12 @@ public class MainControllerImpl implements MainController {
         return result;
     }
 
-    @Override
     public String changeOrderStatus(Order order, OrderStatus orderStatus, String accessToken) throws AppException, IOException {
         if (!appDb.hasToken(accessToken)) {
             throw new AppException("no access, login first");
         }
         order.setOrderStatus(orderStatus);
         return String.valueOf(orderStatus);
-
     }
 
 

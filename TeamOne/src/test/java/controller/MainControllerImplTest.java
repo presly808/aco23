@@ -67,7 +67,7 @@ public class MainControllerImplTest {
     public void getOrderbyId() throws AppException, IOException {
         String token = appDb.createAccessToken(testUser);
 
-        assertEquals(testOrder.getId(), mainController.getOrderbyId(testOrder.getId()).getId());
+        assertEquals(testOrder.getId(), mainController.getOrderById(testOrder.getId()).getId());
 
     }
 
@@ -105,8 +105,8 @@ public class MainControllerImplTest {
         appDb.addOrder(new Order("Oleg", "Andrey", "Kyiv"), token);
         appDb.addOrder(testOrder2, token);
 
-        assertThat(mainController.filterByReciever("Andrey").size(), CoreMatchers.equalTo(7));
-        assertThat(mainController.filterByReciever("Lviv").size(), CoreMatchers.equalTo(0));
+        assertThat(mainController.filterByReceiver("Andrey").size(), CoreMatchers.equalTo(7));
+        assertThat(mainController.filterByReceiver("Lviv").size(), CoreMatchers.equalTo(0));
     }
 
     @Test

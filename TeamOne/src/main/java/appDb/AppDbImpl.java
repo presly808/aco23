@@ -148,7 +148,10 @@ public class AppDbImpl implements AppDb {
     }
 
     public void register(String email, String pass) {
+        users = getUsersFromDb(usersDbPath);
         users.put(email, new Customer(email, pass));
+        JSONUtils.saveUsersToDb(usersDbPath, users);
+        LOGGER.info("Method" + getClass());
     }
 
 
