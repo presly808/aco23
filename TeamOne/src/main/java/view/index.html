@@ -6,81 +6,81 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/lib/bootstrap-4-2/css/bootstrap.min.css" ><!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/lib/css/sticky-footer.css">
+    <link rel="stylesheet" href="/css/sticky-footer.css">
 
 </head>
 
 <body>
 <div class="container">
-  <div class="row">
-    <div class="span6">
-      <h1>Parcel Delivery Service</h1>
+    <div class="row">
+        <div class="span6">
+            <h1>Parcel Delivery Service</h1>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="container" id="loginForm" style="display:block;">
-  <h4>Log In</h4>
-  <div class="form-group row">
-    <div class="col-xs-4">
-      <form action="/login" method="post">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-      </form>
+    <h4>Log In</h4>
+    <div class="form-group row">
+        <div class="col-xs-4">
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                </div>
+            </form>
 
-      <div class="row justify-content-between">
-        <div class="col">
-          <button type="submit" class="btn btn-primary" id="loginBtn">Log in</button>
+            <div class="row justify-content-between">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" id="loginBtn">Log in</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" id="toggleRegister">Register</button>
+                </div>
+            </div>
         </div>
-        <div class="col">
-          <button type="submit" class="btn btn-primary" id="toggleRegister">Register</button>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <div class="container" id="registerForm" style="display:none;">
     <h4>Sign Up</h4>
     <div class="form-group row">
-      <div class="col-xs-4">
-        <form action="/register" method="post" id="registration">
-          <div class="form-group">
-            <label for="username">Name</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter Name" name="name">
-          </div>
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail2">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword2">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="pass">
-          </div>
+        <div class="col-xs-4">
+            <form action="/register" method="post" id="registration">
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                </div>
 
-        </form>
+            </form>
 
-        <div class="row justify-content-between">
-          <div class="col">
-            <button type="submit" class="btn btn-primary" id="backToLogin">Back to Log in</button>
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary" id='registerBtn'>Register</button>
-          </div>
+            <div class="row justify-content-between">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" id="backToLogin">Back to Log in</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" id='registerBtn'>Register</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 </div>
 <!--TODO Implement page view for logged in User/Employee  -->
@@ -89,18 +89,95 @@
 </div>
 
 <footer class="footer">
-  <div class="container" id="footer">
-    <span class="text-muted">Copyright © 2018</span>
-  </div>
+    <div class="container" id="footer">
+        <span class="text-muted">Copyright © 2018</span>
+    </div>
 </footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/lib/js/jquery-3.3.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/lib/bootstrap-4-2/js/bootstrap.min.js"></script>
-<script src="/lib/js/login.js"></script>
-<script src="/lib/js/registerForm.js"></script>
-<script src="/lib/js/registerUser.js"></script>
+<script>
+
+//on onload
+$(document).ready(function() {
+
+  $('#loginBtn').click(loginUser);
+
+  window.registerForm = $('#registerForm');
+  window.authUser = $('#authUser');
+  window.loginForm = $('#loginForm');
+
+  $('#toggleRegister').click(function() {
+    openRegister();
+  });
+
+  $('#backToLogin').click(function() {
+    openLogin();
+  });
+
+  $('#registerBtn').click(function() {
+    addNewUserToDb();
+    changePageView();
+  });
+
+});
+
+function loginUser() {
+  $.ajax({
+    type: 'POST',
+    url: '/login',
+    contentType: 'application/json',
+    data: JSON.stringify({email: $('#exampleInputEmail1').val(), pass: $('#exampleInputPassword1').val()}),
+
+//TODO wtite success and errror handling
+    success(response) {
+      alert('Login ok ' + response);
+    },
+    error(jqXHR, status, errrorThrown) {
+      alert('Login failed' + status);
+    }
+
+  });
+}
+
+function addNewUserToDb() {
+  $.ajax({
+    type: 'POST',
+    url: '/register',
+    contentType: 'application/json',
+    data: JSON.stringify({email: $('#exampleInputEmail2').val(), pass: $('#exampleInputPassword2').val()}),
+
+  //TODO wtite success and errror handling
+    success(response) {
+      alert('Login ok ' + response);
+    },
+    error(jqXHR, status, errrorThrown) {
+      alert('Login failed' + status);
+    }
+
+    });
+}
+
+// TODO Add condition to verify whether user was created with no error
+function changePageView() {
+  $('#registerForm').hide();
+  $('#authUser').show();
+}
+
+function openRegister() {
+  $('#loginForm').hide();
+  $('#registerForm').show();
+}
+
+function openLogin() {
+  $('#loginForm').show();
+  $('#registerForm').hide();
+}
+
+</script>
+
 </body>
 
 </html>

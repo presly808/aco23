@@ -62,12 +62,7 @@ public class SparkServer {
 
     private Object register(Request request, Response response) {
 
-        Gson gson = new Gson();
-        String jsonRequest = gson.toJson(request.body());
-
-        jsonRequest = jsonRequest.replace("\\\"", "");
-        jsonRequest = jsonRequest.replace("\"{", "{");
-        jsonRequest = jsonRequest.replace("}\"", "}");
+        String jsonRequest = request.body();
 
         User newUser = JSONUtils.fromJson(jsonRequest, User.class);
 
