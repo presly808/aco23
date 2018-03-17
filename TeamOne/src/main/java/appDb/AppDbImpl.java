@@ -51,7 +51,6 @@ public class AppDbImpl implements AppDb {
         return user;
     }
 
-
     public Map<String, User> getUsers() {
         LOGGER.info("Method" + getClass());
         return getUsersFromDb(usersDbPath);
@@ -102,7 +101,7 @@ public class AppDbImpl implements AppDb {
         } catch (IOException e) {
             LOGGER.error("This is Error message");
         }
-
+        LOGGER.info("Method" + getClass());
         return orders;
     }
 
@@ -117,12 +116,11 @@ public class AppDbImpl implements AppDb {
         orders.remove(order.getId());
 
         JSONUtils.saveOrdersToDb(ordersDbPath, orders);
-
+        LOGGER.info("Method" + getClass());
         return order;
     }
 
     public Map<Integer, Order> getOrders() {
-
         return getOrdersFromDb(ordersDbPath);
     }
 
