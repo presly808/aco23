@@ -1,6 +1,6 @@
 package proxy;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import controller.MainController;
 import exceptions.AppException;
 import exceptions.UserNotFoundException;
@@ -13,11 +13,12 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+// todo Dynamic proxy, may be more complex but code will get smaller
 public class MainControllerProxy implements MainController {
 
     private MainController mainController;
     private LogContainer logContainer;
-    private AppDb appDb;
+    private AppDbImpl appDb;
 
 
     public MainControllerProxy(MainController mainController) {
@@ -45,12 +46,12 @@ public class MainControllerProxy implements MainController {
     }
 
     @Override
-    public void setAppDb(AppDb appDb) {
+    public void setAppDb(AppDbImpl appDb) {
         this.appDb = appDb;
     }
 
     @Override
-    public AppDb getAppDb() {
+    public AppDbImpl getAppDb() {
         return appDb;
     }
 

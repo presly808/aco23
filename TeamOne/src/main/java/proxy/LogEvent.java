@@ -1,10 +1,7 @@
 package proxy;
 
-import appDb.AppDb;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class LogEvent {
 

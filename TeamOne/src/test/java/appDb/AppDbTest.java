@@ -2,6 +2,7 @@ package appDb;
 
 import com.google.gson.Gson;
 import exceptions.AppException;
+import exceptions.UserNotFoundException;
 import model.Order;
 import model.User;
 import org.junit.After;
@@ -12,12 +13,14 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static utils.TestUtils.restoreOrderDb;
+import static utils.TestUtils.restoreUserDb;
 
 // todo use test db file
 // remove db file in afterClass
 public class AppDbTest {
 
-    AppDb appDb = new AppDb();
+    AppDbImpl appDb = new AppDbImpl();
     User testUser = new User("test3@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
 
@@ -25,24 +28,19 @@ public class AppDbTest {
 
     @Before
     public void before() throws AppException {
+
         Map<String, User> users = appDb.getUsers();
         Map<Integer, Order> orders = appDb.getOrders();
 
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
-
     }
 
-
-    @After
+   @After
     public void after(){
-
-        AppDb.restoreUserDb();
-        AppDb.restoreOrderDb();
-
-
-        appDb = null;
+       restoreUserDb();
+       restoreOrderDb();
 
     }
 
@@ -54,9 +52,9 @@ public class AppDbTest {
     }
 
     @Test
-    public void removeUser() throws AppException {
+    public void removeUser() throws UserNotFoundException {
         appDb.removeUser(testUser);
-        assertEquals(2, appDb.getUsers().size());
+        assertEquals(1, appDb.getUsers().size());
     }
 
     @Test
@@ -70,7 +68,7 @@ public class AppDbTest {
     public void removeOrder() throws AppException {
         String token = appDb.createAccessToken(testUser);
         appDb.removeOrder(testOrder, token);
-        assertEquals(4,appDb.getOrders().size());
+        assertEquals(3,appDb.getOrders().size());
     }
 
     @Test

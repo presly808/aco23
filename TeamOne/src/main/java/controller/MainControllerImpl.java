@@ -1,6 +1,6 @@
 package controller;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import exceptions.AppException;
 import exceptions.OrderNotFoundException;
 import exceptions.UserNotFoundException;
@@ -13,21 +13,23 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+// todo add validation for input arguments
 public class MainControllerImpl implements MainController {
 
-    private AppDb appDb;
+    private AppDbImpl appDb;
+    // todo we can delete user
     private User user;
 
-    public MainControllerImpl(AppDb appDb) {
+    public MainControllerImpl(AppDbImpl appDb) {
         this.appDb = appDb;
     }
 
 
-    public AppDb getAppDb() {
+    public AppDbImpl getAppDb() {
         return appDb;
     }
 
-    public void setAppDb(AppDb appDb) {
+    public void setAppDb(AppDbImpl appDb) {
         this.appDb = appDb;
     }
 
@@ -45,6 +47,7 @@ public class MainControllerImpl implements MainController {
     @Override
     public User getById(int id) throws AppException, IOException {
 
+        // todo java 8 at the end apply findFirst
         //User res = appDb.getUsers().entrySet().stream().filter(user -> user.getValue().getId() == id).limit(1);
         for (User user : appDb.getUsers().values()){
             if (user.getId() == id){

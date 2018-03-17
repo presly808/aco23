@@ -1,6 +1,6 @@
 package controller;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import exceptions.AppException;
 import exceptions.UserNotFoundException;
 import model.Order;
@@ -14,11 +14,13 @@ import java.util.Map;
 public interface MainController {
 
 
+    // todo IOException is not related to business logic
     Map<String, User> getAllUsers() throws AppException, IOException;
     Map<Integer, Order> getAllOrders() throws AppException, IOException;
 
-    public void setAppDb(AppDb appDb);
-    public AppDb getAppDb();
+    AppDbImpl getAppDb();
+
+    void setAppDb(AppDbImpl appDb);
 
     User getById(int id) throws AppException, UserNotFoundException, IOException;
 
@@ -29,5 +31,5 @@ public interface MainController {
 
     Map<Integer, Order> filterByDate (LocalDateTime dateTime) throws AppException, IOException;
 
-    public String changeOrderStatus (Order order, OrderStatus orderStatus, String accessToken) throws AppException, IOException;
+    String changeOrderStatus(Order order, OrderStatus orderStatus, String accessToken) throws AppException, IOException;
 }

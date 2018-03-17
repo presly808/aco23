@@ -1,6 +1,6 @@
 package server;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import com.google.gson.Gson;
 import controller.MainController;
 import exceptions.LoginCredentialException;
@@ -16,13 +16,16 @@ public class SparkServer {
 
     private final int port;
     private final String staticFolder;
-    private AppDb appDb = new AppDb();
-    MainController mainController = Factory.create(true, appDb);
+
+    private AppDbImpl appDb;
+
+    // todo  modifier
+    private MainController mainController = Factory.create(true, appDb);
 
     public SparkServer(int port, String staticFolder) {
         this.port = port;
         this.staticFolder = staticFolder;
-
+        this.appDb = new AppDbImpl();
         port(port);
 
         if(staticFolder != null) {
@@ -61,6 +64,7 @@ public class SparkServer {
     }
 
     private Object register(Request request, Response response) {
+        // todo create Gson only one time and keep as a singleton
 
         String jsonRequest = request.body();
 
