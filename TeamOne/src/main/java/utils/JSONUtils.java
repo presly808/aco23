@@ -49,6 +49,7 @@ public class JSONUtils {
         Writer writer = new FileWriter(path, false);
 
         writer.write(gson.toJson(list));
+        // todo use flash and close the stream
 
     }
 

@@ -25,13 +25,18 @@ import java.util.UUID;
 
 public class AppDbImpl implements AppDb {
 
+    private static Gson gson = new Gson();
+
+    private final String usersDbPath = "user_db.txt";
+    private final String ordersDbPath = "order_db.txt";
+
     private Map<String, User> users;
     private Map<Integer, Order> orders;
     private Map<String, User> accessTokenUserMap;
-    private final String usersDbPath = "user_db.txt";
-    private final String ordersDbPath = "order_db.txt";
-    private static Gson gson = new Gson();
+
+    // todo static final
     private Logger logger;
+    // todo init this variable
     private LocalDateTime localDateTime;
 
 
@@ -87,6 +92,7 @@ public class AppDbImpl implements AppDb {
 
     public Order addOrder(Order order, String accessToken) throws AppException {
 
+        // todo this is business logic
         if (!hasToken(accessToken)) {
             logger.error("no access, login first");
             throw new NoAccessException("no access, login first");

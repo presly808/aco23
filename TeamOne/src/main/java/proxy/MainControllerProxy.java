@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+// todo Dynamic proxy, may be more complex but code will get smaller
 public class MainControllerProxy implements MainController {
 
     private MainController mainController;

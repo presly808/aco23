@@ -7,37 +7,33 @@ import model.User;
 
 import java.util.Map;
 
-
+// todo use exceptions
 public interface AppDb {
 
 
     User addUser(User user) throws AppException;
 
+    User removeUser(User user);
 
-   User removeUser(User user);
+    Map<String, User> getUsers();
 
+    void setUsers(Map<String, User> users);
 
+    Map<String, User> getUsersFromDb(String userDbPath);
 
-   Map<String, User> getUsers();
+    Order addOrder(Order order, String accessToken) throws AppException;
 
-   void setUsers(Map<String, User> users);
+    Map<Integer, Order> getOrdersFromDb(String ordersDbPath);
 
-   Map<String, User> getUsersFromDb(String userDbPath);
+    Order removeOrder(Order order, String accessToken) throws AppException;
 
+    Map<Integer, Order> getOrders();
 
-   Order addOrder(Order order, String accessToken) throws AppException;
+    String createAccessToken(User user) throws LoginCredentialException;
 
-   Map<Integer, Order> getOrdersFromDb(String ordersDbPath);
+    boolean hasToken(String accessToken);
 
-   Order removeOrder(Order order, String accessToken) throws AppException;
-
-   Map<Integer, Order> getOrders();
-
-   String createAccessToken(User user) throws LoginCredentialException;
-
-   boolean hasToken(String accessToken);
-
-   void register(String email, String pass);
+    void register(String email, String pass);
 
 
 }
