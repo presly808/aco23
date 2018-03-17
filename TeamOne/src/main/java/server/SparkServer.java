@@ -34,6 +34,12 @@ public class SparkServer {
 
     }
 
+    public static void main(String[] args) {
+
+        SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
+        server.initEnpoint();
+    }
+
     public void stopServer(){
         stop();
     }
@@ -56,17 +62,11 @@ public class SparkServer {
         // todo return object decorated in json
         return response;
     }
+
     private Object register(Request request, Response response) {
-
         // todo create Gson only one time and keep as a singleton
-        Gson gson = new Gson();
-        // todo request.body() is already json do not transform toJson
-        String jsonRequest = gson.toJson(request.body());
 
-        // todo i suppose we can remove replace logic
-        jsonRequest = jsonRequest.replace("\\\"", "");
-        jsonRequest = jsonRequest.replace("\"{", "{");
-        jsonRequest = jsonRequest.replace("}\"", "}");
+        String jsonRequest = request.body();
 
         User newUser = JSONUtils.fromJson(jsonRequest, User.class);
 
@@ -75,11 +75,5 @@ public class SparkServer {
 
         // todo return message after register logic
         return response;
-    }
-
-    public static void main(String[] args) {
-
-        SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
-        server.initEnpoint();
     }
 }
