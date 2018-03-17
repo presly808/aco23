@@ -29,3 +29,5 @@ build/
 #for projectZero
 projectZeroFront/front/node_modules/
 logs.txt
+app.properties
+rojectZeroFront/front/dist/js/app.js

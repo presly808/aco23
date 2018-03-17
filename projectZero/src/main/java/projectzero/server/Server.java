@@ -95,4 +95,8 @@ public class Server {
         return userController.getAll(sessionMap.get(key));
     }
 
+    public void stopServer(){
+        stop();
+    }
+
 }
