@@ -32,7 +32,7 @@ class App extends React.Component {
     }
 
     loginFunction(key, role) {
-        alert('Logged in(key=' + key + ')');
+        alert('Logged in(key=' + key + ', role=' + role +')');
         this.setState({
             headerText: 'Table',
             showLogin: false,
@@ -60,7 +60,8 @@ class App extends React.Component {
     }
 
     refreshFunction() {
-        alert("Refreshed")
+        alert("Refreshed");
+        alert(`Role ${this.state.role}, key ${this.state.key}`);
     }
 
     render() {

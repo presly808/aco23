@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import React from 'react';
 
 class Login extends React.Component {
@@ -29,23 +28,27 @@ class Login extends React.Component {
     }
 
     handleLogin() {
-        let login;
-        login = $.ajax({
-            method: "POST",
-            url: "/login",
-            data: JSON.stringify({email: this.state.email, pass: this.state.pass}),
-        })
-            .done(function (data) {
-                const response = data.response;
-                const error = data.error;
+        let header;
 
-                if (error) {
-                    alert(error.message);
-                } else {
-                    alert(response);
-                    this.props.loginFunction(login.getResponseHeader('key'), response.role);
-                }
-            });
+        fetch('/login', {
+            method: 'POST',
+            body: JSON.stringify({email: this.state.email, pass: this.state.pass}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(response => {
+            header = response.headers.get("key");
+            return response;
+        }).then(response => response.json()).then(responseJson => {
+            const response = responseJson.response;
+            const error = responseJson.error;
+
+            if (error) {
+                alert(error.directMessage);
+            } else {
+                this.props.loginFunction(header, response.role);
+            }
+        });
     }
 
     render() {

@@ -9,7 +9,6 @@ import projectzero.exceptions.JoinException;
 import projectzero.exceptions.LoginException;
 import projectzero.model.AppResponse;
 import projectzero.model.User;
-import projectzero.utils.EmailUtils;
 import projectzero.utils.JSONUtils;
 import projectzero.utils.LogUtils;
 import spark.Request;
@@ -78,9 +77,9 @@ public class Server {
         User newUser = JSONUtils.fromJson(request.body(), User.class);
         try {
             userController.join(newUser.getEmail(), newUser.getPass());
-            EmailUtils.notifyUser(newUser.getEmail(),
-                    "Welcome to projectZero",
-                    "Congratulation with joining up");
+//            EmailUtils.notifyUser(newUser.getEmail(),
+//                    "Welcome to projectZero",
+//                    "Congratulation with joining up");
 
             return new AppResponse("Welcome to projectZero");
         } catch (JoinException e) {
