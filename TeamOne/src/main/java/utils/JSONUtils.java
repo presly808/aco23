@@ -1,7 +1,6 @@
 package utils;
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import model.Order;
 import model.User;
 
@@ -49,6 +48,9 @@ public class JSONUtils {
         Writer writer = new FileWriter(path, false);
 
         writer.write(gson.toJson(list));
+
+        writer.flush();
+
         // todo use flash and close the stream
 
     }

@@ -129,3 +129,11 @@
  ******* LogEvent: method occur: filterByCity', at 2018-03-06 12:55} ******* 
  ******* LogEvent: method occur: filterByName', at 2018-03-06 12:55} ******* 
  ******* LogEvent: method occur: filterByName', at 2018-03-06 12:55} ******* 
+ ******* LogEvent: method occur: getAllOrders', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: getAllUsers', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: getOrderbyId', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: getById', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: filterByCity', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-03-17 10:24} ******* 
+ ******* LogEvent: method occur: filterByName', at 2018-03-17 10:24} ******* 

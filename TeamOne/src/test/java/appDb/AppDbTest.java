@@ -2,6 +2,7 @@ package appDb;
 
 import com.google.gson.Gson;
 import exceptions.AppException;
+import exceptions.UserNotFoundException;
 import model.Order;
 import model.User;
 import org.junit.After;
@@ -34,15 +35,12 @@ public class AppDbTest {
         appDb.addUser(testUser);
         String token = appDb.createAccessToken(testUser);
         appDb.addOrder(testOrder, token);
-
     }
 
-
-    @After
+   @After
     public void after(){
-        restoreUserDb();
-        restoreOrderDb();
-
+       restoreUserDb();
+       restoreOrderDb();
 
     }
 
@@ -54,9 +52,9 @@ public class AppDbTest {
     }
 
     @Test
-    public void removeUser() throws AppException {
+    public void removeUser() throws UserNotFoundException {
         appDb.removeUser(testUser);
-        assertEquals(2, appDb.getUsers().size());
+        assertEquals(1, appDb.getUsers().size());
     }
 
     @Test
@@ -70,7 +68,7 @@ public class AppDbTest {
     public void removeOrder() throws AppException {
         String token = appDb.createAccessToken(testUser);
         appDb.removeOrder(testOrder, token);
-        assertEquals(4,appDb.getOrders().size());
+        assertEquals(3,appDb.getOrders().size());
     }
 
     @Test
