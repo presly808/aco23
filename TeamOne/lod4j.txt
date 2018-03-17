@@ -745,3 +745,675 @@
 2018-03-17 11:27:42 11:27:42,239  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
 2018-03-17 11:27:42 11:27:42,245  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
 2018-03-17 11:27:42 11:27:42,248  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,562  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,567 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,568  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,569 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,570  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,574 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,582  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,644  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,660 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,665  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,711  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,712 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,719  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,744  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,745 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,745  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,748 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,748  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,748 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,749  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,770  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,771 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,772  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,824  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,830 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,831  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,849  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,853  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,855 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,866  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,887  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,889 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,891  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,899 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,899  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,900 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,900  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,910  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,913 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,913  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,915  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,919 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,919  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,927  INFO Test worker Log4JApp:removeOrder:119 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,940 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,940  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,975  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,976 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,976  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,980 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,980  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,981 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,981  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,983  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,984 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,986  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,987  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,988 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,988  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,990  INFO Test worker Log4JApp:removeUser:50 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,990  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,991 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,991  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,993  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,994 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:35 11:36:35,994  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:35 11:36:35,995 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:35 11:36:35,995  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,004 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,004  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,005  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,008 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,009  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,010  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,011 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,012  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,022  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,022  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,022 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,029  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,051 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,051  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,053  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,055 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,055  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,057  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,058 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,058  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,060 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,062  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,063  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,090 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,107  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,124  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,126  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,126 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,128  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,133 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,133  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,149  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,152 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,153  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,156  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,157 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,159  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,197 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,203  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,207  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,212 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,212  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,214  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,216  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,218 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,219  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,240 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,240  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,244  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,245 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,245  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,259  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,260 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,262  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,267  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,269 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,269  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,270  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,272 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,273  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,305  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,308 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,309  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,336 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,336  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,339  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,340 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,341  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,343  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,344 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,344  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,345  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,346 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,346  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,348  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,349 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,349  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,351  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,351 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,351  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,354 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,355  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,357  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,357 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,357  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,358  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,359 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,359  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,360  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,361 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,361  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,363  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,363 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,363  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,365  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,366 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,366  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,368 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:36:36 11:36:36,368  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,369  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,370 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,370  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,371  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,372 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,372  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,373  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,374 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,374  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,375  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,376 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,376  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,378  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,378 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,378  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:36:36 11:36:36,379 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:36:36 11:36:36,379  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,683  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,690 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,691  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,692 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,692  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,693 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,693  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,713  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,724 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,725  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,741  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,742 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,747  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,778  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,779 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,780  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,782 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,782  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,783 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,783  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,811  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,812 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,813  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,827  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,829 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,831  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,850  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,850  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,850 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,851  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,858  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,858 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,859  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,859 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,859  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,860 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,861  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,864  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,865 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,865  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,867  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,868 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,868  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,878  INFO Test worker Log4JApp:removeOrder:119 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,879 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,880  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,950  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,951 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,952  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,952 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,962  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,962 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,963  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,965  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,966 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:18 11:38:18,966  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,970  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:18 11:38:18,972 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:18 11:38:18,973  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,029  INFO Test worker Log4JApp:removeUser:50 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,029  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,032 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,035  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,042  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,042 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,044  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,045 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,045  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,051 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,051  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,056  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,057 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,057  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,060  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,061 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,061  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,066  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,066  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,067 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,067  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,078 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,079  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,082  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,083 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,084  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,085  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,087 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,087  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,090 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,090  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,092  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,092 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,093  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,109  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,110  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,110 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,110  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,125 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,129  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,131  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,132 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,132  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,134  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,134 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,134  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,138 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,138  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,139  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,140 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,140  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,145  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,145  INFO Test worker Log4JApp:getUsers:55 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,146 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,146  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,157 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,157  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,159  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,160 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,160  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,162  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,163 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,163  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,166  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,167 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,168  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,169  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,169 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,170  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,171  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,172 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,172  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,223 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,229  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,234  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,235 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,236  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,237  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,237 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,238  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,240  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,241 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,241  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,242  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,243 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,243  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,244  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,245 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,245  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,248 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,248  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,272  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,273 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,273  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,275  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,276 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,276  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,278  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,279 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,279  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,280  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,281 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,281  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,283  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,283 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,283  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,287 ERROR Test worker Log4JApp:getUsersFromDb:72 - This is Error message
+2018-03-17 11:38:19 11:38:19,287  INFO Test worker Log4JApp:getUsersFromDb:74 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,289  INFO Test worker Log4JApp:addUser:41 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,289 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,289  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,291  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,292 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,292  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,293  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,294 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,294  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,296  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,296 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,297  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,298  INFO Test worker Log4JApp:addOrder:90 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,300 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,300  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:38:19 11:38:19,302 ERROR Test worker Log4JApp:getOrdersFromDb:102 - This is Error message
+2018-03-17 11:38:19 11:38:19,303  INFO Test worker Log4JApp:getOrdersFromDb:104 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,811  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,816 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,817  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,819 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,821  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,822 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,822  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,833  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,845 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,846  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,860  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,861 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,864  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,884  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,885 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,885  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,887 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,888  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,888 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,889  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,911  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,912 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,912  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,943  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,945 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,946  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,961  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,964  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,965 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,965  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,973  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,974 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,975  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,976 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,976  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,977 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:34 11:39:34,977  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,982  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,989 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,990  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,997  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:34 11:39:34,998 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:34 11:39:34,998  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,011  INFO Test worker Log4JApp:removeOrder:121 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,011 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,012  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,021  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,022 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,022  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,023 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,023  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,023 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,024  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,045  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,046 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,047  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,052  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,052 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,053  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,150  INFO Test worker Log4JApp:removeUser:52 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,150  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,151 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,152  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,155  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,156 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,157  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,157 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,158  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,158 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,159  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,165  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,168 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,169  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,173  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,174 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,175  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,180  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,181  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,183 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,183  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,227 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,227  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,229  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,230 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,230  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,232  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,234 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,235  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,247 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,248  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,249  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,250 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,252  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,255  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,256  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,257 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,258  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,263 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,263  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,291  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,293 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,294  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,298  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,298 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,299  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,302 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,302  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,346  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,347 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,356  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,376  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,377  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,377 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,377  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,396 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,396  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,410  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,423 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,424  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,427  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,428 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,428  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,430  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,430 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,430  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,432  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,433 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,433  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,434  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,435 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,435  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,454 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,454  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,462  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,468 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,468  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,470  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,471 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,475  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,479  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,489 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,493  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,494  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,498 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,499  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,503  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,503 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,503  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,506 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,506  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,508  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,509 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,510  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,511  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,511 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,511  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,512  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,513 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,513  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,514  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,514 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,514  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,517  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,517 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,517  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,520 ERROR Test worker Log4JApp:getUsersFromDb:74 - This is Error message
+2018-03-17 11:39:35 11:39:35,521  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,521  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,522 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,522  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,523  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,523 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,524  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,525  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,525 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,526  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,526  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,527 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,527  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,528  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,528 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,528  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:39:35 11:39:35,529 ERROR Test worker Log4JApp:getOrdersFromDb:104 - This is Error message
+2018-03-17 11:39:35 11:39:35,530  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,582  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,586  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,599  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,600  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,607  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,619  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,621  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,623  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,630  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,631  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,632  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,633  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,634  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,635  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,636  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,637  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,639  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,640  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,641  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,648  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,650  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,653  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,655  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,657  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,660  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,662  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,663  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,665  INFO Test worker Log4JApp:removeOrder:121 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,667  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,670  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,671  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,672  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,673  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,674  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,675  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,679  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,680  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,682  INFO Test worker Log4JApp:removeUser:52 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,683  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,684  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,687  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,688  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,689  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,690  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,692  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,695  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,699  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,701  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,704  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,705  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,707  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,718  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,720  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,721  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,723  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,725  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,729  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,730  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,733  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,736  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,737  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,739  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,743  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,743  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,745  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,747  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,748  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,753  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,755  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,757  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,759  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,760  INFO Test worker Log4JApp:getUsers:57 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,760  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,773  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,775  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,779  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,789  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,790  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,795  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,805  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,809  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,812  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,813  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,816  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,829  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,833  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,834  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,835  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,835  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,837  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,838  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,839  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,840  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,841  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,844  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,846  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,849  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,853  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,853  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,855  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,856  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,857  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,858  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,859  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,861  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,864  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,865  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,869  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,871  INFO Test worker Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,872  INFO Test worker Log4JApp:addUser:43 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,872  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,873  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,885  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,889  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,891  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,893  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,896  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,910  INFO Test worker Log4JApp:addOrder:92 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,915  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl
+2018-03-17 11:40:08 11:40:08,918  INFO Test worker Log4JApp:getOrdersFromDb:106 - Methodclass appDb.AppDbImpl

@@ -20,8 +20,8 @@ import java.util.UUID;
 
 public class AppDbImpl implements AppDb {
 
-    private final String usersDbPath = "user_db.txt";
-    private final String ordersDbPath = "order_db.txt";
+    private final String usersDbPath;
+    private final String ordersDbPath;
     private final static Logger LOGGER = Log4JApp.getLogger(Log4JApp.class);
 
     private Map<String, User> users;
@@ -31,6 +31,8 @@ public class AppDbImpl implements AppDb {
     public AppDbImpl() {
         this.users = new HashMap<>();
         this.orders = new HashMap<>();
+        this.usersDbPath = "user_db.txt";
+        this.ordersDbPath = "order_db.txt";
         accessTokenUserMap = new HashMap<>();
     }
 
@@ -147,11 +149,13 @@ public class AppDbImpl implements AppDb {
         return accessTokenUserMap.containsKey(accessToken);
     }
 
-    public void register(String email, String pass) {
+    public boolean register(String email, String pass) {
         users = getUsersFromDb(usersDbPath);
         users.put(email, new Customer(email, pass));
-        JSONUtils.saveUsersToDb(usersDbPath, users);
+        JSONUtils.saveUsersToDb("TeamOne/user_db.txt", users);
         LOGGER.info("Method" + getClass());
+
+        return true;
     }
 
 
