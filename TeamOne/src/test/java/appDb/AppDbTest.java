@@ -12,12 +12,14 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static utils.TestUtils.restoreOrderDb;
+import static utils.TestUtils.restoreUserDb;
 
 // todo use test db file
 // remove db file in afterClass
 public class AppDbTest {
 
-    AppDb appDb = new AppDb();
+    AppDbImpl appDb = new AppDbImpl();
     User testUser = new User("test3@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
 
@@ -25,6 +27,7 @@ public class AppDbTest {
 
     @Before
     public void before() throws AppException {
+
         Map<String, User> users = appDb.getUsers();
         Map<Integer, Order> orders = appDb.getOrders();
 
@@ -37,12 +40,9 @@ public class AppDbTest {
 
     @After
     public void after(){
+        restoreUserDb();
+        restoreOrderDb();
 
-        AppDb.restoreUserDb();
-        AppDb.restoreOrderDb();
-
-
-        appDb = null;
 
     }
 

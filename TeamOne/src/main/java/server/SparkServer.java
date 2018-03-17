@@ -1,6 +1,6 @@
 package server;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import com.google.gson.Gson;
 import controller.MainController;
 import exceptions.LoginCredentialException;
@@ -17,8 +17,7 @@ public class SparkServer {
     private final int port;
     private final String staticFolder;
 
-    // todo init data within constructor
-    private AppDb appDb = new AppDb();
+    private AppDbImpl appDb;
 
     // todo  modifier
     private MainController mainController = Factory.create(true, appDb);
@@ -26,20 +25,13 @@ public class SparkServer {
     public SparkServer(int port, String staticFolder) {
         this.port = port;
         this.staticFolder = staticFolder;
-
+        this.appDb = new AppDbImpl();
         port(port);
 
         if(staticFolder != null) {
             externalStaticFileLocation(staticFolder);
         }
 
-    }
-
-    // todo format code, move this method to the bottom
-    public static void main(String[] args) {
-
-        SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
-        server.initEnpoint();
     }
 
     public void stopServer(){
@@ -84,5 +76,11 @@ public class SparkServer {
 
         // todo return message after register logic
         return response;
+    }
+
+    public static void main(String[] args) {
+
+        SparkServer server = new SparkServer(8080, "TeamOne/src/main/java/view/");
+        server.initEnpoint();
     }
 }

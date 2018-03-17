@@ -1,6 +1,6 @@
 package controller;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import com.google.gson.Gson;
 import exceptions.AppException;
 import model.Order;
@@ -12,16 +12,17 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static utils.TestUtils.restoreOrderDb;
+import static utils.TestUtils.restoreUserDb;
 
 // todo add test class, that will check http requests to created endpoint
 // in new test class run spark -> send requests -> check results -> down spark
 public class MainControllerImplTest {
 
-    AppDb appDb = new AppDb();
+    AppDbImpl appDb = new AppDbImpl();
     MainController mainController = new MainControllerImpl(appDb);
     User testUser = new User("test3@gmail.com", "123456");
     Order testOrder = new Order("Oleg", "Andrey", "Kyiv");
@@ -40,8 +41,8 @@ public class MainControllerImplTest {
 
     @After
     public void after(){
-        AppDb.restoreUserDb();
-        AppDb.restoreOrderDb();
+        restoreUserDb();
+        restoreOrderDb();
 
         appDb = null;
     }

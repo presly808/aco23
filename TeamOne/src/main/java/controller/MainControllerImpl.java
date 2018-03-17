@@ -1,6 +1,6 @@
 package controller;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import exceptions.AppException;
 import exceptions.OrderNotFoundException;
 import exceptions.UserNotFoundException;
@@ -15,19 +15,19 @@ import java.util.Map;
 
 public class MainControllerImpl implements MainController {
 
-    private AppDb appDb;
+    private AppDbImpl appDb;
     private User user;
 
-    public MainControllerImpl(AppDb appDb) {
+    public MainControllerImpl(AppDbImpl appDb) {
         this.appDb = appDb;
     }
 
 
-    public AppDb getAppDb() {
+    public AppDbImpl getAppDb() {
         return appDb;
     }
 
-    public void setAppDb(AppDb appDb) {
+    public void setAppDb(AppDbImpl appDb) {
         this.appDb = appDb;
     }
 

@@ -1,6 +1,6 @@
 package utils;
 
-import appDb.AppDb;
+import appDb.AppDbImpl;
 import controller.MainController;
 import controller.MainControllerImpl;
 import proxy.MainControllerProxy;
@@ -9,7 +9,7 @@ import proxy.MainControllerProxy;
 // todo rename factory, give more readable name
 public class Factory {
 
-    public static MainController create(boolean withProfiling, AppDb appDb) {
+    public static MainController create(boolean withProfiling, AppDbImpl appDb) {
         if (withProfiling) {
             return new MainControllerProxy(new MainControllerImpl(appDb));
         } else {
