@@ -33,6 +33,6 @@ public interface AppDb {
 
     boolean hasToken(String accessToken)throws AppException;
 
-    void register(String email, String pass) throws AppException;
+    boolean register(String email, String pass) throws AppException;
 
 }
