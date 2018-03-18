@@ -123,9 +123,9 @@ public class AppDbImpl implements AppDb {
     public String createAccessToken(User user) throws LoginCredentialException {
         User found =
                 users.values()
-                        .stream()
-                        .filter(u -> u.getEmail().equals(user.getEmail()))
-                        .filter(u -> u.getPass().equals(user.getPass()))
+                        .stream().filter(u -> u !=null)
+                        .filter(u -> user.getEmail().equals(u.getEmail()))
+                        .filter(u -> user.getPass().equals(u.getPass()))
                         .findFirst().orElse(null);
 
         if (found == null) {
@@ -143,8 +143,9 @@ public class AppDbImpl implements AppDb {
     }
 
     public boolean register(String email, String pass) {
-        users = getUsersFromDb("TeamOne/user_db.txt");
-        users.put(email, new Customer(email, pass));
+        users = getUsersFromDb(usersDbPath);
+//        users.put(email, new Customer(email, pass));
+        users.put(email, new User(email, pass));
         JSONUtils.saveUsersToDb("TeamOne/user_db.txt", users);
         LOGGER.info("Method" + getClass());
 
