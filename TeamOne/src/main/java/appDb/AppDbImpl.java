@@ -11,7 +11,10 @@ import utils.JSONUtils;
 import utils.Log4JApp;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 // todo figure out how to set info to logging once to all methods
 
@@ -63,10 +66,8 @@ public class AppDbImpl implements AppDb {
     public Map<String, User> getUsersFromDb(String userDbPath) {
         try {
             List<User> usersList = JSONUtils.getUsersFromDb(userDbPath);
+            usersList.forEach(user -> users.put(user.getEmail(), user));
 
-            for (User user : usersList) {
-                users.put(user.getEmail(), user);
-            }
         } catch (IOException e) {
             LOGGER.error("This is Error message");
         }
@@ -94,9 +95,7 @@ public class AppDbImpl implements AppDb {
     public Map<Integer, Order> getOrdersFromDb(String ordersDbPath) {
         try {
             List<Order> ordersList = JSONUtils.getOrdersFromDb(ordersDbPath);
-            for (Order order : ordersList) {
-                orders.put(order.getId(), order);
-            }
+            ordersList.forEach(order -> orders.put(order.getId(), order));
         } catch (IOException e) {
             LOGGER.error("This is Error message");
         }
@@ -105,15 +104,12 @@ public class AppDbImpl implements AppDb {
     }
 
     public Order removeOrder(Order order, String accessToken) throws AppException {
-
         orders = getOrdersFromDb(ordersDbPath);
-
         if (!hasToken(accessToken)) {
             LOGGER.error("no access, login first");
             throw new AppException("no access, login first");
         }
         orders.remove(order.getId());
-
         JSONUtils.saveOrdersToDb(ordersDbPath, orders);
         LOGGER.info("Method" + getClass());
         return order;
