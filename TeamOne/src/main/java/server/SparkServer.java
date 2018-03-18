@@ -69,8 +69,13 @@ public class SparkServer {
 
         User newUser = JSONUtils.fromJson(jsonRequest, User.class);
 
-        appDb.register(newUser.getEmail(), newUser.getPass());
-        response.body("");
+        boolean addUser = appDb.register(newUser.getEmail(), newUser.getPass());
+
+        if(addUser) {
+            response.body("User successfully registered");
+        } else {
+            response.body("User not added to db due to an error");
+        }
 
         // todo return message after register logic
         return response;

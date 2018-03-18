@@ -11,10 +11,7 @@ import utils.JSONUtils;
 import utils.Log4JApp;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 // todo figure out how to set info to logging once to all methods
 
@@ -130,9 +127,9 @@ public class AppDbImpl implements AppDb {
     public String createAccessToken(User user) throws LoginCredentialException {
         User found =
                 users.values()
-                        .stream()
-                        .filter(u -> u.getEmail().equals(user.getEmail()))
-                        .filter(u -> u.getPass().equals(user.getPass()))
+                        .stream().filter(u -> u !=null)
+                        .filter(u -> user.getEmail().equals(u.getEmail()))
+                        .filter(u -> user.getPass().equals(u.getPass()))
                         .findFirst().orElse(null);
 
         if (found == null) {
@@ -151,7 +148,8 @@ public class AppDbImpl implements AppDb {
 
     public boolean register(String email, String pass) {
         users = getUsersFromDb(usersDbPath);
-        users.put(email, new Customer(email, pass));
+//        users.put(email, new Customer(email, pass));
+        users.put(email, new User(email, pass));
         JSONUtils.saveUsersToDb("TeamOne/user_db.txt", users);
         LOGGER.info("Method" + getClass());
 
