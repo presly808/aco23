@@ -36,67 +36,49 @@ public class MainControllerImpl implements MainController {
     public User getById(int id) throws UserNotFoundException {
 
         // todo java 8 at the end apply findFirst
-        //User res = appDb.getUsers().entrySet().stream().filter(user -> user.getValue().getId() == id).findFirst().orElse(null);;
-        for (User user : appDb.getUsers().values()){
-            if (user.getId() == id){
-                return user;
-            }
-        }
-        throw new UserNotFoundException("No user Found");
+
+        return appDb.getUsers().values().stream().filter(user -> user.getId() == id).
+                findFirst().orElseThrow(() -> new UserNotFoundException("No user Found"));
     }
 
     @Override
     public Order getOrderById(int id) throws OrderNotFoundException {
-        for (Order order : appDb.getOrders().values()){
-            if (order.getId() == id){
-                return order;
-            }
-        }
 
-        throw new OrderNotFoundException("No user Found");
+        return appDb.getOrders().values().stream().filter(order -> order.getId() == id).
+                findFirst().orElseThrow(() -> new OrderNotFoundException("No user Found"));
     }
 
     @Override
     public Map<Integer, Order> filterByName(String name) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
-        for (Order order : appDb.getOrders().values()) {
-            if(order.getSenderName().equals(name)){
-                result.put(order.getId(), order);
-            }
-        }
+
+        appDb.getOrders().values().stream().filter(order -> order.getSenderName().equals(name))
+                .forEach(order -> result.put(order.getId(), order));
         return result;
     }
 
     @Override
     public Map<Integer, Order> filterByCity(String city) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
-        for (Order order : appDb.getOrders().values()) {
-            if(order.getTargetCity().equals(city)){
-                result.put(order.getId(), order);
-            }
-        }
+
+        appDb.getOrders().values().stream().filter(order -> order.getTargetCity().equals(city))
+                .forEach(order -> result.put(order.getId(), order));
         return result;
     }
 
     @Override
     public Map<Integer, Order> filterByReceiver(String receiverName) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
-        for (Order order : appDb.getOrders().values()) {
-            if(order.getReceiverName().equals(receiverName)){
-                result.put(order.getId(), order);
-            }
-        }
+        appDb.getOrders().values().stream().filter(order -> order.getReceiverName().equals(receiverName))
+                .forEach(order -> result.put(order.getId(), order));
         return result;
     }
 
     @Override
     public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws OrderNotFoundException {
         Map<Integer, Order> result = new HashMap<>();
-        for (Order order : appDb.getOrders().values()) {
-            if(order.getSendDate().equals(dateTime)){
-                result.put(order.getId(), order);
-            }
-        }
+        appDb.getOrders().values().stream().filter(order -> order.getSendDate().equals(dateTime))
+                .forEach(order -> result.put(order.getId(), order));
         return result;
     }
 
