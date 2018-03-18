@@ -1,22 +1,21 @@
 package utils;
 
+import model.Order;
 import model.User;
 
 import java.io.IOException;
 import java.util.List;
 
-
-// todo save with the last id into json
 public class ModelUtils {
 
-    // todo cover case when data will be loaded from the db file and application restarts
-
     private static int id;
+    private final static String USERS_DB_PATH = "user_db.txt";
+    private final static String ORDERS_DB_PATH = "order_db.txt";
 
-    private static int getMaxIdInDb() {
+    private static int getMaxUserIdInDb() {
         List<User> users = null;
         try {
-            users = JSONUtils.getUsersFromDb("user_db.txt");
+            users = JSONUtils.getUsersFromDb(USERS_DB_PATH);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,16 +24,25 @@ public class ModelUtils {
                 .get().getId() : 0;
     }
 
-    public static int genId() {
-        return  (int)(Math.random() * 50000);
+    private static int getMaxOrderIdInDb() {
+        List<Order> orders = null;
+        try {
+            orders = JSONUtils.getOrdersFromDb(ORDERS_DB_PATH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return orders != null ? orders.stream()
+                .max((order1, order2) -> (Integer.compare(order1.getId(), order2.getId())))
+                .get().getId() : 0;
     }
 
     public static int genUserId() {
-        int maxIdInDb = getMaxIdInDb();
-        if (id < maxIdInDb) {
-            return id = maxIdInDb+1;
-        } else {
-            return id++;
-        }
+        int maxIdInDb = getMaxUserIdInDb();
+        return id < maxIdInDb ? (id = maxIdInDb + 1) : id++;
+    }
+
+    public static int genOrderId() {
+        int maxIdInDb = getMaxOrderIdInDb();
+        return id < maxIdInDb ? (id = maxIdInDb + 1) : id++;
     }
 }
