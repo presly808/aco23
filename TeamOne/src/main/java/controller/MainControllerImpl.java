@@ -17,19 +17,8 @@ import java.util.Map;
 public class MainControllerImpl implements MainController {
 
     private AppDbImpl appDb;
-    // todo we can delete user
-    private User user;
 
     public MainControllerImpl(AppDbImpl appDb) {
-        this.appDb = appDb;
-    }
-
-
-    public AppDbImpl getAppDb() {
-        return appDb;
-    }
-
-    public void setAppDb(AppDbImpl appDb) {
         this.appDb = appDb;
     }
 
@@ -43,12 +32,11 @@ public class MainControllerImpl implements MainController {
         return appDb.getOrders();
     }
 
-
     @Override
     public User getById(int id) throws UserNotFoundException {
 
         // todo java 8 at the end apply findFirst
-        //User res = appDb.getUsers().entrySet().stream().filter(user -> user.getValue().getId() == id).limit(1);
+        //User res = appDb.getUsers().entrySet().stream().filter(user -> user.getValue().getId() == id).findFirst().orElse(null);;
         for (User user : appDb.getUsers().values()){
             if (user.getId() == id){
                 return user;
