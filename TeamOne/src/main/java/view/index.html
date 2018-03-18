@@ -94,13 +94,12 @@
     </div>
 </footer>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/lib/js/jquery-3.3.1.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/lib/bootstrap-4-2/js/bootstrap.min.js"></script>
+
 <script>
 
-//on onload
+//on load
 $(document).ready(function() {
 
   $('#loginBtn').click(loginUser);
@@ -127,12 +126,12 @@ function loginUser() {
     contentType: 'application/json',
     data: JSON.stringify({email: $('#inputEmail1').val(), pass: $('#inputPassword1').val()}),
 
-//TODO wtite success and errror handling
+//TODO wtite success and error handling
     success(response) {
       alert('Login ok ' + response);
       userLoggedIn();
     },
-    error(jqXHR, status, errrorThrown) {
+    error(jqXHR, status, errorThrown) {
       alert('Login failed ' + status);
     }
 
@@ -152,8 +151,8 @@ function addNewUserToDb() {
     success(response) {
       alert('Add to db ok ' + response.body);
     },
-    error(jqXHR, status, errrorThrown) {
-      alert('Add to db ok failed ' + response.body);
+    error(jqXHR, status, errorThrown) {
+      alert('Add to db ok failed ' + status);
     }
 
     });
