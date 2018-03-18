@@ -35,8 +35,6 @@ public class MainControllerImpl implements MainController {
     @Override
     public User getById(int id) throws UserNotFoundException {
 
-        // todo java 8 at the end apply findFirst
-
         return appDb.getUsers().values().stream().filter(user -> user.getId() == id).
                 findFirst().orElseThrow(() -> new UserNotFoundException("No user Found"));
     }

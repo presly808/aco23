@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import model.Order;
 import model.User;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +14,10 @@ public class TestUtils {
     private final static String ordersDbPath = "order_db.txt";
 
     public static void restoreUserDb() {
-
-        User user1 = new User("test@gmail.com", "123456");
-        User user2 = new User("test@gmail.com", "123456");
-        User user3 = new User("test@gmail.com", "123456");
-
         List<User> users = new ArrayList<>();
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-
-        // todo all paths should be visible and extracted to appropriated place
+        users.add(new User("test@gmail.com", "123456"));
+        users.add(new User("test@gmail.com", "123456"));
+        users.add(new User("test@gmail.com", "123456"));
 
         try {
             JSONUtils.writeListIntoFile(usersDbPath, users);

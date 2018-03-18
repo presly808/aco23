@@ -25,12 +25,10 @@ public class Customer extends User {
 
     public String editUserPhone() {
         return null;
-
     }
 
     public String editUserEmail() {
         return null;
-
     }
 
     public String getPhone() {
