@@ -1,6 +1,5 @@
 package utils;
 
-import com.google.gson.Gson;
 import model.Order;
 import model.User;
 
@@ -27,14 +26,12 @@ public class TestUtils {
     }
 
     public static void restoreOrderDb() {
-        Gson gson = new Gson();
-
         Order order1 = new Order("Oleg", "Andrey", "Kyiv");
         Order order2 = new Order("Yuriy", "Andrey", "Kyiv");
         Order order3 = new Order("Ivan", "Andrey", "Kyiv");
 
-
         List<Order> orders = new ArrayList<>();
+
         orders.add(order1);
         orders.add(order2);
         orders.add(order3);

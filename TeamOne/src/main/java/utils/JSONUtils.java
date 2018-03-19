@@ -39,21 +39,18 @@ public class JSONUtils {
 
     public static void writeListIntoFile(String path, List<?> list) throws IOException {
 
-        Writer writer = new FileWriter(path, false);
-        writer.write(gson.toJson(list));
-        writer.flush();
+        try (Writer writer = new FileWriter(path, false)) {
+            writer.write(gson.toJson(list));
+            writer.flush();
+        }
     }
 
-    // todo apache commons, guava have a lot of utils and useful methods
-
     public static List<Order> getOrdersFromDb(String path) throws IOException {
-        List<Order> orders = readOrdersFromFile(path, Order[].class);
-        return orders;
+        return readOrdersFromFile(path, Order[].class);
     }
 
     public static List <User> getUsersFromDb(String path) throws IOException {
-        List<User> users = readUsersFromFile(path, User[].class);
-        return users;
+        return readUsersFromFile(path, User[].class);
     }
 
     public static void saveUsersToDb(String userDbPath, Map<String, User> users) {
