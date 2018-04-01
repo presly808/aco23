@@ -1,4 +1,3 @@
 ---
 exclude_paths:
   - src/main/java/view/lib/*
-  
