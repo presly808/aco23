@@ -28,8 +28,8 @@ public class AppDbImpl implements AppDb {
     public AppDbImpl() {
         this.users = new HashMap<>();
         this.orders = new HashMap<>();
-        this.usersDbPath = "user_db.txt";
-        this.ordersDbPath = "order_db.txt";
+        this.usersDbPath = "TeamOne/user_db.txt";
+        this.ordersDbPath = "TeamOne/order_db.txt";
         accessTokenUserMap = new HashMap<>();
     }
 
@@ -126,7 +126,10 @@ public class AppDbImpl implements AppDb {
 
     public boolean register(String email, String pass) {
         LOGGER.info(getClass());
-        return (Boolean) invokeUserAction(() -> users.put(email, new User(email, pass)));
+        //TODO rewrite this logic
+        Object o = invokeUserAction(() -> users.put(email, new User(email, pass)));
+//        return (Boolean) invokeUserAction(() -> users.put(email, new User(email, pass)));
+        return o == null;
     }
 
 }

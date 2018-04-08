@@ -3,7 +3,7 @@ package server;
 import exceptions.AppException;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
-import org.junit.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class SparkServerTest {
 
      @Before
      public void before() throws AppException {
-        server.initEnpoint();
+        server.initEndpoint();
      }
 
     @After
