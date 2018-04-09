@@ -168,7 +168,7 @@ function logoutUser() {
       $('#authUser').hide();
     },
     error(jqXHR, status, errorThrown) {
-      alert('Log out failed: ' + jqXHR.responseJSON.message);
+      alert('Log out failed: ' + errorThrown);
     }
   });
 }
