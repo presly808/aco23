@@ -5,7 +5,7 @@
     <title>Parcel Delivery Service</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/lib/bootstrap-4-2/css/bootstrap.min.css" ><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/lib/bootstrap-4-2/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/sticky-footer.css">
 
 </head>
@@ -23,7 +23,7 @@
     <h4>Log In</h4>
     <div class="form-group row">
         <div class="col-xs-4">
-            <form action="/login" method="post">
+            <form action="/login" method="post" id="validateLogin">
                 <div class="form-group">
                     <label for="inputEmail1">Email address</label>
                     <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
@@ -51,7 +51,7 @@
     <h4>Sign Up</h4>
     <div class="form-group row">
         <div class="col-xs-4">
-            <form action="/register" method="post" id="registration">
+            <form action="/register" method="post" id="validateRegistration">
                 <div class="form-group">
                     <label for="username">Name</label>
                     <input type="text" class="form-control" id="username" placeholder="Enter Name">
@@ -99,11 +99,14 @@
 
 <script src="/lib/js/jquery-3.3.1.min.js"></script>
 <script src="/lib/bootstrap-4-2/js/bootstrap.min.js"></script>
+<script src="/lib/js/jquery.validate.min.js"></script>
 
 <script>
 
 //on load
 $(document).ready(function() {
+  $('#validateLogin').validate();
+  $('#validateRegistration').validate();
 
   $('#loginBtn').click(loginUser);
 
@@ -153,8 +156,7 @@ function addNewUserToDb() {
     error(jqXHR, status, errorThrown) {
       alert(jqXHR.responseJSON.message);
     }
-
-    });
+  });
 }
 
 function logoutUser() {

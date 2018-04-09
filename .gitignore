@@ -28,3 +28,5 @@ build/
 
 #Log files of TeamOne project
 /TeamOne/lod4j.txt
+/TeamOne/log.txt
+lod4j.txt
