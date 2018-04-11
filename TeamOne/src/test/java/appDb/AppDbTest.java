@@ -16,7 +16,6 @@ import static utils.TestUtils.restoreOrderDb;
 import static utils.TestUtils.restoreUserDb;
 
 // todo use test db file
-// remove db file in afterClass
 public class AppDbTest {
 
     AppDbImpl appDb = new AppDbImpl();

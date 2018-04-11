@@ -9,8 +9,8 @@ import java.util.List;
 public class ModelUtils {
 
     private static int id;
-    private final static String USERS_DB_PATH = "TeamOne/user_db.txt";
-    private final static String ORDERS_DB_PATH = "TeamOne/order_db.txt";
+    private final static String USERS_DB_PATH = PathUtils.getUsersDbPath();
+    private final static String ORDERS_DB_PATH = PathUtils.getOrdersDbPath();
 
     private static int getMaxUserIdInDb() {
         List<User> users = null;

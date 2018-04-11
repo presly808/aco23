@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainControllerImpl implements MainController {
 
@@ -57,44 +58,40 @@ public class MainControllerImpl implements MainController {
     public Map<Integer, Order> filterByName(String name) throws AppException {
         if (appDb == null) throw new AppException("DB is empty");
 
-        Map<Integer, Order> result = new HashMap<>();
-
-        appDb.getOrders().values().stream().filter(order -> order.getSenderName().equals(name))
-                .forEach(order -> result.put(order.getId(), order));
-        return result;
+        return appDb.getOrders().values().stream().filter(order -> order.getSenderName().equals(name))
+                .collect(Collectors.toMap(Order::getId, order -> order));
     }
 
     @Override
     public Map<Integer, Order> filterByCity(String city) throws AppException {
         if (appDb == null) throw new AppException("DB is empty");
 
-        Map<Integer, Order> result = new HashMap<>();
-
-        appDb.getOrders().values().stream().filter(order -> order.getTargetCity().equals(city))
-                .forEach(order -> result.put(order.getId(), order));
-        return result;
+        Map<Integer, Order> map = new HashMap<>();
+        for (Order order : appDb.getOrders().values()) {
+            if (order.getTargetCity().equals(city)) {
+                if (map.put(order.getId(), order) != null) {
+                    throw new IllegalStateException("Duplicate key");
+                }
+                map.put(order.getId(), order);
+            }
+        }
+        return map;
     }
 
     @Override
     public Map<Integer, Order> filterByReceiver(String receiverName)throws AppException {
         if (appDb == null) throw new AppException("DB is empty");
 
-        Map<Integer, Order> result = new HashMap<>();
-
-        appDb.getOrders().values().stream().filter(order -> order.getReceiverName().equals(receiverName))
-                .forEach(order -> result.put(order.getId(), order));
-        return result;
+        return appDb.getOrders().values().stream().filter(order -> order.getReceiverName().equals(receiverName))
+                .collect(Collectors.toMap(Order::getId, order -> order));
     }
 
     @Override
     public Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws AppException {
         if (appDb == null) throw new AppException("DB is empty");
 
-        Map<Integer, Order> result = new HashMap<>();
-
-        appDb.getOrders().values().stream().filter(order -> order.getSendDate().equals(dateTime))
-                .forEach(order -> result.put(order.getId(), order));
-        return result;
+        return appDb.getOrders().values().stream().filter(order -> order.getSendDate().equals(dateTime))
+                .collect(Collectors.toMap(Order::getId, order -> order));
     }
 
     public String changeOrderStatus(Order order, OrderStatus orderStatus, String accessToken) throws AppException, IOException {
@@ -111,22 +108,22 @@ public class MainControllerImpl implements MainController {
             throw new NoAccessException("no access, login first");
         }
 
-        orders = appDb.getOrdersFromDb(appDb.getOrdersDbPath());
+        orders = appDb.getOrdersFromDb(appDb.getordersDbPath());
         orders.put(order.getId(), order);
-        JSONUtils.saveOrdersToDb(appDb.getOrdersDbPath(), orders);
+        JSONUtils.saveOrdersToDb(appDb.getordersDbPath(), orders);
         LOGGER.info("Method" + getClass());
 
         return order;
     }
 
     public Order removeOrder(Order order, String accessToken) throws AppException {
-        orders = appDb.getOrdersFromDb(appDb.getOrdersDbPath() );
+        orders = appDb.getOrdersFromDb(appDb.getordersDbPath() );
         if (!appDb.hasToken(accessToken)) {
             LOGGER.error("no access, login first");
             throw new AppException("no access, login first");
         }
         orders.remove(order.getId());
-        JSONUtils.saveOrdersToDb(appDb.getOrdersDbPath(), orders);
+        JSONUtils.saveOrdersToDb(appDb.getordersDbPath(), orders);
         LOGGER.info("Method" + getClass());
         return order;
     }

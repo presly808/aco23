@@ -20,7 +20,6 @@ public class Log4JAppTest {
         String res = cat("lod4j.txt");
         assertTrue(res.contains("lalala"));
         assertThat(res, notNullValue());
-
     }
 
     public static String cat(String path) throws IOException {

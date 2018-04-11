@@ -27,7 +27,4 @@ public interface AppDb {
     String createAccessToken(User user) throws LoginCredentialException;
 
     boolean hasToken(String accessToken)throws AppException;
-
-    boolean register(String email, String pass) throws AppException;
-
 }
