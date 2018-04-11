@@ -1,3 +1,0 @@
-2018-03-17 11:16:54 11:16:54,435 ERROR qtp148717627-15 Log4JApp:createAccessToken:137 - invalid login or pass
-2018-03-17 12:16:50 12:16:50,944  INFO qtp1933023356-21 Log4JApp:getUsersFromDb:76 - Methodclass appDb.AppDbImpl
-2018-03-17 12:16:50 12:16:50,953  INFO qtp1933023356-21 Log4JApp:register:156 - Methodclass appDb.AppDbImpl

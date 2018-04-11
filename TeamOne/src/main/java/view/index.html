@@ -5,7 +5,7 @@
     <title>Parcel Delivery Service</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/lib/bootstrap-4-2/css/bootstrap.min.css" ><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/lib/bootstrap-4-2/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/sticky-footer.css">
 
 </head>
@@ -23,7 +23,7 @@
     <h4>Log In</h4>
     <div class="form-group row">
         <div class="col-xs-4">
-            <form action="/login" method="post">
+            <form action="/login" method="post" id="validateLogin">
                 <div class="form-group">
                     <label for="inputEmail1">Email address</label>
                     <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
@@ -51,7 +51,7 @@
     <h4>Sign Up</h4>
     <div class="form-group row">
         <div class="col-xs-4">
-            <form action="/register" method="post" id="registration">
+            <form action="/register" method="post" id="validateRegistration">
                 <div class="form-group">
                     <label for="username">Name</label>
                     <input type="text" class="form-control" id="username" placeholder="Enter Name">
@@ -86,6 +86,9 @@
 <!--TODO Implement page view for logged in User/Employee  -->
 <div class="container" id="authUser" style="display:none;">
     <h4>Page view for logged in user. TBD</h4>
+    <div>
+      <button type="submit" class="btn btn-primary" id="logoutBtn">Logout</button>
+    </div>
 </div>
 
 <footer class="footer">
@@ -94,30 +97,29 @@
     </div>
 </footer>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/lib/js/jquery-3.3.1.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/lib/bootstrap-4-2/js/bootstrap.min.js"></script>
+<script src="/lib/js/jquery.validate.min.js"></script>
+
 <script>
 
-//on onload
+//on load
 $(document).ready(function() {
+  $('#validateLogin').validate();
+  $('#validateRegistration').validate();
 
   $('#loginBtn').click(loginUser);
 
-  $('#toggleRegister').click(function() {
-    openRegister();
-  });
+  $('#toggleRegister').click(openRegister);
 
-  $('#backToLogin').click(function() {
-    openLogin();
-  });
+  $('#backToLogin').click(openLogin);
 
   $('#registerBtn').click(function() {
     addNewUserToDb();
     openLogin();
   });
 
+  $('#logoutBtn').click(logoutUser);
 });
 
 function loginUser() {
@@ -127,13 +129,14 @@ function loginUser() {
     contentType: 'application/json',
     data: JSON.stringify({email: $('#inputEmail1').val(), pass: $('#inputPassword1').val()}),
 
-//TODO wtite success and errror handling
     success(response) {
-      alert('Login ok ' + response);
+      alert(response.message);
       userLoggedIn();
     },
-    error(jqXHR, status, errrorThrown) {
-      alert('Login failed ' + status);
+    error(jqXHR, status, errorThrown) {
+      alert('Login failed: ' + jqXHR.responseJSON.message);
+      $('#inputPassword1').val('');
+      $('#inputEmail1').val('');
     }
 
   });
@@ -147,16 +150,29 @@ function addNewUserToDb() {
     data: JSON.stringify({email: $('#inputEmail2').val(), pass: $('#inputPassword2').val(),
                           name: $('#username').val(), phone: $('#phoneNumber').val()}),
 
-  //TODO wtite success and errror handling
-  //TODO Add condition to verify whether user was created with no error
     success(response) {
-      alert('Add to db ok ' + response.body);
+      alert(response.message);
     },
-    error(jqXHR, status, errrorThrown) {
-      alert('Add to db ok failed ' + response.body);
+    error(jqXHR, status, errorThrown) {
+      alert(jqXHR.responseJSON.message);
     }
+  });
+}
 
-    });
+function logoutUser() {
+  $.ajax({
+    type: 'POST',
+    url: '/logout',
+
+    success(response) {
+      alert(response.message);
+      $('#loginForm').show();
+      $('#authUser').hide();
+    },
+    error(jqXHR, status, errorThrown) {
+      alert('Log out failed: ' + errorThrown);
+    }
+  });
 }
 
 function userLoggedIn() {
@@ -168,6 +184,8 @@ function userLoggedIn() {
 function openRegister() {
   $('#loginForm').hide();
   $('#registerForm').show();
+  $('#inputPassword2').val('');
+  $('#inputEmail2').val('');
 }
 
 function openLogin() {
