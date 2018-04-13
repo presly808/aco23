@@ -12,6 +12,8 @@ import utils.Factory;
 import utils.JSONUtils;
 import utils.Log4JApp;
 
+import java.util.Map;
+
 import static spark.Spark.*;
 
 public class SparkServer {
@@ -50,14 +52,12 @@ public class SparkServer {
         server.initEndpoint();
     }
 
-    public void stopServer(){
-        stop();
-    }
-
     public void initEndpoint() {
         post("/login", this::login);
         post("/register", this::register);
         post("/logout", this::logout);
+
+        get("/get_orders", (request, response) -> gson.toJson(appDb.getOrders().values()));
     }
 
     private Object login(Request request, Response response) {
@@ -91,7 +91,7 @@ public class SparkServer {
             LOGGER.info("User successfully registered");
         } else {
             response.body("User not added to db due to an error: Email already registered");
-            LOGGER.error("User not added to db due to an error");
+            LOGGER.error("User not added to db due to an error: Email already registered");
         }
 
         // todo return message after register logic

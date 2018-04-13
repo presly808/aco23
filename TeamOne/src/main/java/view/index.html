@@ -85,10 +85,12 @@
 </div>
 <!--TODO Implement page view for logged in User/Employee  -->
 <div class="container" id="authUser" style="display:none;">
-    <h4>Page view for logged in user. TBD</h4>
+    <h4>Welcome to the Application</h4>
     <div>
       <button type="submit" class="btn btn-primary" id="logoutBtn">Logout</button>
     </div>
+    <ul id="ordersList">
+    <ul>
 </div>
 
 <footer class="footer">
@@ -131,6 +133,7 @@ function loginUser() {
 
     success(response) {
       alert(response.message);
+      getOrders();
       userLoggedIn();
     },
     error(jqXHR, status, errorThrown) {
@@ -191,6 +194,29 @@ function openRegister() {
 function openLogin() {
   $('#loginForm').show();
   $('#registerForm').hide();
+}
+
+function getOrders() {
+  $.ajax({
+    type: 'GET',
+    url: '/get_orders',
+    contentType: 'application/json',
+
+    success(response) {
+      let orders = response;
+
+      orders.forEach(function(el) {
+        let oderLi = document.createElement('li')
+        oderLi.innerHTML = 'id: ' + el.id + ' sender name: ' + el.senderName +
+        ' receiver name: ' + el.receiverName + ' target city: ' + el.targetCity +
+        ' send date: ' + el.sendDate + ' order status: ' + el.status;
+        $('#ordersList').append(oderLi);
+      });
+    },
+    error(jqXHR, status, errorThrown) {
+      alert('Get orders error: ' + errorThrown);
+    }
+  });
 }
 
 </script>
