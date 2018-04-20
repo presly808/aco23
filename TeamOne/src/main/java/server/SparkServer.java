@@ -3,6 +3,7 @@ package server;
 import appDb.AppDbImpl;
 import com.google.gson.Gson;
 import controller.MainController;
+import exceptions.AppException;
 import exceptions.LoginCredentialException;
 import model.User;
 import org.apache.log4j.Logger;
@@ -19,16 +20,13 @@ import static spark.Spark.*;
 public class SparkServer {
 
     private final static Logger LOGGER = Log4JApp.getLogger(Log4JApp.class);
-    private AppDbImpl appDb;
     private Gson gson = new Gson();
-
+    private AppDbImpl appDb = new AppDbImpl();
     // todo  modifier
     private MainController mainController = Factory.create(appDb);
 
     public SparkServer(int port, String staticFolder) {
-        int port1 = port;
-        String staticFolder1 = staticFolder;
-        this.appDb = new AppDbImpl();
+
         port(port);
 
         if(staticFolder != null) {
@@ -57,18 +55,19 @@ public class SparkServer {
         post("/register", this::register);
         post("/logout", this::logout);
 
-        get("/get_orders", (request, response) -> gson.toJson(appDb.getOrders().values()));
+        get("/get_orders", (request, response) -> gson.toJson(mainController.getAllOrders().values()));
     }
 
     private Object login(Request request, Response response) {
         User loginUser = JSONUtils.fromJson(request.body(), User.class);
 
         try {
-            String key = appDb.createAccessToken(loginUser);
+            String key = mainController.generateKey(loginUser);
+//            String key = appDb.createAccessToken(loginUser);
             response.cookie("key", key, 3600);
             LOGGER.info("[login method] Auth key: " + key);
-        } catch (LoginCredentialException e) {
-            LOGGER.error("Authorisation failed");
+        } catch (AppException e) {
+            LOGGER.error("Authorisation failed: " + e.getMessage());
             response.status(401);
             response.body(e.getMessage());
 
@@ -84,7 +83,8 @@ public class SparkServer {
 
         String jsonRequest = request.body();
         User newUser = JSONUtils.fromJson(jsonRequest, User.class);
-        boolean addUser = appDb.register(newUser.getEmail(), newUser.getPass());
+        boolean addUser = mainController.registerUser(newUser);
+//        boolean addUser = appDb.register(newUser.getEmail(), newUser.getPass());
 
         if(addUser) {
             response.body("User successfully registered");

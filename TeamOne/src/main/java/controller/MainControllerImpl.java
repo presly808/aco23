@@ -128,6 +128,16 @@ public class MainControllerImpl implements MainController {
         return order;
     }
 
+    @Override
+    public boolean registerUser(User user) {
+        return appDb.register(user.getEmail(), user.getPass());
+    }
+
+    @Override
+    public String generateKey(User user) throws AppException{
+        if (user == null) throw new AppException("User is null");
+        return appDb.createAccessToken(user);
+    }
 
 
 }

@@ -101,7 +101,8 @@ public class AppDbImpl implements AppDb {
     public String createAccessToken(User user) throws LoginCredentialException {
         User found =
                 users.values()
-                        .stream().filter(Objects::nonNull)
+                        .stream()
+//                        .filter(Objects::nonNull)
                         .filter(u -> user.getEmail().equals(u.getEmail()))
                         .filter(u -> user.getPass().equals(u.getPass()))
                         .findFirst().orElse(null);

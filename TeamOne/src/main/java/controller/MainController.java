@@ -22,4 +22,7 @@ public interface MainController {
     Map<Integer, Order> filterByCity(String city) throws AppException;
     Map<Integer, Order> filterByReceiver(String receiverName) throws AppException;
     Map<Integer, Order> filterByDate(LocalDateTime dateTime) throws AppException;
+
+    boolean registerUser(User user);
+    String generateKey(User user) throws AppException;
 }

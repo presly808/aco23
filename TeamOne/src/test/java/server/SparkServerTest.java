@@ -1,6 +1,5 @@
 package server;
 
-import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -20,12 +19,6 @@ import spark.Spark;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SparkServerTest {
-
-    private static Gson gson = new Gson();
-//    String SERVER_PORT = "5000";
-//    public SparkServer server = new SparkServer(Integer.parseInt(SERVER_PORT),
-//            SparkServer.class.getResource("/view").getFile());
-
 
     @BeforeClass
     public static void before() throws AppException {
@@ -76,11 +69,13 @@ public class SparkServerTest {
         assertTrue(response.getHeaders().containsKey("set-cookie"));
         assertEquals(1, response.getHeaders().get("set-cookie").size());
     }
-    // TODO: write the test
-    @Ignore
+
     @Test
     public void test4_getOrders() throws UnirestException{
-
+        HttpResponse<JsonNode> response = Unirest
+                .get("http://localhost:5000/get_orders")
+                .asJson();
+        assertTrue(response.getBody().getArray().length() > 0);
     }
 
     @Test
