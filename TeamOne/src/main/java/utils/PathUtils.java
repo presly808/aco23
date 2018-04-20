@@ -8,7 +8,8 @@ import java.util.Properties;
 public class PathUtils {
 
     private static Properties appProperties = new Properties();
-    private static String pathToProps = "src/main/java/app.properties";
+//    private static String pathToProps = "src/main/java/app.properties";
+    private static String pathToProps = PathUtils.class.getResource("../app.properties").getFile();
 
 
     public static String getUsersDbPath() {
