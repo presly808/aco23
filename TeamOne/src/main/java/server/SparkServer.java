@@ -4,7 +4,6 @@ import appDb.AppDbImpl;
 import com.google.gson.Gson;
 import controller.MainController;
 import exceptions.AppException;
-import exceptions.LoginCredentialException;
 import model.User;
 import org.apache.log4j.Logger;
 import spark.Request;
@@ -12,8 +11,6 @@ import spark.Response;
 import utils.Factory;
 import utils.JSONUtils;
 import utils.Log4JApp;
-
-import java.util.Map;
 
 import static spark.Spark.*;
 

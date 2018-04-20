@@ -10,6 +10,7 @@ public class PathUtils {
     private static Properties appProperties = new Properties();
 //    private static String pathToProps = "src/main/java/app.properties";
     private static String pathToProps = PathUtils.class.getResource("../app.properties").getFile();
+    private static String pathToTestProps = PathUtils.class.getResource("../test.properties").getFile();
 
 
     public static String getUsersDbPath() {
@@ -33,6 +34,27 @@ public class PathUtils {
         return appProperties.getProperty("pathToLog4jProperties");
     }
 
+    public static String getServerPort() {
+
+        loadProperty(pathToTestProps);
+
+        return appProperties.getProperty("SERVER_PORT");
+    }
+
+    public static String getServerHost() {
+
+        loadProperty(pathToTestProps);
+
+        return appProperties.getProperty("SERVER_HOST");
+    }
+
+    public static String getStaticFolder() {
+
+        loadProperty(pathToTestProps);
+
+        return appProperties.getProperty("STATIC_FOLDER");
+    }
+
     private static void loadProperty (String pathToProps){
         try (InputStream io = new FileInputStream(pathToProps)) {
             appProperties.load(io);
@@ -41,5 +63,4 @@ public class PathUtils {
             System.exit(-1);
         }
     }
-
 }
