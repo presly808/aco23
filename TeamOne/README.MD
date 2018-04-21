@@ -33,13 +33,13 @@ Required components
    
 How to start the application
 
-    Run "main" class of "aco23/TeamOne/src/main/java/server/SparkServer.java".
-    Open "http://localhost:5000/index.html" url in browser.
-    
+Run "main" class of "aco23/TeamOne/src/main/java/server/SparkServer.java".
+Open "http://localhost:5000/index.html" url in browser.
+
 Application debug
     
-    Run the application the the same way using IDE debug mode. 
-    To debug front-end it is suggested to run the app in Crome browser and use its debugging tools.
+Run the application the the same way using IDE debug mode. 
+To debug front-end it is suggested to run the app in Crome browser and use its debugging tools.
     
     
     
