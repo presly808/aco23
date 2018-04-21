@@ -206,11 +206,13 @@ function getOrders() {
       let orders = response;
 
       orders.forEach(function(el) {
-        let oderLi = document.createElement('li')
-        oderLi.innerHTML = 'id: ' + el.id + ' sender name: ' + el.senderName +
-        ' receiver name: ' + el.receiverName + ' target city: ' + el.targetCity +
-        ' send date: ' + el.sendDate + ' order status: ' + el.status;
-        $('#ordersList').append(oderLi);
+
+        let orderLi = $('<li></li>')
+          .text('id: ' + el.id + ' sender name: ' + el.senderName +
+            ' receiver name: ' + el.receiverName + ' target city: ' + el.targetCity +
+            ' send date: ' + el.sendDate + ' order status: ' + el.status);
+
+        $('#ordersList').append(orderLi);
       });
     },
     error(jqXHR, status, errorThrown) {

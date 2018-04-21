@@ -1,10 +1,12 @@
 package server;
 
+import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import exceptions.AppException;
+import model.User;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
@@ -22,6 +24,11 @@ import utils.PathUtils;
 public class SparkServerTest {
 
     private String host = PathUtils.getServerHost();
+    private User user1 = new User("mail1@gmail.com", "111");    // valid credentials
+    private User user2 = new User("mail1@gmail.com", "222");    // not valid credentials
+    private User user3 = new User("mail3@gmail.com", "123");    // not existing user
+    private Gson gson = new Gson();
+
 
     @BeforeClass
     public static void before() throws AppException {
@@ -42,10 +49,9 @@ public class SparkServerTest {
     public void test1_addNewUserToDb() throws UnirestException{
         HttpResponse<JsonNode> jsonResponse = Unirest
                 .post(host + "/register")
-                .header("Content-Type", "application/json")
-                .body("{\"email\":\"mail1@gmail.com\",\"pass\":\"111\"}")
+                .body(gson.toJson(user1))
                 .asJson();
-        assertEquals("User successfully registered",
+        assertEquals("User mail1@gmail.com successfully registered",
                 jsonResponse.getBody().getObject().get("message"));
     }
 
@@ -53,8 +59,7 @@ public class SparkServerTest {
     public void test2_addExistingUserToDb() throws UnirestException{
         HttpResponse<JsonNode> jsonResponse = Unirest
                 .post(host + "/register")
-                .header("Content-Type", "application/json")
-                .body("{\"email\":\"mail1@gmail.com\",\"pass\":\"111\"}")
+                .body(gson.toJson(user1))
                 .asJson();
         assertEquals("User not added to db due to an error: Email already registered",
                 jsonResponse.getBody().getObject().get("message"));
@@ -64,8 +69,7 @@ public class SparkServerTest {
     public void test3_loginUser() throws UnirestException{
         HttpResponse<JsonNode> response = Unirest
                 .post(host + "/login")
-                .header("Content-Type", "application/json")
-                .body("{\"email\":\"mail1@gmail.com\",\"pass\":\"111\"}")
+                .body(gson.toJson(user1))
                 .asJson();
         assertEquals("Login successful",
                 response.getBody().getObject().get("message"));
@@ -86,8 +90,7 @@ public class SparkServerTest {
     public void test5_loginUserInvalidPassword() throws UnirestException{
         HttpResponse<JsonNode> response = Unirest
                 .post(host + "/login")
-                .header("Content-Type", "application/json")
-                .body("{\"email\":\"mail1@gmail.com\",\"pass\":\"222\"}")
+                .body(gson.toJson(user2))
                 .asJson();
         assertEquals(401, response.getStatus());
         //        no cookie set
@@ -98,8 +101,7 @@ public class SparkServerTest {
     public void test6_loginNonExistingUser() throws UnirestException{
         HttpResponse<JsonNode> response = Unirest
                 .post(host + "/login")
-                .header("Content-Type", "application/json")
-                .body("{\"email\":\"mail111@gmail.com\",\"pass\":\"123\"}")
+                .body(gson.toJson(user3))
                 .asJson();
         assertEquals(401, response.getStatus());
         //        no cookie set
@@ -110,8 +112,7 @@ public class SparkServerTest {
     public void test7_logoutUser() throws UnirestException{
         HttpResponse<JsonNode> response = Unirest
                 .post(host + "/login")
-                .header("Content-Type", "application/json")
-                .body("{\"email\":\"mail1@gmail.com\",\"pass\":\"111\"}")
+                .body(gson.toJson(user1))
                 .asJson();
 
 //        cookie is set

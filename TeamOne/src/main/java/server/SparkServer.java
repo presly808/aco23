@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import spark.Request;
 import spark.Response;
 import utils.Factory;
-import utils.JSONUtils;
 import utils.Log4JApp;
 
 import static spark.Spark.*;
@@ -44,6 +43,16 @@ public class SparkServer {
 
         before((request, response) -> response.type("application/json"));
 
+        before("/get_orders", (request, response) -> {
+
+            boolean authenticated = request.cookie("key") != null;
+            LOGGER.info("[before method] User authenticated: " + authenticated);
+
+            if (!authenticated) {
+                halt(401, "You are not logged in");
+            }
+        });
+
         server.initEndpoint();
     }
 
@@ -56,11 +65,10 @@ public class SparkServer {
     }
 
     private Object login(Request request, Response response) {
-        User loginUser = JSONUtils.fromJson(request.body(), User.class);
+        User loginUser = gson.fromJson(request.body(), User.class);
 
         try {
             String key = mainController.generateKey(loginUser);
-//            String key = appDb.createAccessToken(loginUser);
             response.cookie("key", key, 3600);
             LOGGER.info("[login method] Auth key: " + key);
         } catch (AppException e) {
@@ -78,17 +86,19 @@ public class SparkServer {
     private Object register(Request request, Response response) {
         // todo create Gson only one time and keep as a singleton
 
+        String responseMessage;
         String jsonRequest = request.body();
-        User newUser = JSONUtils.fromJson(jsonRequest, User.class);
+        User newUser = gson.fromJson(jsonRequest, User.class);
         boolean addUser = mainController.registerUser(newUser);
-//        boolean addUser = appDb.register(newUser.getEmail(), newUser.getPass());
 
         if(addUser) {
-            response.body("User successfully registered");
-            LOGGER.info("User successfully registered");
+            responseMessage = "User " + newUser.getEmail() + " successfully registered";
+            response.body(responseMessage);
+            LOGGER.info(responseMessage);
         } else {
-            response.body("User not added to db due to an error: Email already registered");
-            LOGGER.error("User not added to db due to an error: Email already registered");
+            responseMessage = "User not added to db due to an error: Email already registered";
+            response.body(responseMessage);
+            LOGGER.error(responseMessage);
         }
 
         // todo return message after register logic
@@ -100,14 +110,4 @@ public class SparkServer {
         return gson.toJson(new ServerMessage("User logged out"));
     }
 
-//        TODO: add this method to the page view of logged in user
-//        before((request, response) -> {
-//
-//            boolean authenticated = request.cookie("key") != null;
-//            LOGGER.info("[before method] User authenticated: " + authenticated);
-//
-//            if (!authenticated) {
-//                halt(401, "You are not logged in");
-//            }
-//        });
 }
