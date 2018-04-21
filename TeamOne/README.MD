@@ -38,7 +38,7 @@ Open "http://localhost:5000/index.html" url in browser.
 
 Application debug
     
-Run the application the the same way using IDE debug mode. 
+Run the application the same way using IDE debug mode. 
 To debug front-end it is suggested to run the app in Crome browser and use its debugging tools.
     
     
