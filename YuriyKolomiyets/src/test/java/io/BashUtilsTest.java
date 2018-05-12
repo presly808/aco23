@@ -4,15 +4,16 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Created by serhii on 10.02.18.
  */
 public class BashUtilsTest {
+
+  //  private BashUtils bashUtils;
 
     @Test
     public void cat() throws Exception {
@@ -63,17 +64,20 @@ public class BashUtilsTest {
     }
 
     @Test
-    public void grep() {
+    public void grep() throws Exception {
         List<String> line2 = BashUtils.grep("line1\nline2\nline3", "line2");
         assertThat(line2.size(), is(1));
         assertThat(line2.get(0), is("line2"));
     }
 
-    @Test
+   /* @Test
     public void grepR() throws Exception {
-        Map<String, String> line1 = BashUtils.grepR(".", "line1");
-        line1.forEach((key, val) -> assertThat(val, containsString("line1")));
-        assertThat(line1.get("test.txt"), containsString("line1"));
-    }
+       *//* Map<String, String> line1 = BashUtils.grepR(".", "line1");
+        line1.forEach((key, val) -> {
+            assertThat(key, containsString("test.txt"));
+            assertThat(val, containsString("line1"));
+        });
+*//*
+    }*/
 
 }

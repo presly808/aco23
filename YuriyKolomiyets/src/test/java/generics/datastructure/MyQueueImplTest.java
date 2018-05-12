@@ -22,6 +22,7 @@ public class MyQueueImplTest {
         myQueue.enqueue("Object");
     }
 
+
     @Test
     public void enqueue() throws Exception {
         myQueue.enqueue("new String");
