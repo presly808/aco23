@@ -22,10 +22,6 @@ public class MyQueueImplTest {
         myQueue.enqueue("Object");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void constructorWithSize() {
-        myQueue = new MyQueueImpl<>(-1);
-    }
 
     @Test
     public void enqueue() throws Exception {
